@@ -7,23 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4AC4CA4626B2538D00340A00 /* LegalinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CA4526B2538D00340A00 /* LegalinApp.swift */; };
-		4AC4CA4826B2538D00340A00 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CA4726B2538D00340A00 /* ContentView.swift */; };
-		4AC4CA4A26B2538E00340A00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AC4CA4926B2538E00340A00 /* Assets.xcassets */; };
-		4AC4CA4D26B2538E00340A00 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AC4CA4C26B2538E00340A00 /* Preview Assets.xcassets */; };
+		4AC4CA8D26B25D1300340A00 /* LegalinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CA8C26B25D1300340A00 /* LegalinApp.swift */; };
+		4AC4CA8F26B25D1300340A00 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CA8E26B25D1300340A00 /* ContentView.swift */; };
+		4AC4CA9126B25D1300340A00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AC4CA9026B25D1300340A00 /* Assets.xcassets */; };
+		4AC4CA9426B25D1300340A00 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AC4CA9326B25D1300340A00 /* Preview Assets.xcassets */; };
+		4AC4CAA226B25D6900340A00 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAA126B25D6900340A00 /* CoreData.swift */; };
+		4AC4CAA626B25D7A00340A00 /* ViewModelExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAA526B25D7A00340A00 /* ViewModelExample.swift */; };
+		4AC4CAAA26B25D9100340A00 /* Fitur1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAA926B25D9100340A00 /* Fitur1.swift */; };
+		4AC4CAAE26B25DA000340A00 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAAD26B25DA000340A00 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4AC4CA4226B2538D00340A00 /* Legalin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Legalin.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4AC4CA4526B2538D00340A00 /* LegalinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalinApp.swift; sourceTree = "<group>"; };
-		4AC4CA4726B2538D00340A00 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		4AC4CA4926B2538E00340A00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4AC4CA4C26B2538E00340A00 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4AC4CA4E26B2538E00340A00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4AC4CA8926B25D1300340A00 /* Legalin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Legalin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AC4CA8C26B25D1300340A00 /* LegalinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalinApp.swift; sourceTree = "<group>"; };
+		4AC4CA8E26B25D1300340A00 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4AC4CA9026B25D1300340A00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4AC4CA9326B25D1300340A00 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4AC4CA9526B25D1300340A00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4AC4CAA126B25D6900340A00 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		4AC4CAA526B25D7A00340A00 /* ViewModelExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelExample.swift; sourceTree = "<group>"; };
+		4AC4CAA926B25D9100340A00 /* Fitur1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fitur1.swift; sourceTree = "<group>"; };
+		4AC4CAAD26B25DA000340A00 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4AC4CA3F26B2538D00340A00 /* Frameworks */ = {
+		4AC4CA8626B25D1300340A00 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,86 +41,90 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4AC4CA3926B2538D00340A00 = {
+		4AC4CA8026B25D1300340A00 = {
 			isa = PBXGroup;
 			children = (
-				4AC4CA4426B2538D00340A00 /* Legalin */,
-				4AC4CA4326B2538D00340A00 /* Products */,
+				4AC4CA8B26B25D1300340A00 /* Legalin */,
+				4AC4CA8A26B25D1300340A00 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		4AC4CA4326B2538D00340A00 /* Products */ = {
+		4AC4CA8A26B25D1300340A00 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4AC4CA4226B2538D00340A00 /* Legalin.app */,
+				4AC4CA8926B25D1300340A00 /* Legalin.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4AC4CA4426B2538D00340A00 /* Legalin */ = {
+		4AC4CA8B26B25D1300340A00 /* Legalin */ = {
 			isa = PBXGroup;
 			children = (
-				4AC4CA5826B2542200340A00 /* Utilities */,
-				4AC4CA5726B253D500340A00 /* ViewModels */,
-				4AC4CA5626B253D000340A00 /* Views */,
-				4AC4CA5526B253CA00340A00 /* Models */,
-				4AC4CA4526B2538D00340A00 /* LegalinApp.swift */,
-				4AC4CA4726B2538D00340A00 /* ContentView.swift */,
-				4AC4CA4926B2538E00340A00 /* Assets.xcassets */,
-				4AC4CA4E26B2538E00340A00 /* Info.plist */,
-				4AC4CA4B26B2538E00340A00 /* Preview Content */,
+				4AC4CA9F26B25D5200340A00 /* Utilities */,
+				4AC4CA9E26B25D4900340A00 /* ViewModels */,
+				4AC4CA9D26B25D4400340A00 /* Views */,
+				4AC4CA9C26B25D3B00340A00 /* Model */,
+				4AC4CA8C26B25D1300340A00 /* LegalinApp.swift */,
+				4AC4CA8E26B25D1300340A00 /* ContentView.swift */,
+				4AC4CA9026B25D1300340A00 /* Assets.xcassets */,
+				4AC4CA9526B25D1300340A00 /* Info.plist */,
+				4AC4CA9226B25D1300340A00 /* Preview Content */,
 			);
 			path = Legalin;
 			sourceTree = "<group>";
 		};
-		4AC4CA4B26B2538E00340A00 /* Preview Content */ = {
+		4AC4CA9226B25D1300340A00 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				4AC4CA4C26B2538E00340A00 /* Preview Assets.xcassets */,
+				4AC4CA9326B25D1300340A00 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		4AC4CA5526B253CA00340A00 /* Models */ = {
+		4AC4CA9C26B25D3B00340A00 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4AC4CAAD26B25DA000340A00 /* Model.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		4AC4CA5626B253D000340A00 /* Views */ = {
+		4AC4CA9D26B25D4400340A00 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4AC4CA5A26B2544D00340A00 /* Feature1 */,
+				4AC4CAA826B25D8000340A00 /* Feature1 */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		4AC4CA5726B253D500340A00 /* ViewModels */ = {
+		4AC4CA9E26B25D4900340A00 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				4AC4CAA526B25D7A00340A00 /* ViewModelExample.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		4AC4CA5826B2542200340A00 /* Utilities */ = {
+		4AC4CA9F26B25D5200340A00 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				4AC4CA5926B2542F00340A00 /* CoreData */,
+				4AC4CAA026B25D5B00340A00 /* CoreData */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		4AC4CA5926B2542F00340A00 /* CoreData */ = {
+		4AC4CAA026B25D5B00340A00 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				4AC4CAA126B25D6900340A00 /* CoreData.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		4AC4CA5A26B2544D00340A00 /* Feature1 */ = {
+		4AC4CAA826B25D8000340A00 /* Feature1 */ = {
 			isa = PBXGroup;
 			children = (
+				4AC4CAA926B25D9100340A00 /* Fitur1.swift */,
 			);
 			path = Feature1;
 			sourceTree = "<group>";
@@ -120,13 +132,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4AC4CA4126B2538D00340A00 /* Legalin */ = {
+		4AC4CA8826B25D1300340A00 /* Legalin */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4AC4CA5126B2538E00340A00 /* Build configuration list for PBXNativeTarget "Legalin" */;
+			buildConfigurationList = 4AC4CA9826B25D1300340A00 /* Build configuration list for PBXNativeTarget "Legalin" */;
 			buildPhases = (
-				4AC4CA3E26B2538D00340A00 /* Sources */,
-				4AC4CA3F26B2538D00340A00 /* Frameworks */,
-				4AC4CA4026B2538D00340A00 /* Resources */,
+				4AC4CA8526B25D1300340A00 /* Sources */,
+				4AC4CA8626B25D1300340A00 /* Frameworks */,
+				4AC4CA8726B25D1300340A00 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -134,24 +146,24 @@
 			);
 			name = Legalin;
 			productName = Legalin;
-			productReference = 4AC4CA4226B2538D00340A00 /* Legalin.app */;
+			productReference = 4AC4CA8926B25D1300340A00 /* Legalin.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		4AC4CA3A26B2538D00340A00 /* Project object */ = {
+		4AC4CA8126B25D1300340A00 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
-					4AC4CA4126B2538D00340A00 = {
+					4AC4CA8826B25D1300340A00 = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
 			};
-			buildConfigurationList = 4AC4CA3D26B2538D00340A00 /* Build configuration list for PBXProject "Legalin" */;
+			buildConfigurationList = 4AC4CA8426B25D1300340A00 /* Build configuration list for PBXProject "Legalin" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -159,42 +171,46 @@
 				en,
 				Base,
 			);
-			mainGroup = 4AC4CA3926B2538D00340A00;
-			productRefGroup = 4AC4CA4326B2538D00340A00 /* Products */;
+			mainGroup = 4AC4CA8026B25D1300340A00;
+			productRefGroup = 4AC4CA8A26B25D1300340A00 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4AC4CA4126B2538D00340A00 /* Legalin */,
+				4AC4CA8826B25D1300340A00 /* Legalin */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4AC4CA4026B2538D00340A00 /* Resources */ = {
+		4AC4CA8726B25D1300340A00 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AC4CA4D26B2538E00340A00 /* Preview Assets.xcassets in Resources */,
-				4AC4CA4A26B2538E00340A00 /* Assets.xcassets in Resources */,
+				4AC4CA9426B25D1300340A00 /* Preview Assets.xcassets in Resources */,
+				4AC4CA9126B25D1300340A00 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4AC4CA3E26B2538D00340A00 /* Sources */ = {
+		4AC4CA8526B25D1300340A00 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AC4CA4826B2538D00340A00 /* ContentView.swift in Sources */,
-				4AC4CA4626B2538D00340A00 /* LegalinApp.swift in Sources */,
+				4AC4CA8F26B25D1300340A00 /* ContentView.swift in Sources */,
+				4AC4CAAA26B25D9100340A00 /* Fitur1.swift in Sources */,
+				4AC4CAA626B25D7A00340A00 /* ViewModelExample.swift in Sources */,
+				4AC4CAAE26B25DA000340A00 /* Model.swift in Sources */,
+				4AC4CAA226B25D6900340A00 /* CoreData.swift in Sources */,
+				4AC4CA8D26B25D1300340A00 /* LegalinApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		4AC4CA4F26B2538E00340A00 /* Debug */ = {
+		4AC4CA9626B25D1300340A00 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -255,7 +271,7 @@
 			};
 			name = Debug;
 		};
-		4AC4CA5026B2538E00340A00 /* Release */ = {
+		4AC4CA9726B25D1300340A00 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -310,7 +326,7 @@
 			};
 			name = Release;
 		};
-		4AC4CA5226B2538E00340A00 /* Debug */ = {
+		4AC4CA9926B25D1300340A00 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -331,7 +347,7 @@
 			};
 			name = Debug;
 		};
-		4AC4CA5326B2538E00340A00 /* Release */ = {
+		4AC4CA9A26B25D1300340A00 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -355,25 +371,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4AC4CA3D26B2538D00340A00 /* Build configuration list for PBXProject "Legalin" */ = {
+		4AC4CA8426B25D1300340A00 /* Build configuration list for PBXProject "Legalin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4AC4CA4F26B2538E00340A00 /* Debug */,
-				4AC4CA5026B2538E00340A00 /* Release */,
+				4AC4CA9626B25D1300340A00 /* Debug */,
+				4AC4CA9726B25D1300340A00 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4AC4CA5126B2538E00340A00 /* Build configuration list for PBXNativeTarget "Legalin" */ = {
+		4AC4CA9826B25D1300340A00 /* Build configuration list for PBXNativeTarget "Legalin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4AC4CA5226B2538E00340A00 /* Debug */,
-				4AC4CA5326B2538E00340A00 /* Release */,
+				4AC4CA9926B25D1300340A00 /* Debug */,
+				4AC4CA9A26B25D1300340A00 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 4AC4CA3A26B2538D00340A00 /* Project object */;
+	rootObject = 4AC4CA8126B25D1300340A00 /* Project object */;
 }
