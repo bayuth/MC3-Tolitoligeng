@@ -15,6 +15,13 @@
 		4AC4CAA626B25D7A00340A00 /* ViewModelExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAA526B25D7A00340A00 /* ViewModelExample.swift */; };
 		4AC4CAAA26B25D9100340A00 /* Fitur1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAA926B25D9100340A00 /* Fitur1.swift */; };
 		4AC4CAAE26B25DA000340A00 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAAD26B25DA000340A00 /* Model.swift */; };
+		5E35F36B26B801C30044D1FC /* ModalMetodePembayaran.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35F36A26B801C30044D1FC /* ModalMetodePembayaran.swift */; };
+		5E35F36E26B832F50044D1FC /* PinjamanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35F36D26B832F50044D1FC /* PinjamanCell.swift */; };
+		5E35F37126B833F20044D1FC /* ModalTipeBarangAgunan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35F37026B833F20044D1FC /* ModalTipeBarangAgunan.swift */; };
+		5E35F37426B834CD0044D1FC /* ModalPengadilanNegeri.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35F37326B834CD0044D1FC /* ModalPengadilanNegeri.swift */; };
+		5E35F37726B83BDC0044D1FC /* regions.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E35F37626B83BDC0044D1FC /* regions.json */; };
+		5E35F37B26B83E2E0044D1FC /* RegionDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35F37A26B83E2E0044D1FC /* RegionDataModel.swift */; };
+		5E35F37F26B844450044D1FC /* ReadJsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35F37E26B844450044D1FC /* ReadJsonData.swift */; };
 		5E96325A26B425D50002CD56 /* StatusSuratEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E96325926B425D50002CD56 /* StatusSuratEnum.swift */; };
 		5EBDDDC926B2E83900F53958 /* Legalin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDDDC726B2E83900F53958 /* Legalin.xcdatamodeld */; };
 		5EBDDDD426B3B69900F53958 /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDDDD326B3B69900F53958 /* CoreDataViewModel.swift */; };
@@ -32,6 +39,13 @@
 		4AC4CAA526B25D7A00340A00 /* ViewModelExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelExample.swift; sourceTree = "<group>"; };
 		4AC4CAA926B25D9100340A00 /* Fitur1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fitur1.swift; sourceTree = "<group>"; };
 		4AC4CAAD26B25DA000340A00 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		5E35F36A26B801C30044D1FC /* ModalMetodePembayaran.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalMetodePembayaran.swift; sourceTree = "<group>"; };
+		5E35F36D26B832F50044D1FC /* PinjamanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinjamanCell.swift; sourceTree = "<group>"; };
+		5E35F37026B833F20044D1FC /* ModalTipeBarangAgunan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTipeBarangAgunan.swift; sourceTree = "<group>"; };
+		5E35F37326B834CD0044D1FC /* ModalPengadilanNegeri.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPengadilanNegeri.swift; sourceTree = "<group>"; };
+		5E35F37626B83BDC0044D1FC /* regions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = regions.json; sourceTree = "<group>"; };
+		5E35F37A26B83E2E0044D1FC /* RegionDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDataModel.swift; sourceTree = "<group>"; };
+		5E35F37E26B844450044D1FC /* ReadJsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJsonData.swift; sourceTree = "<group>"; };
 		5E96325926B425D50002CD56 /* StatusSuratEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusSuratEnum.swift; sourceTree = "<group>"; };
 		5EBDDDC826B2E83900F53958 /* Legalin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Legalin.xcdatamodel; sourceTree = "<group>"; };
 		5EBDDDD326B3B69900F53958 /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
@@ -95,6 +109,7 @@
 			children = (
 				4AC4CAAD26B25DA000340A00 /* Model.swift */,
 				5E96325926B425D50002CD56 /* StatusSuratEnum.swift */,
+				5E35F37A26B83E2E0044D1FC /* RegionDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -102,6 +117,7 @@
 		4AC4CA9D26B25D4400340A00 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5E35F36926B801820044D1FC /* Perjanjian */,
 				5E7CC78626B7DB54004270E0 /* Test Core Data */,
 				4AC4CAA826B25D8000340A00 /* Feature1 */,
 			);
@@ -120,6 +136,7 @@
 		4AC4CA9F26B25D5200340A00 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				5E35F37D26B844310044D1FC /* Read JSON */,
 				4AC4CAA026B25D5B00340A00 /* CoreData */,
 			);
 			path = Utilities;
@@ -139,6 +156,26 @@
 				4AC4CAA926B25D9100340A00 /* Fitur1.swift */,
 			);
 			path = Feature1;
+			sourceTree = "<group>";
+		};
+		5E35F36926B801820044D1FC /* Perjanjian */ = {
+			isa = PBXGroup;
+			children = (
+				5E35F36A26B801C30044D1FC /* ModalMetodePembayaran.swift */,
+				5E35F36D26B832F50044D1FC /* PinjamanCell.swift */,
+				5E35F37026B833F20044D1FC /* ModalTipeBarangAgunan.swift */,
+				5E35F37326B834CD0044D1FC /* ModalPengadilanNegeri.swift */,
+			);
+			path = Perjanjian;
+			sourceTree = "<group>";
+		};
+		5E35F37D26B844310044D1FC /* Read JSON */ = {
+			isa = PBXGroup;
+			children = (
+				5E35F37626B83BDC0044D1FC /* regions.json */,
+				5E35F37E26B844450044D1FC /* ReadJsonData.swift */,
+			);
+			path = "Read JSON";
 			sourceTree = "<group>";
 		};
 		5E7CC78626B7DB54004270E0 /* Test Core Data */ = {
@@ -208,6 +245,7 @@
 			files = (
 				4AC4CA9426B25D1300340A00 /* Preview Assets.xcassets in Resources */,
 				4AC4CA9126B25D1300340A00 /* Assets.xcassets in Resources */,
+				5E35F37726B83BDC0044D1FC /* regions.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,14 +258,20 @@
 			files = (
 				4AC4CA8F26B25D1300340A00 /* ContentView.swift in Sources */,
 				4AC4CAAA26B25D9100340A00 /* Fitur1.swift in Sources */,
+				5E35F37B26B83E2E0044D1FC /* RegionDataModel.swift in Sources */,
 				5E96325A26B425D50002CD56 /* StatusSuratEnum.swift in Sources */,
 				4AC4CAA626B25D7A00340A00 /* ViewModelExample.swift in Sources */,
 				4AC4CAAE26B25DA000340A00 /* Model.swift in Sources */,
 				4AC4CAA226B25D6900340A00 /* CoreData.swift in Sources */,
 				5EBDDDC926B2E83900F53958 /* Legalin.xcdatamodeld in Sources */,
 				5EBDDDD726B4170500F53958 /* TestCoreDataView.swift in Sources */,
+				5E35F37426B834CD0044D1FC /* ModalPengadilanNegeri.swift in Sources */,
 				4AC4CA8D26B25D1300340A00 /* LegalinApp.swift in Sources */,
+				5E35F37126B833F20044D1FC /* ModalTipeBarangAgunan.swift in Sources */,
+				5E35F36B26B801C30044D1FC /* ModalMetodePembayaran.swift in Sources */,
+				5E35F37F26B844450044D1FC /* ReadJsonData.swift in Sources */,
 				5EBDDDD426B3B69900F53958 /* CoreDataViewModel.swift in Sources */,
+				5E35F36E26B832F50044D1FC /* PinjamanCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

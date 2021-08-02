@@ -10,6 +10,24 @@ import CoreData
 
 class CoreDataViewModel: ObservableObject {
     
+    //Data yang akan digunakan di view model
+    //Bisa liat di views, folder TestCoreDataView untuk contoh penggunaan
+    //Data harusnya sudah otomatis terupdate di view kalau ada perubahan, sudah menerapkan observable object
+    //khusus buat pihak1, pihak1 yang diambil adalah profil user. cara ambilnya pihak1[0]
+    //Dibuat dengan tutorial https://www.youtube.com/watch?v=huRKU-TAD3g&t=1846s
+    
+    @Published var pihak1:[Akun] = []
+    @Published var listPihak2:[Akun] = []
+    @Published var listPinjaman:[Pinjaman] = []
+    @Published var listKredit:[Kredit] = []
+    
+    init(){
+        getPihak1()
+        getAllPihak2()
+        getAllPinjaman()
+        getAllKredit()
+    }
+    
     let manager = CoreData.instance
     
     //Create Entity KTP untuk akun
@@ -22,21 +40,21 @@ class CoreDataViewModel: ObservableObject {
         return newKTP
     }
     
-    //Digunakan untuk initialize profil awal atau pihak 1
-    //Set false kalau pihak bukan yang ada di perjanjian, hanya di profile
-    func createPihak1(pinjamanPage: Bool) -> Akun{
-        
+//    Digunakan untuk initialize profil awal atau pihak 1
+//    Set false kalau pihak bukan yang ada di perjanjian, hanya di profile
+    func createPihak1(pinjamanPage: Bool) -> Akun?{
+
         var tempAkun:Akun
         //Check if existing profile already made
-        if (getPihak1().count != 0){
-            
+        if (pihak1 != []){
+
             print("Profile alread exist")
-            tempAkun = getPihak1()[0]
-            
+            tempAkun = pihak1[0]
+
         } else {
-            
+
             let newAkun = Akun(context: manager.context)
-                
+
             //Genereate UUID and Date
             newAkun.uuid = UUID()
             newAkun.dateCreated = Date()
@@ -45,10 +63,16 @@ class CoreDataViewModel: ObservableObject {
             newAkun.pinjamanPage = pinjamanPage
             newAkun.ktp = createKTP()
             save()
-                    
+
+            if (pinjamanPage == false){
+                getPihak1()
+            } else {
+                getAllPinjaman()
+            }
+            
             tempAkun = newAkun
         }
-        
+
         return tempAkun
     }
     
@@ -66,6 +90,10 @@ class CoreDataViewModel: ObservableObject {
         newAkun.ktp = createKTP()
         
         save()
+        
+        getAllPinjaman()
+        getAllPihak2()
+        
         return newAkun
     }
     
@@ -98,6 +126,7 @@ class CoreDataViewModel: ObservableObject {
             pihakCopy.ktp?.provinsi = pihakOriginal.ktp?.provinsi
             
             save()
+            getAllPinjaman()
             
         } else{
             print("Unable to copy because of different account type")
@@ -105,10 +134,8 @@ class CoreDataViewModel: ObservableObject {
     }
     
     //Dapatkan pihak1 atau profil
-    func getPihak1() -> [Akun]{
+    func getPihak1() {
         let request = NSFetchRequest<Akun>(entityName: "Akun")
-        
-        var profil:[Akun] = []
         
         let predicateProfile = NSPredicate(format: "profileSelected == %@", NSNumber(value: true))
         let predicatePinjamanPage = NSPredicate(format: "pinjamanPage == %@", NSNumber(value: false))
@@ -118,16 +145,14 @@ class CoreDataViewModel: ObservableObject {
 //        request.predicate = predicateProfile
         
         do{
-            profil = try manager.context.fetch(request)
+            pihak1 = try manager.context.fetch(request)
         } catch let error {
             print("Error fetching. \(error.localizedDescription)")
         }
-        
-        return profil
     }
     
     //Dapatkan list pihak2 untuk template
-    func getAllPihak2() -> [Akun]{
+    func getAllPihak2(){
         let request = NSFetchRequest<Akun>(entityName: "Akun")
         
         let sort = NSSortDescriptor(keyPath: \Akun.dateCreated, ascending: true)
@@ -138,15 +163,11 @@ class CoreDataViewModel: ObservableObject {
         let andPredicate = NSCompoundPredicate(type: .and, subpredicates: [predicateProfile, predicatePinjamanPage])
         request.predicate = andPredicate
         
-        var listPihak:[Akun] = []
-        
         do{
-            listPihak = try manager.context.fetch(request)
+            listPihak2 = try manager.context.fetch(request)
         } catch let error {
             print("Error fetching. \(error.localizedDescription)")
         }
-        
-        return listPihak
     }
     
     //Mengganti isi akun
@@ -181,6 +202,13 @@ class CoreDataViewModel: ObservableObject {
         akun.atasNamaRekening = atasNamaRekening
         
         save()
+        
+        if ((akun.profileSelected == true) && (akun.pinjamanPage == false)){
+            getPihak1()
+        } else {
+            getAllPinjaman()
+            getAllPihak2()
+        }
     }
     
     //Hapus akun. akun yang sedang posisi profil tidak dapat dihapus
@@ -189,6 +217,9 @@ class CoreDataViewModel: ObservableObject {
         if (pihak.profileSelected == false) {
             manager.context.delete(pihak)
             save()
+            
+            getAllPinjaman()
+            getAllPihak2()
         } else {
             print("Can't delete profile account")
         }
@@ -205,6 +236,7 @@ class CoreDataViewModel: ObservableObject {
         newAgunan.dateModified = Date()
         
         save()
+        getAllPinjaman()
         return newAgunan
     }
     
@@ -222,6 +254,7 @@ class CoreDataViewModel: ObservableObject {
         agunan.warna = warna
         
         save()
+        getAllPinjaman()
     }
     
     //Mendapatkan seluruh agunan
@@ -246,10 +279,11 @@ class CoreDataViewModel: ObservableObject {
     func deleteAgunan(agunan:Agunan){
         manager.context.delete(agunan)
         save()
+        getAllPinjaman()
     }
     
-    //Membuat kredit, pagePinjaman false kalau buat page kredit, bukan di perjanjian
-    func createKredit(pagePinjaman: Bool) -> Kredit{
+    //Membuat kredit, pinjamanPage false kalau buat page kredit, bukan di perjanjian
+    func createKredit(pinjamanPage: Bool) -> Kredit{
         
         let newKredit = Kredit(context: manager.context)
         
@@ -257,9 +291,10 @@ class CoreDataViewModel: ObservableObject {
         newKredit.uuid = UUID()
         newKredit.dateCreated = Date()
         newKredit.dateModified = Date()
-        newKredit.pagePinjaman = pagePinjaman
+        newKredit.pinjamanPage = pinjamanPage
         
         save()
+        getAllKredit()
         
         return newKredit
     }
@@ -277,10 +312,11 @@ class CoreDataViewModel: ObservableObject {
         kredit.tenor = Int64(tenor ?? 0)
         
         save()
+        getAllKredit()
     }
     
     //Mengambil semua kredit yang ditampilkan di page simulasi kredit
-    func getAllKredit() -> [Kredit]{
+    func getAllKredit(){
         let request = NSFetchRequest<Kredit>(entityName: "Kredit")
         
         let sort = NSSortDescriptor(keyPath: \Kredit.dateCreated, ascending: true)
@@ -289,15 +325,11 @@ class CoreDataViewModel: ObservableObject {
         let predicatePinjamanPage = NSPredicate(format: "pinjamanPage == %@", NSNumber(value: false))
         request.predicate = predicatePinjamanPage
         
-        var listKredit:[Kredit] = []
-        
         do{
             listKredit = try manager.context.fetch(request)
         } catch let error {
             print("Error fetching. \(error.localizedDescription)")
         }
-        
-        return listKredit
     }
     
     //Memindahkan data dari page simulasi kredit ke pinjaman
@@ -311,42 +343,48 @@ class CoreDataViewModel: ObservableObject {
         kreditCopy.tenor = kreditOriginal.tenor
         
         save()
+        getAllKredit()
+        getAllPinjaman()
     }
     
     //Menghapus kredit yang dipilih
     func deleteKredit(kredit: Kredit) {
         manager.context.delete(kredit)
         save()
+        
+        getAllPinjaman()
+        getAllKredit()
     }
     
-    //Membuat pinjaman baru
+//    Membuat pinjaman baru
     func createPinjaman() -> Pinjaman{
-        
+
         let newPinjaman = Pinjaman(context: manager.context)
 
         //Generate UUID dan Date
         newPinjaman.uuid = UUID()
         newPinjaman.dateCreated = Date()
         newPinjaman.dateModified = Date()
-        
+
         //Init Status dan Reminder
         newPinjaman.status = StatusSurat.draft.rawValue
         newPinjaman.reminder = false
-        
+
         //Buat pihak1 di page pinjaman (loaner)
         newPinjaman.pihak1 = createPihak1(pinjamanPage: true)
-        
+
         //Buat profil2 di pinjaman page (lender)
         newPinjaman.pihak2 = createPihak2(pinjamanPage: true)
-        
+
         //Buat kredit di pinjaman page
-        newPinjaman.kredit = createKredit(pagePinjaman: true)
-        
+        newPinjaman.kredit = createKredit(pinjamanPage: true)
+
         //Buat agunan di pinjaman page
         newPinjaman.agunan = createAgunan()
-        
+
         save()
-        
+        getAllPinjaman()
+
         return newPinjaman
     }
     
@@ -363,23 +401,20 @@ class CoreDataViewModel: ObservableObject {
         pinjaman.reminder = reminder ?? false
         
         save()
+        getAllPinjaman()
     }
     
-    func getAllPinjaman() -> [Pinjaman]{
+    func getAllPinjaman(){
         let request = NSFetchRequest<Pinjaman>(entityName: "Pinjaman")
         
         let sort = NSSortDescriptor(keyPath: \Pinjaman.dateCreated, ascending: true)
         request.sortDescriptors = [sort]
-        
-        var listPinjaman:[Pinjaman] = []
         
         do{
             listPinjaman = try manager.context.fetch(request)
         } catch let error {
             print("Error fetching. \(error.localizedDescription)")
         }
-        
-        return listPinjaman
     }
     
     //Hapus pinjaman yang dipilih beserta agunan yang bersangkutan
@@ -410,41 +445,15 @@ class CoreDataViewModel: ObservableObject {
         }
         
         self.manager.context.delete(pinjaman)
+        
         save()
-    }
-    
-    //Hapus agunan yang dipilih
-    func deleteAgunanPinjaman(pinjaman: Pinjaman){
-        manager.context.delete(pinjaman.agunan!)
-        save()
+        getAllPinjaman()
+        
     }
     
     func save(){
         self.manager.save()
     }
-    
-    //    func changePihak2Pinjaman(pinjaman: Pinjaman, pihak2: Akun){
-    //        manager.context.delete(pinjaman.pihak2!)
-    //        pinjaman.pihak2 = pihak2
-    //        save()
-    //    }
-    //
-    //    func changeKreditPinjaman(pinjaman: Pinjaman, kredit: Kredit){
-    //        manager.context.delete(pinjaman.kredit!)
-    //        pinjaman.kredit = kredit
-    //        save()
-    //    }
-        
-        //    //Ganti pihak1 atau profile dengan akun lain
-        //    func changeAkun(oldProfile: Akun, newProfile: Akun){
-        //
-        //        if ((oldProfile.profileSelected == true) && (newProfile.profileSelected == false)){
-        //            oldProfile.profileSelected = !oldProfile.profileSelected
-        //            newProfile.profileSelected = !newProfile.profileSelected
-        //        } else{
-        //            print("Wrong input for profile")
-        //        }
-        //    }
     
 }
 

@@ -32,7 +32,7 @@
         <attribute name="dateModified" optional="YES" attributeType="Date"/>
         <attribute name="jumlahPinjaman" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="namaSimulasi" optional="YES" attributeType="String"/>
-        <attribute name="pagePinjaman" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="pinjamanPage" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="tenor" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="pinjaman" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pinjaman" inverseName="kredit" inverseEntity="Pinjaman"/>
