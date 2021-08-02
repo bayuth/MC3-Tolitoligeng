@@ -15,6 +15,10 @@
 		4AC4CAA626B25D7A00340A00 /* ViewModelExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAA526B25D7A00340A00 /* ViewModelExample.swift */; };
 		4AC4CAAA26B25D9100340A00 /* Fitur1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAA926B25D9100340A00 /* Fitur1.swift */; };
 		4AC4CAAE26B25DA000340A00 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAAD26B25DA000340A00 /* Model.swift */; };
+		5C2E5C3526B274B1002E5559 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E5C3426B274B1002E5559 /* ProfileView.swift */; };
+		5CF59FA426B7A541002F05B7 /* profileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF59FA326B7A541002F05B7 /* profileData.swift */; };
+		5CF59FA626B7A645002F05B7 /* NewProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF59FA526B7A645002F05B7 /* NewProfileView.swift */; };
+		5CF59FA826B7A6FD002F05B7 /* FilledProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF59FA726B7A6FD002F05B7 /* FilledProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		4AC4CAA526B25D7A00340A00 /* ViewModelExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelExample.swift; sourceTree = "<group>"; };
 		4AC4CAA926B25D9100340A00 /* Fitur1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fitur1.swift; sourceTree = "<group>"; };
 		4AC4CAAD26B25DA000340A00 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		5C2E5C3426B274B1002E5559 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		5CF59FA326B7A541002F05B7 /* profileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileData.swift; sourceTree = "<group>"; };
+		5CF59FA526B7A645002F05B7 /* NewProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileView.swift; sourceTree = "<group>"; };
+		5CF59FA726B7A6FD002F05B7 /* FilledProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				4AC4CAAD26B25DA000340A00 /* Model.swift */,
+				5CF59FA326B7A541002F05B7 /* profileData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -92,6 +101,7 @@
 		4AC4CA9D26B25D4400340A00 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5C2E5C3326B2647D002E5559 /* ProfileFeature */,
 				4AC4CAA826B25D8000340A00 /* Feature1 */,
 			);
 			path = Views;
@@ -127,6 +137,16 @@
 				4AC4CAA926B25D9100340A00 /* Fitur1.swift */,
 			);
 			path = Feature1;
+			sourceTree = "<group>";
+		};
+		5C2E5C3326B2647D002E5559 /* ProfileFeature */ = {
+			isa = PBXGroup;
+			children = (
+				5C2E5C3426B274B1002E5559 /* ProfileView.swift */,
+				5CF59FA526B7A645002F05B7 /* NewProfileView.swift */,
+				5CF59FA726B7A6FD002F05B7 /* FilledProfileView.swift */,
+			);
+			path = ProfileFeature;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,12 +218,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CF59FA826B7A6FD002F05B7 /* FilledProfileView.swift in Sources */,
 				4AC4CA8F26B25D1300340A00 /* ContentView.swift in Sources */,
 				4AC4CAAA26B25D9100340A00 /* Fitur1.swift in Sources */,
 				4AC4CAA626B25D7A00340A00 /* ViewModelExample.swift in Sources */,
 				4AC4CAAE26B25DA000340A00 /* Model.swift in Sources */,
 				4AC4CAA226B25D6900340A00 /* CoreData.swift in Sources */,
+				5C2E5C3526B274B1002E5559 /* ProfileView.swift in Sources */,
 				4AC4CA8D26B25D1300340A00 /* LegalinApp.swift in Sources */,
+				5CF59FA626B7A645002F05B7 /* NewProfileView.swift in Sources */,
+				5CF59FA426B7A541002F05B7 /* profileData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
