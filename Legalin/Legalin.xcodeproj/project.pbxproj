@@ -15,6 +15,10 @@
 		4AC4CAA626B25D7A00340A00 /* ViewModelExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAA526B25D7A00340A00 /* ViewModelExample.swift */; };
 		4AC4CAAA26B25D9100340A00 /* Fitur1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAA926B25D9100340A00 /* Fitur1.swift */; };
 		4AC4CAAE26B25DA000340A00 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAAD26B25DA000340A00 /* Model.swift */; };
+		5E96325A26B425D50002CD56 /* StatusSuratEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E96325926B425D50002CD56 /* StatusSuratEnum.swift */; };
+		5EBDDDC926B2E83900F53958 /* Legalin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDDDC726B2E83900F53958 /* Legalin.xcdatamodeld */; };
+		5EBDDDD426B3B69900F53958 /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDDDD326B3B69900F53958 /* CoreDataViewModel.swift */; };
+		5EBDDDD726B4170500F53958 /* TestCoreDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDDDD626B4170500F53958 /* TestCoreDataView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		4AC4CAA526B25D7A00340A00 /* ViewModelExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelExample.swift; sourceTree = "<group>"; };
 		4AC4CAA926B25D9100340A00 /* Fitur1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fitur1.swift; sourceTree = "<group>"; };
 		4AC4CAAD26B25DA000340A00 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		5E96325926B425D50002CD56 /* StatusSuratEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusSuratEnum.swift; sourceTree = "<group>"; };
+		5EBDDDC826B2E83900F53958 /* Legalin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Legalin.xcdatamodel; sourceTree = "<group>"; };
+		5EBDDDD326B3B69900F53958 /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
+		5EBDDDD626B4170500F53958 /* TestCoreDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +76,7 @@
 				4AC4CA8E26B25D1300340A00 /* ContentView.swift */,
 				4AC4CA9026B25D1300340A00 /* Assets.xcassets */,
 				4AC4CA9526B25D1300340A00 /* Info.plist */,
+				5EBDDDC726B2E83900F53958 /* Legalin.xcdatamodeld */,
 				4AC4CA9226B25D1300340A00 /* Preview Content */,
 			);
 			path = Legalin;
@@ -85,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				4AC4CAAD26B25DA000340A00 /* Model.swift */,
+				5E96325926B425D50002CD56 /* StatusSuratEnum.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -92,6 +102,7 @@
 		4AC4CA9D26B25D4400340A00 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5E7CC78626B7DB54004270E0 /* Test Core Data */,
 				4AC4CAA826B25D8000340A00 /* Feature1 */,
 			);
 			path = Views;
@@ -101,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				4AC4CAA526B25D7A00340A00 /* ViewModelExample.swift */,
+				5EBDDDD326B3B69900F53958 /* CoreDataViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -127,6 +139,14 @@
 				4AC4CAA926B25D9100340A00 /* Fitur1.swift */,
 			);
 			path = Feature1;
+			sourceTree = "<group>";
+		};
+		5E7CC78626B7DB54004270E0 /* Test Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				5EBDDDD626B4170500F53958 /* TestCoreDataView.swift */,
+			);
+			path = "Test Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,10 +220,14 @@
 			files = (
 				4AC4CA8F26B25D1300340A00 /* ContentView.swift in Sources */,
 				4AC4CAAA26B25D9100340A00 /* Fitur1.swift in Sources */,
+				5E96325A26B425D50002CD56 /* StatusSuratEnum.swift in Sources */,
 				4AC4CAA626B25D7A00340A00 /* ViewModelExample.swift in Sources */,
 				4AC4CAAE26B25DA000340A00 /* Model.swift in Sources */,
 				4AC4CAA226B25D6900340A00 /* CoreData.swift in Sources */,
+				5EBDDDC926B2E83900F53958 /* Legalin.xcdatamodeld in Sources */,
+				5EBDDDD726B4170500F53958 /* TestCoreDataView.swift in Sources */,
 				4AC4CA8D26B25D1300340A00 /* LegalinApp.swift in Sources */,
+				5EBDDDD426B3B69900F53958 /* CoreDataViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +414,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5EBDDDC726B2E83900F53958 /* Legalin.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5EBDDDC826B2E83900F53958 /* Legalin.xcdatamodel */,
+			);
+			currentVersion = 5EBDDDC826B2E83900F53958 /* Legalin.xcdatamodel */;
+			path = Legalin.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4AC4CA8126B25D1300340A00 /* Project object */;
 }
