@@ -16,13 +16,19 @@ struct TestCoreDataView: View {
         VStack(spacing: 20){
             
             Text("Core data: \(getInitText(pihak1: vm.pihak1))")
-//            Text("\(vm.pihak1[0].ktp?.nama ?? "no name found")")
             
             VStack(alignment: .center) {
                         TextField("Enter username...", text: $username)
                         Text("Your username: \(username)")
                     }.padding()
             
+            
+            Button(action: {
+                vm.manager.context.delete(vm.pihak1[0])
+                vm.save()
+            }, label: {
+                Text("Delete Pihak 1")
+            })
             
             Button(action: {
                 

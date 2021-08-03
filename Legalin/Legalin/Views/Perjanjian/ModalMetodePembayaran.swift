@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ModalMetodePembayaran: View {
+    
+    @StateObject var stateController = selectedController()
+    
     var body: some View {
         VStack(alignment: .leading){
                 Text("Kepada Pemberi Pinjaman")
@@ -20,9 +23,14 @@ struct ModalMetodePembayaran: View {
                 
                 ScrollView{
                     
-                    CheckListCell(title: "Cicilan", selected: true)
-                    CheckListCell(title: "Kontan", selected: false)
-                    
+                    CheckListCell(title: "Cicilan", selected: stateController.selected, mainNav: false, index: 0)
+                        .onTapGesture {
+                            stateController.setSelectedState(sender: "selected")
+                        }
+                    CheckListCell(title: "Kontan", selected: stateController.selected2, mainNav: false, index: 1)
+                        .onTapGesture {
+                            stateController.setSelectedState(sender: "selected2")
+                        }
                 }
                 
             }

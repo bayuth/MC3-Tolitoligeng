@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ModalTipeBarangAgunan: View {
+    
+    @StateObject var stateController = selectedController()
+    
     var body: some View {
         VStack(alignment: .leading){
                 Text("Tipe Barang Agunan")
@@ -20,8 +23,14 @@ struct ModalTipeBarangAgunan: View {
                 
                 ScrollView{
                     
-                    CheckListCell(title: "Umum", selected: false)
-                    CheckListCell(title: "Elektronik", selected: true)
+                    CheckListCell(title: "Umum", selected: stateController.selected, mainNav: false, index: 0)
+                        .onTapGesture {
+                            stateController.setSelectedState(sender: "selected")
+                        }
+                    CheckListCell(title: "Elektronik", selected: stateController.selected2, mainNav: false, index: 1)
+                        .onTapGesture {
+                            stateController.setSelectedState(sender: "selected2")
+                        }
                     
                 }
                 
