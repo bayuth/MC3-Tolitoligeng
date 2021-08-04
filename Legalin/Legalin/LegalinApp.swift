@@ -15,7 +15,7 @@ struct LegalinApp: App {
 //            ModalPengadilanNegeri()
 //            ModalMetodePembayaran()
 //            ModalPengadilanNegeri()
-            ContentView()
+//            ContentView()
         }
     }
 }
