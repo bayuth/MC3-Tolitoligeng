@@ -16,8 +16,8 @@
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateModified" optional="YES" attributeType="Date"/>
         <attribute name="namaBank" optional="YES" attributeType="String"/>
-        <attribute name="nomorAktif" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="nomorRekening" optional="YES" attributeType="Integer 64" usesScalarValueType="YES"/>
+        <attribute name="nomorAktif" optional="YES" attributeType="String"/>
+        <attribute name="nomorRekening" optional="YES" attributeType="String"/>
         <attribute name="pekerjaan" optional="YES" attributeType="String"/>
         <attribute name="pinjamanPage" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="profileSelected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -44,10 +44,10 @@
         <attribute name="kelurahanDesa" optional="YES" attributeType="String"/>
         <attribute name="kotaKabupaten" optional="YES" attributeType="String"/>
         <attribute name="nama" optional="YES" attributeType="String"/>
-        <attribute name="nik" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nik" optional="YES" attributeType="String"/>
         <attribute name="provinsi" optional="YES" attributeType="String"/>
-        <attribute name="rt" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="rw" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="rt" optional="YES" attributeType="String"/>
+        <attribute name="rw" optional="YES" attributeType="String"/>
         <attribute name="tanggalLahir" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="akun" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Akun" inverseName="ktp" inverseEntity="Akun"/>
@@ -71,9 +71,9 @@
     </entity>
     <elements>
         <element name="Agunan" positionX="61.8748779296875" positionY="-76.30369567871094" width="128" height="178"/>
-        <element name="Akun" positionX="-432.2776489257812" positionY="-86.76535034179688" width="128" height="238"/>
+        <element name="Akun" positionX="-432.2776489257812" positionY="-86.76535034179688" width="128" height="224"/>
         <element name="Kredit" positionX="247.8436279296875" positionY="3.6741943359375" width="128" height="164"/>
-        <element name="KTP" positionX="-600.440673828125" positionY="-93.55972290039062" width="128" height="238"/>
+        <element name="KTP" positionX="-600.440673828125" positionY="-93.55972290039062" width="128" height="224"/>
         <element name="Pinjaman" positionX="-176.0797729492188" positionY="-56.89163208007812" width="128" height="268"/>
     </elements>
 </model>

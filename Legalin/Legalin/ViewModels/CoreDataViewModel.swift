@@ -114,12 +114,12 @@ class CoreDataViewModel: ObservableObject {
             //Copy KTP Attribute
             pihakCopy.ktp?.image = pihakOriginal.ktp?.image
             pihakCopy.ktp?.nama = pihakOriginal.ktp?.nama
-            pihakCopy.ktp?.nik = pihakOriginal.ktp?.nik ?? 0
+            pihakCopy.ktp?.nik = pihakOriginal.ktp?.nik
             pihakCopy.ktp?.tanggalLahir = pihakOriginal.ktp?.tanggalLahir
             
             pihakCopy.ktp?.alamat = pihakOriginal.ktp?.alamat
-            pihakCopy.ktp?.rt = pihakOriginal.ktp?.rt ?? 0
-            pihakCopy.ktp?.rw = pihakOriginal.ktp?.rw ?? 0
+            pihakCopy.ktp?.rt = pihakOriginal.ktp?.rt
+            pihakCopy.ktp?.rw = pihakOriginal.ktp?.rw
             pihakCopy.ktp?.kecamatan = pihakOriginal.ktp?.kecamatan
             pihakCopy.ktp?.kelurahanDesa = pihakOriginal.ktp?.kelurahanDesa
             pihakCopy.ktp?.kotaKabupaten = pihakOriginal.ktp?.kotaKabupaten
@@ -171,7 +171,7 @@ class CoreDataViewModel: ObservableObject {
     }
     
     //Mengganti isi akun
-    func updateAkun(akun: Akun, ktpImage: Data? = nil, NIK: Int? = nil, nama: String? = nil, tanggalLahir: Date? = nil, alamat: String? = nil, rt: Int? = nil, rw: Int? = nil, kecamatan:String? = nil, kelurahanDesa:String? = nil, kotaKabupaten:String? = nil, provinsi:String? = nil, pekerjaan: String? = nil, nomorAktif: Int? = nil, namaBank: String? = nil, nomorRekening:Int? = nil, atasNamaRekening: String? = nil) {
+    func updateAkun(akun: Akun, ktpImage: Data? = nil, NIK: String? = nil, nama: String? = nil, tanggalLahir: Date? = nil, alamat: String? = nil, rt: String? = nil, rw: String? = nil, kecamatan:String? = nil, kelurahanDesa:String? = nil, kotaKabupaten:String? = nil, provinsi:String? = nil, pekerjaan: String? = nil, nomorAktif: String? = nil, namaBank: String? = nil, nomorRekening:String? = nil, atasNamaRekening: String? = nil) {
         
         //Update modified date
         akun.dateModified = Date()
@@ -180,13 +180,13 @@ class CoreDataViewModel: ObservableObject {
         
 //        Atribut KTP
         akun.ktp?.image =  ktpImage
-        akun.ktp?.nik = Int64(NIK ?? 0)
+        akun.ktp?.nik = NIK
         akun.ktp?.nama = nama
         akun.ktp?.tanggalLahir = tanggalLahir
         
         akun.ktp?.alamat = alamat
-        akun.ktp?.rt = Int64(rt ?? 0)
-        akun.ktp?.rw = Int64(rw ?? 0)
+        akun.ktp?.rt = rt
+        akun.ktp?.rw = rw
         akun.ktp?.kecamatan = kecamatan
         akun.ktp?.kelurahanDesa = kelurahanDesa
         akun.ktp?.kotaKabupaten = kotaKabupaten
@@ -194,11 +194,11 @@ class CoreDataViewModel: ObservableObject {
     
 //        Atribut nonKTP
         akun.pekerjaan = pekerjaan
-        akun.nomorAktif = Int64(nomorAktif ?? 0)
+        akun.nomorAktif = nomorAktif
         
         //Input pihak 2 attribute
         akun.namaBank = namaBank
-        akun.nomorRekening = Int64(nomorRekening ?? 0)
+        akun.nomorRekening = nomorRekening
         akun.atasNamaRekening = atasNamaRekening
         
         save()

@@ -15,6 +15,7 @@
 		4AC4CAA626B25D7A00340A00 /* ViewModelExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAA526B25D7A00340A00 /* ViewModelExample.swift */; };
 		4AC4CAAA26B25D9100340A00 /* Fitur1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAA926B25D9100340A00 /* Fitur1.swift */; };
 		4AC4CAAE26B25DA000340A00 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAAD26B25DA000340A00 /* Model.swift */; };
+		5E27EEF126BA56880090573F /* pageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E27EEF026BA56880090573F /* pageIndicator.swift */; };
 		5E35F36B26B801C30044D1FC /* ModalMetodePembayaran.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35F36A26B801C30044D1FC /* ModalMetodePembayaran.swift */; };
 		5E35F36E26B832F50044D1FC /* PinjamanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35F36D26B832F50044D1FC /* PinjamanCell.swift */; };
 		5E35F37126B833F20044D1FC /* ModalTipeBarangAgunan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35F37026B833F20044D1FC /* ModalTipeBarangAgunan.swift */; };
@@ -29,6 +30,7 @@
 		5EBDDDC926B2E83900F53958 /* Legalin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDDDC726B2E83900F53958 /* Legalin.xcdatamodeld */; };
 		5EBDDDD426B3B69900F53958 /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDDDD326B3B69900F53958 /* CoreDataViewModel.swift */; };
 		5EBDDDD726B4170500F53958 /* TestCoreDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDDDD626B4170500F53958 /* TestCoreDataView.swift */; };
+		5EF3B05926BA46C200ABC1F7 /* step4Agunan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3B05826BA46C200ABC1F7 /* step4Agunan.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,7 @@
 		4AC4CAA526B25D7A00340A00 /* ViewModelExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelExample.swift; sourceTree = "<group>"; };
 		4AC4CAA926B25D9100340A00 /* Fitur1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fitur1.swift; sourceTree = "<group>"; };
 		4AC4CAAD26B25DA000340A00 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		5E27EEF026BA56880090573F /* pageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pageIndicator.swift; sourceTree = "<group>"; };
 		5E35F36A26B801C30044D1FC /* ModalMetodePembayaran.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalMetodePembayaran.swift; sourceTree = "<group>"; };
 		5E35F36D26B832F50044D1FC /* PinjamanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinjamanCell.swift; sourceTree = "<group>"; };
 		5E35F37026B833F20044D1FC /* ModalTipeBarangAgunan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTipeBarangAgunan.swift; sourceTree = "<group>"; };
@@ -56,6 +59,7 @@
 		5EBDDDC826B2E83900F53958 /* Legalin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Legalin.xcdatamodel; sourceTree = "<group>"; };
 		5EBDDDD326B3B69900F53958 /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
 		5EBDDDD626B4170500F53958 /* TestCoreDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataView.swift; sourceTree = "<group>"; };
+		5EF3B05826BA46C200ABC1F7 /* step4Agunan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = step4Agunan.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,11 +172,9 @@
 		5E35F36926B801820044D1FC /* Perjanjian */ = {
 			isa = PBXGroup;
 			children = (
+				5EDA95FD26BA465F004BBBC4 /* Main Page */,
+				5EDA95FB26BA4630004BBBC4 /* Modal */,
 				5E8578B226B950E50019FB61 /* Reusable */,
-				5E35F36A26B801C30044D1FC /* ModalMetodePembayaran.swift */,
-				5E35F37026B833F20044D1FC /* ModalTipeBarangAgunan.swift */,
-				5E35F37326B834CD0044D1FC /* ModalPengadilanNegeri.swift */,
-				5E8578AC26B90BC30019FB61 /* ModalPengadilanNegeriDetail.swift */,
 			);
 			path = Perjanjian;
 			sourceTree = "<group>";
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				5E35F36D26B832F50044D1FC /* PinjamanCell.swift */,
+				5E27EEF026BA56880090573F /* pageIndicator.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -209,6 +212,25 @@
 				5E5D23FC26B985FF00FC356E /* pengadilanNegeriDetailViewController.swift */,
 			);
 			path = Perjanjian;
+			sourceTree = "<group>";
+		};
+		5EDA95FB26BA4630004BBBC4 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				5E35F36A26B801C30044D1FC /* ModalMetodePembayaran.swift */,
+				5E35F37026B833F20044D1FC /* ModalTipeBarangAgunan.swift */,
+				5E35F37326B834CD0044D1FC /* ModalPengadilanNegeri.swift */,
+				5E8578AC26B90BC30019FB61 /* ModalPengadilanNegeriDetail.swift */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		5EDA95FD26BA465F004BBBC4 /* Main Page */ = {
+			isa = PBXGroup;
+			children = (
+				5EF3B05826BA46C200ABC1F7 /* step4Agunan.swift */,
+			);
+			path = "Main Page";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +305,7 @@
 			files = (
 				4AC4CA8F26B25D1300340A00 /* ContentView.swift in Sources */,
 				4AC4CAAA26B25D9100340A00 /* Fitur1.swift in Sources */,
+				5EF3B05926BA46C200ABC1F7 /* step4Agunan.swift in Sources */,
 				5E35F37B26B83E2E0044D1FC /* RegionDataModel.swift in Sources */,
 				5E96325A26B425D50002CD56 /* StatusSuratEnum.swift in Sources */,
 				4AC4CAA626B25D7A00340A00 /* ViewModelExample.swift in Sources */,
@@ -292,6 +315,7 @@
 				5EBDDDD726B4170500F53958 /* TestCoreDataView.swift in Sources */,
 				5E5D23FD26B985FF00FC356E /* pengadilanNegeriDetailViewController.swift in Sources */,
 				5E35F37426B834CD0044D1FC /* ModalPengadilanNegeri.swift in Sources */,
+				5E27EEF126BA56880090573F /* pageIndicator.swift in Sources */,
 				4AC4CA8D26B25D1300340A00 /* LegalinApp.swift in Sources */,
 				5E35F37126B833F20044D1FC /* ModalTipeBarangAgunan.swift in Sources */,
 				5E35F36B26B801C30044D1FC /* ModalMetodePembayaran.swift in Sources */,
