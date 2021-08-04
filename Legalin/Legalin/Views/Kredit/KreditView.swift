@@ -8,14 +8,28 @@
 import SwiftUI
 
 struct KreditView: View {
-    var bayu = 1
+    var bayu = 0
     
     var body: some View {
-        if bayu == 0 {
-            EmptyState()
-        }else{
-            Text("yoo")
+        NavigationView{
+            VStack{
+                if bayu == 0 {
+                    EmptyState()
+                }else{
+                    Text("yoo")
+                }
+            }
+            .navigationTitle("Kredit")
+            .navigationBarItems(trailing:
+                Button(action: {
+                    print("User icon pressed...")
+                }) {
+                    Image(systemName: "plus").imageScale(.large)
+                        .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                }
+            )
         }
+        
     }
 }
 
