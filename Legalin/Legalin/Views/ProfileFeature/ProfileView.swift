@@ -29,7 +29,7 @@ struct ProfileView: View {
 						.fontWeight(.light)
 						.multilineTextAlignment(.center)
 						
-						.navigationTitle("Profil")
+						
 						.padding()
 					NavigationLink(
 						destination: NewProfileView(),
@@ -37,7 +37,8 @@ struct ProfileView: View {
 							Text("Buat Profil")
 						})
 				}
-				
+				.navigationTitle("Profil")
+				.navigationBarTitleDisplayMode(.large)
 			}
 			
 			//			Text("Hello, \(nama)")
