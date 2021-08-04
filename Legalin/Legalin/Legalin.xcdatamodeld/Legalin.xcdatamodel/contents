@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Agunan" representedClassName="Agunan" syncable="YES" codeGenerationType="class">
+        <attribute name="dateCreated" optional="YES" attributeType="Date"/>
+        <attribute name="dateModified" optional="YES" attributeType="Date"/>
+        <attribute name="harga" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nama" optional="YES" attributeType="String"/>
+        <attribute name="nomorSeri" optional="YES" attributeType="String"/>
+        <attribute name="tipeBarang" optional="YES" attributeType="String"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="warna" optional="YES" attributeType="String"/>
+        <relationship name="pinjaman" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pinjaman" inverseName="agunan" inverseEntity="Pinjaman"/>
+    </entity>
+    <entity name="Akun" representedClassName="Akun" syncable="YES" codeGenerationType="class">
+        <attribute name="atasNamaRekening" optional="YES" attributeType="String"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateModified" optional="YES" attributeType="Date"/>
+        <attribute name="namaBank" optional="YES" attributeType="String"/>
+        <attribute name="nomorAktif" optional="YES" attributeType="String"/>
+        <attribute name="nomorRekening" optional="YES" attributeType="String"/>
+        <attribute name="pekerjaan" optional="YES" attributeType="String"/>
+        <attribute name="pinjamanPage" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="profileSelected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="ktp" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KTP" inverseName="akun" inverseEntity="KTP"/>
+        <relationship name="pihak1" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pinjaman" inverseName="pihak1" inverseEntity="Pinjaman"/>
+        <relationship name="pihak2" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pinjaman" inverseName="pihak2" inverseEntity="Pinjaman"/>
+    </entity>
+    <entity name="Kredit" representedClassName="Kredit" syncable="YES" codeGenerationType="class">
+        <attribute name="bunga" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateModified" optional="YES" attributeType="Date"/>
+        <attribute name="jumlahPinjaman" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="namaSimulasi" optional="YES" attributeType="String"/>
+        <attribute name="pinjamanPage" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="tenor" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="pinjaman" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pinjaman" inverseName="kredit" inverseEntity="Pinjaman"/>
+    </entity>
+    <entity name="KTP" representedClassName="KTP" syncable="YES" codeGenerationType="class">
+        <attribute name="alamat" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="kecamatan" optional="YES" attributeType="String"/>
+        <attribute name="kelurahanDesa" optional="YES" attributeType="String"/>
+        <attribute name="kotaKabupaten" optional="YES" attributeType="String"/>
+        <attribute name="nama" optional="YES" attributeType="String"/>
+        <attribute name="nik" optional="YES" attributeType="String"/>
+        <attribute name="provinsi" optional="YES" attributeType="String"/>
+        <attribute name="rt" optional="YES" attributeType="String"/>
+        <attribute name="rw" optional="YES" attributeType="String"/>
+        <attribute name="tanggalLahir" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="akun" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Akun" inverseName="ktp" inverseEntity="Akun"/>
+    </entity>
+    <entity name="Pinjaman" representedClassName="Pinjaman" syncable="YES" codeGenerationType="class">
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateModified" optional="YES" attributeType="Date"/>
+        <attribute name="jatuhTempo" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="metodePembayaran" optional="YES" attributeType="String"/>
+        <attribute name="pdf" optional="YES" attributeType="Binary"/>
+        <attribute name="pengadilanNegeri" optional="YES" attributeType="String"/>
+        <attribute name="reminder" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="tanggalTandaTangan" optional="YES" attributeType="Date"/>
+        <attribute name="tujuan" optional="YES" attributeType="String"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="agunan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Agunan" inverseName="pinjaman" inverseEntity="Agunan"/>
+        <relationship name="kredit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Kredit" inverseName="pinjaman" inverseEntity="Kredit"/>
+        <relationship name="pihak1" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Akun" inverseName="pihak1" inverseEntity="Akun"/>
+        <relationship name="pihak2" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Akun" inverseName="pihak2" inverseEntity="Akun"/>
+    </entity>
+    <elements>
+        <element name="Agunan" positionX="61.8748779296875" positionY="-76.30369567871094" width="128" height="178"/>
+        <element name="Akun" positionX="-432.2776489257812" positionY="-86.76535034179688" width="128" height="224"/>
+        <element name="Kredit" positionX="247.8436279296875" positionY="3.6741943359375" width="128" height="164"/>
+        <element name="KTP" positionX="-600.440673828125" positionY="-93.55972290039062" width="128" height="224"/>
+        <element name="Pinjaman" positionX="-176.0797729492188" positionY="-56.89163208007812" width="128" height="268"/>
+    </elements>
+</model>
