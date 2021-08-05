@@ -10,7 +10,7 @@ import SwiftUI
 struct ModalPengadilanNegeri: View {
     
     @StateObject var dataReader = ReadData()
-    @StateObject var vcDetail = pengadilanDetailController()
+    @StateObject var vcDetail = PengadilanDetailController()
     
     var provinsiData: [RegionData] = ReadData().regionData
     

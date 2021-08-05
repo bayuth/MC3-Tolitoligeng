@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class pengadilanDetailController: ObservableObject {
+class PengadilanDetailController: ObservableObject {
     
     @Published var listSelected:[Bool] = []
     @Published var lastSelected:Int = -999

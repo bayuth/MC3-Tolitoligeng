@@ -9,9 +9,12 @@ import SwiftUI
 
 struct ModalTipeBarangAgunan: View {
     
-    @StateObject var stateController = selectedController()
+    @StateObject var stateController = SelectedController()
+    @Binding var isPresented: Bool
+    @Binding var tipeAgunan: String
     
     var body: some View {
+        
         VStack(alignment: .leading){
                 Text("Tipe Barang Agunan")
                     .font(.title3)
@@ -34,12 +37,33 @@ struct ModalTipeBarangAgunan: View {
                     
                 }
                 
+        }.padding(.vertical, 20)
+        .navigationBarTitle("Tipe Barang", displayMode: .inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button("Batalkan") {
+                    isPresented = false
+                }
             }
-        }
-}
 
-struct ModalTipeBarangAgunan_Previews: PreviewProvider {
-    static var previews: some View {
-        ModalTipeBarangAgunan()
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done") {
+                        
+                        if (stateController.selected == true){
+                              tipeAgunan = "Umum"
+                        } else {
+                            tipeAgunan = "Elektronik"
+                        }
+                        
+                    isPresented = false
+                    }
+                }
+            }
     }
 }
+
+//struct ModalTipeBarangAgunan_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ModalTipeBarangAgunan(isPresented: )
+//    }
+//}

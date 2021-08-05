@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ModalMetodePembayaran: View {
     
-    @StateObject var stateController = selectedController()
+    @StateObject var stateController = SelectedController()
     
     var body: some View {
         VStack(alignment: .leading){
