@@ -16,6 +16,8 @@ struct LegalinApp: App {
 //            ModalMetodePembayaran()
 //            ModalPengadilanNegeri()
 //            ContentView()
+//            inputToModal(title: "Test", textViewValue: "Test")
+            step4Agunan()
         }
     }
 }

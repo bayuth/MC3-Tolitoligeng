@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class selectedController: ObservableObject {
+class SelectedController: ObservableObject {
     
     @Published var selected: Bool!
     @Published var selected2: Bool!
