@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FilledProfileView: View {
 	
-	let profile: profileData
+	@Binding var profile: ScanDataClass
 	
     var body: some View {
 		VStack {
@@ -50,8 +50,8 @@ struct FilledProfileView: View {
     }
 }
 
-struct FilledProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-		FilledProfileView(profile: profileData())
-    }
-}
+//struct FilledProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//		FilledProfileView(profile: )
+//    }
+//}

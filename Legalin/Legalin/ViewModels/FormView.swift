@@ -10,7 +10,7 @@ import SwiftUI
 struct FormView: View {
 	
 	@State var title:String
-	@State var profileValue:String
+	@Binding var profileValue:String
 	@State var keyboardNum:Bool
 	
     var body: some View {
@@ -25,9 +25,10 @@ struct FormView: View {
     }
 }
 
-struct FormView_Previews: PreviewProvider {
-    static var previews: some View {
-		FormView(title: "Nomor Telepon", profileValue: "bosq", keyboardNum: true)
-		
-    }
-}
+//struct FormView_Previews: PreviewProvider {
+////    static var previews: some View {
+////		@State var lempar:Binding<String>
+////		FormView(title: "Nomor Telepon", profileValue: Binding<Any>, keyboardNum: true)
+////
+////    }
+//}

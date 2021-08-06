@@ -169,6 +169,7 @@
 				5CF59FA726B7A6FD002F05B7 /* FilledProfileView.swift */,
 				5C34DC5626B98FB400ECE31F /* scanKtpFeature */,
 				5CF409C526BA36600060B7E9 /* ButtonView.swift */,
+				5C99D65426BAC9A60018DEC3 /* ScanDataClass.swift */,
 				5CD61CBC26BA58E400D29FD8 /* FormNumberView.swift */,
 				5CF49C2626BBAE870052DB0A /* functionTrimKtp.swift */,
 			);
@@ -182,7 +183,6 @@
 				5CC5A6E726B8277D003DD148 /* TextRecognizer.swift */,
 				5CC5A6E326B82434003DD148 /* ScanData.swift */,
 				5CD61CBA26BA568500D29FD8 /* nampungKtpData.swift */,
-				5C99D65426BAC9A60018DEC3 /* ScanDataClass.swift */,
 			);
 			path = scanKtpFeature;
 			sourceTree = "<group>";
