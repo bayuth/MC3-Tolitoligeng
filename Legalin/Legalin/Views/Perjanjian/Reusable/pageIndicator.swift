@@ -6,16 +6,22 @@
 //
 
 import SwiftUI
+import DYPopoverView
 
 struct pageIndicator: View {
     
     var progressNumber:Double
     var progressName:String
     var progressDetail:String
+    
+    @State private var testOriginFrame: CGRect = .zero
     @State var popOverState:Bool = false
+    @State private var secondPopoverFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 30, height:100 )
     
     var body: some View {
         
+        GeometryReader{ proxy in
+            
         VStack(alignment: .leading, spacing: 10, content: {
             HStack{
                 ZStack{
@@ -33,7 +39,6 @@ struct pageIndicator: View {
                     .frame(width: 48, height: 48)
                     .rotationEffect(.degrees(270))
                     
-                    
                 }
                 
                 VStack(alignment: .leading){
@@ -42,10 +47,16 @@ struct pageIndicator: View {
                             .font(.body)
                             .fontWeight(.semibold)
                         
-                        Button(action: {popOverState.toggle()}, label: {
+                        Button(action: {
+                                
+                            popOverState.toggle()
+                            
+                            
+                        }, label: {
                             Image(systemName: "info.circle")
                                 .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-                        })
+                        }).anchorView(viewId: "infoPopOver")
+                        .anchorFrame(rect: $testOriginFrame)
                     }
                     Text("\(progressDetail)")
                         .font(.subheadline)
@@ -56,6 +67,9 @@ struct pageIndicator: View {
             }
         }).frame(width: UIScreen.main.bounds.width - 35,
                  alignment: .leading)
+        
+        }.popoverView(content: {PopOverContent(frame: $secondPopoverFrame, show: $popOverState)}, background: {Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))}, isPresented: $popOverState, frame: $secondPopoverFrame, anchorFrame: nil, popoverType: .popover, position: .bottom, viewId: "infoPopOver", settings: DYPopoverViewSettings(arrowLength: 0,  cornerRadius: (10,10,10,10), offset: CGSize(width: -15, height: 10), animation: .default)
+        ).frame(width: UIScreen.main.bounds.width, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
     }
 }
 
