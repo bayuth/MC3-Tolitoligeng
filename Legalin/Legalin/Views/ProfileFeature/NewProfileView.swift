@@ -22,8 +22,10 @@ struct NewProfileView: View {
 	@ObservedObject var extractktpinfo = Legalin.extractKtpInfo()
 	@State var nampungDataKtp:[nampungKtpData] = []
 	@State var scandata:ScanData?
+	
 	@ObservedObject var trimKtp = functionTrimKtp()
 	@Environment(\.presentationMode) var mode: Binding<PresentationMode>
+	@State var showingAlert = false
 	
 	var body: some View {
 		ScrollView {
@@ -40,25 +42,6 @@ struct NewProfileView: View {
 							trimKtp.makeScannerView()
 					}).padding(.bottom)
 					
-					
-//					FormView(title: "NIK", profileValue: $ktpInfoKosong.nik, keyboardNum: true)
-//					TextField("tes", text: $ktpInfoKosong.nik)
-//					FormView(title: "Nama", profileValue: $ktpInfoKosong.nama, keyboardNum: false)
-//					FormView(title: "Alamat", profileValue: $ktpInfoKosong.alamat, keyboardNum: false)
-//					HStack {
-//						FormView(title: "RT", profileValue: $ktpInfoKosong.Rt, keyboardNum: true)
-//						FormView(title: "RW", profileValue: $ktpInfoKosong.Rw, keyboardNum: true)
-//						}
-//					FormView(title: "Kelurahan/Desa", profileValue: $ktpInfoKosong.kelurahan, keyboardNum: false)
-//					VStack {
-//						FormView(title: "Kecamatan", profileValue: $ktpInfoKosong.kecamatan, keyboardNum: false)
-//						FormView(title: "Kabupaten/Kota", profileValue: $ktpInfoKosong.kota, keyboardNum: false)
-//						FormView(title: "Provinsi", profileValue: $ktpInfoKosong.provinsi, keyboardNum: false)
-//						FormView(title: "Pekerjaan", profileValue: $ktpInfoKosong.pekerjaan, keyboardNum: false)
-//						FormView(title: "Nomor Telepon", profileValue: $ktpInfoKosong.nomorHp, keyboardNum: true)
-//
-//						FormView(title: "NIK", profileValue: $ktpInfoKosong.nik, keyboardNum: true)
-//					}
 					VStack {
 						FormView(title: "NIK", profileValue: $trimKtp.ktpInfo.nik, keyboardNum: true)
 						FormView(title: "Nama", profileValue: $trimKtp.ktpInfo.nama, keyboardNum: false)
@@ -78,23 +61,23 @@ struct NewProfileView: View {
 						}
 					}
 				}
+				
+//				Button("Simpan") {
+//					self.mode.wrappedValue.dismiss()
+//					showingAlert = true
+//				}.alert(isPresented: $showingAlert, content: {
+//					Alert(title: Text("Berhasil!").font(.title).bold(), message: Text("Profil anda sukses tersimpan" ).font(.headline).fontWeight(.semibold), dismissButton: .default(Text("Tutup").font(.title).fontWeight(.bold)))
+//				})
+				
 				Button(action: {
+					showingAlert = true
 					self.mode.wrappedValue.dismiss()
 				}, label: {
-					Text("Simpan")
+					Text("Simpan").font(.body).fontWeight(.bold).foregroundColor(.white).multilineTextAlignment(.center).padding(10).background(Color(#colorLiteral(red: 0, green: 0.2837583721, blue: 0.423648268, alpha: 1))).cornerRadius(10)
+				}).alert(isPresented: $showingAlert, content: {
+					Alert(title: Text("Berhasil!").font(.largeTitle).fontWeight(.black), message: Text("Profil anda sukses tersimpan").font(.headline).fontWeight(.semibold), dismissButton: .cancel(Text("Tutup").font(.largeTitle).fontWeight(.black)))
 				})
-//				NavigationLink(
-//					destination: FilledProfileView(profile:),
-//					label: {
-//						Text("Simpan")
-//							.font(.body)
-//							.fontWeight(.bold)
-//							.foregroundColor(Color.white)
-//							.multilineTextAlignment(.center)
-//							.padding(10)
-//							.background(Color(#colorLiteral(red: 0, green: 0.2801953852, blue: 0.4238004684, alpha: 1)))
-//							.cornerRadius(10)
-//					})
+
 			}.padding()
 			
 		}
@@ -226,9 +209,9 @@ struct NewProfileView: View {
 //	}
 //}
 
-//struct NewProfileView_Previews: PreviewProvider {
-//	static var previews: some View {
-//		NewProfileView()
-//	}
-//}
+	struct NewProfileView_Previews: PreviewProvider {
+		static var previews: some View {
+			NewProfileView()
+		}
+	}
 }
