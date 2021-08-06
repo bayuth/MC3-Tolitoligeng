@@ -42,11 +42,11 @@ class functionTrimKtp: ObservableObject {
 				let alamatFromKtp = outputText.slice(from: "Alamat", to: "RT")
 				print(alamatFromKtp)
 				
-				let rtRwFromKtp = outputText.slice(from: "RT/RW", to: "Kel")
+				var rtRwFromKtp = outputText.slice(from: "RT/RW", to: "Kel")
 				var rtBersih = ""
 				var rwBersih = ""
 				if rtRwFromKtp.contains(": ") == true {
-					let rtRwFromKtp = outputText.components(separatedBy: ": ").joined(separator: "")
+					rtRwFromKtp = outputText.components(separatedBy: ": ").joined(separator: "")
 					print(rtRwFromKtp)
 					if let rtIndex = rtRwFromKtp.firstIndex(of: "/") {
 						var rt = rtRwFromKtp.prefix(upTo: rtIndex)
@@ -61,7 +61,7 @@ class functionTrimKtp: ObservableObject {
 					
 				}
 				if rtRwFromKtp.contains(":") == true {
-					let rtRwFromKtp = outputText.components(separatedBy: ":").joined(separator: "")
+					rtRwFromKtp = outputText.components(separatedBy: ":").joined(separator: "")
 					print(rtRwFromKtp)
 					if let rtIndex = rtRwFromKtp.firstIndex(of: "/") {
 						var rt = rtRwFromKtp.prefix(upTo: rtIndex)
@@ -75,7 +75,7 @@ class functionTrimKtp: ObservableObject {
 					}
 				}
 				if rtRwFromKtp.contains(" ") == true {
-					let rtRwFromKtp = outputText.components(separatedBy: " ").joined(separator: "")
+					rtRwFromKtp = outputText.components(separatedBy: " ").joined(separator: "")
 					print(rtRwFromKtp)
 					if let rtIndex = rtRwFromKtp.firstIndex(of: "/") {
 						var rt = rtRwFromKtp.prefix(upTo: rtIndex)
@@ -89,7 +89,7 @@ class functionTrimKtp: ObservableObject {
 					}
 				}
 				else {
-					let rtRwFromKtp = outputText.slice(from: "RT/RW", to: "Kel")
+					rtRwFromKtp = outputText.slice(from: "RT/RW", to: "Kel")
 					print(rtRwFromKtp)
 					if let rtIndex = rtRwFromKtp.firstIndex(of: "/") {
 						var rt = rtRwFromKtp.prefix(upTo: rtIndex)

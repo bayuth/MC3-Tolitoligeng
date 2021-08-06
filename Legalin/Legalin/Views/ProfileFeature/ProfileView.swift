@@ -17,13 +17,14 @@ struct ProfileView: View {
 		@State var pekerjaan: String = ""
 		@State var nomorHp: String = ""
 		
+		@ObservedObject var profileKtp = ScanDataClass()
 		@ObservedObject var profiledata = functionTrimKtp()
 		
 		var body: some View {
 			NavigationView {
 				VStack(alignment: .center) {
 					
-					if profiledata.ktpInfo.nik == ""{
+					if profileKtp.nik == ""{
 						Text("Belum Ada Profil")
 							.font(.headline).padding(5)
 						Text("Buat profil baru untuk \n mempermudah membuat perjanjian")
@@ -33,7 +34,7 @@ struct ProfileView: View {
 					}
 					else {
 						VStack {
-							FormView(title: "NIK", profileValue: $profiledata.ktpInfo.nik, keyboardNum: true).disabled(true)
+							FormView(title: "NIK", profileValue: $profileKtp.nik, keyboardNum: true).disabled(true)
 							FormView(title: "Nama", profileValue: $profiledata.ktpInfo.nama, keyboardNum: false).disabled(true)
 							DatePicker("Tanggal Lahir", selection: $profiledata.ktpInfo.tanggalLahir, displayedComponents: .date).padding(.bottom)
 							FormView(title: "Alamat", profileValue: $profiledata.ktpInfo.alamat, keyboardNum: false).disabled(true)

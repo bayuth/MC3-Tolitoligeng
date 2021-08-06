@@ -74,7 +74,7 @@ struct NewProfileView: View {
 						VStack {
 							FormView(title: "Provinsi", profileValue: $trimKtp.ktpInfo.provinsi, keyboardNum: false)
 							FormView(title: "Pekerjaan", profileValue: $trimKtp.ktpInfo.pekerjaan, keyboardNum: false)
-							FormView(title: "Nomor Telepon", profileValue: $trimKtp.ktpInfo.nomorHp, keyboardNum: false)
+							FormView(title: "Nomor Telepon", profileValue: $trimKtp.ktpInfo.nomorHp, keyboardNum: true)
 						}
 					}
 				}
