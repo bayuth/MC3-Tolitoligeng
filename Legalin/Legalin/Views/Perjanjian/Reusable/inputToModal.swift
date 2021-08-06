@@ -39,7 +39,7 @@ struct inputToModal: View {
                 }
                 
             }.padding(.top, 5)
-            Divider().padding(.horizontal, -20)
+            Divider().padding(.horizontal, -10)
                 
             
         }).padding(.init(top: 10, leading: 0, bottom: 5, trailing: 0))
