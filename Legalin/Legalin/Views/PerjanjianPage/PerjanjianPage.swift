@@ -70,7 +70,7 @@ struct ChoosenSegment: View {
     var body: some View{
         switch selectedSegment {
         case .onGoing:
-            if agreementData.list.count == 0 {
+            if agreementData.list.count > 0 {
                 EmptyStatePerjanjian()
             }
             else if agreementData.list.count > 0{
@@ -108,6 +108,7 @@ struct ChoosenSegment: View {
 struct PerjanjianPage_Previews: PreviewProvider {
     static var previews: some View {
         PerjanjianPage()
+            
             
     }
 }

@@ -48,5 +48,6 @@ struct KreditView: View {
 struct KreditView_Previews: PreviewProvider {
     static var previews: some View {
         KreditView()
+            
     }
 }
