@@ -20,12 +20,13 @@ struct step4Agunan: View {
                 HStack{
                 pageIndicator(progressNumber: 4, progressName: "Detail Agunan", progressDetail: "Langkah terakhir")
                 }.padding(.vertical, 15)
+                .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
                 
                 HStack{
                     Toggle(isOn: $toggleState, label: {
                         Text("Agunan")
                     }).toggleStyle(SwitchToggleStyle(tint: Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))))
-                }
+                }.zIndex(0.9)
                 
                 Divider().padding(.horizontal, -20)
                 

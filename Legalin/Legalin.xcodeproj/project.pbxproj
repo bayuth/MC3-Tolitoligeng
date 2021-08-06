@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -55,9 +55,11 @@
 		5E35F37726B83BDC0044D1FC /* regions.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E35F37626B83BDC0044D1FC /* regions.json */; };
 		5E35F37B26B83E2E0044D1FC /* RegionDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35F37A26B83E2E0044D1FC /* RegionDataModel.swift */; };
 		5E35F37F26B844450044D1FC /* ReadJsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35F37E26B844450044D1FC /* ReadJsonData.swift */; };
+		5E375CE826BD340500DF834D /* popOverContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E375CE726BD340500DF834D /* popOverContent.swift */; };
 		5E5D23FD26B985FF00FC356E /* pengadilanNegeriDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5D23FC26B985FF00FC356E /* pengadilanNegeriDetailViewController.swift */; };
 		5E8578AD26B90BC30019FB61 /* ModalPengadilanNegeriDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8578AC26B90BC30019FB61 /* ModalPengadilanNegeriDetail.swift */; };
 		5E8578B026B945480019FB61 /* pinjamanCellStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8578AF26B945480019FB61 /* pinjamanCellStateController.swift */; };
+		5E8B549C26BD320300787EDC /* DYPopoverView in Frameworks */ = {isa = PBXBuildFile; productRef = 5E8B549B26BD320300787EDC /* DYPopoverView */; };
 		5E96325A26B425D50002CD56 /* StatusSuratEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E96325926B425D50002CD56 /* StatusSuratEnum.swift */; };
 		5E9C410C26BB8DBF002AECCC /* inputTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C410B26BB8DBF002AECCC /* inputTextViewCell.swift */; };
 		5E9C410F26BB9C70002AECCC /* inputToModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C410E26BB9C70002AECCC /* inputToModal.swift */; };
@@ -119,6 +121,7 @@
 		5E35F37626B83BDC0044D1FC /* regions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = regions.json; sourceTree = "<group>"; };
 		5E35F37A26B83E2E0044D1FC /* RegionDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDataModel.swift; sourceTree = "<group>"; };
 		5E35F37E26B844450044D1FC /* ReadJsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadJsonData.swift; sourceTree = "<group>"; };
+		5E375CE726BD340500DF834D /* popOverContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = popOverContent.swift; sourceTree = "<group>"; };
 		5E5D23FC26B985FF00FC356E /* pengadilanNegeriDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pengadilanNegeriDetailViewController.swift; sourceTree = "<group>"; };
 		5E8578AC26B90BC30019FB61 /* ModalPengadilanNegeriDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPengadilanNegeriDetail.swift; sourceTree = "<group>"; };
 		5E8578AF26B945480019FB61 /* pinjamanCellStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pinjamanCellStateController.swift; sourceTree = "<group>"; };
@@ -137,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E8B549C26BD320300787EDC /* DYPopoverView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +365,7 @@
 		5E8578B226B950E50019FB61 /* Reusable */ = {
 			isa = PBXGroup;
 			children = (
+				5E375CE726BD340500DF834D /* popOverContent.swift */,
 				5E35F36D26B832F50044D1FC /* PinjamanCell.swift */,
 				5E27EEF026BA56880090573F /* pageIndicator.swift */,
 				5E27EEF726BA8B990090573F /* ButtonNext.swift */,
@@ -418,6 +423,9 @@
 			dependencies = (
 			);
 			name = Legalin;
+			packageProductDependencies = (
+				5E8B549B26BD320300787EDC /* DYPopoverView */,
+			);
 			productName = Legalin;
 			productReference = 4AC4CA8926B25D1300340A00 /* Legalin.app */;
 			productType = "com.apple.product-type.application";
@@ -445,6 +453,9 @@
 				Base,
 			);
 			mainGroup = 4AC4CA8026B25D1300340A00;
+			packageReferences = (
+				5E8B549A26BD320300787EDC /* XCRemoteSwiftPackageReference "DYPopoverView" */,
+			);
 			productRefGroup = 4AC4CA8A26B25D1300340A00 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -518,6 +529,7 @@
 				4A3AF69626BB74D400614382 /* ItemListKredit.swift in Sources */,
 				5E35F36B26B801C30044D1FC /* ModalMetodePembayaran.swift in Sources */,
 				5C8F9CF826BCF66D00CE994B /* ButtonView.swift in Sources */,
+				5E375CE826BD340500DF834D /* popOverContent.swift in Sources */,
 				5E35F37F26B844450044D1FC /* ReadJsonData.swift in Sources */,
 				5EBDDDD426B3B69900F53958 /* CoreDataViewModel.swift in Sources */,
 				5E8578B026B945480019FB61 /* pinjamanCellStateController.swift in Sources */,
@@ -716,6 +728,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5E8B549A26BD320300787EDC /* XCRemoteSwiftPackageReference "DYPopoverView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DominikButz/DYPopoverView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5E8B549B26BD320300787EDC /* DYPopoverView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E8B549A26BD320300787EDC /* XCRemoteSwiftPackageReference "DYPopoverView" */;
+			productName = DYPopoverView;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		5EBDDDC726B2E83900F53958 /* Legalin.xcdatamodeld */ = {
