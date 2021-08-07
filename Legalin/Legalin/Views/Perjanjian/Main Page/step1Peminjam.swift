@@ -64,9 +64,21 @@ struct step1Peminjam: View {
 			}.frame(width: UIScreen.main.bounds.width - 35,
 					alignment: .leading)
 			.navigationBarTitle("Perjanjian Baru", displayMode: .inline)
-			.navigationBarItems(trailing: Text("Tutup").foregroundColor(Color.blue))
+			.navigationBarItems(trailing: Text("Tutup").foregroundColor(Color.white))
 		}
 		
+	}
+}
+
+extension UINavigationController{
+	open override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		let appearance = UINavigationBarAppearance()
+		appearance.backgroundColor = #colorLiteral(red: 0, green: 0.2837583721, blue: 0.423648268, alpha: 1)
+		appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+		
+		navigationBar.standardAppearance = appearance
 	}
 }
 

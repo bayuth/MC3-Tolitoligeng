@@ -73,11 +73,11 @@ struct step2Pemberi: View {
 											self.presentationMode.wrappedValue.dismiss()
 										}, label: {
 											HStack{
-												Image(systemName: "chevron.backward").aspectRatio(contentMode: .fill)
-												Text("Kembali")
+												Image(systemName: "chevron.backward").aspectRatio(contentMode: .fill).foregroundColor(.white)
+												Text("Kembali").foregroundColor(.white)
 											}
 										})
-					, trailing: Text("Tutup").foregroundColor(Color.blue))
+					, trailing: Text("Tutup").foregroundColor(Color.white))
 		}
 }
 
