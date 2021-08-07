@@ -11,7 +11,7 @@ struct ModalPengadilanNegeriDetail: View {
     
     @State var dataDetail: RegionData!
     var kotaCount: Int!
-    @StateObject var vc = pengadilanDetailController()
+    @StateObject var vc = PengadilanDetailController()
     
     var body: some View {
         
