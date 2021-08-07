@@ -10,20 +10,52 @@ import SwiftUI
 
 struct DetailPerjanjian: View {
     
-    @State var currentPageindex = 0
+    @State var offset: CGFloat = 0
+    
+    
+    var subview = [1, 2, 3, 4, 5]
     
     
     var body: some View {
         NavigationView{
-            PageView(indexDisplayMode: .automatic, indexBackgroundDisplayMode: .always){
-                PdfAction()
-                Pihak1()
-                Pihak2()
-                InfoPinjaman()
-                InfoAgunan()
+            
+//            PageView(indexDisplayMode: .never, indexBackgroundDisplayMode: .always){
+//                PdfAction()
+//                Pihak1()
+//                Pihak2()
+//                InfoPinjaman()
+//                InfoAgunan()
+//            }
+            ScrollView(.init()){
+                TabView{
+                    PdfAction()
+                        .tag(subview[0])
+                    Pihak1()
+                        .tag(subview[1])
+                    Pihak2()
+                        .tag(subview[2])
+                    InfoPinjaman()
+                        .tag(subview[3])
+                    InfoAgunan()
+                        .tag(subview[4])
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .overlay(
+                    HStack(spacing: 15){
+                        ForEach(subview.indices,id: \.self){index in
+                            
+                            Capsule()
+                                .fill(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                                .frame(width: getIndex() == index ? 20 : 7, height: 7)
+                        }
+                    }
+                    .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom)
+                    .padding(.bottom, 10)
+                    ,alignment: .bottom
+                )
+                
             }
-//            ContainerView(["title 1", "title 2", "title 3"])
-                .navigationBarTitle("Detail Perjanjian", displayMode: .inline)
+            .navigationBarTitle("Detail Perjanjian", displayMode: .inline)
             .navigationBarItems(trailing:
                                     HStack(spacing: 16){
                                         Button(action: {
@@ -46,6 +78,16 @@ struct DetailPerjanjian: View {
             )
         }
     }
+    
+    func getIndex()->Int{
+        let index = Int(round(Double(offset / getwidth())))
+        return index
+    }
+}
+extension View{
+    func getwidth()->CGFloat{
+        return UIScreen.main.bounds.width
+    }
 }
 extension UINavigationController{
     override open func viewDidLoad() {
@@ -53,6 +95,7 @@ extension UINavigationController{
         
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = #colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         
         navigationBar.standardAppearance = appearance
     }

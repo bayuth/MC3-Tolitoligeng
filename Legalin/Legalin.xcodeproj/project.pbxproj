@@ -51,6 +51,7 @@
 		7558EA6A26BD31B700E0B492 /* InfoAgunan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA6926BD31B700E0B492 /* InfoAgunan.swift */; };
 		7558EA6C26BD367600E0B492 /* PdfAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA6B26BD367600E0B492 /* PdfAction.swift */; };
 		7558EA8F26BD691500E0B492 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA8E26BD691500E0B492 /* PageView.swift */; };
+		759F0B3A26BD743B004804C7 /* MainApplicationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F0B3926BD743B004804C7 /* MainApplicationPage.swift */; };
 		75B627BC26BC1579008F2C2A /* DetailPerjanjian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B627BB26BC1579008F2C2A /* DetailPerjanjian.swift */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,7 @@
 		7558EA6926BD31B700E0B492 /* InfoAgunan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAgunan.swift; sourceTree = "<group>"; };
 		7558EA6B26BD367600E0B492 /* PdfAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfAction.swift; sourceTree = "<group>"; };
 		7558EA8E26BD691500E0B492 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		759F0B3926BD743B004804C7 /* MainApplicationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApplicationPage.swift; sourceTree = "<group>"; };
 		75B627BB26BC1579008F2C2A /* DetailPerjanjian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPerjanjian.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -202,6 +204,7 @@
 				5E7CC78626B7DB54004270E0 /* Test Core Data */,
 				4A64032726B7890400C78D44 /* Kredit */,
 				4AC4CAA826B25D8000340A00 /* Feature1 */,
+				759F0B3926BD743B004804C7 /* MainApplicationPage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				4A3AF69D26BB7AA300614382 /* KreditCardView.swift in Sources */,
 				5E35F36E26B832F50044D1FC /* PinjamanCell.swift in Sources */,
 				4AD8840626BAEC7300C5A6F5 /* SpecificCornerRadius.swift in Sources */,
+				759F0B3A26BD743B004804C7 /* MainApplicationPage.swift in Sources */,
 				5E8578AD26B90BC30019FB61 /* ModalPengadilanNegeriDetail.swift in Sources */,
 				4A8C45AE26BA1188008E4B02 /* Helper.swift in Sources */,
 			);
