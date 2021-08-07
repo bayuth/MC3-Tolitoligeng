@@ -22,11 +22,14 @@ class ScanDataClass: ObservableObject {
 	@Published var provinsi:String = ""
 	@Published var pekerjaan:String = ""
 	@Published var nomorHp:String = ""
+	@Published var namaBank:String = ""
+	@Published var nomorRekening:String = ""
+	@Published var atasNamaRekening:String = ""
 	
 	init(){
 	}
 	
-	func updateData(nama:String, nik:String, tanggalLahir:Date, alamat:String, Rt:String, Rw:String, kelurahan:String, kecamatan:String, kota:String, provinsi:String, pekerjaan:String, nomorHp:String) {
+	func updateData(nama:String, nik:String, tanggalLahir:Date, alamat:String, Rt:String, Rw:String, kelurahan:String, kecamatan:String, kota:String, provinsi:String, pekerjaan:String, nomorHp:String, namaBank:String, nomorRekening:String, atasNamaRekening:String) {
 		
 		self.nik = nik
 		self.nama = nama
@@ -40,6 +43,9 @@ class ScanDataClass: ObservableObject {
 		self.provinsi = provinsi
 		self.pekerjaan = pekerjaan
 		self.nomorHp = nomorHp
+		self.namaBank = namaBank
+		self.nomorRekening = nomorRekening
+		self.atasNamaRekening = atasNamaRekening
 		print("Masuk nih")
 	}
 	func update(){

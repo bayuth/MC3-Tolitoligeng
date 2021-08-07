@@ -115,7 +115,7 @@ class functionTrimKtp: ObservableObject {
 //				print(pekerjaanFromKtp)
 				
 //				let newKtpInfo = ScanDataClass()
-				self.ktpInfo.updateData(nama: namaFromKtp, nik: nikFromKtp, tanggalLahir: Date(), alamat: alamatFromKtp, Rt: rtBersih, Rw: rwBersih, kelurahan: kelurahanFromKtp, kecamatan: kecamatanFromKtp, kota: kotaFromKtp, provinsi: provinsiFromKtp, pekerjaan: "", nomorHp: "")
+				self.ktpInfo.updateData(nama: namaFromKtp, nik: nikFromKtp, tanggalLahir: Date(), alamat: alamatFromKtp, Rt: rtBersih, Rw: rwBersih, kelurahan: kelurahanFromKtp, kecamatan: kecamatanFromKtp, kota: kotaFromKtp, provinsi: provinsiFromKtp, pekerjaan: "", nomorHp: "", namaBank: "", nomorRekening: "", atasNamaRekening: "")
 //				self.ktpInfo = newKtpInfo
 				print(self.ktpInfo.nama)
 //				print(self.ktpInfo[0].nama)
