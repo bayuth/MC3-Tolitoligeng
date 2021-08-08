@@ -16,7 +16,7 @@ struct step3Detail: View {
                 
             }.padding(.horizontal, -35)
             
-            ButtonNext(text: "Lanjutkan")
+            ButtonNext(text: "Lanjutkan", isDataComplete: true)
         Spacer()
             
     }.frame(width: UIScreen.main.bounds.width - 35,
