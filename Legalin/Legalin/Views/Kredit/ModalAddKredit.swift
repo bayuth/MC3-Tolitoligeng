@@ -43,32 +43,3 @@ struct ModalAddKredit: View {
     }
 }
 
-extension UINavigationController{
-    override open func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = UIColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        navigationBar.standardAppearance = appearance
-    }
-}
-
-
-struct NavigationConfigurator: UIViewControllerRepresentable {
-    
-    var configure: (UINavigationController) -> Void = { _ in }
-    
-    func makeUIViewController(context: UIViewControllerRepresentableContext<NavigationConfigurator>) -> UIViewController {
-        UIViewController()
-    }
-    
-    func updateUIViewController(_ uiViewController: UIViewController, context: UIViewControllerRepresentableContext<NavigationConfigurator>) {
-        if let nc = uiViewController.navigationController {
-            self.configure(nc)
-        }
-    }
-    
-}
-
