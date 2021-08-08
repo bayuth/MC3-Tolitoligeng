@@ -11,7 +11,7 @@ class functionTrimKtp: ObservableObject {
 	
 	@Published var showScannerSheet = false
 //	@Published var texts:[ScanData] = []
-	var ktpInfo:ScanDataClass = ScanDataClass()
+	@Published var ktpInfo:ScanDataClass = ScanDataClass()
 //	@Published var ktpInfo:[ScanDataClass] = []
 	
 	func makeScannerView() -> ScannerView {
