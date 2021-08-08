@@ -8,19 +8,24 @@
 import SwiftUI
 
 struct step3Detail: View {
+    @State var tujuanPeminjaman = ""
     var body: some View {
-        VStack(alignment: .leading){
-            
-            pageIndicator(progressNumber: 3, progressName: "Detail Pinjaman", progressDetail: "Berikutnya: Agunan").padding(.bottom, 15)
-            List{
+        ScrollView{
+            VStack(alignment: .leading){
                 
-            }.padding(.horizontal, -35)
-            
-            ButtonNext(text: "Lanjutkan", isDataComplete: true)
-        Spacer()
-            
-    }.frame(width: UIScreen.main.bounds.width - 35,
-            alignment: .leading)
+                pageIndicator(progressNumber: 3, progressName: "Detail Pinjaman", progressDetail: "Berikutnya: Agunan").padding(.bottom, 15)
+                FormView(title: "Tujuan Peminjaman", profileValue: $tujuanPeminjaman, keyboardNum: false)
+                SliderViewWithForm(text1: "Pinjaman Maksimal", text2: "Rp 50000000", title: "Jumlah Pinjaman", type: 0)
+                SliderViewWithForm(text1: "Bunga Maksimal", text2: "6 % per tahun", title: "Bunga", type: 1)
+                SliderViewWithForm(text1: "Tenor Maksimal", text2: "24 bulan", title: "Tenor", type: 2)
+                
+                ButtonNext(text: "Lanjutkan", isDataComplete: true)
+                Spacer()
+                
+            }.frame(width: UIScreen.main.bounds.width - 35,
+                    alignment: .leading)
+        }
+        
     }
 }
 

@@ -13,6 +13,7 @@
 		4A3AF69D26BB7AA300614382 /* KreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AF69C26BB7AA300614382 /* KreditCardView.swift */; };
 		4A64032926B7892B00C78D44 /* KreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A64032826B7892B00C78D44 /* KreditView.swift */; };
 		4A8C45AE26BA1188008E4B02 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C45AD26BA1188008E4B02 /* Helper.swift */; };
+		4A8FC94926C030A200E3917A /* SliderViewWithForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8FC94826C030A200E3917A /* SliderViewWithForm.swift */; };
 		4AC4CA8D26B25D1300340A00 /* LegalinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CA8C26B25D1300340A00 /* LegalinApp.swift */; };
 		4AC4CA8F26B25D1300340A00 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CA8E26B25D1300340A00 /* ContentView.swift */; };
 		4AC4CA9126B25D1300340A00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AC4CA9026B25D1300340A00 /* Assets.xcassets */; };
@@ -87,6 +88,7 @@
 		4A3AF69C26BB7AA300614382 /* KreditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KreditCardView.swift; sourceTree = "<group>"; };
 		4A64032826B7892B00C78D44 /* KreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KreditView.swift; sourceTree = "<group>"; };
 		4A8C45AD26BA1188008E4B02 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		4A8FC94826C030A200E3917A /* SliderViewWithForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderViewWithForm.swift; sourceTree = "<group>"; };
 		4AC4CA8926B25D1300340A00 /* Legalin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Legalin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AC4CA8C26B25D1300340A00 /* LegalinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalinApp.swift; sourceTree = "<group>"; };
 		4AC4CA8E26B25D1300340A00 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				4A3AF69C26BB7AA300614382 /* KreditCardView.swift */,
 				4A0AC6D426BCD7BF00430BE8 /* ModalAddKredit.swift */,
 				4AE3656626BFD18B00C1653A /* SliderView.swift */,
+				4A8FC94826C030A200E3917A /* SliderViewWithForm.swift */,
 			);
 			path = Kredit;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				4AC4CA8D26B25D1300340A00 /* LegalinApp.swift in Sources */,
 				4AD8841226BAEC8C00C5A6F5 /* AgreementCardView.swift in Sources */,
 				5C8F9CF426BCF66D00CE994B /* ScannerView.swift in Sources */,
+				4A8FC94926C030A200E3917A /* SliderViewWithForm.swift in Sources */,
 				5C8F9CFE26BCF6A700CE994B /* profileData.swift in Sources */,
 				5E27EEFB26BA8E3B0090573F /* step2Pemberi.swift in Sources */,
 				5E27EEF826BA8B990090573F /* ButtonNext.swift in Sources */,
