@@ -29,7 +29,9 @@
 		4AD8841526BAEC8C00C5A6F5 /* EmptyStatePerjanjian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8841026BAEC8C00C5A6F5 /* EmptyStatePerjanjian.swift */; };
 		4AD8841626BAEC8C00C5A6F5 /* HistorySegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8841126BAEC8C00C5A6F5 /* HistorySegmentedView.swift */; };
 		4AD8841A26BAEC9A00C5A6F5 /* PerjanjianModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8841926BAEC9A00C5A6F5 /* PerjanjianModel.swift */; };
+		4AE3656726BFD18B00C1653A /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE3656626BFD18B00C1653A /* SliderView.swift */; };
 		4AEDF74226BA35FB008DC272 /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEDF74126BA35FB008DC272 /* EmptyState.swift */; };
+		4AF0124526BCF14900E9C2FF /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0124426BCF14900E9C2FF /* NavigationBarModifier.swift */; };
 		5C8F9CEE26BCF66D00CE994B /* FormNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F9CE226BCF66D00CE994B /* FormNumberView.swift */; };
 		5C8F9CEF26BCF66D00CE994B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F9CE326BCF66D00CE994B /* ProfileView.swift */; };
 		5C8F9CF026BCF66D00CE994B /* NewProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F9CE426BCF66D00CE994B /* NewProfileView.swift */; };
@@ -44,7 +46,6 @@
 		5C8F9CFB26BCF69400CE994B /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F9CF926BCF69400CE994B /* FormView.swift */; };
 		5C8F9CFC26BCF69400CE994B /* extractKtpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F9CFA26BCF69400CE994B /* extractKtpInfo.swift */; };
 		5C8F9CFE26BCF6A700CE994B /* profileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F9CFD26BCF6A700CE994B /* profileData.swift */; };
-		4AF0124526BCF14900E9C2FF /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0124426BCF14900E9C2FF /* NavigationBarModifier.swift */; };
 		5E27EEF126BA56880090573F /* pageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E27EEF026BA56880090573F /* pageIndicator.swift */; };
 		5E27EEF526BA8ADA0090573F /* step1Peminjam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E27EEF426BA8ADA0090573F /* step1Peminjam.swift */; };
 		5E27EEF826BA8B990090573F /* ButtonNext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E27EEF726BA8B990090573F /* ButtonNext.swift */; };
@@ -97,7 +98,9 @@
 		4AD8841026BAEC8C00C5A6F5 /* EmptyStatePerjanjian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStatePerjanjian.swift; sourceTree = "<group>"; };
 		4AD8841126BAEC8C00C5A6F5 /* HistorySegmentedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorySegmentedView.swift; sourceTree = "<group>"; };
 		4AD8841926BAEC9A00C5A6F5 /* PerjanjianModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerjanjianModel.swift; sourceTree = "<group>"; };
+		4AE3656626BFD18B00C1653A /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		4AEDF74126BA35FB008DC272 /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
+		4AF0124426BCF14900E9C2FF /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		5C8F9CE226BCF66D00CE994B /* FormNumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormNumberView.swift; sourceTree = "<group>"; };
 		5C8F9CE326BCF66D00CE994B /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5C8F9CE426BCF66D00CE994B /* NewProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProfileView.swift; sourceTree = "<group>"; };
@@ -112,7 +115,6 @@
 		5C8F9CF926BCF69400CE994B /* FormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		5C8F9CFA26BCF69400CE994B /* extractKtpInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extractKtpInfo.swift; sourceTree = "<group>"; };
 		5C8F9CFD26BCF6A700CE994B /* profileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileData.swift; sourceTree = "<group>"; };
-		4AF0124426BCF14900E9C2FF /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		5E27EEF026BA56880090573F /* pageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pageIndicator.swift; sourceTree = "<group>"; };
 		5E27EEF426BA8ADA0090573F /* step1Peminjam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = step1Peminjam.swift; sourceTree = "<group>"; };
 		5E27EEF726BA8B990090573F /* ButtonNext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNext.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				4AEDF74126BA35FB008DC272 /* EmptyState.swift */,
 				4A3AF69C26BB7AA300614382 /* KreditCardView.swift */,
 				4A0AC6D426BCD7BF00430BE8 /* ModalAddKredit.swift */,
+				4AE3656626BFD18B00C1653A /* SliderView.swift */,
 			);
 			path = Kredit;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				4AD8841526BAEC8C00C5A6F5 /* EmptyStatePerjanjian.swift in Sources */,
 				5E35F37B26B83E2E0044D1FC /* RegionDataModel.swift in Sources */,
 				4AD8841626BAEC8C00C5A6F5 /* HistorySegmentedView.swift in Sources */,
+				4AE3656726BFD18B00C1653A /* SliderView.swift in Sources */,
 				5E96325A26B425D50002CD56 /* StatusSuratEnum.swift in Sources */,
 				4AC4CAA626B25D7A00340A00 /* ViewModelExample.swift in Sources */,
 				5E9C410C26BB8DBF002AECCC /* inputTextViewCell.swift in Sources */,

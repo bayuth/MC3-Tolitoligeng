@@ -11,35 +11,55 @@ import SwiftUI
 
 struct ModalAddKredit: View {
     @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var kreditData = ListKreditVM()
+    
     var body: some View {
         NavigationView {
             
             ScrollView {
-                Text("Don't use .appearence()!")
+                VStack{
+                    FormView(title: "Tujuan Meminjam", profileValue: $kreditData.object.kreditTitle, keyboardNum: false).padding(.horizontal, 16)
+                    FormView(title: "Jumlah Pinjaman", profileValue: $kreditData.object.jumlahPinjaman, keyboardNum: false).padding(.horizontal, 16)
+                    SliderView(text1: "Pinjaman Maksimal", text2: "Rp. 50.000.000")
+                    FormView(title: "Bunga", profileValue: $kreditData.object.jumlahPinjaman, keyboardNum: false).padding(.horizontal, 16)
+                    SliderView(text1: "Bunga Maksimal", text2: "6 %")
+                    FormView(title: "Tenor", profileValue: $kreditData.object.jumlahPinjaman, keyboardNum: false).padding(.horizontal, 16)
+                    SliderView(text1: "Tenor Maksimal Maksimal", text2: "24 Bulan")
+                }
+                NavigationLink(
+                    destination: KreditView(),
+                    label: {
+                        Text("Simulasikan").font(.body).fontWeight(.bold).foregroundColor(.white).multilineTextAlignment(.center).padding(.vertical,15).padding(.horizontal,120).background(Color(#colorLiteral(red: 0, green: 0.2837583721, blue: 0.423648268, alpha: 1))).cornerRadius(10)
+                    }).padding(.top,10)
             }
-            .navigationBarTitle("Try It!", displayMode: .inline)
+            .navigationBarTitle("Kredit Baru", displayMode: .inline)
             .navigationBarItems(leading:
                                     Button("Tutup", action: {
                                         presentationMode.wrappedValue.dismiss()
                                     })
-                                    .foregroundColor(.blue)
-                                    .font(.system(size: 17))
+                                    .foregroundColor(Color.init(hex: "#E6FFFFFF"))
             )
-            .background(NavigationConfigurator { nc in
-                nc.navigationBar.barTintColor = .blue
-                nc.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.blue]
-            })
-        }.navigationBarColor(.green)
-        
-        
-        
+        }.navigationBarColor(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))
     }
 }
+
+extension UINavigationController{
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        navigationBar.standardAppearance = appearance
+    }
+}
+
 
 struct NavigationConfigurator: UIViewControllerRepresentable {
     
     var configure: (UINavigationController) -> Void = { _ in }
-
+    
     func makeUIViewController(context: UIViewControllerRepresentableContext<NavigationConfigurator>) -> UIViewController {
         UIViewController()
     }
@@ -49,6 +69,6 @@ struct NavigationConfigurator: UIViewControllerRepresentable {
             self.configure(nc)
         }
     }
-
+    
 }
 

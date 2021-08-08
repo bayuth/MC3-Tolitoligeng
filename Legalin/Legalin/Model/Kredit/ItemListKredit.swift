@@ -10,13 +10,13 @@ import SwiftUI
 struct ItemListKredit : Identifiable{
     
     var id = UUID().uuidString
-    var kreditTitle : String
-    var tenor : Int
-    var bunga : Double
-    var jumlahPinjaman : Double
-    var cicilanPerbulan : Double
-    var offset: CGFloat
-    var isSwiped : Bool
+    var kreditTitle : String = ""
+    var tenor : String = ""
+    var bunga : String = ""
+    var jumlahPinjaman : String = ""
+    var cicilanPerbulan : String = ""
+    var offset: CGFloat = 0.0
+    var isSwiped : Bool = false
     
 
 }
