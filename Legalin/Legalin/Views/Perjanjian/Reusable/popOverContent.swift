@@ -12,6 +12,7 @@ struct PopOverContent: View {
     @State var expanded: Bool = false
     @Binding var frame: CGRect
     @Binding var show: Bool
+    var popOverText: String
     
     var body: some View {
         GeometryReader { proxy in
@@ -20,7 +21,7 @@ struct PopOverContent: View {
 
                     HStack (alignment: .top) {
                             
-                            Text("Barang berharga yang dititipkan oleh peminjam dana (debitur) ke pemberi pinjaman (kreditur) sebagai jaminan.").foregroundColor(.white)
+                            Text(popOverText).foregroundColor(.white)
                             
                                 Spacer()
                             
@@ -41,7 +42,7 @@ struct PopOverContent: View {
 
 struct ContentExample_Previews: PreviewProvider {
     static var previews: some View {
-        PopOverContent(frame: .constant(CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width * 0.75, height:150 )), show: .constant(true))
+        PopOverContent(frame: .constant(CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width * 0.75, height:150 )), show: .constant(true), popOverText: "Barang berharga yang dititipkan oleh peminjam dana (debitur) ke pemberi pinjaman (kreditur) sebagai jaminan.")
     }
 }
 

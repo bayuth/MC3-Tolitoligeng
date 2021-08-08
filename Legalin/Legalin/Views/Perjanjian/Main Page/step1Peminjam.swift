@@ -19,7 +19,7 @@ struct step1Peminjam: View {
                 
             }.padding(.horizontal, -20)
             
-            ButtonNext(text: "Lanjutkan")
+            ButtonNext(text: "Lanjutkan", isDataComplete: true)
         Spacer()
             
     }.frame(width: UIScreen.main.bounds.width - 35,
