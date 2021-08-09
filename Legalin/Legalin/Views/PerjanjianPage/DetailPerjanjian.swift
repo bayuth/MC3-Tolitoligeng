@@ -17,68 +17,54 @@ struct DetailPerjanjian: View {
     
     
     var body: some View {
-//        NavigationView{
-            ScrollView(.init()){
-                TabView{
-                    PdfAction()
-                        .tag(subview[0])
-                    Pihak1()
-                        .tag(subview[1])
-                    Pihak2()
-                        .tag(subview[2])
-                    InfoPinjaman()
-                        .tag(subview[3])
-                    InfoAgunan(hideButton: true)
-                        .tag(subview[4])
-                }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-                .onAppear{
-                    setupAppearance()
-                    
-                }
+        //        NavigationView{
+        ScrollView(.init()){
+            TabView{
+                PdfAction()
+                    .tag(subview[0])
+                Pihak1()
+                    .tag(subview[1])
+                Pihak2()
+                    .tag(subview[2])
+                InfoPinjaman()
+                    .tag(subview[3])
+                InfoAgunan(hideButton: true)
+                    .tag(subview[4])
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+            .onAppear{
+                setupAppearance()
                 
-            }.navigationBarBackButtonHidden(true)
-            .navigationBarTitle("Detail Perjanjian", displayMode: .inline)
-            .navigationBarItems(trailing:
-                                    HStack(spacing: 16){
-                                        Button(action: {
-                                            
-                                        }){
-                                            Image(systemName: "square.and.pencil")
-                                                .font(.title3)
-                                                .foregroundColor(.white)
-                                            
-                                        }
-                                        Button(action: {
-                                            
-                                        }){
-                                            Image(systemName: "trash")
-                                                .font(.title3)
-                                                .foregroundColor(.white)
-                                            
-                                        }
-                                    }
-            )
-            .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            HStack{
-                                Image(systemName: "chevron.left")
-                                    .foregroundColor(.white)
-                                Text("Perjanjian").foregroundColor(.white)
-                            }
-//                            .onTapGesture {
-//                                <#code#>
-//                            }
-                            
-                        }
             }
             
-//        }
+        }
+        //            .navigationBarBackButtonHidden(true)
+        .navigationBarTitle("Detail Perjanjian", displayMode: .inline)
+        .navigationBarItems(trailing:
+                                HStack(spacing: 16){
+                                    Button(action: {
+                                        
+                                    }){
+                                        Image(systemName: "square.and.pencil")
+                                            .font(.title3)
+                                            .foregroundColor(.white)
+                                        
+                                    }
+                                    Button(action: {
+                                        
+                                    }){
+                                        Image(systemName: "trash")
+                                            .font(.title3)
+                                            .foregroundColor(.white)
+                                        
+                                    }
+                                }
+        )
     }
     func setupAppearance() {
         UIPageControl.appearance().currentPageIndicatorTintColor = #colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
-      }
+    }
 }
 extension View{
     func getwidth()->CGFloat{
