@@ -80,6 +80,15 @@
 		5EBDDDD426B3B69900F53958 /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDDDD326B3B69900F53958 /* CoreDataViewModel.swift */; };
 		5EBDDDD726B4170500F53958 /* TestCoreDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDDDD626B4170500F53958 /* TestCoreDataView.swift */; };
 		5EF3B05926BA46C200ABC1F7 /* step4Agunan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3B05826BA46C200ABC1F7 /* step4Agunan.swift */; };
+		750A862D26BEA54D0055886D /* ConfirmationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A862C26BEA54D0055886D /* ConfirmationPage.swift */; };
+		7558EA6426BD2A7500E0B492 /* Pihak1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA6326BD2A7500E0B492 /* Pihak1.swift */; };
+		7558EA6626BD2B1D00E0B492 /* Pihak2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA6526BD2B1D00E0B492 /* Pihak2.swift */; };
+		7558EA6826BD2CEA00E0B492 /* InfoPinjaman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA6726BD2CEA00E0B492 /* InfoPinjaman.swift */; };
+		7558EA6A26BD31B700E0B492 /* InfoAgunan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA6926BD31B700E0B492 /* InfoAgunan.swift */; };
+		7558EA6C26BD367600E0B492 /* PdfAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA6B26BD367600E0B492 /* PdfAction.swift */; };
+		7558EA8F26BD691500E0B492 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA8E26BD691500E0B492 /* PageView.swift */; };
+		759F0B3A26BD743B004804C7 /* MainApplicationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F0B3926BD743B004804C7 /* MainApplicationPage.swift */; };
+		75B627BC26BC1579008F2C2A /* DetailPerjanjian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B627BB26BC1579008F2C2A /* DetailPerjanjian.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -157,6 +166,15 @@
 		5EBDDDD326B3B69900F53958 /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
 		5EBDDDD626B4170500F53958 /* TestCoreDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataView.swift; sourceTree = "<group>"; };
 		5EF3B05826BA46C200ABC1F7 /* step4Agunan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = step4Agunan.swift; sourceTree = "<group>"; };
+		750A862C26BEA54D0055886D /* ConfirmationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPage.swift; sourceTree = "<group>"; };
+		7558EA6326BD2A7500E0B492 /* Pihak1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pihak1.swift; sourceTree = "<group>"; };
+		7558EA6526BD2B1D00E0B492 /* Pihak2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pihak2.swift; sourceTree = "<group>"; };
+		7558EA6726BD2CEA00E0B492 /* InfoPinjaman.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPinjaman.swift; sourceTree = "<group>"; };
+		7558EA6926BD31B700E0B492 /* InfoAgunan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAgunan.swift; sourceTree = "<group>"; };
+		7558EA6B26BD367600E0B492 /* PdfAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfAction.swift; sourceTree = "<group>"; };
+		7558EA8E26BD691500E0B492 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		759F0B3926BD743B004804C7 /* MainApplicationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApplicationPage.swift; sourceTree = "<group>"; };
+		75B627BB26BC1579008F2C2A /* DetailPerjanjian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPerjanjian.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +279,7 @@
 				5E7CC78626B7DB54004270E0 /* Test Core Data */,
 				4A64032726B7890400C78D44 /* Kredit */,
 				4AC4CAA826B25D8000340A00 /* Feature1 */,
+				759F0B3926BD743B004804C7 /* MainApplicationPage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -331,6 +350,14 @@
 				4AD8840F26BAEC8C00C5A6F5 /* PerjanjianPage.swift */,
 				4AD8841026BAEC8C00C5A6F5 /* EmptyStatePerjanjian.swift */,
 				4AD8841126BAEC8C00C5A6F5 /* HistorySegmentedView.swift */,
+				75B627BB26BC1579008F2C2A /* DetailPerjanjian.swift */,
+				7558EA6326BD2A7500E0B492 /* Pihak1.swift */,
+				7558EA6526BD2B1D00E0B492 /* Pihak2.swift */,
+				7558EA6726BD2CEA00E0B492 /* InfoPinjaman.swift */,
+				7558EA6926BD31B700E0B492 /* InfoAgunan.swift */,
+				7558EA6B26BD367600E0B492 /* PdfAction.swift */,
+				7558EA8E26BD691500E0B492 /* PageView.swift */,
+				750A862C26BEA54D0055886D /* ConfirmationPage.swift */,
 			);
 			path = PerjanjianPage;
 			sourceTree = "<group>";
@@ -522,7 +549,9 @@
 			files = (
 				4A0AC6D526BCD7BF00430BE8 /* ModalAddKredit.swift in Sources */,
 				4AC4CA8F26B25D1300340A00 /* ContentView.swift in Sources */,
+				7558EA6A26BD31B700E0B492 /* InfoAgunan.swift in Sources */,
 				4AC4CAAA26B25D9100340A00 /* Fitur1.swift in Sources */,
+				75B627BC26BC1579008F2C2A /* DetailPerjanjian.swift in Sources */,
 				4AD8840A26BAEC7B00C5A6F5 /* PerjanjianViewModel.swift in Sources */,
 				5EF3B05926BA46C200ABC1F7 /* step4Agunan.swift in Sources */,
 				4AD8841A26BAEC9A00C5A6F5 /* PerjanjianModel.swift in Sources */,
@@ -530,6 +559,7 @@
 				5E26F53D26BFA61900F51C6E /* WebView.swift in Sources */,
 				5E375CF826BEB14E00DF834D /* GeneratePDFViewController.swift in Sources */,
 				5E35F37B26B83E2E0044D1FC /* RegionDataModel.swift in Sources */,
+				750A862D26BEA54D0055886D /* ConfirmationPage.swift in Sources */,
 				4AD8841626BAEC8C00C5A6F5 /* HistorySegmentedView.swift in Sources */,
 				4AE3656726BFD18B00C1653A /* SliderView.swift in Sources */,
 				5E96325A26B425D50002CD56 /* StatusSuratEnum.swift in Sources */,
@@ -538,6 +568,8 @@
 				4AC4CAAE26B25DA000340A00 /* Model.swift in Sources */,
 				4A6718CE26C0BAFB00D22C3B /* FormViewWithInfo.swift in Sources */,
 				5E375CFB26BEB47200DF834D /* InvoiceComposer.swift in Sources */,
+				7558EA8F26BD691500E0B492 /* PageView.swift in Sources */,
+				7558EA6C26BD367600E0B492 /* PdfAction.swift in Sources */,
 				4AD8841426BAEC8C00C5A6F5 /* PerjanjianPage.swift in Sources */,
 				4A64032926B7892B00C78D44 /* KreditView.swift in Sources */,
 				5C8F9CF526BCF66D00CE994B /* ScanData.swift in Sources */,
@@ -571,12 +603,15 @@
 				5E27EEFB26BA8E3B0090573F /* step2Pemberi.swift in Sources */,
 				5E27EEF826BA8B990090573F /* ButtonNext.swift in Sources */,
 				5E35F37126B833F20044D1FC /* ModalTipeBarangAgunan.swift in Sources */,
+				7558EA6426BD2A7500E0B492 /* Pihak1.swift in Sources */,
+				7558EA6826BD2CEA00E0B492 /* InfoPinjaman.swift in Sources */,
 				4A3AF69626BB74D400614382 /* ItemListKredit.swift in Sources */,
 				5E35F36B26B801C30044D1FC /* ModalMetodePembayaran.swift in Sources */,
 				5C8F9CF826BCF66D00CE994B /* ButtonView.swift in Sources */,
 				5E375CE826BD340500DF834D /* popOverContent.swift in Sources */,
 				5E35F37F26B844450044D1FC /* ReadJsonData.swift in Sources */,
 				4AF0124526BCF14900E9C2FF /* NavigationBarModifier.swift in Sources */,
+				7558EA6626BD2B1D00E0B492 /* Pihak2.swift in Sources */,
 				5EBDDDD426B3B69900F53958 /* CoreDataViewModel.swift in Sources */,
 				5E8578B026B945480019FB61 /* pinjamanCellStateController.swift in Sources */,
 				4A3AF69D26BB7AA300614382 /* KreditCardView.swift in Sources */,
@@ -585,6 +620,7 @@
 				5C8F9CEE26BCF66D00CE994B /* FormNumberView.swift in Sources */,
 				4AD8840626BAEC7300C5A6F5 /* SpecificCornerRadius.swift in Sources */,
 				5E9C411226BBCDB7002AECCC /* perjanjianViewController.swift in Sources */,
+				759F0B3A26BD743B004804C7 /* MainApplicationPage.swift in Sources */,
 				5E8578AD26B90BC30019FB61 /* ModalPengadilanNegeriDetail.swift in Sources */,
 				5E375CEC26BE583700DF834D /* loadingScreen.swift in Sources */,
 				4A8C45AE26BA1188008E4B02 /* Helper.swift in Sources */,
@@ -717,7 +753,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Legalin/Preview Content\"";
-				DEVELOPMENT_TEAM = 52727RY679;
+				DEVELOPMENT_TEAM = 267ZBTAUVV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Legalin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -725,6 +761,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tolitoli.Legalin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -739,7 +776,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Legalin/Preview Content\"";
-				DEVELOPMENT_TEAM = 52727RY679;
+				DEVELOPMENT_TEAM = 267ZBTAUVV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Legalin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -747,6 +784,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tolitoli.Legalin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
