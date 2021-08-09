@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Pihak1: View {
     var body: some View {
-        VStack(alignment: .leading){
+        ScrollView(){
             HStack{
                 VStack(alignment: .leading){
                     Text("Pihak 1 - Peminjam")
@@ -81,7 +81,6 @@ struct Pihak1: View {
                     .stroke(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
             )
             .padding()
-            Spacer()
         }
     }
 }

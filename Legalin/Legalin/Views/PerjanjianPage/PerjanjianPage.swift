@@ -35,13 +35,18 @@ struct PerjanjianPage: View {
             }
             .navigationTitle("Perjanjian")
             .navigationBarItems(trailing:
-                                    Button(action:{
-                                        
-                                    }){
-                                        Image(systemName: "plus")
-                                            .font(.title)
-                                            .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-                                    }
+                                    NavigationLink(
+                                        destination: step1Peminjam(),
+                                        label: {
+                                            Button(action:{
+                                                
+                                            }){
+                                                Image(systemName: "plus")
+                                                    .font(.title)
+                                                    .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                                            }
+                                        })
+                                    
             )
         }
     }
@@ -75,7 +80,12 @@ struct ChoosenSegment: View {
             }
             else if agreementData.list.count > 0{
                 ForEach(agreementData.list){ item in
-                    AgreementCardView(item: $agreementData.list[getIndex(item: item)], lists: $agreementData.list)
+                    NavigationLink(
+                        destination: DetailPerjanjian(),
+                        label: {
+                            AgreementCardView(item: $agreementData.list[getIndex(item: item)], lists: $agreementData.list)
+                        })
+                        .foregroundColor(.black)
 
                 }
             }

@@ -37,7 +37,7 @@ struct DetailPerjanjian: View {
                     
                 }
                 
-            }
+            }.navigationBarBackButtonHidden(true)
             .navigationBarTitle("Detail Perjanjian", displayMode: .inline)
             .navigationBarItems(trailing:
                                     HStack(spacing: 16){
@@ -59,6 +59,7 @@ struct DetailPerjanjian: View {
                                         }
                                     }
             )
+            
         }
     }
     func setupAppearance() {
@@ -71,17 +72,17 @@ extension View{
         return UIScreen.main.bounds.width
     }
 }
-extension UINavigationController{
-    override open func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = #colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        navigationBar.standardAppearance = appearance
-    }
-}
+//extension UINavigationController{
+//    override open func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//        let appearance = UINavigationBarAppearance()
+//        appearance.backgroundColor = #colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)
+//        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+//        
+//        navigationBar.standardAppearance = appearance
+//    }
+//}
 
 struct DetailPerjanjian_Previews: PreviewProvider {
     static var previews: some View {

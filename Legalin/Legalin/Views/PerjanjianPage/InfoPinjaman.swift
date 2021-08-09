@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InfoPinjaman: View {
     var body: some View {
-        VStack(alignment: .leading){
+        ScrollView{
             HStack{
                 VStack(alignment: .leading){
                     Text("Detail Pinjaman")
@@ -98,7 +98,7 @@ struct InfoPinjaman: View {
                     .stroke(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
             )
             .padding()
-            Spacer()
+//            Spacer()
         }
     }
 }

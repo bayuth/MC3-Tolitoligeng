@@ -14,20 +14,21 @@ struct MainApplicationPage: View {
         UITabBar.appearance().isTranslucent = true
     }
     var body: some View {
-        return TabView{
+        TabView{
+            
             PerjanjianPage()
                 .tabItem {
                     Text("Kredit")
                         .foregroundColor(.white)
                     Image("perjanjian")
-                        
+                    
                 }
             KreditView()
                 .tabItem {
                     Text("Kredit")
                         .foregroundColor(.white)
                     Image("kredit")
-                        
+                    
                 }
             ProfileView()
                 .tabItem {
@@ -36,9 +37,11 @@ struct MainApplicationPage: View {
                     Image("profile")
                 }
         }
-        
+        .accentColor(.white)
     }
 }
+
+ 
 
 struct MainApplicationPage_Previews: PreviewProvider {
     static var previews: some View {
