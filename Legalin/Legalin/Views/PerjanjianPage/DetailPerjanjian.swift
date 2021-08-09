@@ -18,14 +18,6 @@ struct DetailPerjanjian: View {
     
     var body: some View {
         NavigationView{
-            
-//            PageView(indexDisplayMode: .never, indexBackgroundDisplayMode: .always){
-//                PdfAction()
-//                Pihak1()
-//                Pihak2()
-//                InfoPinjaman()
-//                InfoAgunan()
-//            }
             ScrollView(.init()){
                 TabView{
                     PdfAction()
@@ -39,20 +31,11 @@ struct DetailPerjanjian: View {
                     InfoAgunan()
                         .tag(subview[4])
                 }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                .overlay(
-                    HStack(spacing: 15){
-                        ForEach(subview.indices,id: \.self){index in
-                            
-                            Capsule()
-                                .fill(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-                                .frame(width: getIndex() == index ? 20 : 7, height: 7)
-                        }
-                    }
-                    .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom)
-                    .padding(.bottom, 10)
-                    ,alignment: .bottom
-                )
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                .onAppear{
+                    setupAppearance()
+                    
+                }
                 
             }
             .navigationBarTitle("Detail Perjanjian", displayMode: .inline)
@@ -78,11 +61,10 @@ struct DetailPerjanjian: View {
             )
         }
     }
-    
-    func getIndex()->Int{
-        let index = Int(round(Double(offset / getwidth())))
-        return index
-    }
+    func setupAppearance() {
+        UIPageControl.appearance().currentPageIndicatorTintColor = #colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
+      }
 }
 extension View{
     func getwidth()->CGFloat{
@@ -106,80 +88,3 @@ struct DetailPerjanjian_Previews: PreviewProvider {
         DetailPerjanjian()
     }
 }
-
-//struct TitlePage: View{
-//
-//    var title: String
-//
-//    var body: some View{
-//        Text(title)
-//    }
-//}
-//
-//struct ContainerView: View{
-//
-//    var controllers: [UIHostingController<TitlePage>]
-//    init(_ titles: [String]) {
-//        self.controllers = titles.map{
-//            UIHostingController(rootView: TitlePage(title: $0))
-//        }
-//    }
-//
-//    var body: some View{
-//        PageViewController(controllers: self.controllers)
-//    }
-//}
-//
-//struct PageViewController: UIViewControllerRepresentable{
-//
-//    var controllers: [UIViewController]
-//
-//    func makeUIViewController(context: Context) -> UIPageViewController {
-//        let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-//        pageViewController.dataSource = context.coordinator
-//
-//
-//        return pageViewController
-//    }
-//
-//    func updateUIViewController(_ uiViewController: UIPageViewController, context: Context) {
-//        uiViewController.setViewControllers([controllers[0]], direction: .forward, animated: true)
-//    }
-//
-//    func makeCoordinator() -> Coordinator {
-//        Coordinator(self)
-//    }
-//
-//    typealias UIViewControllerType = UIPageViewController
-//
-//    class Coordinator: NSObject, UIPageViewControllerDataSource{
-//        func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-//            guard let index = self.parent.controllers.firstIndex(of: viewController)else{
-//                return nil
-//            }
-//            if index == 0{
-//                return self.parent.controllers.last
-//            }
-//
-//            return self.parent.controllers[index - 1]
-//        }
-//
-//        func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-//            guard let index = self.parent.controllers.firstIndex(of: viewController)else{
-//                return nil
-//            }
-//            if index == self.parent.controllers.count - 1{
-//                return self.parent.controllers.first
-//            }
-//            return self.parent.controllers[index + 1]
-//        }
-//
-//        let parent: PageViewController
-//
-//        init(_ parent: PageViewController){
-//            self.parent = parent
-//        }
-//    }
-//
-//
-//}

@@ -26,7 +26,7 @@ struct KreditCardView: View {
                 }
                 .frame(minWidth: 75, maxHeight: .infinity)
                 .background(Color(.red))
-                .cornerRadius(8, corners: [.topRight, .bottomRight])
+                .specCornerRadius(8, corners: [.topRight, .bottomRight])
                 
             }
             .padding(.trailing)

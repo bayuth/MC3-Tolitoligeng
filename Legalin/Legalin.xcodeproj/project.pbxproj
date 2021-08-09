@@ -68,6 +68,7 @@
 		5EBDDDD426B3B69900F53958 /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDDDD326B3B69900F53958 /* CoreDataViewModel.swift */; };
 		5EBDDDD726B4170500F53958 /* TestCoreDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDDDD626B4170500F53958 /* TestCoreDataView.swift */; };
 		5EF3B05926BA46C200ABC1F7 /* step4Agunan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3B05826BA46C200ABC1F7 /* step4Agunan.swift */; };
+		750A862D26BEA54D0055886D /* ConfirmationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A862C26BEA54D0055886D /* ConfirmationPage.swift */; };
 		7558EA6426BD2A7500E0B492 /* Pihak1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA6326BD2A7500E0B492 /* Pihak1.swift */; };
 		7558EA6626BD2B1D00E0B492 /* Pihak2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA6526BD2B1D00E0B492 /* Pihak2.swift */; };
 		7558EA6826BD2CEA00E0B492 /* InfoPinjaman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA6726BD2CEA00E0B492 /* InfoPinjaman.swift */; };
@@ -141,6 +142,7 @@
 		5EBDDDD326B3B69900F53958 /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
 		5EBDDDD626B4170500F53958 /* TestCoreDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataView.swift; sourceTree = "<group>"; };
 		5EF3B05826BA46C200ABC1F7 /* step4Agunan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = step4Agunan.swift; sourceTree = "<group>"; };
+		750A862C26BEA54D0055886D /* ConfirmationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPage.swift; sourceTree = "<group>"; };
 		7558EA6326BD2A7500E0B492 /* Pihak1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pihak1.swift; sourceTree = "<group>"; };
 		7558EA6526BD2B1D00E0B492 /* Pihak2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pihak2.swift; sourceTree = "<group>"; };
 		7558EA6726BD2CEA00E0B492 /* InfoPinjaman.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPinjaman.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				7558EA6926BD31B700E0B492 /* InfoAgunan.swift */,
 				7558EA6B26BD367600E0B492 /* PdfAction.swift */,
 				7558EA8E26BD691500E0B492 /* PageView.swift */,
+				750A862C26BEA54D0055886D /* ConfirmationPage.swift */,
 			);
 			path = PerjanjianPage;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				4AD8841A26BAEC9A00C5A6F5 /* PerjanjianModel.swift in Sources */,
 				4AD8841526BAEC8C00C5A6F5 /* EmptyStatePerjanjian.swift in Sources */,
 				5E35F37B26B83E2E0044D1FC /* RegionDataModel.swift in Sources */,
+				750A862D26BEA54D0055886D /* ConfirmationPage.swift in Sources */,
 				4AD8841626BAEC8C00C5A6F5 /* HistorySegmentedView.swift in Sources */,
 				5E96325A26B425D50002CD56 /* StatusSuratEnum.swift in Sources */,
 				4AC4CAA626B25D7A00340A00 /* ViewModelExample.swift in Sources */,
@@ -701,7 +705,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Legalin/Preview Content\"";
-				DEVELOPMENT_TEAM = 52727RY679;
 				DEVELOPMENT_TEAM = 267ZBTAUVV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Legalin/Info.plist;
@@ -725,7 +728,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Legalin/Preview Content\"";
-				DEVELOPMENT_TEAM = 52727RY679;
 				DEVELOPMENT_TEAM = 267ZBTAUVV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Legalin/Info.plist;

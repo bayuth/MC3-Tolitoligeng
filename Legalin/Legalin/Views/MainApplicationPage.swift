@@ -29,7 +29,7 @@ struct MainApplicationPage: View {
                     Image("kredit")
                         
                 }
-            Text("Profil")
+            ProfileView()
                 .tabItem {
                     Text("Profile")
                         .foregroundColor(.white)
