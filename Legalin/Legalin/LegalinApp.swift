@@ -19,6 +19,7 @@ struct LegalinApp: App {
 //            inputToModal(title: "Test", textViewValue: "Test")
 //            step4Agunan()
 //			ProfileView()
+            GeneratePDF()
 			step1Peminjam()
         }
     }

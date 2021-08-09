@@ -10,6 +10,8 @@ import SwiftUI
 struct KreditView: View {
     var bayu = 0
     @StateObject var kreditData = ListKreditVM()
+    @Environment(\.presentationMode) var presentationMode
+    @State private var isPresented = false
     
     var body: some View {
         NavigationView{
@@ -27,11 +29,12 @@ struct KreditView: View {
                 .navigationTitle("Kredit")
                 .navigationBarItems(trailing:
                     Button(action: {
-                        print("User icon pressed...")
+                        isPresented.toggle()
                     }) {
                         Image(systemName: "plus").imageScale(.large)
                             .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
                     }
+                    .fullScreenCover(isPresented: $isPresented, content: ModalAddKredit.init)
                 )
             }
             
@@ -44,6 +47,8 @@ struct KreditView: View {
         } ?? 0
     }
 }
+
+
 
 struct KreditView_Previews: PreviewProvider {
     static var previews: some View {

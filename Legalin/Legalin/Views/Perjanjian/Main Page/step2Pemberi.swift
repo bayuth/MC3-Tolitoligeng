@@ -8,6 +8,20 @@
 import SwiftUI
 
 struct step2Pemberi: View {
+    var body: some View {
+        VStack(alignment: .leading){
+            
+            pageIndicator(progressNumber: 2, progressName: "Pihak 2 - Pemberi Peminjam", progressDetail: "Berikutnya: Detail Pinjaman").padding(.bottom, 15)
+            List{
+                
+            }.padding(.horizontal, -35)
+            
+            ButtonNext(text: "Lanjutkan", isDataComplete: true)
+        Spacer()
+            
+    }.frame(width: UIScreen.main.bounds.width - 35,
+            alignment: .leading)
+    }
 		
 		@ObservedObject var trimKtp = functionTrimKtp()
 		@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
