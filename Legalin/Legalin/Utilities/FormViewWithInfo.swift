@@ -10,7 +10,7 @@ import DYPopoverView
 
 struct FormViewWithInfo: View {
     @State var title:String
-    @State var profileValue:String
+    @Binding var profileValue:String
     @State var showButton = false
     @State var showButtonInfo = false
     @State private var popOverState:Bool = false
@@ -69,8 +69,8 @@ struct FormViewWithInfo: View {
     }
 }
 
-struct FormViewWithInfo_Previews: PreviewProvider {
-    static var previews: some View {
-        FormViewWithInfo(title: "halo", profileValue: "halo", showButton: false, showButtonInfo: true,info: "dsa", buttonTitle: "halo")
-    }
-}
+//struct FormViewWithInfo_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FormViewWithInfo(title: "halo", profileValue: "halo", showButton: false, showButtonInfo: true,info: "dsa", buttonTitle: "halo")
+//    }
+//}

@@ -10,6 +10,20 @@ import SwiftUI
 struct step3Detail: View {
     @State var tujuanPeminjaman = ""
     @State private var testOriginFrame: CGRect = .zero
+    @State private var dateJatuhTempo = Date()
+    @State private var dateTandaTangan = Date()
+    @State private var showPickerJatuhTempo = false
+    @State private var showPickerTandaTangan = false
+    @State private var title = "Metode Bayaran"
+    @State private var title1 = "Pilih Tanggal"
+    @State private var title2 = "Pengadilan Negeri"
+    @State private var title3 = "Pilih Tanggal"
+    let dateFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.dateStyle = .medium
+        return df
+    }()
+    @State private var valueDateJatuhTempo = "Pilih tanggal"
     var body: some View {
         ScrollView{
             VStack(alignment: .leading){
@@ -18,15 +32,50 @@ struct step3Detail: View {
                 SliderViewWithForm(text1: "Pinjaman Maksimal", text2: "Rp 50000000", title: "Jumlah Pinjaman", type: 0)
                 SliderViewWithForm(text1: "Bunga Maksimal", text2: "6 % per tahun", title: "Bunga", type: 1)
                 SliderViewWithForm(text1: "Tenor Maksimal", text2: "24 bulan", title: "Tenor", type: 2)
-                FormViewWithInfo(title: "Metode Pembayaran", profileValue: "Metode Pembayaran", showButton: true, showButtonInfo: false, info: "", buttonTitle: "Detail").padding(.top, 16)
-                FormViewWithInfo(title: "Tanggal Jatuh Tempo", profileValue: "Pilih tanggal", showButton: false, showButtonInfo: true, info: "Hari pembayaran atau batas waktu pembayaran harus dilakukan oleh peminjam dana (debitur) ke pemberi pinjaman (kreditur).", buttonTitle: "").zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
-                FormViewWithInfo(title: "Pengadilan Negeri", profileValue: "Pengadilan Negeri", showButton: true, showButtonInfo: true, info: "Pilihan domisili pengadilan negeri untuk upaya hukum penyelesaian perselisihan jika musyawarah tidak berhasil", buttonTitle: "Detail").zIndex(0.9)
-                FormViewWithInfo(title: "Tanggal Tanda Tangan", profileValue: "Pilih tanggal", showButton: false, showButtonInfo: true, info: "Hari untuk peminjam dana (debitur) dan pemberi pinjaman (kreditur) bersama menandatangani surat perjanjian.", buttonTitle: "").zIndex(0.8).padding(.bottom, 64)
+                FormViewWithInfo(title: "Metode Pembayaran", profileValue: $title, showButton: true, showButtonInfo: false, info: "", buttonTitle: "Detail").padding(.top, 16)
+                VStack{
+                    FormViewWithInfo(title: "Tanggal Jatuh Tempo", profileValue: $title1, showButton: false, showButtonInfo: true, info: "Hari pembayaran atau batas waktu pembayaran harus dilakukan oleh peminjam dana (debitur) ke pemberi pinjaman (kreditur).", buttonTitle: "").zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/).onTapGesture {
+                        showPickerJatuhTempo.toggle()
+                    }
+                    if(showPickerJatuhTempo){
+                        DatePicker(
+                            "",
+                            selection: $dateJatuhTempo.onChange(nameChanged),
+                            displayedComponents: [.date]
+                        )
+                        .datePickerStyle(GraphicalDatePickerStyle())
+                    }
+                    
+                    FormViewWithInfo(title: "Pengadilan Negeri", profileValue: $title2, showButton: true, showButtonInfo: true, info: "Pilihan domisili pengadilan negeri untuk upaya hukum penyelesaian perselisihan jika musyawarah tidak berhasil", buttonTitle: "Detail").zIndex(0.9)
+                    FormViewWithInfo(title: "Tanggal Tanda Tangan", profileValue: $title3, showButton: false, showButtonInfo: true, info: "Hari untuk peminjam dana (debitur) dan pemberi pinjaman (kreditur) bersama menandatangani surat perjanjian.", buttonTitle: "").zIndex(0.8)
+                        .onTapGesture {
+                            showPickerTandaTangan.toggle()
+                        }
+                    if(showPickerTandaTangan){
+                        DatePicker(
+                            "",
+                            selection: $dateTandaTangan.onChange(tandaTanganChanged),
+                            displayedComponents: [.date]
+                        )
+                        .datePickerStyle(GraphicalDatePickerStyle())
+                    }
+                }
                 
-                ButtonNext(text: "Lanjutkan", isDataComplete: true).padding(.bottom, 16)
+                
+                ButtonNext(text: "Lanjutkan", isDataComplete: true).padding(.bottom, 16).padding(.top, 64)
             }.frame(width: UIScreen.main.bounds.width - 35,
                     alignment: .leading)
+            
         }
+    }
+    func nameChanged(to value: Date) {
+        showPickerJatuhTempo.toggle()
+        title1 = dateFormatter.string(from: value)
+    }
+    
+    func tandaTanganChanged(to value: Date) {
+        showPickerTandaTangan.toggle()
+        title3 = dateFormatter.string(from: value)
     }
 }
 
