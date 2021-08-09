@@ -18,7 +18,7 @@ struct MainApplicationPage: View {
             
             PerjanjianPage()
                 .tabItem {
-                    Text("Kredit")
+                    Text("Perjanjian")
                         .foregroundColor(.white)
                     Image("perjanjian")
                     

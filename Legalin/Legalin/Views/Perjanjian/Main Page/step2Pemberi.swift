@@ -64,16 +64,18 @@ struct step2Pemberi: View {
 								.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
 								.multilineTextAlignment(.leading)
 								.padding(.bottom,10)
+                            
+                            NavigationLink(
+                                destination: step3Detail(),
+                                label: {
+                                    ButtonNext(text: "Lanjutkan", isDataComplete: true)
+                                })
 						}
 					}
 				}.padding(.top,10)
 			}
 			
-			NavigationLink(
-				destination: step3Detail(),
-				label: {
-					ButtonNext(text: "Lanjutkan", isDataComplete: true)
-				})
+			
 			
 			Spacer()
 			

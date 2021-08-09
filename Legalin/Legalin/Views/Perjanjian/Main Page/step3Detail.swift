@@ -27,7 +27,7 @@ struct step3Detail: View {
     var body: some View {
         ScrollView{
             VStack(alignment: .leading){
-                pageIndicator(progressNumber: 3, progressName: "Detail Pinjaman", progressDetail: "Berikutnya: Agunan").padding(.bottom, 15)
+                pageIndicator(progressNumber: 3, progressName: "Detail Pinjaman", progressDetail: "Berikutnya: Agunan").padding(.bottom, 15).padding(.top,25)
                 FormView(title: "Tujuan Peminjaman", profileValue: $tujuanPeminjaman, keyboardNum: false)
                 SliderViewWithForm(text1: "Pinjaman Maksimal", text2: "Rp 50000000", title: "Jumlah Pinjaman", type: 0)
                 SliderViewWithForm(text1: "Bunga Maksimal", text2: "6 % per tahun", title: "Bunga", type: 1)
@@ -61,8 +61,12 @@ struct step3Detail: View {
                     }
                 }
                 
+                NavigationLink(
+                    destination: step4Agunan(),
+                    label: {
+                        ButtonNext(text: "Lanjutkan", isDataComplete: true).padding(.bottom, 16).padding(.top, 64)
+                    }).navigationBarTitle("Perjanjian Baru", displayMode: .inline)
                 
-                ButtonNext(text: "Lanjutkan", isDataComplete: true).padding(.bottom, 16).padding(.top, 64)
             }.frame(width: UIScreen.main.bounds.width - 35,
                     alignment: .leading)
             
