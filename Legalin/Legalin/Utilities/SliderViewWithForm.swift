@@ -41,7 +41,8 @@ struct SliderViewWithForm: View {
                     isEditing = editing
                     getFormattedText()
                 }
-            ).padding(.bottom, 11)
+            ).padding(.bottom, 11).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+			.padding(.horizontal,10)
             HStack{
                 Text(text1)
                     .foregroundColor(Color.init(hex: "#707070"))
@@ -60,7 +61,7 @@ struct SliderViewWithForm: View {
             )
             .padding(.bottom, 10)
             Divider()
-        }
+		}.padding(.bottom,15)
         
     }
     
