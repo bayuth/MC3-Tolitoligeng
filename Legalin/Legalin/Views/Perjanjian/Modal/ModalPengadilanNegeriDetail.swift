@@ -14,6 +14,7 @@ struct ModalPengadilanNegeriDetail: View {
     @Binding var isPresented: Bool
     @Binding var pengadilanNegeri: String
     @StateObject var vc = PengadilanDetailController()
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         
@@ -32,21 +33,24 @@ struct ModalPengadilanNegeriDetail: View {
                         }
                     
                 }
-            }.navigationBarTitle("", displayMode: .inline)
+            }.navigationBarTitle("Pengadilan Negeri", displayMode: .inline)
+            .accentColor(.red)
             .navigationBarBackButtonHidden(true)
         }.onAppear {
             vc.setListSelected(total: kotaCount)
         }.toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Text("Batalkan")
-                    .foregroundColor(.white)
+                HStack{
+                    Image(systemName: "chevron.backward").aspectRatio(contentMode: .fill).foregroundColor(.white)
+                    Text("Kembali").foregroundColor(.white)
+                }
                     .onTapGesture {
-                        isPresented = false
+                        self.presentationMode.wrappedValue.dismiss()
                     }
             }
 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Text("Done")
+                    Text("Selesai")
                         .foregroundColor(.white)
                         .onTapGesture {
                             pengadilanNegeri = vc.selectedPengadilan

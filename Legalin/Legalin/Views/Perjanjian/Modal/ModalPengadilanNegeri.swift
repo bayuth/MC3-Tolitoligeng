@@ -24,29 +24,38 @@ struct ModalPengadilanNegeri: View {
                     NavigationLink(
                         destination:
                             ModalPengadilanNegeriDetail(dataDetail: item, kotaCount: item.kota.count, isPresented: $isPresented, pengadilanNegeri: $pengadilanNegeri)) { CheckListCell(title: item.provinsi, selected: false, mainNav: true, index: 77)
-
-                                
-                                
+                        
+                        
+                        
                     }.buttonStyle(PlainButtonStyle())
-//                    .simultaneousGesture(TapGesture().onEnded{
-//                        vcDetail.setListSelected(total: item.kota.count)
-//                    })
-                    
-                }
+                    //                    .simultaneousGesture(TapGesture().onEnded{
+                    //                        vcDetail.setListSelected(total: item.kota.count)
+                    //                    })
                     
                 }
                 
+            }
+            
         }
-        .navigationBarTitle("Tipe Pembayaran", displayMode: .inline)
-        
+        .navigationBarTitle("Pengadilan Negeri", displayMode: .inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Text("Tutup")
+                    .foregroundColor(.white)
+                    .onTapGesture {
+                        isPresented = false
+                    }
+            }
+            
         }
     }
-
-
-//
-//struct ModalPengadilanNegeri_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ModalPengadilanNegeri()
-//    }
-//}
-
+    
+    
+    //
+    //struct ModalPengadilanNegeri_Previews: PreviewProvider {
+    //    static var previews: some View {
+    //        ModalPengadilanNegeri()
+    //    }
+    //}
+    
+}

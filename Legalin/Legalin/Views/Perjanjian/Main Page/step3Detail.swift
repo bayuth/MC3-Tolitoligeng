@@ -11,7 +11,7 @@ struct step3Detail: View {
     
     
     @Environment(\.presentationMode) var masterPresentationMode3
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Environment(\.presentationMode) var presentationMode
     
     @State var tujuanPeminjaman = ""
     @State private var testOriginFrame: CGRect = .zero
@@ -34,9 +34,12 @@ struct step3Detail: View {
     }()
     @State private var valueDateJatuhTempo = "Pilih tanggal"
     var body: some View {
+        
+        VStack(alignment: .leading) {
+            pageIndicator(progressNumber: 3, progressName: "Detail Pinjaman", progressDetail: "Berikutnya: Agunan").padding(.bottom, 15).padding(.top,25)
+        
         ScrollView{
             VStack(alignment: .leading){
-                pageIndicator(progressNumber: 3, progressName: "Detail Pinjaman", progressDetail: "Berikutnya: Agunan").padding(.bottom, 15).padding(.top,25)
                 FormView(title: "Tujuan Peminjaman", profileValue: $tujuanPeminjaman, keyboardNum: false)
                 SliderViewWithForm(text1: "Pinjaman Maksimal", text2: "Rp 50000000", title: "Jumlah Pinjaman", type: 0)
                 SliderViewWithForm(text1: "Bunga Maksimal", text2: "6 % per tahun", title: "Bunga", type: 1)
@@ -76,8 +79,7 @@ struct step3Detail: View {
                         ButtonNext(text: "Lanjutkan", isDataComplete: true).padding(.bottom, 16).padding(.top, 64)
                     })
                 
-            }.frame(width: UIScreen.main.bounds.width - 35,
-                    alignment: .leading)
+            }
             .navigationBarTitle("Perjanjian Baru", displayMode: .inline)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading:
@@ -95,6 +97,8 @@ struct step3Detail: View {
                                     }.foregroundColor(.white))
             
         }
+        }.frame(width: UIScreen.main.bounds.width - 35,
+                alignment: .leading)
     }
     func nameChanged(to value: Date) {
         showPickerJatuhTempo.toggle()
