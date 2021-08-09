@@ -19,6 +19,8 @@ struct FormViewWithInfo: View {
     @State var info: String
     @State var buttonTitle: String
     
+    @EnvironmentObject var perjanjianController: PerjanjianController
+    
     var body: some View {
         ZStack{
             VStack{
@@ -41,12 +43,15 @@ struct FormViewWithInfo: View {
                         })
                     }
                 }
+                
+                if(title == "Metode Pembayaran"){
+                
                 HStack{
                     Text(profileValue).font(.body)
                     Spacer()
                     if(showButton){
                         Button(action: {
-                            print("Edit button was tapped")
+                            perjanjianController.modalMetodePembayaran.toggle()
                         }) {
                             HStack(spacing: 10) {
                                 Text(buttonTitle).foregroundColor(Color.init(hex: "#C4C4C4"))
@@ -55,9 +60,47 @@ struct FormViewWithInfo: View {
                         }
                     }
                     
-                }
+                }.sheet(isPresented: $perjanjianController.modalMetodePembayaran){
+                    NavigationView{
+                        ModalMetodePembayaran(isPresented: $perjanjianController.modalMetodePembayaran, metodePembayaran: $profileValue)
+                    }
+                    }
                 .padding(.top, 4)
                 Divider()
+                } else if(title == "Pengadilan Negeri") {
+                
+                HStack{
+                    Text(profileValue).font(.body)
+                    Spacer()
+                    if(showButton){
+                        Button(action: {
+                            perjanjianController.modalPengadilanNegeri.toggle()
+                        }) {
+                            HStack(spacing: 10) {
+                                Text(buttonTitle).foregroundColor(Color.init(hex: "#C4C4C4"))
+                                Image(systemName: "chevron.right").foregroundColor(Color.init(hex: "#C4C4C4"))
+                            }
+                        }
+                    }
+                    
+                }.sheet(isPresented: $perjanjianController.modalPengadilanNegeri){
+                    NavigationView{
+                        ModalPengadilanNegeri(isPresented: $perjanjianController.modalPengadilanNegeri, pengadilanNegeri: $profileValue)
+                    }
+                    }
+                .padding(.top, 4)
+                Divider()
+                }
+                
+                else {
+                    
+                    HStack{
+                        Text(profileValue).font(.body)
+                        Spacer()
+                        
+                    }
+                    
+                }
                 
             }
             

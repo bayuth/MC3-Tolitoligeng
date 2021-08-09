@@ -9,6 +9,8 @@ import SwiftUI
 
 struct step1Peminjam: View {
     
+    @Environment(\.presentationMode) var presentationMode
+    
     @ObservedObject var trimKtp = functionTrimKtp()
     @State var showTanggalLahir = false
     let dateFormatter: DateFormatter = {
@@ -18,6 +20,7 @@ struct step1Peminjam: View {
     }()
     
     var body: some View {
+        NavigationView{
         VStack(alignment: .leading){
             
             pageIndicator(progressNumber: 1, progressName: "Pihak 1 - Peminjam", progressDetail: "Berikutnya: Pihak 2 - Pemberi Pinjaman").padding(.bottom, 15).padding(.top,25)
@@ -30,7 +33,7 @@ struct step1Peminjam: View {
                     Button(action: {
                         trimKtp.showScannerSheet = true
                     }, label: {
-                        Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").foregroundColor(Color(#colorLiteral(red: 0, green: 0.2837583721, blue: 0.423648268, alpha: 1)))
+                        Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
                     })
                     Divider()
                         .fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
@@ -41,8 +44,9 @@ struct step1Peminjam: View {
                         FormView(title: "NIK", profileValue: $trimKtp.ktpInfo.nik, keyboardNum: true)
                         FormView(title: "Nama", profileValue: $trimKtp.ktpInfo.nama, keyboardNum: false)
                         
-                        DatePicker("Tanggal Lahir", selection:$trimKtp.ktpInfo.tanggalLahir, displayedComponents: .date) .padding(.bottom)
-                        
+						DatePicker("Tanggal Lahir", selection:$trimKtp.ktpInfo.tanggalLahir, displayedComponents: .date).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+						Divider()
+							.padding(.bottom)
                         
                         FormView(title: "Alamat", profileValue: $trimKtp.ktpInfo.alamat, keyboardNum: false)
                         HStack {
@@ -64,7 +68,7 @@ struct step1Peminjam: View {
                                 .padding(.bottom,10)
                             
                             NavigationLink(
-                                destination: step2Pemberi(),
+                                destination: step2Pemberi(masterPresentationMode: _presentationMode),
                                 label: {
                                     ButtonNext(text: "Lanjutkan", isDataComplete: true)
                                 })
@@ -80,7 +84,11 @@ struct step1Peminjam: View {
         }.frame(width: UIScreen.main.bounds.width - 35,
                 alignment: .leading)
         .navigationBarTitle("Perjanjian Baru", displayMode: .inline)
-        .navigationBarItems(trailing: Text("Tutup").foregroundColor(.white))
+        .navigationBarItems(trailing:
+                                Button("Tutup") {
+                                            presentationMode.wrappedValue.dismiss()
+                                }.foregroundColor(.white))
+    }
     }
 }
 

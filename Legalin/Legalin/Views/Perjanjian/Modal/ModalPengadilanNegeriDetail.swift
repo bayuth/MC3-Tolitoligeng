@@ -11,7 +11,10 @@ struct ModalPengadilanNegeriDetail: View {
     
     @State var dataDetail: RegionData!
     var kotaCount: Int!
+    @Binding var isPresented: Bool
+    @Binding var pengadilanNegeri: String
     @StateObject var vc = PengadilanDetailController()
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         
@@ -26,13 +29,41 @@ struct ModalPengadilanNegeriDetail: View {
                                   , mainNav: false, index: item)
                         .onTapGesture {
                             vc.toggleView(index: item)
+                            vc.setSelectedPengadilan(selected: dataDetail.kota[item])
                         }
                     
                 }
-            }.navigationBarTitle("", displayMode: .inline)
+            }.navigationBarTitle("Pengadilan Negeri", displayMode: .inline)
+            .accentColor(.red)
+            .navigationBarBackButtonHidden(true)
         }.onAppear {
             vc.setListSelected(total: kotaCount)
-        }
+        }.toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                HStack{
+                    Image(systemName: "chevron.backward").aspectRatio(contentMode: .fill).foregroundColor(.white)
+                    Text("Kembali").foregroundColor(.white)
+                }
+                    .onTapGesture {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+            }
+
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Text("Selesai")
+                        .foregroundColor(.white)
+                        .onTapGesture {
+                            pengadilanNegeri = vc.selectedPengadilan
+//                            if (stateController.selected == true){
+//                                  metodePembayaran = "Cicilan"
+//                            } else {
+//                                metodePembayaran = "Kontan"
+//                            }
+                            
+                        isPresented = false
+                        }
+                }
+            }
         
     }
     
@@ -46,8 +77,8 @@ func getSelectedStatus(listSelected: [Bool], index: Int) -> Bool {
     }
 }
 
-struct ModalPengadilanNegeriDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        ModalPengadilanNegeriDetail()
-    }
-}
+//struct ModalPengadilanNegeriDetail_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ModalPengadilanNegeriDetail()
+//    }
+//}

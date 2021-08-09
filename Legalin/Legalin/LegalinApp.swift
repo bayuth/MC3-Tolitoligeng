@@ -21,7 +21,8 @@ struct LegalinApp: App {
 //			ProfileView()
 //            step3Detail()
 //            GeneratePDF()
-			step1Peminjam()
+//			step1Peminjam()
+			MainApplicationPage()
         }
     }
 }

@@ -13,10 +13,11 @@ struct PerjanjianPage: View {
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
     }
     
+    @State private var isPresented = false
     @State private var selectedSide: AgreementSegment = .onGoing
     @StateObject var agreementData = PerjanjianViewModel()
     @State var offset: CGSize = .zero
-    
+    @StateObject var perjanjianController = PerjanjianController()
     
     var body: some View {
         NavigationView{
@@ -35,19 +36,16 @@ struct PerjanjianPage: View {
             }
             .navigationTitle("Perjanjian")
             .navigationBarItems(trailing:
-                                    NavigationLink(
-                                        destination: step1Peminjam(),
-                                        label: {
-                                            
-                                            Image(systemName: "plus")
-                                                .font(.title)
-                                                .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-                                            
-                                        })
-                                
-            )
-        }
-        
+                                                VStack{
+                                                    Button(action: { isPresented.toggle() })
+                                                    {
+                                                        Image(systemName: "plus")
+                                                            .font(.title)
+                                                            .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                                                    }
+                                                    .fullScreenCover(isPresented: $isPresented, content: step1Peminjam.init)
+                                                }
+        )}.environmentObject(perjanjianController)
     }
     
     func getIndex(item: Agreements)->Int{
