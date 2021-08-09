@@ -11,18 +11,19 @@ struct ModalPengadilanNegeri: View {
     
     @StateObject var dataReader = ReadData()
     @StateObject var vcDetail = PengadilanDetailController()
+    @Binding var isPresented: Bool
+    @Binding var pengadilanNegeri: String
     
     var provinsiData: [RegionData] = ReadData().regionData
     
     var body: some View {
         
-        NavigationView{
         ScrollView{
             LazyVStack{
                 ForEach(provinsiData, id: \.provinsi) { item in
                     NavigationLink(
                         destination:
-                            ModalPengadilanNegeriDetail(dataDetail: item, kotaCount: item.kota.count)) { CheckListCell(title: item.provinsi, selected: false, mainNav: true, index: 77)
+                            ModalPengadilanNegeriDetail(dataDetail: item, kotaCount: item.kota.count, isPresented: $isPresented, pengadilanNegeri: $pengadilanNegeri)) { CheckListCell(title: item.provinsi, selected: false, mainNav: true, index: 77)
 
                                 
                                 
@@ -35,16 +36,17 @@ struct ModalPengadilanNegeri: View {
                     
                 }
                 
-                }.navigationBarHidden(true)
-            }
+        }
+        .navigationBarTitle("Tipe Pembayaran", displayMode: .inline)
+        
         }
     }
 
 
-
-struct ModalPengadilanNegeri_Previews: PreviewProvider {
-    static var previews: some View {
-        ModalPengadilanNegeri()
-    }
-}
+//
+//struct ModalPengadilanNegeri_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ModalPengadilanNegeri()
+//    }
+//}
 

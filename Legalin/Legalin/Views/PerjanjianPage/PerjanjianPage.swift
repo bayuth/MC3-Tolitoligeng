@@ -16,7 +16,7 @@ struct PerjanjianPage: View {
     @State private var selectedSide: AgreementSegment = .onGoing
     @StateObject var agreementData = PerjanjianViewModel()
     @State var offset: CGSize = .zero
-    
+    @StateObject var perjanjianController = PerjanjianController()
     
     var body: some View {
         NavigationView{
@@ -46,8 +46,7 @@ struct PerjanjianPage: View {
                                         })
                                     
             )
-        }
-        
+        }.environmentObject(perjanjianController)
     }
     
     func getIndex(item: Agreements)->Int{

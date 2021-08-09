@@ -14,10 +14,14 @@ struct step3Detail: View {
     @State private var dateTandaTangan = Date()
     @State private var showPickerJatuhTempo = false
     @State private var showPickerTandaTangan = false
+    
     @State private var title = "Metode Bayaran"
     @State private var title1 = "Pilih Tanggal"
     @State private var title2 = "Pengadilan Negeri"
     @State private var title3 = "Pilih Tanggal"
+    
+    @EnvironmentObject var perjanjianController: PerjanjianController
+    
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateStyle = .medium
@@ -32,7 +36,7 @@ struct step3Detail: View {
                 SliderViewWithForm(text1: "Pinjaman Maksimal", text2: "Rp 50000000", title: "Jumlah Pinjaman", type: 0)
                 SliderViewWithForm(text1: "Bunga Maksimal", text2: "6 % per tahun", title: "Bunga", type: 1)
                 SliderViewWithForm(text1: "Tenor Maksimal", text2: "24 bulan", title: "Tenor", type: 2)
-                FormViewWithInfo(title: "Metode Pembayaran", profileValue: $title, showButton: true, showButtonInfo: false, info: "", buttonTitle: "Detail").padding(.top, 16)
+                FormViewWithInfo(title: "Metode Pembayaran", profileValue: $perjanjianController.metodePembayaran, showButton: true, showButtonInfo: false, info: "", buttonTitle: "Detail").padding(.top, 16)
                 VStack{
                     FormViewWithInfo(title: "Tanggal Jatuh Tempo", profileValue: $title1, showButton: false, showButtonInfo: true, info: "Hari pembayaran atau batas waktu pembayaran harus dilakukan oleh peminjam dana (debitur) ke pemberi pinjaman (kreditur).", buttonTitle: "").zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/).onTapGesture {
                         showPickerJatuhTempo.toggle()
@@ -46,7 +50,7 @@ struct step3Detail: View {
                         .datePickerStyle(GraphicalDatePickerStyle())
                     }
                     
-                    FormViewWithInfo(title: "Pengadilan Negeri", profileValue: $title2, showButton: true, showButtonInfo: true, info: "Pilihan domisili pengadilan negeri untuk upaya hukum penyelesaian perselisihan jika musyawarah tidak berhasil", buttonTitle: "Detail").zIndex(0.9)
+                    FormViewWithInfo(title: "Pengadilan Negeri", profileValue: $perjanjianController.pengadilanNegeri, showButton: true, showButtonInfo: true, info: "Pilihan domisili pengadilan negeri untuk upaya hukum penyelesaian perselisihan jika musyawarah tidak berhasil", buttonTitle: "Detail").zIndex(0.9)
                     FormViewWithInfo(title: "Tanggal Tanda Tangan", profileValue: $title3, showButton: false, showButtonInfo: true, info: "Hari untuk peminjam dana (debitur) dan pemberi pinjaman (kreditur) bersama menandatangani surat perjanjian.", buttonTitle: "").zIndex(0.8)
                         .onTapGesture {
                             showPickerTandaTangan.toggle()
