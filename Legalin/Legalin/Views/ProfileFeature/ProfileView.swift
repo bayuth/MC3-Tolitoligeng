@@ -45,7 +45,7 @@ struct ProfileView: View {
 								VStack(alignment: .center) {
 									FormView(title: "NIK", profileValue: $profileKtp.nik, keyboardNum: true).disabled(true).padding(.top)
 									FormView(title: "Nama", profileValue: $profiledata.ktpInfo.nama, keyboardNum: false).disabled(true)
-									DatePicker("Tanggal Lahir", selection: $profiledata.ktpInfo.tanggalLahir, displayedComponents: .date).padding(.bottom)
+									
 									FormView(title: "Alamat", profileValue: $profiledata.ktpInfo.alamat, keyboardNum: false).disabled(true)
 									HStack {
 										FormView(title: "RT", profileValue: $profiledata.ktpInfo.Rt, keyboardNum: true).disabled(true)

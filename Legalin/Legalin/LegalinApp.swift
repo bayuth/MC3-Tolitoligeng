@@ -20,6 +20,8 @@ struct LegalinApp: App {
 //            step4Agunan()
 //			ProfileView()
             step3Detail()
+//            GeneratePDF()
+			step1Peminjam()
         }
     }
 }
