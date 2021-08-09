@@ -115,16 +115,35 @@ class functionTrimKtp: ObservableObject {
 				var tanggalLahir = outputText.slice(from: " Lahir", to: "Jenis")
 				var tanggalBersih = ""
 				print(tanggalLahir ?? "Cannot get birth date from scan")
-				if let tanggalLahirIndex = tanggalLahir?.range(of: ","){
-					var tanggal = tanggalLahir![tanggalLahirIndex.upperBound...].trimmingCharacters(in: .whitespaces)
-					tanggalBersih = tanggal
-					print(tanggalBersih)
+				if tanggalLahir == ""{
+					tanggalLahir = outputText.slice(from: " Lahir", to: "Jens")
+					print(tanggalLahir)
 				}
+				if tanggalLahir?.contains(",") == true{
+					if let tanggalLahirIndex = tanggalLahir?.range(of: ","){
+						var tanggal = tanggalLahir![tanggalLahirIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+						tanggalBersih = tanggal
+						print(tanggalBersih)
+					}
+				} else if tanggalLahir?.contains(".") == true{
+					if let tanggalLahirIndex = tanggalLahir?.range(of: "."){
+						var tanggal = tanggalLahir![tanggalLahirIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+						tanggalBersih = tanggal
+						print(tanggalBersih)
+					}
+				}
+				
+				let dateFormatter = DateFormatter()
+//				dateFormatter.locale = Locale(identifier: "id")
+//				dateFormatter.timeZone = TimeZone.current
+				dateFormatter.dateFormat = "dd-MM-yyyy"
+				let date = dateFormatter.date(from: tanggalBersih)
+				print(date ?? "cannot convert date")
 //				let pekerjaanFromKtp = outputText.slice(from: "Pekerjaan", to: "Kewarganegaraan")
 //				print(pekerjaanFromKtp)
 				
 //				let newKtpInfo = ScanDataClass()
-				self.ktpInfo.updateData(nama: namaFromKtp ?? "", nik: nikFromKtp ?? "", tanggalLahir: Date(), alamat: alamatFromKtp ?? "", Rt: rtBersih , Rw: rwBersih , kelurahan: kelurahanFromKtp ?? "", kecamatan: kecamatanFromKtp ?? "", kota: kotaFromKtp ?? "", provinsi: provinsiFromKtp ?? "", pekerjaan: "", nomorHp: "", namaBank: "", nomorRekening: "", atasNamaRekening: "")
+				self.ktpInfo.updateData(nama: namaFromKtp ?? "", nik: nikFromKtp ?? "", tanggalLahir: date ?? Date(), alamat: alamatFromKtp ?? "", Rt: rtBersih , Rw: rwBersih , kelurahan: kelurahanFromKtp ?? "", kecamatan: kecamatanFromKtp ?? "", kota: kotaFromKtp ?? "", provinsi: provinsiFromKtp ?? "", pekerjaan: "", nomorHp: "", namaBank: "", nomorRekening: "", atasNamaRekening: "")
 //				self.ktpInfo = newKtpInfo
 //				print(self.ktpInfo.nama)
 //				print(self.ktpInfo[0].nama)

@@ -51,13 +51,19 @@ struct step2Pemberi: View {
 									FormView(title: "Nama Bank", profileValue: $trimKtp.ktpInfo.namaBank, keyboardNum: false)
 									FormView(title: "Nomor Rekening", profileValue: $trimKtp.ktpInfo.nomorRekening, keyboardNum: true)
 									FormView(title: "Atas Nama Rekening", profileValue: $trimKtp.ktpInfo.atasNamaRekening, keyboardNum: false)
+									Text("Pastikan semua data yang anda masukan sudah benar dan sesuai dengan KTP dan dokumen anda")
+										.font(.caption2)
+										.fontWeight(.regular)
+										.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+										.multilineTextAlignment(.leading)
+										.padding(.bottom,10)
 								}
 							}
 						}.padding(.top,10)
 					}
 					
 					NavigationLink(
-						destination: step2Pemberi(),
+						destination: step3Detail(),
 						label: {
 							ButtonNext(text: "Lanjutkan")
 						})
