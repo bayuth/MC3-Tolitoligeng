@@ -49,6 +49,7 @@ struct PerjanjianPage: View {
                                     
             )
         }
+        
     }
     
     func getIndex(item: Agreements)->Int{

@@ -23,18 +23,8 @@ struct ConfirmationPage: View {
                     InfoPinjaman()
                         .tag(subview[3])
                     VStack{
-                        InfoAgunan()
+                        InfoAgunan(hideButton: false)
                             .tag(subview[4])
-                        Button(action:{
-                            
-                        }){
-                            Text("Buat Surat")
-                                .foregroundColor(.white)
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: 50)
-                        .background(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-                        .specCornerRadius(8, corners: .allCorners)
-                        .padding()
                     }
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))

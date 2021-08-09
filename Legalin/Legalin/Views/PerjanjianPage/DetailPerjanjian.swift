@@ -17,7 +17,7 @@ struct DetailPerjanjian: View {
     
     
     var body: some View {
-        NavigationView{
+//        NavigationView{
             ScrollView(.init()){
                 TabView{
                     PdfAction()
@@ -28,7 +28,7 @@ struct DetailPerjanjian: View {
                         .tag(subview[2])
                     InfoPinjaman()
                         .tag(subview[3])
-                    InfoAgunan()
+                    InfoAgunan(hideButton: true)
                         .tag(subview[4])
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
@@ -59,8 +59,21 @@ struct DetailPerjanjian: View {
                                         }
                                     }
             )
+            .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            HStack{
+                                Image(systemName: "chevron.left")
+                                    .foregroundColor(.white)
+                                Text("Perjanjian").foregroundColor(.white)
+                            }
+//                            .onTapGesture {
+//                                <#code#>
+//                            }
+                            
+                        }
+            }
             
-        }
+//        }
     }
     func setupAppearance() {
         UIPageControl.appearance().currentPageIndicatorTintColor = #colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)

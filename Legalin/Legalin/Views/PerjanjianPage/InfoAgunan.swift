@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct InfoAgunan: View {
+    var hideButton : Bool
     var body: some View {
         VStack(alignment: .leading){
             HStack{
@@ -63,12 +64,30 @@ struct InfoAgunan: View {
             )
             .padding()
             Spacer()
-        }
+            
+            if hideButton == true{
+                
+            }else{
+                Button(action:{
+                    
+                }){
+                    Text("Buat Surat")
+                        .foregroundColor(.white)
+                }
+                .frame(maxWidth: .infinity, maxHeight: 50)
+                .background(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                .specCornerRadius(8, corners: .allCorners)
+                .padding()
+                .padding(.bottom,30)
+            }
+            }
+            
+            
     }
 }
 
 struct InfoAgunan_Previews: PreviewProvider {
     static var previews: some View {
-        InfoAgunan()
+        InfoAgunan(hideButton: true)
     }
 }
