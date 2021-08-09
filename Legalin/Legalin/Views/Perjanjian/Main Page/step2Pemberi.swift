@@ -77,7 +77,7 @@ struct step2Pemberi: View {
 												Text("Kembali").foregroundColor(.white)
 											}
 										})
-					, trailing: Text("Tutup").foregroundColor(Color.white))
+					, trailing: ButtonTutup().foregroundColor(Color.white))
 		}
 }
 

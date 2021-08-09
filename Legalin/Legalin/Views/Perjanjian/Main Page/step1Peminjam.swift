@@ -64,7 +64,7 @@ struct step1Peminjam: View {
 			}.frame(width: UIScreen.main.bounds.width - 35,
 					alignment: .leading)
 			.navigationBarTitle("Perjanjian Baru", displayMode: .inline)
-			.navigationBarItems(trailing: Text("Tutup").foregroundColor(Color.white))
+			.navigationBarItems(trailing: Text("Tutup").foregroundColor(.white))
 		}
 		
 	}
