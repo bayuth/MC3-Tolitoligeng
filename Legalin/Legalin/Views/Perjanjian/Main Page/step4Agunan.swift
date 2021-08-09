@@ -9,6 +9,8 @@ import SwiftUI
 
 struct step4Agunan: View {
     
+    @Environment(\.presentationMode) var masterPresentationMode4
+    
     @State var toggleState: Bool = false
     @State var disabledStaus: Bool = false
     @StateObject var perjanjianController = PerjanjianController()

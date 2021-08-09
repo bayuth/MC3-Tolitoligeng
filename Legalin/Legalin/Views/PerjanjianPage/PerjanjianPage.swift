@@ -17,6 +17,7 @@ struct PerjanjianPage: View {
     @StateObject var agreementData = PerjanjianViewModel()
     @State var offset: CGSize = .zero
     
+    @State private var isPresented = false
     
     var body: some View {
         NavigationView{
@@ -35,16 +36,16 @@ struct PerjanjianPage: View {
             }
             .navigationTitle("Perjanjian")
             .navigationBarItems(trailing:
-                                    NavigationLink(
-                                        destination: step1Peminjam(),
-                                        label: {
-                                           
-                                                Image(systemName: "plus")
-                                                    .font(.title)
-                                                    .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-                                            
-                                        })
-                                    
+                                    VStack{
+                                        Button(action: { isPresented.toggle() })
+                                        {
+                                            Image(systemName: "plus")
+                                                .font(.title)
+                                                .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                                        }
+                                        .fullScreenCover(isPresented: $isPresented, content: step1Peminjam.init)
+                                    }
+
             )
         }
         

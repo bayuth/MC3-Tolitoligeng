@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct step3Detail: View {
+    
+    
+    @Environment(\.presentationMode) var masterPresentationMode3
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @State var tujuanPeminjaman = ""
     @State private var testOriginFrame: CGRect = .zero
     @State private var dateJatuhTempo = Date()
@@ -62,13 +67,28 @@ struct step3Detail: View {
                 }
                 
                 NavigationLink(
-                    destination: step4Agunan(),
+                    destination: step4Agunan(masterPresentationMode4 : _masterPresentationMode3),
                     label: {
                         ButtonNext(text: "Lanjutkan", isDataComplete: true).padding(.bottom, 16).padding(.top, 64)
-                    }).navigationBarTitle("Perjanjian Baru", displayMode: .inline)
+                    })
                 
             }.frame(width: UIScreen.main.bounds.width - 35,
                     alignment: .leading)
+            .navigationBarTitle("Perjanjian Baru", displayMode: .inline)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading:
+                                    Button(action: {
+                                        self.presentationMode.wrappedValue.dismiss()
+                                    }, label: {
+                                        HStack{
+                                            Image(systemName: "chevron.backward").aspectRatio(contentMode: .fill).foregroundColor(.white)
+                                            Text("Kembali").foregroundColor(.white)
+                                        }
+                                    })
+                                , trailing:
+                                    Button("Tutup") {
+                                        masterPresentationMode3.wrappedValue.dismiss()
+                                    }.foregroundColor(.white))
             
         }
     }
