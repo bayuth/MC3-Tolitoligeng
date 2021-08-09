@@ -19,7 +19,7 @@ class functionTrimKtp: ObservableObject {
 			textPerPage in
 			if let outputText = textPerPage?.joined(separator: "\n").trimmingCharacters(in: .whitespacesAndNewlines){
 				
-				print(outputText)
+//				print(outputText)
 				
 				let nikFromKtp = outputText.slice(from: "NIK", to: "Nama")
 				print(nikFromKtp)
@@ -115,7 +115,7 @@ class functionTrimKtp: ObservableObject {
 				var tanggalLahir = outputText.slice(from: " Lahir", to: "Jenis")
 				var tanggalBersih = ""
 				print(tanggalLahir ?? "Cannot get birth date from scan")
-				if tanggalLahir == ""{
+				if tanggalLahir?.isEmpty == true {
 					tanggalLahir = outputText.slice(from: " Lahir", to: "Jens")
 					print(tanggalLahir)
 				}
@@ -143,7 +143,7 @@ class functionTrimKtp: ObservableObject {
 //				print(pekerjaanFromKtp)
 				
 //				let newKtpInfo = ScanDataClass()
-				self.ktpInfo.updateData(nama: namaFromKtp ?? "", nik: nikFromKtp ?? "", tanggalLahir: date ?? Date(), alamat: alamatFromKtp ?? "", Rt: rtBersih , Rw: rwBersih , kelurahan: kelurahanFromKtp ?? "", kecamatan: kecamatanFromKtp ?? "", kota: kotaFromKtp ?? "", provinsi: provinsiFromKtp ?? "", pekerjaan: "", nomorHp: "", namaBank: "", nomorRekening: "", atasNamaRekening: "")
+				self.ktpInfo.updateData(nama: namaFromKtp ?? "", nik: nikFromKtp ?? "", tanggalLahir: date ?? Date() ,alamat: alamatFromKtp ?? "", Rt: rtBersih , Rw: rwBersih , kelurahan: kelurahanFromKtp ?? "", kecamatan: kecamatanFromKtp ?? "", kota: kotaFromKtp ?? "", provinsi: provinsiFromKtp ?? "", pekerjaan: "", nomorHp: "", namaBank: "", nomorRekening: "", atasNamaRekening: "")
 //				self.ktpInfo = newKtpInfo
 //				print(self.ktpInfo.nama)
 //				print(self.ktpInfo[0].nama)

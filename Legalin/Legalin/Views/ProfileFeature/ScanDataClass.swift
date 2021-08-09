@@ -13,6 +13,7 @@ class ScanDataClass: ObservableObject {
 	@Published var nik:String = ""
 	@Published var nama:String = ""
 	@Published var tanggalLahir:Date = Date()
+//	@Published var tanggalLahir:String = ""
 	@Published var alamat:String = ""
 	@Published var Rt:String = ""
 	@Published var Rw:String = ""

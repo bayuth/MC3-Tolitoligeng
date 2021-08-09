@@ -8,26 +8,14 @@
 import SwiftUI
 
 struct step1Peminjam: View {
-    
-    var body: some View {
-        
-        VStack(alignment: .leading){
-            
-            pageIndicator(progressNumber: 1, progressName: "Pihak 1 - Peminjam", progressDetail: "Berikutnya: Pihak 2 - Pemberi Pinjaman").padding(.bottom, 15)
-            List{
-                
-                
-            }.padding(.horizontal, -20)
-            
-            ButtonNext(text: "Lanjutkan", isDataComplete: true)
-        Spacer()
-            
-    }.frame(width: UIScreen.main.bounds.width - 35,
-            alignment: .leading)
-    }
 	
 	@ObservedObject var trimKtp = functionTrimKtp()
 	@State var showTanggalLahir = false
+	let dateFormatter: DateFormatter = {
+		let df = DateFormatter()
+		df.dateStyle = .medium
+		return df
+	}()
 	
 	var body: some View {
 		NavigationView{
@@ -53,7 +41,9 @@ struct step1Peminjam: View {
 						VStack(alignment: .leading) {
 							FormView(title: "NIK", profileValue: $trimKtp.ktpInfo.nik, keyboardNum: true)
 							FormView(title: "Nama", profileValue: $trimKtp.ktpInfo.nama, keyboardNum: false)
+								
 							DatePicker("Tanggal Lahir", selection:$trimKtp.ktpInfo.tanggalLahir, displayedComponents: .date) .padding(.bottom)
+							
 							
 							FormView(title: "Alamat", profileValue: $trimKtp.ktpInfo.alamat, keyboardNum: false)
 							HStack {
@@ -81,7 +71,7 @@ struct step1Peminjam: View {
 				NavigationLink(
 					destination: step2Pemberi(),
 					label: {
-						ButtonNext(text: "Lanjutkan")
+						ButtonNext(text: "Lanjutkan", isDataComplete: true)
 					})
 				
 				Spacer()
