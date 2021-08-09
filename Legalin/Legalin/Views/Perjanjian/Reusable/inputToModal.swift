@@ -43,6 +43,7 @@ struct inputToModal: View {
                 
             
         }).padding(.init(top: 10, leading: 0, bottom: 5, trailing: 0))
+        .navigationBarTitle("Pengadilan Negeri", displayMode: .inline)
     
     }
     

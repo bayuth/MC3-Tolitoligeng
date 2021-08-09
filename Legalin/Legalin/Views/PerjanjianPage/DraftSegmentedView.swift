@@ -31,6 +31,7 @@ struct DraftSegmentedView: View {
                     Image(systemName: "trash.fill")
                         .font(.title2)
                         .foregroundColor(.white)
+                        .frame(maxWidth: 75, maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                 }
                 .frame(minWidth: 75, maxHeight: .infinity)
                 .background(Color(.red))

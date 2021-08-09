@@ -11,40 +11,51 @@ struct ModalPengadilanNegeri: View {
     
     @StateObject var dataReader = ReadData()
     @StateObject var vcDetail = PengadilanDetailController()
+    @Binding var isPresented: Bool
+    @Binding var pengadilanNegeri: String
     
     var provinsiData: [RegionData] = ReadData().regionData
     
     var body: some View {
         
-        NavigationView{
         ScrollView{
             LazyVStack{
                 ForEach(provinsiData, id: \.provinsi) { item in
                     NavigationLink(
                         destination:
-                            ModalPengadilanNegeriDetail(dataDetail: item, kotaCount: item.kota.count)) { CheckListCell(title: item.provinsi, selected: false, mainNav: true, index: 77)
-
-                                
-                                
+                            ModalPengadilanNegeriDetail(dataDetail: item, kotaCount: item.kota.count, isPresented: $isPresented, pengadilanNegeri: $pengadilanNegeri)) { CheckListCell(title: item.provinsi, selected: false, mainNav: true, index: 77)
+                        
+                        
+                        
                     }.buttonStyle(PlainButtonStyle())
-//                    .simultaneousGesture(TapGesture().onEnded{
-//                        vcDetail.setListSelected(total: item.kota.count)
-//                    })
-                    
-                }
+                    //                    .simultaneousGesture(TapGesture().onEnded{
+                    //                        vcDetail.setListSelected(total: item.kota.count)
+                    //                    })
                     
                 }
                 
-                }.navigationBarHidden(true)
             }
+            
+        }
+        .navigationBarTitle("Pengadilan Negeri", displayMode: .inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Text("Tutup")
+                    .foregroundColor(.white)
+                    .onTapGesture {
+                        isPresented = false
+                    }
+            }
+            
         }
     }
-
-
-
-struct ModalPengadilanNegeri_Previews: PreviewProvider {
-    static var previews: some View {
-        ModalPengadilanNegeri()
-    }
+    
+    
+    //
+    //struct ModalPengadilanNegeri_Previews: PreviewProvider {
+    //    static var previews: some View {
+    //        ModalPengadilanNegeri()
+    //    }
+    //}
+    
 }
-

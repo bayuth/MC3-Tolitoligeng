@@ -10,6 +10,8 @@ import SwiftUI
 struct ModalMetodePembayaran: View {
     
     @StateObject var stateController = SelectedController()
+    @Binding var isPresented: Bool
+    @Binding var metodePembayaran: String
     
     var body: some View {
         VStack(alignment: .leading){
@@ -33,13 +35,38 @@ struct ModalMetodePembayaran: View {
                         }
                 }
                 
+            }.padding(.vertical, 20)
+        .navigationBarTitle("Tipe Pembayaran", displayMode: .inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Text("Batalkan")
+                    .foregroundColor(.white)
+                    .onTapGesture {
+                        isPresented = false
+                    }
             }
+
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Text("Done")
+                        .foregroundColor(.white)
+                        .onTapGesture {
+                            if (stateController.selected == true){
+                                  metodePembayaran = "Cicilan"
+                            } else {
+                                metodePembayaran = "Kontan"
+                            }
+                            
+                        isPresented = false
+                        }
+                }
+            }
+        
         }
 }
 
-struct ModalMetodePembayaran_Previews: PreviewProvider {
-    static var previews: some View {
-        ModalMetodePembayaran()
-    }
-}
+//struct ModalMetodePembayaran_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ModalMetodePembayaran()
+//    }
+//}
 
