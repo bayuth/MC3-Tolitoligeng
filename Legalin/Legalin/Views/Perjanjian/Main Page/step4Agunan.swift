@@ -10,7 +10,7 @@ import SwiftUI
 struct step4Agunan: View {
     
     @State var toggleState: Bool = false
-    
+    @State var disabledStaus: Bool = false
     @StateObject var perjanjianController = PerjanjianController()
     
     var body: some View {
@@ -55,7 +55,10 @@ struct step4Agunan: View {
                 }
                 Spacer()
                 
-                ButtonNext(text: "Buat Surat")
+                NavigationLink(
+                    destination: loadingScreen()){
+                    ButtonNext(text: "Buat Surat", isDataComplete: false)
+                }.disabled(disabledStaus)
                 
         }.frame(width: UIScreen.main.bounds.width - 35,
                 alignment: .leading)
@@ -68,5 +71,17 @@ struct step4Agunan: View {
 struct step4Agunan_Previews: PreviewProvider {
     static var previews: some View {
         step4Agunan()
+    }
+}
+
+extension UINavigationController{
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        navigationBar.standardAppearance = appearance
     }
 }

@@ -41,22 +41,25 @@ struct ModalTipeBarangAgunan: View {
         .navigationBarTitle("Tipe Barang", displayMode: .inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button("Batalkan") {
-                    isPresented = false
-                }
+                Text("Batalkan")
+                    .foregroundColor(.white)
+                    .onTapGesture {
+                        isPresented = false
+                    }
             }
 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
-                        
-                        if (stateController.selected == true){
-                              tipeAgunan = "Umum"
-                        } else {
-                            tipeAgunan = "Elektronik"
+                    Text("Done")
+                        .foregroundColor(.white)
+                        .onTapGesture {
+                            if (stateController.selected == true){
+                                  tipeAgunan = "Umum"
+                            } else {
+                                tipeAgunan = "Elektronik"
+                            }
+                            
+                        isPresented = false
                         }
-                        
-                    isPresented = false
-                    }
                 }
             }
     }
