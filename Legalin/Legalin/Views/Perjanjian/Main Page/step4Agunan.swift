@@ -11,6 +11,8 @@ struct step4Agunan: View {
     
     @Environment(\.presentationMode) var masterPresentationMode4
     
+    @Environment(\.presentationMode) var presentationMode
+    
     @State var toggleState: Bool = false
     @State var disabledStaus: Bool = false
     @StateObject var perjanjianController = PerjanjianController()
@@ -65,6 +67,20 @@ struct step4Agunan: View {
         }.frame(width: UIScreen.main.bounds.width - 35,
                 alignment: .leading)
         .navigationBarTitle("Buat Perjanjian", displayMode: .inline)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+                                Button(action: {
+                                    self.presentationMode.wrappedValue.dismiss()
+                                }, label: {
+                                    HStack{
+                                        Image(systemName: "chevron.backward").aspectRatio(contentMode: .fill).foregroundColor(.white)
+                                        Text("Kembali").foregroundColor(.white)
+                                    }
+                                })
+                            , trailing:
+                                Button("Tutup") {
+                                    masterPresentationMode4.wrappedValue.dismiss()
+                                }.foregroundColor(.white))
         
     }
 }
