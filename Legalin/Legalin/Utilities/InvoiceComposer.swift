@@ -9,7 +9,7 @@ import UIKit
 
 class InvoiceComposer: NSObject {
     
-    let pathToHTMLTemplate = Bundle.main.path(forResource: "templateSurat", ofType: "html")
+    let pathToHTMLTemplate = Bundle.main.path(forResource: "template", ofType: "html")
     
     var nama1: String!
     var nama2: String!
@@ -23,9 +23,9 @@ class InvoiceComposer: NSObject {
         do{
             var HTMLContent = try String(contentsOfFile: pathToHTMLTemplate!)
             
-            HTMLContent = HTMLContent.replacingOccurrences(of: "#nama1#", with: nama1!)
-            
-            HTMLContent = HTMLContent.replacingOccurrences(of: "#nama2#", with: nama2!)
+//            HTMLContent = HTMLContent.replacingOccurrences(of: "#nama1#", with: nama1!)
+//
+//            HTMLContent = HTMLContent.replacingOccurrences(of: "#nama2#", with: nama2!)
             
             return HTMLContent
         }
