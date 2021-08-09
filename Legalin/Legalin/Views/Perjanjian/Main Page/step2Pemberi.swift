@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct step2Pemberi: View {
-	
+    
+    @Environment(\.presentationMode) var masterPresentationMode
+    
 	@ObservedObject var trimKtp = functionTrimKtp()
 	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 	@State var showTanggalLahir = false
@@ -68,7 +70,7 @@ struct step2Pemberi: View {
 								.padding(.bottom,10)
                             
                             NavigationLink(
-                                destination: step3Detail(),
+                                destination: step3Detail(masterPresentationMode3 : _masterPresentationMode),
                                 label: {
                                     ButtonNext(text: "Lanjutkan", isDataComplete: true)
                                 })
@@ -94,7 +96,10 @@ struct step2Pemberi: View {
 										Text("Kembali").foregroundColor(.white)
 									}
 								})
-							, trailing: ButtonTutup().foregroundColor(Color.white))
+							, trailing:
+                                Button("Tutup") {
+                                    masterPresentationMode.wrappedValue.dismiss()
+                                }.foregroundColor(.white))
 	}
 }
 
