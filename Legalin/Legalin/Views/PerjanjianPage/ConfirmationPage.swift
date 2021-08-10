@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ConfirmationPage: View {
     @State var offset: CGFloat = 0
+    @Environment(\.presentationMode) var masterPresentationMode5
     var subview = [1, 2, 3, 4, 5]
     //    var position = 0
     
@@ -32,6 +33,17 @@ struct ConfirmationPage: View {
             }
         }
         .navigationBarTitle("Konfirmasi", displayMode: .inline)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+                                Button(action: {
+                                    masterPresentationMode5.wrappedValue.dismiss()
+                                }, label: {
+                                    Image(systemName: "chevron.left")
+                                        .foregroundColor(.white)
+                                    Text("Kembali")
+                                        .foregroundColor(.white)
+                                })
+        )
     }
     
     func setupAppearance() {
