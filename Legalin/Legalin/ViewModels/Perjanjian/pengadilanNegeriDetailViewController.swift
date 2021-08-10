@@ -12,8 +12,10 @@ class PengadilanDetailController: ObservableObject {
     @Published var listSelected:[Bool] = []
     @Published var lastSelected:Int = -999
     @Published var listCount:Int!
+    @Published var selectedPengadilan:String!
     
     init(){
+        selectedPengadilan = ""
     }
     
     func setListSelected(total: Int){
@@ -36,6 +38,10 @@ class PengadilanDetailController: ObservableObject {
         }
         
         lastSelected = index
+    }
+    
+    func setSelectedPengadilan(selected: String){
+        selectedPengadilan = selected
     }
     
 }
