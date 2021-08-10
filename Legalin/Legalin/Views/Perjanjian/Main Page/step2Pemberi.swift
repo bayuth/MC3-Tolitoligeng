@@ -29,12 +29,12 @@ struct step2Pemberi: View {
 			ScrollView{
 				VStack(alignment: .leading) {
 					
-					Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))) .padding(.bottom,7)
+					Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.bottom,7)
 					
 					Button(action: {
 						trimKtp.showScannerSheet = true
 					}, label: {
-						Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+						Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 					})
 					Divider()
 						.fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
@@ -44,7 +44,7 @@ struct step2Pemberi: View {
 					VStack {
 						FormView(title: "NIK", profileValue: $trimKtp.ktpInfo.nik, keyboardNum: true)
 						FormView(title: "Nama", profileValue: $trimKtp.ktpInfo.nama, keyboardNum: false)
-						DatePicker("Tanggal Lahir", selection:$trimKtp.ktpInfo.tanggalLahir, displayedComponents: .date).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+						DatePicker("Tanggal Lahir", selection:$trimKtp.ktpInfo.tanggalLahir, displayedComponents: .date).font(.body).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 						Divider()
 							.padding(.bottom)
 						FormView(title: "Alamat", profileValue: $trimKtp.ktpInfo.alamat, keyboardNum: false)
