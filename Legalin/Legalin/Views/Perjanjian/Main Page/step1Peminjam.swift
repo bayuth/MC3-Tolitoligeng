@@ -33,7 +33,7 @@ struct step1Peminjam: View {
                     Button(action: {
                         trimKtp.showScannerSheet = true
                     }, label: {
-                        Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+						Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").fontWeight(.regular) .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
                     })
                     Divider()
                         .fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
@@ -44,7 +44,7 @@ struct step1Peminjam: View {
                         FormView(title: "NIK", profileValue: $trimKtp.ktpInfo.nik, keyboardNum: true)
                         FormView(title: "Nama", profileValue: $trimKtp.ktpInfo.nama, keyboardNum: false)
                         
-						DatePicker("Tanggal Lahir", selection:$trimKtp.ktpInfo.tanggalLahir, displayedComponents: .date).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+						DatePicker("Tanggal Lahir", selection:$trimKtp.ktpInfo.tanggalLahir, displayedComponents: .date).font(.body).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 						Divider()
 							.padding(.bottom)
                         
