@@ -56,6 +56,7 @@ struct PerjanjianPage: View {
 func getIndex(item: Agreements, items: PerjanjianViewModel)->Int{
     return items.list.firstIndex { (item1) -> Bool in
         return item.id == item1.id
+        print(item1.id)
     } ?? 0
 }
 
@@ -74,7 +75,7 @@ struct ChoosenSegment: View {
     var body: some View{
         switch selectedSegment {
         case .onGoing:
-            if agreementData.list.count == 0 {
+            if agreementData.list.isEmpty {
                 EmptyStatePerjanjian()
             }
             else if agreementData.list.count > 0{
@@ -91,22 +92,34 @@ struct ChoosenSegment: View {
             
             
         case .history:
-            ForEach(agreementData.list){ item in
-                NavigationLink(
-                    destination: DetailPerjanjian(),
-                    label: {
-                        HistorySegmentedView(item: $agreementData.list[getIndex(item: item)], lists: $agreementData.list)
-                    })
-                    .foregroundColor(.black)
+            if agreementData.list.isEmpty {
+                EmptyStatePerjanjian()
+            }
+            else if agreementData.list.count > 0{
+                ForEach(agreementData.list){ item in
+                    NavigationLink(
+                        destination: DetailPerjanjian(),
+                        label: {
+                            HistorySegmentedView(item: $agreementData.list[getIndex(item: item)], lists: $agreementData.list)
+                        })
+                        .foregroundColor(.black)
+                }
+                
             }
         case .daft:
-            ForEach(agreementData.list){ item in
-                NavigationLink(
-                    destination: DetailPerjanjian(),
-                    label: {
-                        DraftSegmentedView(item: $agreementData.list[getIndex(item: item)], lists: $agreementData.list)
-                    })
-                    .foregroundColor(.black)
+            if agreementData.list.isEmpty {
+                EmptyStatePerjanjian()
+            }
+            else if agreementData.list.count > 0{
+                ForEach(agreementData.list){ item in
+                    NavigationLink(
+                        destination: DetailPerjanjian(),
+                        label: {
+                            DraftSegmentedView(item: $agreementData.list[getIndex(item: item)], lists: $agreementData.list)
+                        })
+                        .foregroundColor(.black)
+                }
+                
             }
         }
     }

@@ -18,19 +18,16 @@ struct ModalAddKredit: View {
             
             ScrollView {
                 VStack{
-                    FormView(title: "Tujuan Meminjam", profileValue: $kreditData.object.kreditTitle, keyboardNum: false).padding(.horizontal, 16)
-                    FormView(title: "Jumlah Pinjaman", profileValue: $kreditData.object.jumlahPinjaman, keyboardNum: false).padding(.horizontal, 16)
-                    SliderView(text1: "Pinjaman Maksimal", text2: "Rp. 50.000.000")
-                    FormView(title: "Bunga", profileValue: $kreditData.object.jumlahPinjaman, keyboardNum: false).padding(.horizontal, 16)
-                    SliderView(text1: "Bunga Maksimal", text2: "6 %")
-                    FormView(title: "Tenor", profileValue: $kreditData.object.jumlahPinjaman, keyboardNum: false).padding(.horizontal, 16)
-                    SliderView(text1: "Tenor Maksimal Maksimal", text2: "24 Bulan")
+                    FormView(title: "Tujuan Meminjam", profileValue: $kreditData.object.kreditTitle, keyboardNum: false).padding(.horizontal, 16).padding(.top, 16)
+                    SliderViewWithForm(text1: "Pinjaman Maksimal", text2: "Rp. 50.000.000", title: "Jumlah Pinjaman", type: 0).padding(.horizontal, 16)
+                    SliderViewWithForm(text1: "Bunga Maksimal", text2: "6 %", title: "Bunga", type: 1).padding(.horizontal, 16)
+                    SliderViewWithForm(text1: "Tenor Maksimal Maksimal", text2: "24 Bulan", title: "Tenor", type: 2).padding(.horizontal, 16)
                 }
                 NavigationLink(
-                    destination: KreditView(),
+                    destination: UlasanKredit(),
                     label: {
                         Text("Simulasikan").font(.body).fontWeight(.bold).foregroundColor(.white).multilineTextAlignment(.center).padding(.vertical,15).padding(.horizontal,120).background(Color(#colorLiteral(red: 0, green: 0.2837583721, blue: 0.423648268, alpha: 1))).cornerRadius(10)
-                    }).padding(.top,10)
+                    }).padding(.top,10).padding(.bottom, 16)
             }
             .navigationBarTitle("Kredit Baru", displayMode: .inline)
             .navigationBarItems(leading:
@@ -39,7 +36,8 @@ struct ModalAddKredit: View {
                                     })
                                     .foregroundColor(Color.init(hex: "#E6FFFFFF"))
             )
-        }.navigationBarColor(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))
+        }
     }
 }
+
 

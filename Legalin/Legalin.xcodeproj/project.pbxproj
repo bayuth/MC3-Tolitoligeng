@@ -11,6 +11,7 @@
 		4A3AF69626BB74D400614382 /* ItemListKredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AF69526BB74D400614382 /* ItemListKredit.swift */; };
 		4A3AF69A26BB769300614382 /* ListKredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AF69926BB769300614382 /* ListKredit.swift */; };
 		4A3AF69D26BB7AA300614382 /* KreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AF69C26BB7AA300614382 /* KreditCardView.swift */; };
+		4A46144926C365F6001AA2D2 /* UlasanKredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46144826C365F6001AA2D2 /* UlasanKredit.swift */; };
 		4A64032926B7892B00C78D44 /* KreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A64032826B7892B00C78D44 /* KreditView.swift */; };
 		4A6718CE26C0BAFB00D22C3B /* FormViewWithInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6718CD26C0BAFB00D22C3B /* FormViewWithInfo.swift */; };
 		4A8C45AE26BA1188008E4B02 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C45AD26BA1188008E4B02 /* Helper.swift */; };
@@ -99,6 +100,7 @@
 		4A3AF69526BB74D400614382 /* ItemListKredit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListKredit.swift; sourceTree = "<group>"; };
 		4A3AF69926BB769300614382 /* ListKredit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListKredit.swift; sourceTree = "<group>"; };
 		4A3AF69C26BB7AA300614382 /* KreditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KreditCardView.swift; sourceTree = "<group>"; };
+		4A46144826C365F6001AA2D2 /* UlasanKredit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UlasanKredit.swift; sourceTree = "<group>"; };
 		4A64032826B7892B00C78D44 /* KreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KreditView.swift; sourceTree = "<group>"; };
 		4A6718CD26C0BAFB00D22C3B /* FormViewWithInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewWithInfo.swift; sourceTree = "<group>"; };
 		4A8C45AD26BA1188008E4B02 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				4AEDF74126BA35FB008DC272 /* EmptyState.swift */,
 				4A3AF69C26BB7AA300614382 /* KreditCardView.swift */,
 				4A0AC6D426BCD7BF00430BE8 /* ModalAddKredit.swift */,
+				4A46144826C365F6001AA2D2 /* UlasanKredit.swift */,
 			);
 			path = Kredit;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				4AC4CA8F26B25D1300340A00 /* ContentView.swift in Sources */,
 				7558EA6A26BD31B700E0B492 /* InfoAgunan.swift in Sources */,
 				4AC4CAAA26B25D9100340A00 /* Fitur1.swift in Sources */,
+				4A46144926C365F6001AA2D2 /* UlasanKredit.swift in Sources */,
 				75B627BC26BC1579008F2C2A /* DetailPerjanjian.swift in Sources */,
 				4AD8840A26BAEC7B00C5A6F5 /* PerjanjianViewModel.swift in Sources */,
 				5EF3B05926BA46C200ABC1F7 /* step4Agunan.swift in Sources */,
@@ -773,7 +777,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Legalin/Preview Content\"";
-				DEVELOPMENT_TEAM = 52727RY679;
+				DEVELOPMENT_TEAM = 267ZBTAUVV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Legalin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -796,7 +800,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Legalin/Preview Content\"";
-				DEVELOPMENT_TEAM = 52727RY679;
+				DEVELOPMENT_TEAM = 267ZBTAUVV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Legalin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
