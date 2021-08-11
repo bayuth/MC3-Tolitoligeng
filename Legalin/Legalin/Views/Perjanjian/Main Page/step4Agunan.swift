@@ -27,7 +27,7 @@ struct step4Agunan: View {
             .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
             
             HStack{
-                Toggle(isOn: $toggleState, label: {
+                Toggle(isOn: $perjanjianController.modalAgunanState, label: {
                     Text("Agunan")
                 }).toggleStyle(SwitchToggleStyle(tint: Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))))
             }.zIndex(0.9)
@@ -35,7 +35,7 @@ struct step4Agunan: View {
             Divider().padding(.horizontal, -20)
             
             VStack{
-                if (toggleState == true){
+                if(perjanjianController.modalAgunanState == true){
                     
                     inputToModal(title: "Tipe Barang", textViewValue: "Tipe Barang", tipeAgunan: $perjanjianController.tipeBarangAgunan, isPresented: false)
                     

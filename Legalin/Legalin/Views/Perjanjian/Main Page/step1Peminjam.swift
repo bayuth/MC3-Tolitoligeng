@@ -12,6 +12,8 @@ struct step1Peminjam: View {
     @Environment(\.presentationMode) var presentationMode
     
     @ObservedObject var trimKtp = functionTrimKtp()
+    @EnvironmentObject var perjanjianController: PerjanjianController
+    
     @State var showTanggalLahir = false
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()

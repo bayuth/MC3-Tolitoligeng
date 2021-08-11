@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct SliderViewWithForm: View {
-    @State private var sliderValue = 0.0
+    @Binding var sliderValue: Double
     @State private var isEditing = false
     @State var text1 = "halo"
     @State var text2 = "halo lagi"
     @State var title = "kamu"
-    @State var type = 0
+    @State var type: Int
     @State private var formattedText = ""
     @State private var rangeOfSlider = 0...50000000.0
     var valueMaxSlide: Double {
@@ -24,9 +24,7 @@ struct SliderViewWithForm: View {
         }else {
             return 1.0
         }
-        
     }
-    
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -62,6 +60,9 @@ struct SliderViewWithForm: View {
             .padding(.bottom, 10)
             Divider()
 		}.padding(.bottom,15)
+        .onAppear{
+            getFormattedText()
+        }
         
     }
     
@@ -79,8 +80,8 @@ struct SliderViewWithForm: View {
     }
 }
 
-struct SliderViewWithForm_Previews: PreviewProvider {
-    static var previews: some View {
-        SliderViewWithForm()
-    }
-}
+//struct SliderViewWithForm_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SliderViewWithForm()
+//    }
+//}

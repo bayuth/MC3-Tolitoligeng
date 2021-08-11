@@ -27,13 +27,13 @@
         <relationship name="pihak2" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pinjaman" inverseName="pihak2" inverseEntity="Pinjaman"/>
     </entity>
     <entity name="Kredit" representedClassName="Kredit" syncable="YES" codeGenerationType="class">
-        <attribute name="bunga" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="bunga" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateModified" optional="YES" attributeType="Date"/>
-        <attribute name="jumlahPinjaman" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="jumlahPinjaman" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="namaSimulasi" optional="YES" attributeType="String"/>
         <attribute name="pinjamanPage" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="tenor" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="tenor" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="pinjaman" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pinjaman" inverseName="kredit" inverseEntity="Pinjaman"/>
     </entity>
@@ -55,13 +55,13 @@
     <entity name="Pinjaman" representedClassName="Pinjaman" syncable="YES" codeGenerationType="class">
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateModified" optional="YES" attributeType="Date"/>
-        <attribute name="jatuhTempo" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="jatuhTempo" optional="YES" attributeType="String"/>
         <attribute name="metodePembayaran" optional="YES" attributeType="String"/>
         <attribute name="pdf" optional="YES" attributeType="Binary"/>
         <attribute name="pengadilanNegeri" optional="YES" attributeType="String"/>
         <attribute name="reminder" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="status" optional="YES" attributeType="String"/>
-        <attribute name="tanggalTandaTangan" optional="YES" attributeType="Date"/>
+        <attribute name="tanggalTandaTangan" optional="YES" attributeType="String"/>
         <attribute name="tujuan" optional="YES" attributeType="String"/>
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="agunan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Agunan" inverseName="pinjaman" inverseEntity="Agunan"/>
@@ -74,6 +74,6 @@
         <element name="Akun" positionX="-432.2776489257812" positionY="-86.76535034179688" width="128" height="224"/>
         <element name="Kredit" positionX="247.8436279296875" positionY="3.6741943359375" width="128" height="164"/>
         <element name="KTP" positionX="-600.440673828125" positionY="-93.55972290039062" width="128" height="224"/>
-        <element name="Pinjaman" positionX="-176.0797729492188" positionY="-56.89163208007812" width="128" height="268"/>
+        <element name="Pinjaman" positionX="-176.0797729492188" positionY="-56.89163208007812" width="128" height="254"/>
     </elements>
 </model>

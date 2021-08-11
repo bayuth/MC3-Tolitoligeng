@@ -300,16 +300,16 @@ class CoreDataViewModel: ObservableObject {
     }
     
     //Update atribut dari kredit
-    func updateKredit(kredit: Kredit, nama: String? = nil, bunga: Int? = nil, jumlahPinjaman: Int? = nil, tenor: Int? = nil){
+    func updateKredit(kredit: Kredit, nama: String? = nil, bunga: Double? = nil, jumlahPinjaman: Double? = nil, tenor: Double? = nil){
         
         //Change modified date
         kredit.dateModified = Date()
         
         //Generate Credit attribute
         kredit.namaSimulasi = nama
-        kredit.bunga = Int64(bunga ?? 0)
-        kredit.jumlahPinjaman = Int64(jumlahPinjaman ?? 0)
-        kredit.tenor = Int64(tenor ?? 0)
+        kredit.bunga = Double(bunga ?? 0)
+        kredit.jumlahPinjaman = Double(jumlahPinjaman ?? 0)
+        kredit.tenor = Double(tenor ?? 0)
         
         save()
         getAllKredit()
@@ -389,7 +389,7 @@ class CoreDataViewModel: ObservableObject {
     }
     
     //Update pinjaman sesuai atribut yang ada
-    func updatePinjaman(pinjaman: Pinjaman, tujuan: String? = nil, metodePembayaran: String? = nil, jatuhTempo: Date? = nil, pengadilanNegeri: String? = nil, tanggalTandaTangan: Date? = nil, status: StatusSurat? = nil, reminder: Bool? = nil){
+    func updatePinjaman(pinjaman: Pinjaman, tujuan: String? = nil, metodePembayaran: String? = nil, jatuhTempo: String? = nil, pengadilanNegeri: String? = nil, tanggalTandaTangan: String? = nil, status: StatusSurat? = nil, reminder: Bool? = nil){
         
         //Generate Pinjaman attribute
         pinjaman.tujuan = tujuan

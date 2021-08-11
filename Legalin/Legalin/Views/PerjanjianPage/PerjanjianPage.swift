@@ -37,7 +37,9 @@ struct PerjanjianPage: View {
             .navigationTitle("Perjanjian")
             .navigationBarItems(trailing:
                                                 VStack{
-                                                    Button(action: { isPresented.toggle() })
+                                                    Button(action: { isPresented.toggle()
+                                                        perjanjianController.resetValue()
+                                                    })
                                                     {
                                                         Image(systemName: "plus")
                                                             .font(.title)
