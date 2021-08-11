@@ -92,6 +92,7 @@
 		7558EA6A26BD31B700E0B492 /* InfoAgunan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA6926BD31B700E0B492 /* InfoAgunan.swift */; };
 		7558EA6C26BD367600E0B492 /* PdfAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA6B26BD367600E0B492 /* PdfAction.swift */; };
 		7558EA8F26BD691500E0B492 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA8E26BD691500E0B492 /* PageView.swift */; };
+		756AE03626C414C0004A2570 /* EmptyPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756AE03526C414C0004A2570 /* EmptyPDF.swift */; };
 		759F0B3A26BD743B004804C7 /* MainApplicationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F0B3926BD743B004804C7 /* MainApplicationPage.swift */; };
 		75B627BC26BC1579008F2C2A /* DetailPerjanjian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B627BB26BC1579008F2C2A /* DetailPerjanjian.swift */; };
 /* End PBXBuildFile section */
@@ -183,6 +184,7 @@
 		7558EA6926BD31B700E0B492 /* InfoAgunan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAgunan.swift; sourceTree = "<group>"; };
 		7558EA6B26BD367600E0B492 /* PdfAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfAction.swift; sourceTree = "<group>"; };
 		7558EA8E26BD691500E0B492 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		756AE03526C414C0004A2570 /* EmptyPDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPDF.swift; sourceTree = "<group>"; };
 		759F0B3926BD743B004804C7 /* MainApplicationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApplicationPage.swift; sourceTree = "<group>"; };
 		75B627BB26BC1579008F2C2A /* DetailPerjanjian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPerjanjian.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -370,6 +372,7 @@
 				7558EA6B26BD367600E0B492 /* PdfAction.swift */,
 				7558EA8E26BD691500E0B492 /* PageView.swift */,
 				750A862C26BEA54D0055886D /* ConfirmationPage.swift */,
+				756AE03526C414C0004A2570 /* EmptyPDF.swift */,
 			);
 			path = PerjanjianPage;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				5C8F9CFE26BCF6A700CE994B /* profileData.swift in Sources */,
 				5E27EEFB26BA8E3B0090573F /* step2Pemberi.swift in Sources */,
 				5E27EEF826BA8B990090573F /* ButtonNext.swift in Sources */,
+				756AE03626C414C0004A2570 /* EmptyPDF.swift in Sources */,
 				5E35F37126B833F20044D1FC /* ModalTipeBarangAgunan.swift in Sources */,
 				7558EA6426BD2A7500E0B492 /* Pihak1.swift in Sources */,
 				7558EA6826BD2CEA00E0B492 /* InfoPinjaman.swift in Sources */,

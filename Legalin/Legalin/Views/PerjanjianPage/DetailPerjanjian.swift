@@ -11,6 +11,7 @@ import SwiftUI
 struct DetailPerjanjian: View {
     
     @State var offset: CGFloat = 0
+    var pdfIsEmpty : Bool = false
     
     
     var subview = [1, 2, 3, 4, 5]
@@ -20,8 +21,14 @@ struct DetailPerjanjian: View {
         //        NavigationView{
         ScrollView(.init()){
             TabView{
-                PdfAction()
-                    .tag(subview[0])
+                if pdfIsEmpty == false{
+                    PdfAction(hideSwitch: false)
+                        .tag(subview[0])
+                }
+                else{
+                    EmptyPDF()
+                }
+                
                 Pihak1()
                     .tag(subview[1])
                 Pihak2()
@@ -30,6 +37,13 @@ struct DetailPerjanjian: View {
                     .tag(subview[3])
                 InfoAgunan(hideButton: true)
                     .tag(subview[4])
+                if pdfIsEmpty == false{
+                    
+                }
+                else{
+                    
+                }
+                
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
             .onAppear{
