@@ -11,7 +11,9 @@ struct step2Pemberi: View {
     
     @Environment(\.presentationMode) var masterPresentationMode
     
-	@ObservedObject var trimKtp = functionTrimKtp()
+    @EnvironmentObject var perjanjianController: PerjanjianController
+    
+    @ObservedObject var trimKtp = functionTrimKtp(pihak: 2)
 	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 	@State var showTanggalLahir = false
 	@State var titleLahir = "Pilih Tanggal Lahir"
@@ -44,26 +46,26 @@ struct step2Pemberi: View {
 						}).padding(.bottom)
 					
 					VStack {
-						FormView(title: "NIK", profileValue: $trimKtp.ktpInfo.nik, keyboardNum: true)
-						FormView(title: "Nama", profileValue: $trimKtp.ktpInfo.nama, keyboardNum: false)
-						DatePicker("Tanggal Lahir", selection:$trimKtp.ktpInfo.tanggalLahir, displayedComponents: .date).font(.body).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                        FormView(title: "NIK", profileValue: $perjanjianController.pihak2NIK, keyboardNum: true)
+						FormView(title: "Nama", profileValue: $perjanjianController.pihak2Nama, keyboardNum: false)
+						DatePicker("Tanggal Lahir", selection:$perjanjianController.pihak2TanggalLahir, displayedComponents: .date).font(.body).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 						Divider()
 							.padding(.bottom)
-						FormView(title: "Alamat", profileValue: $trimKtp.ktpInfo.alamat, keyboardNum: false)
+						FormView(title: "Alamat", profileValue: $perjanjianController.pihak2Alamat, keyboardNum: false)
 						HStack {
-							FormView(title: "RT", profileValue: $trimKtp.ktpInfo.Rt, keyboardNum: true)
-							FormView(title: "RW", profileValue: $trimKtp.ktpInfo.Rw, keyboardNum: true)
+							FormView(title: "RT", profileValue: $perjanjianController.pihak2RT, keyboardNum: true)
+							FormView(title: "RW", profileValue: $perjanjianController.pihak2RW, keyboardNum: true)
 						}
-						FormView(title: "Kelurahan/Desa", profileValue: $trimKtp.ktpInfo.kelurahan, keyboardNum: false)
-						FormView(title: "Kecamatan", profileValue: $trimKtp.ktpInfo.kecamatan, keyboardNum: false)
-						FormView(title: "Kabupaten/Kota", profileValue: $trimKtp.ktpInfo.kota, keyboardNum: false)
+						FormView(title: "Kelurahan/Desa", profileValue: $perjanjianController.pihak2Kelurahan, keyboardNum: false)
+						FormView(title: "Kecamatan", profileValue: $perjanjianController.pihak2Kecamatan, keyboardNum: false)
+						FormView(title: "Kabupaten/Kota", profileValue: $perjanjianController.pihak2Kota, keyboardNum: false)
 						VStack(alignment:.leading) {
-							FormView(title: "Provinsi", profileValue: $trimKtp.ktpInfo.provinsi, keyboardNum: false)
-							FormView(title: "Pekerjaan", profileValue: $trimKtp.ktpInfo.pekerjaan, keyboardNum: false)
-							FormView(title: "Nomor Handphone", profileValue: $trimKtp.ktpInfo.nomorHp, keyboardNum: true)
-							FormView(title: "Nama Bank", profileValue: $trimKtp.ktpInfo.namaBank, keyboardNum: false)
-							FormView(title: "Nomor Rekening", profileValue: $trimKtp.ktpInfo.nomorRekening, keyboardNum: true)
-							FormView(title: "Atas Nama Rekening", profileValue: $trimKtp.ktpInfo.atasNamaRekening, keyboardNum: false)
+							FormView(title: "Provinsi", profileValue: $perjanjianController.pihak2Provinsi, keyboardNum: false)
+							FormView(title: "Pekerjaan", profileValue: $perjanjianController.pihak2Pekerjaan, keyboardNum: false)
+							FormView(title: "Nomor Handphone", profileValue: $perjanjianController.pihak2NomorHP, keyboardNum: true)
+							FormView(title: "Nama Bank", profileValue: $perjanjianController.pihak2NamaBank, keyboardNum: false)
+							FormView(title: "Nomor Rekening", profileValue: $perjanjianController.pihak2NomorRekening, keyboardNum: true)
+							FormView(title: "Atas Nama Rekening", profileValue: $perjanjianController.pihak2AtasNamaRekening, keyboardNum: false)
 							Text("Pastikan semua data yang anda masukan sudah benar dan sesuai dengan KTP dan dokumen anda")
 								.font(.caption2)
 								.fontWeight(.regular)

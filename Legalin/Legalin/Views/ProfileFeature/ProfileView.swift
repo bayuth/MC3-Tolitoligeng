@@ -18,7 +18,7 @@ struct ProfileView: View {
 		@State var nomorHp: String = ""
 		
 		@ObservedObject var profileKtp = ScanDataClass()
-		@ObservedObject var profiledata = functionTrimKtp()
+    @ObservedObject var profiledata = functionTrimKtp(pihak: 0)
 		
 		var body: some View {
 			NavigationView {

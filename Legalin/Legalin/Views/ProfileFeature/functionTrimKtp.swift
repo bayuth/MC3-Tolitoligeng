@@ -9,10 +9,16 @@ import SwiftUI
 
 class functionTrimKtp: ObservableObject {
 	
+    var selectedPihak:Int
 	@Published var showScannerSheet = false
 //	@Published var texts:[ScanData] = []
 	@Published var ktpInfo:ScanDataClass = ScanDataClass()
+    @EnvironmentObject var perjanjianController: PerjanjianController
 //	@Published var ktpInfo:[ScanDataClass] = []
+    
+    init(pihak:Int){
+        selectedPihak = pihak
+    }
 	
 	func makeScannerView() -> ScannerView {
 		ScannerView(completion: {
@@ -144,6 +150,17 @@ class functionTrimKtp: ObservableObject {
 				
 //				let newKtpInfo = ScanDataClass()
 				self.ktpInfo.updateData(nama: namaFromKtp ?? "", nik: nikFromKtp ?? "", tanggalLahir: date ?? Date() ,alamat: alamatFromKtp ?? "", Rt: rtBersih , Rw: rwBersih , kelurahan: kelurahanFromKtp ?? "", kecamatan: kecamatanFromKtp ?? "", kota: kotaFromKtp ?? "", provinsi: provinsiFromKtp ?? "", pekerjaan: "", nomorHp: "", namaBank: "", nomorRekening: "", atasNamaRekening: "")
+                
+                if(self.selectedPihak == 1){
+                    self.perjanjianController.updatePihak1KTP(nik: nikFromKtp, nama: namaFromKtp, tanggalLahir: date ?? Date(), alamat: alamatFromKtp, RT: rtBersih, RW: rwBersih, kelurahan: kelurahanFromKtp, kecamatan: kecamatanFromKtp, kota: kotaFromKtp, provinsi: provinsiFromKtp)
+                }
+                
+                if(self.selectedPihak == 2){
+                    self.perjanjianController.updatePihak2KTP(nik: nikFromKtp, nama: namaFromKtp, tanggalLahir: date ?? Date(), alamat: alamatFromKtp, RT: rtBersih, RW: rwBersih, kelurahan: kelurahanFromKtp, kecamatan: kecamatanFromKtp, kota: kotaFromKtp, provinsi: provinsiFromKtp)
+                }
+                //Update to controller
+                
+                
 //				self.ktpInfo = newKtpInfo
 //				print(self.ktpInfo.nama)
 //				print(self.ktpInfo[0].nama)

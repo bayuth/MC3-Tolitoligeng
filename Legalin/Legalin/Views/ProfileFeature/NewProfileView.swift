@@ -23,7 +23,7 @@ struct NewProfileView: View {
 	@State var nampungDataKtp:[nampungKtpData] = []
 	@State var scandata:ScanData?
 	
-	@ObservedObject var trimKtp = functionTrimKtp()
+    @ObservedObject var trimKtp = functionTrimKtp(pihak: 0)
 	@Environment(\.presentationMode) var mode: Binding<PresentationMode>
 	@State var showingAlert = false
 	
