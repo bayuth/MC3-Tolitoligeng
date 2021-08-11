@@ -50,14 +50,14 @@ struct PerjanjianPage: View {
         )}.environmentObject(perjanjianController)
     }
     
-    func getIndex(item: Agreements)->Int{
-        return agreementData.list.firstIndex { (item1) -> Bool in
-            return item.id == item1.id
-        } ?? 0
-    }
+    
 }
 
-
+func getIndex(item: Agreements, items: PerjanjianViewModel)->Int{
+    return items.list.firstIndex { (item1) -> Bool in
+        return item.id == item1.id
+    } ?? 0
+}
 
 enum AgreementSegment:String, CaseIterable{
     case onGoing = "Berlangsung"
