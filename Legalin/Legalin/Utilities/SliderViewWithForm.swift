@@ -58,7 +58,6 @@ struct SliderViewWithForm: View {
                 Text(text2)
                     .foregroundColor(Color.init(hex: "#707070"))
                     .font(.caption)
-                TextField("Name: ", text: $formattedText)
             }
             .frame(
                 minWidth: 0,
