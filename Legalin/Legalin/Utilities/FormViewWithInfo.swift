@@ -45,51 +45,51 @@ struct FormViewWithInfo: View {
                 }
                 
                 if(title == "Metode Pembayaran"){
-                
-                HStack{
-                    Text(profileValue).font(.body)
-                    Spacer()
-                    if(showButton){
-                        Button(action: {
-                            perjanjianController.modalMetodePembayaran.toggle()
-                        }) {
-                            HStack(spacing: 10) {
-                                Text(buttonTitle).foregroundColor(Color.init(hex: "#C4C4C4"))
-                                Image(systemName: "chevron.right").foregroundColor(Color.init(hex: "#C4C4C4"))
+                    
+                    HStack{
+                        Text(profileValue).font(.body)
+                        Spacer()
+                        if(showButton){
+                            Button(action: {
+                                perjanjianController.modalMetodePembayaran.toggle()
+                            }) {
+                                HStack(spacing: 10) {
+                                    Text(buttonTitle).foregroundColor(Color.init(hex: "#C4C4C4"))
+                                    Image(systemName: "chevron.right").foregroundColor(Color.init(hex: "#C4C4C4"))
+                                }
                             }
                         }
+                        
+                    }.sheet(isPresented: $perjanjianController.modalMetodePembayaran){
+                        NavigationView{
+                            ModalMetodePembayaran(isPresented: $perjanjianController.modalMetodePembayaran, metodePembayaran: $profileValue)
+                        }
                     }
-                    
-                }.sheet(isPresented: $perjanjianController.modalMetodePembayaran){
-                    NavigationView{
-                        ModalMetodePembayaran(isPresented: $perjanjianController.modalMetodePembayaran, metodePembayaran: $profileValue)
-                    }
-                    }
-                .padding(.top, 4)
-                Divider()
+                    .padding(.top, 4)
+                    Divider()
                 } else if(title == "Pengadilan Negeri") {
-                
-                HStack{
-                    Text(profileValue).font(.body)
-                    Spacer()
-                    if(showButton){
-                        Button(action: {
-                            perjanjianController.modalPengadilanNegeri.toggle()
-                        }) {
-                            HStack(spacing: 10) {
-                                Text(buttonTitle).foregroundColor(Color.init(hex: "#C4C4C4"))
-                                Image(systemName: "chevron.right").foregroundColor(Color.init(hex: "#C4C4C4"))
+                    
+                    HStack{
+                        Text(profileValue).font(.body)
+                        Spacer()
+                        if(showButton){
+                            Button(action: {
+                                perjanjianController.modalPengadilanNegeri.toggle()
+                            }) {
+                                HStack(spacing: 10) {
+                                    Text(buttonTitle).foregroundColor(Color.init(hex: "#C4C4C4"))
+                                    Image(systemName: "chevron.right").foregroundColor(Color.init(hex: "#C4C4C4"))
+                                }
                             }
                         }
+                        
+                    }.sheet(isPresented: $perjanjianController.modalPengadilanNegeri){
+                        NavigationView{
+                            ModalPengadilanNegeri(isPresented: $perjanjianController.modalPengadilanNegeri, pengadilanNegeri: $profileValue)
+                        }
                     }
-                    
-                }.sheet(isPresented: $perjanjianController.modalPengadilanNegeri){
-                    NavigationView{
-                        ModalPengadilanNegeri(isPresented: $perjanjianController.modalPengadilanNegeri, pengadilanNegeri: $profileValue)
-                    }
-                    }
-                .padding(.top, 4)
-                Divider()
+                    .padding(.top, 4)
+                    Divider()
                 }
                 
                 else {
