@@ -75,10 +75,10 @@ struct SliderViewWithForm: View {
             formattedText = resultRupiah
         }else if type == 1 {
             rangeOfSlider = 0...6.0
-            formattedText = "\(sliderValue) %"
+            formattedText = "\(String(format:"%.2f", sliderValue)) %"
         }else{
             rangeOfSlider = 0...24.0
-            formattedText = "\(sliderValue) bulan"
+            formattedText = "\(Int(sliderValue)) bulan"
         }
     }
 }
