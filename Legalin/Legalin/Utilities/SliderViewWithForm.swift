@@ -29,7 +29,14 @@ struct SliderViewWithForm: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title).font(.footnote).fontWeight(.light)
-            TextField(title, text: $formattedText)
+            TextField(title, text: $formattedText, onEditingChanged: { (isBegin) in
+                if isBegin {
+                    formattedText = ""
+                } else {
+                    textChanged(to: formattedText)
+                }
+            }
+            ).keyboardType(.numberPad)
             Divider()
             Slider(
                 value: $sliderValue,
@@ -66,16 +73,26 @@ struct SliderViewWithForm: View {
         
     }
     
+    func textChanged(to value: String) {
+        let valueString = Double(value)
+        sliderValue = valueString ?? 0.0
+        getFormattedText()
+    }
+    
     func getFormattedText() {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = Locale(identifier: "id_ID")
+        let resultRupiah = formatter.string(from: NSNumber(value: sliderValue))!
         if type == 0 {
             rangeOfSlider = 0...50000000.0
-            formattedText = "Rp \(sliderValue)"
+            formattedText = resultRupiah
         }else if type == 1 {
             rangeOfSlider = 0...6.0
-            formattedText = "\(sliderValue) %"
+            formattedText = "\(String(format:"%.2f", sliderValue)) %"
         }else{
             rangeOfSlider = 0...24.0
-            formattedText = "\(sliderValue) bulan"
+            formattedText = "\(Int(sliderValue)) bulan"
         }
     }
 }
