@@ -66,9 +66,13 @@ struct SliderViewWithForm: View {
     }
     
     func getFormattedText() {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = Locale(identifier: "id_ID")
+        let resultRupiah = formatter.string(from: NSNumber(value: sliderValue))!
         if type == 0 {
             rangeOfSlider = 0...50000000.0
-            formattedText = "Rp \(sliderValue)"
+            formattedText = resultRupiah
         }else if type == 1 {
             rangeOfSlider = 0...6.0
             formattedText = "\(sliderValue) %"
