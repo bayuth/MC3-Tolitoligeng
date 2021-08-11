@@ -9,6 +9,8 @@ import Foundation
 
 class PerjanjianController: ObservableObject {
     
+    static let shared = PerjanjianController()
+    
     //Step 1 attribute
     @Published var pihak1NIK: String!
     @Published var pihak1Nama: String!

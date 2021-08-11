@@ -19,7 +19,7 @@ struct FormViewWithInfo: View {
     @State var info: String
     @State var buttonTitle: String
     
-    @EnvironmentObject var perjanjianController: PerjanjianController
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     var body: some View {
         ZStack{

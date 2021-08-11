@@ -13,7 +13,8 @@ class functionTrimKtp: ObservableObject {
 	@Published var showScannerSheet = false
 //	@Published var texts:[ScanData] = []
 	@Published var ktpInfo:ScanDataClass = ScanDataClass()
-    @EnvironmentObject var perjanjianController: PerjanjianController
+    
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
 //	@Published var ktpInfo:[ScanDataClass] = []
     
     init(pihak:Int){

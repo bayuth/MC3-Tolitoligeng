@@ -15,7 +15,7 @@ struct step4Agunan: View {
     
     @State var toggleState: Bool = false
     @State var disabledStaus: Bool = false
-    @EnvironmentObject var perjanjianController: PerjanjianController
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     var body: some View {
         

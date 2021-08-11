@@ -11,7 +11,7 @@ struct step2Pemberi: View {
     
     @Environment(\.presentationMode) var masterPresentationMode
     
-    @EnvironmentObject var perjanjianController: PerjanjianController
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     @ObservedObject var trimKtp = functionTrimKtp(pihak: 2)
 	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>

@@ -17,7 +17,7 @@ struct PerjanjianPage: View {
     @State private var selectedSide: AgreementSegment = .onGoing
     @StateObject var agreementData = PerjanjianViewModel()
     @State var offset: CGSize = .zero
-    @StateObject var perjanjianController = PerjanjianController()
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     var body: some View {
         NavigationView{
@@ -47,7 +47,7 @@ struct PerjanjianPage: View {
                                                     }
                                                     .fullScreenCover(isPresented: $isPresented, content: step1Peminjam.init)
                                                 }
-        )}.environmentObject(perjanjianController)
+        )}
     }
     
     

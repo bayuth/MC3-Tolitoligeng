@@ -25,7 +25,7 @@ struct step3Detail: View {
     @State private var title2 = "Pengadilan Negeri"
     @State private var title3 = "Pilih Tanggal"
     
-    @EnvironmentObject var perjanjianController: PerjanjianController
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()

@@ -12,7 +12,7 @@ struct step1Peminjam: View {
     @Environment(\.presentationMode) var presentationMode
     
     @ObservedObject var trimKtp = functionTrimKtp(pihak: 1)
-    @EnvironmentObject var perjanjianController: PerjanjianController
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     @State var showTanggalLahir = false
     let dateFormatter: DateFormatter = {
