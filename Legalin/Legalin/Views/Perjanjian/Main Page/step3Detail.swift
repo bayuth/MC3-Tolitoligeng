@@ -40,6 +40,8 @@ struct step3Detail: View {
         
         ScrollView{
             VStack(alignment: .leading){
+                ButtonBordered(icon: "doc.text", titleButton: "Pilih Kredit (Opsional)")
+                    .padding(.horizontal, 4)
                 FormView(title: "Tujuan Peminjaman", profileValue: $tujuanPeminjaman, keyboardNum: false)
                 SliderViewWithForm(text1: "Pinjaman Maksimal", text2: "Rp 50000000", title: "Jumlah Pinjaman", type: 0)
                 SliderViewWithForm(text1: "Bunga Maksimal", text2: "6 % per tahun", title: "Bunga", type: 1)
@@ -72,11 +74,12 @@ struct step3Detail: View {
                         .datePickerStyle(GraphicalDatePickerStyle())
                     }
                 }
-                
+                ButtonBordered(icon: "percent", titleButton: "Lihat Simulasi Kredit")
+                    .padding(.horizontal, 4)
                 NavigationLink(
                     destination: step4Agunan(masterPresentationMode4 : _masterPresentationMode3),
                     label: {
-                        ButtonNext(text: "Lanjutkan", isDataComplete: true).padding(.bottom, 16).padding(.top, 64)
+                        ButtonNext(text: "Lanjutkan", isDataComplete: true).padding(.bottom, 16).padding(.top, 16)
                     })
                 
             }
