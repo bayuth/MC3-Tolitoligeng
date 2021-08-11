@@ -31,7 +31,14 @@ struct SliderViewWithForm: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title).font(.footnote).fontWeight(.light)
-            TextField(title, text: $formattedText)
+            TextField(title, text: $formattedText, onEditingChanged: { (isBegin) in
+                if isBegin {
+                    formattedText = ""
+                } else {
+                    textChanged(to: formattedText)
+                }
+            }
+            ).keyboardType(.numberPad)
             Divider()
             Slider(
                 value: $sliderValue,
@@ -42,7 +49,7 @@ struct SliderViewWithForm: View {
                     getFormattedText()
                 }
             ).padding(.bottom, 11).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-			.padding(.horizontal,10)
+            .padding(.horizontal,10)
             HStack{
                 Text(text1)
                     .foregroundColor(Color.init(hex: "#707070"))
@@ -51,6 +58,7 @@ struct SliderViewWithForm: View {
                 Text(text2)
                     .foregroundColor(Color.init(hex: "#707070"))
                     .font(.caption)
+                TextField("Name: ", text: $formattedText)
             }
             .frame(
                 minWidth: 0,
@@ -61,7 +69,7 @@ struct SliderViewWithForm: View {
             )
             .padding(.bottom, 10)
             Divider()
-		}.padding(.bottom,15)
+        }.padding(.bottom,15)
         
     }
     
@@ -80,6 +88,12 @@ struct SliderViewWithForm: View {
             rangeOfSlider = 0...24.0
             formattedText = "\(Int(sliderValue)) bulan"
         }
+    }
+    
+    func textChanged(to value: String) {
+        let valueString = Double(value)
+        sliderValue = valueString ?? 0.0
+        getFormattedText()
     }
 }
 
