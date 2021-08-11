@@ -10,7 +10,7 @@ import SwiftUI
 struct UlasanKredit: View {
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
-        NavigationView {
+//        NavigationView {
             ScrollView{
                 VStack {
                     HStack{
@@ -100,7 +100,18 @@ struct UlasanKredit: View {
                 
             }
             .navigationBarTitle("Ulasan Kredit", displayMode: .inline)
-        }
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading:
+                                    Button(action: {
+                                        presentationMode.wrappedValue.dismiss()
+                                    }, label: {
+                                        Image(systemName: "chevron.left")
+                                            .foregroundColor(.white)
+                                        Text("Perjanjian")
+                                            .foregroundColor(.white)
+                                    })
+            )
+//        }
     }
 }
 
