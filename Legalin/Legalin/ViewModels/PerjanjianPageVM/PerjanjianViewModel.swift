@@ -9,7 +9,7 @@ import SwiftUI
 
 class PerjanjianViewModel: ObservableObject {
     
-    @Published var list = [
+    @Published var list : [Agreements] = [
         Agreements(agreementTitle: "Perjanjian 1", amountOfLoan: "Rp. 25.000.000", Date: "25/07/2021", lenderName: "Bambang oke", signStatus: false, offset: 0, isSwiped: false),
         Agreements(agreementTitle: "Perjanjian 2", amountOfLoan: "Rp. 25.000.000", Date: "25/07/2021", lenderName: "Bambang oke", signStatus: false, offset: 0, isSwiped: false),
         Agreements(agreementTitle: "Perjanjian 3", amountOfLoan: "Rp. 25.000.000", Date: "25/07/2021", lenderName: "Bambang oke", signStatus: false, offset: 0, isSwiped: false),
