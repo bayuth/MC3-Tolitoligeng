@@ -31,7 +31,7 @@ struct step2Pemberi: View {
 			ScrollView{
 				VStack(alignment: .leading) {
 					
-                    ButtonBordered(icon: "person.fill", titleButton: "Pilih Identitas (Opsional)")
+                    ButtonBorderedComingSoon(icon: "person.fill", titleButton: "Pilih Identitas")
 					
 					Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.bottom,7)
 					

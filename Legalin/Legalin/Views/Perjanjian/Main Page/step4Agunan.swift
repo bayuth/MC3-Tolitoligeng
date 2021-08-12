@@ -60,7 +60,7 @@ struct step4Agunan: View {
             Spacer()
             
             NavigationLink(
-                destination: ConfirmationPage()){
+                destination: ConfirmationPage(masterPresentationMode5: _masterPresentationMode4)){
                 ButtonNext(text: "Buat Surat", isDataComplete: false)
             }.disabled(disabledStaus)
             
