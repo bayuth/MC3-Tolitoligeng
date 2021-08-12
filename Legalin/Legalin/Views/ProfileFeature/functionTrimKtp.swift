@@ -15,6 +15,7 @@ class functionTrimKtp: ObservableObject {
 	@Published var ktpInfo:ScanDataClass = ScanDataClass()
     
     @ObservedObject var perjanjianController: PerjanjianController = .shared
+    @ObservedObject var profileController: ProfileController = .shared
 //	@Published var ktpInfo:[ScanDataClass] = []
     
     init(pihak:Int){
@@ -151,6 +152,10 @@ class functionTrimKtp: ObservableObject {
 				
 //				let newKtpInfo = ScanDataClass()
 				self.ktpInfo.updateData(nama: namaFromKtp ?? "", nik: nikFromKtp ?? "", tanggalLahir: date ?? Date() ,alamat: alamatFromKtp ?? "", Rt: rtBersih , Rw: rwBersih , kelurahan: kelurahanFromKtp ?? "", kecamatan: kecamatanFromKtp ?? "", kota: kotaFromKtp ?? "", provinsi: provinsiFromKtp ?? "", pekerjaan: "", nomorHp: "", namaBank: "", nomorRekening: "", atasNamaRekening: "")
+                
+                if(self.selectedPihak == 0){
+                    self.profileController.updatePihak1KTP(nik: nikFromKtp, nama: namaFromKtp, tanggalLahir: date ?? Date(), alamat: alamatFromKtp, RT: rtBersih, RW: rwBersih, kelurahan: kelurahanFromKtp, kecamatan: kecamatanFromKtp, kota: kotaFromKtp, provinsi: provinsiFromKtp)
+                }
                 
                 if(self.selectedPihak == 1){
                     self.perjanjianController.updatePihak1KTP(nik: nikFromKtp, nama: namaFromKtp, tanggalLahir: date ?? Date(), alamat: alamatFromKtp, RT: rtBersih, RW: rwBersih, kelurahan: kelurahanFromKtp, kecamatan: kecamatanFromKtp, kota: kotaFromKtp, provinsi: provinsiFromKtp)

@@ -20,7 +20,6 @@ struct loadingScreen: View {
             NavigationView{
             NavigationLink(
                 destination:
-//                    GeneratePDF(),
                     PdfAction(masterPresentationMode8: _masterPresentationMode7, hideSwitch: true)
                     .navigationBarBackButtonHidden(true),
                 isActive: .constant(progressAmount == 100)
@@ -47,8 +46,8 @@ struct loadingScreen: View {
             }
                 }
             }.buttonStyle(PlainButtonStyle())
+            }.navigationBarBackButtonHidden(true)
         }
-        }.navigationBarHidden(true)
     }
 }
 
