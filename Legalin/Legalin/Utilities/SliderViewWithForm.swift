@@ -74,8 +74,13 @@ struct SliderViewWithForm: View {
     }
     
     func textChanged(to value: String) {
-        let valueString = Double(value)
-        sliderValue = valueString ?? 0.0
+        let valueString = Double(value) ?? 0.0
+        switch valueString {
+        case rangeOfSlider:
+            sliderValue = valueString
+        default:
+            sliderValue = rangeOfSlider.upperBound
+        }
         getFormattedText()
     }
     
