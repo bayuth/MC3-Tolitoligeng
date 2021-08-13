@@ -21,7 +21,7 @@ struct ProfileView: View {
         @ObservedObject var profiledata = functionTrimKtp(pihak: 0)
     
         @ObservedObject var profileController: ProfileController = .shared
-        var coreDataVM: CoreDataViewModel = .shared
+        @ObservedObject var coreDataVM: CoreDataViewModel = .shared
 		
 		var body: some View {
 			NavigationView {

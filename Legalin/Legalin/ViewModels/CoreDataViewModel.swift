@@ -161,7 +161,7 @@ class CoreDataViewModel: ObservableObject {
     func getAllPihak2(){
         let request = NSFetchRequest<Akun>(entityName: "Akun")
         
-        let sort = NSSortDescriptor(keyPath: \Akun.dateCreated, ascending: true)
+        let sort = NSSortDescriptor(keyPath: \Akun.dateCreated, ascending: false)
         request.sortDescriptors = [sort]
         
         let predicateProfile = NSPredicate(format: "profileSelected == %@", NSNumber(value: false))
@@ -320,7 +320,7 @@ class CoreDataViewModel: ObservableObject {
     func getAllAgunan()->[Agunan]{
         let request = NSFetchRequest<Agunan>(entityName: "Agunan")
         
-        let sort = NSSortDescriptor(keyPath: \Agunan.dateCreated, ascending: true)
+        let sort = NSSortDescriptor(keyPath: \Agunan.dateCreated, ascending: false)
         request.sortDescriptors = [sort]
         
         var listAgunan:[Agunan] = []
@@ -389,7 +389,7 @@ class CoreDataViewModel: ObservableObject {
     func getAllKredit(){
         let request = NSFetchRequest<Kredit>(entityName: "Kredit")
         
-        let sort = NSSortDescriptor(keyPath: \Kredit.dateCreated, ascending: true)
+        let sort = NSSortDescriptor(keyPath: \Kredit.dateCreated, ascending: false)
         request.sortDescriptors = [sort]
         
         let predicatePinjamanPage = NSPredicate(format: "pinjamanPage == %@", NSNumber(value: false))
@@ -502,7 +502,7 @@ class CoreDataViewModel: ObservableObject {
         let predicatePinjamanPage = NSPredicate(format: "status == %@", status)
         request.predicate = predicatePinjamanPage
         
-        let sort = NSSortDescriptor(keyPath: \Pinjaman.dateCreated, ascending: true)
+        let sort = NSSortDescriptor(keyPath: \Pinjaman.dateCreated, ascending: false)
         request.sortDescriptors = [sort]
         
         do{
@@ -520,7 +520,7 @@ class CoreDataViewModel: ObservableObject {
         let predicatePinjamanPage = NSPredicate(format: "status == %@", status)
         request.predicate = predicatePinjamanPage
         
-        let sort = NSSortDescriptor(keyPath: \Pinjaman.dateCreated, ascending: true)
+        let sort = NSSortDescriptor(keyPath: \Pinjaman.dateCreated, ascending: false)
         request.sortDescriptors = [sort]
         
         do{
@@ -538,7 +538,7 @@ class CoreDataViewModel: ObservableObject {
         let predicatePinjamanPage = NSPredicate(format: "status == %@", status)
         request.predicate = predicatePinjamanPage
         
-        let sort = NSSortDescriptor(keyPath: \Pinjaman.dateCreated, ascending: true)
+        let sort = NSSortDescriptor(keyPath: \Pinjaman.dateCreated, ascending: false)
         request.sortDescriptors = [sort]
         
         do{
@@ -556,7 +556,7 @@ class CoreDataViewModel: ObservableObject {
         let predicatePinjamanPage = NSPredicate(format: "status == %@", status)
         request.predicate = predicatePinjamanPage
         
-        let sort = NSSortDescriptor(keyPath: \Pinjaman.dateCreated, ascending: true)
+        let sort = NSSortDescriptor(keyPath: \Pinjaman.dateCreated, ascending: false)
         request.sortDescriptors = [sort]
         
         do{

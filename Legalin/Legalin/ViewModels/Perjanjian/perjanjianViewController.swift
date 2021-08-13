@@ -11,7 +11,9 @@ class PerjanjianController: ObservableObject {
     
     static let shared = PerjanjianController()
     
+    var mainPageVM: PerjanjianViewModel = .shared
     var coreDataVM: CoreDataViewModel = .shared
+    
     var profil: [Akun] = []
     
     //Step 1 attribute
@@ -297,6 +299,8 @@ class PerjanjianController: ObservableObject {
         
         //Update agunan atribut
         coreDataVM.updateAgunan(agunan: newPinjaman.agunan!, nama: namaBarang, harga: hargaBarang, nomorSeri: nomorSeri, tipeBarang: tipeBarangAgunan, warna: warnaBarang)
+        
+        mainPageVM.fillAllAgreement()
     }
     
     func setTipeBarangAgunan(selected: String){
