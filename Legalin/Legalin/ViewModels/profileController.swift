@@ -9,7 +9,7 @@ import Foundation
 
 class ProfileController: ObservableObject{
     
-    var coreDataVM = CoreDataViewModel()
+    var coreDataVM: CoreDataViewModel = .shared
     
     static let shared = ProfileController()
     
@@ -54,7 +54,7 @@ class ProfileController: ObservableObject{
     
     func updateProfileCoreData(){
         
-        coreDataVM.updateAkun(akun: profil[0], NIK: pihak1NIK, nama: pihak1Nama, tanggalLahir: pihak1TanggalLahir, alamat: pihak1Alamat, rt: pihak1RT, rw: pihak1RW, kecamatan: pihak1Kecamatan, kelurahanDesa: pihak1Kelurahan, kotaKabupaten: pihak1Kota, provinsi: pihak1Provinsi, pekerjaan: pihak1Pekerjaan, nomorAktif: pihak1NomorHP)
+        coreDataVM.updateAkun(akun: coreDataVM.createPihak1(pinjamanPage: false)!, NIK: pihak1NIK, nama: pihak1Nama, tanggalLahir: pihak1TanggalLahir, alamat: pihak1Alamat, rt: pihak1RT, rw: pihak1RW, kecamatan: pihak1Kecamatan, kelurahanDesa: pihak1Kelurahan, kotaKabupaten: pihak1Kota, provinsi: pihak1Provinsi, pekerjaan: pihak1Pekerjaan, nomorAktif: pihak1NomorHP)
         
     }
     

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TestCoreDataView: View {
     
-    @StateObject var vm = CoreDataViewModel()
+    @StateObject var vm: CoreDataViewModel = .shared
     @State var username: String = ""
     
     var body: some View {

@@ -10,6 +10,8 @@ import SwiftUI
 struct InfoAgunan: View {
     var hideButton : Bool
     @Environment(\.presentationMode) var masterPresentationMode6
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
+    
     var body: some View {
         VStack(alignment: .leading){
             HStack{
@@ -94,7 +96,7 @@ struct InfoAgunan: View {
                             .stroke(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
                     )
                     .padding(.horizontal)
-                    }
+                }
             }
             Spacer()
             
@@ -108,6 +110,7 @@ struct InfoAgunan: View {
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity, maxHeight: 50)
                     })
+                    .simultaneousGesture(TapGesture().onEnded{perjanjianController.updatePinjamanCoreData(status: StatusSurat.notSigned)})
                     .frame(maxWidth: .infinity, maxHeight: 50)
                     .background(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
                     .specCornerRadius(8, corners: .allCorners)

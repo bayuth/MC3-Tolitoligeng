@@ -11,7 +11,7 @@ class PerjanjianController: ObservableObject {
     
     static let shared = PerjanjianController()
     
-    var coreDataVM = CoreDataViewModel()
+    var coreDataVM: CoreDataViewModel = .shared
     var profil: [Akun] = []
     
     //Step 1 attribute
@@ -118,7 +118,7 @@ class PerjanjianController: ObservableObject {
         metodePembayaran = "Metode Pembayaran"
         
         tanggalJatuhTempo = "Pilih Tanggal"
-        
+
         modalPengadilanNegeri = false
         pengadilanNegeri = "Pengadilan Negeri"
         
@@ -138,6 +138,23 @@ class PerjanjianController: ObservableObject {
         sycnPihak1()
     }
     
+    func sycnPihak1(){
+        if (profil != []){
+            pihak1NIK = profil[0].ktp?.nik ?? ""
+            pihak1Nama = profil[0].ktp?.nama ?? ""
+            pihak1TanggalLahir = profil[0].ktp?.tanggalLahir ?? Date()
+            pihak1Alamat = profil[0].ktp?.alamat ?? ""
+            pihak1RT = profil[0].ktp?.rt ?? ""
+            pihak1RW = profil[0].ktp?.rw ?? ""
+            pihak1Kelurahan = profil[0].ktp?.kelurahanDesa ?? ""
+            pihak1Kecamatan = profil[0].ktp?.kecamatan ?? ""
+            pihak1Kota = profil[0].ktp?.kotaKabupaten ?? ""
+            pihak1Provinsi = profil[0].ktp?.provinsi ?? ""
+            pihak1Pekerjaan = profil[0].pekerjaan ?? ""
+            pihak1NomorHP = profil[0].nomorAktif ?? ""
+        }
+    }
+    
     func checkEmptyString(item: String){
         if (item == ""){
             nextButtonState = false
@@ -148,25 +165,6 @@ class PerjanjianController: ObservableObject {
         if (item == 0){
             nextButtonState = false
         }
-    }
-    
-    func sycnPihak1(){
-        
-        if (profil != []){
-            pihak1NIK = profil[0].ktp?.nik
-            pihak1Nama = profil[0].ktp?.nama
-            pihak1TanggalLahir = profil[0].ktp?.tanggalLahir
-            pihak1Alamat = profil[0].ktp?.alamat
-            pihak1RT = profil[0].ktp?.rt
-            pihak1RW = profil[0].ktp?.rw
-            pihak1Kelurahan = profil[0].ktp?.kelurahanDesa
-            pihak1Kecamatan = profil[0].ktp?.kecamatan
-            pihak1Kota = profil[0].ktp?.kotaKabupaten
-            pihak1Provinsi = profil[0].ktp?.provinsi
-            pihak1Pekerjaan = profil[0].pekerjaan
-            pihak1NomorHP = profil[0].nomorAktif
-        }
-        
     }
     
     func setNextButtonState() {
@@ -282,8 +280,23 @@ class PerjanjianController: ObservableObject {
         pihak2AtasNamaRekening = atasNamaRekening
     }
     
-    func syncWithCoreData(){
+    func updatePinjamanCoreData(status: StatusSurat){
         
+        var newPinjaman = coreDataVM.createPinjaman()
+        //Update pinjaman atribut
+        coreDataVM.updatePinjaman(pinjaman: newPinjaman, tujuan: tujuanPeminjaman, metodePembayaran: metodePembayaran, jatuhTempo: tanggalJatuhTempo, pengadilanNegeri: pengadilanNegeri, tanggalTandaTangan: tanggalTandaTangan, status: status)
+        
+        //Update pihak1 atribut
+        coreDataVM.updateAkun(akun: newPinjaman.pihak1! , NIK: pihak1NIK, nama: pihak1Nama, tanggalLahir: pihak1TanggalLahir, alamat: pihak1Alamat, rt: pihak1RT, rw: pihak1RW, kecamatan: pihak1Kecamatan, kelurahanDesa: pihak1Kelurahan, kotaKabupaten: pihak1Kota, provinsi: pihak1Provinsi, pekerjaan: pihak1Pekerjaan, nomorAktif: pihak1NomorHP)
+        
+        //Update pihak2 atribut
+        coreDataVM.updateAkun(akun: newPinjaman.pihak2! , NIK: pihak2NIK, nama: pihak2Nama, tanggalLahir: pihak2TanggalLahir, alamat: pihak2Alamat, rt: pihak2RT, rw: pihak2RW, kecamatan: pihak2Kecamatan, kelurahanDesa: pihak2Kelurahan, kotaKabupaten: pihak2Kota, provinsi: pihak2Provinsi, pekerjaan: pihak2Pekerjaan, nomorAktif: pihak2NomorHP)
+        
+        //Update kredit atribut
+        coreDataVM.updateKredit(kredit: newPinjaman.kredit!, nama: tujuanPeminjaman, bunga: bunga, jumlahPinjaman: jumlahPinjaman, tenor: tenor)
+        
+        //Update agunan atribut
+        coreDataVM.updateAgunan(agunan: newPinjaman.agunan!, nama: namaBarang, harga: hargaBarang, nomorSeri: nomorSeri, tipeBarang: tipeBarangAgunan, warna: warnaBarang)
     }
     
     func setTipeBarangAgunan(selected: String){

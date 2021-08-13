@@ -99,10 +99,12 @@ struct step1Peminjam: View {
                   message: Text("Apakah anda ingin menyimpan draft?"),
                   primaryButton:
                     .cancel(Text("Simpan")) {
+                        perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
                         presentationMode.wrappedValue.dismiss()
                                 },
                   secondaryButton:
                     .destructive(Text("Hapus")){
+                        
                         presentationMode.wrappedValue.dismiss()
                     
                   })

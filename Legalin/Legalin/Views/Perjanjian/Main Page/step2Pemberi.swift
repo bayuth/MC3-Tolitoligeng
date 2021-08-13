@@ -111,10 +111,12 @@ struct step2Pemberi: View {
                                           message: Text("Apakah anda ingin menyimpan draft?"),
                                           primaryButton:
                                             .destructive(Text("Hapus")){
+                                                
                                                 masterPresentationMode.wrappedValue.dismiss()
                                                         },
                                           secondaryButton:
                                             .cancel(Text("Simpan")) {
+                                                perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
                                                 masterPresentationMode.wrappedValue.dismiss()
                                           })
                                     

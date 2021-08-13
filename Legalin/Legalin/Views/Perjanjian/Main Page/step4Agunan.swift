@@ -92,6 +92,7 @@ struct step4Agunan: View {
                                                         },
                                           secondaryButton:
                                             .cancel(Text("Simpan")) {
+                                                perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
                                                 masterPresentationMode4.wrappedValue.dismiss()
                                           })
                                     
