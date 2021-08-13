@@ -25,6 +25,8 @@ struct step3Detail: View {
     @State private var title2 = "Pengadilan Negeri"
     @State private var title3 = "Pilih Tanggal"
     
+    @State var showAlert = false
+    
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     let dateFormatter: DateFormatter = {
@@ -103,8 +105,21 @@ struct step3Detail: View {
                                         })
                                     , trailing:
                                         Button("Tutup") {
-                                            masterPresentationMode3.wrappedValue.dismiss()
-                                        }.foregroundColor(.white))
+                                            showAlert = true
+                                        }.foregroundColor(.white)).alert(isPresented: $showAlert, content: {
+                                            
+                                            Alert(title: Text("Simpan Draft"),
+                                                  message: Text("Apakah anda ingin menyimpan draft?"),
+                                                  primaryButton:
+                                                    .destructive(Text("Hapus")){
+                                                        masterPresentationMode3.wrappedValue.dismiss()
+                                                                },
+                                                  secondaryButton:
+                                                    .cancel(Text("Simpan")) {
+                                                        masterPresentationMode3.wrappedValue.dismiss()
+                                                  })
+                                            
+                                        })
                 
             }
         }.frame(width: UIScreen.main.bounds.width - 35,

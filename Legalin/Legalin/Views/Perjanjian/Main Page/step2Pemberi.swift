@@ -17,6 +17,8 @@ struct step2Pemberi: View {
 	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 	@State var showTanggalLahir = false
 	@State var titleLahir = "Pilih Tanggal Lahir"
+    @State var showAlert = false
+    
 	let dateFormatter: DateFormatter = {
 		let df = DateFormatter()
 		df.dateStyle = .medium
@@ -102,8 +104,22 @@ struct step2Pemberi: View {
 								})
 							, trailing:
                                 Button("Tutup") {
-                                    masterPresentationMode.wrappedValue.dismiss()
-                                }.foregroundColor(.white))
+                                    showAlert = true
+                                }.foregroundColor(.white)).alert(isPresented: $showAlert, content: {
+                                    
+                                    Alert(title: Text("Simpan Draft"),
+                                          message: Text("Apakah anda ingin menyimpan draft?"),
+                                          primaryButton:
+                                            .destructive(Text("Hapus")){
+                                                masterPresentationMode.wrappedValue.dismiss()
+                                                        },
+                                          secondaryButton:
+                                            .cancel(Text("Simpan")) {
+                                                masterPresentationMode.wrappedValue.dismiss()
+                                          })
+                                    
+                                })
+        
 	}
 }
 

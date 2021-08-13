@@ -30,7 +30,11 @@ struct KreditView: View {
             .navigationTitle("Kredit")
             .navigationBarItems(trailing:
                                     VStack{
-                                        Button(action: { isPresented.toggle() })
+                                        Button(action: {
+                                            
+//                                            isPresented.toggle()
+                                            
+                                        })
                                         {
                                             Image(systemName: "plus")
                                                 .font(.title)

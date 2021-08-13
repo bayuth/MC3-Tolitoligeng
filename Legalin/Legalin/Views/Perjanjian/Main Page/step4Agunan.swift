@@ -15,6 +15,8 @@ struct step4Agunan: View {
     
     @State var toggleState: Bool = false
     @State var disabledStaus: Bool = false
+    @State var showAlert: Bool = false
+    
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     var body: some View {
@@ -80,8 +82,21 @@ struct step4Agunan: View {
                                 })
                             , trailing:
                                 Button("Tutup") {
-                                    masterPresentationMode4.wrappedValue.dismiss()
-                                }.foregroundColor(.white))
+                                    showAlert = true
+                                }.foregroundColor(.white)).alert(isPresented: $showAlert, content: {
+                                    
+                                    Alert(title: Text("Simpan Draft"),
+                                          message: Text("Apakah anda ingin menyimpan draft?"),
+                                          primaryButton:
+                                            .destructive(Text("Hapus")){
+                                                masterPresentationMode4.wrappedValue.dismiss()
+                                                        },
+                                          secondaryButton:
+                                            .cancel(Text("Simpan")) {
+                                                masterPresentationMode4.wrappedValue.dismiss()
+                                          })
+                                    
+                                })
         
     }
 }

@@ -15,6 +15,9 @@ struct step1Peminjam: View {
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     @State var showTanggalLahir = false
+    
+    @State var showAlert = false
+    
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateStyle = .medium
@@ -88,8 +91,23 @@ struct step1Peminjam: View {
         .navigationBarTitle("Perjanjian Baru", displayMode: .inline)
         .navigationBarItems(trailing:
                                 Button("Tutup") {
-                                            presentationMode.wrappedValue.dismiss()
+                                    showAlert = true
                                 }.foregroundColor(.white))
+        .alert(isPresented: $showAlert, content: {
+            
+            Alert(title: Text("Simpan Draft"),
+                  message: Text("Apakah anda ingin menyimpan draft?"),
+                  primaryButton:
+                    .cancel(Text("Simpan")) {
+                        presentationMode.wrappedValue.dismiss()
+                                },
+                  secondaryButton:
+                    .destructive(Text("Hapus")){
+                        presentationMode.wrappedValue.dismiss()
+                    
+                  })
+            
+        })
     }
     }
 }
