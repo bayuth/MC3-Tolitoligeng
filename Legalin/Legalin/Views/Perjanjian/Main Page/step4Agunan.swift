@@ -31,7 +31,6 @@ struct step4Agunan: View {
             HStack{
                 Toggle(isOn: $perjanjianController.modalAgunanState){ Text("Agunan")
                 }.onChange(of: perjanjianController.modalAgunanState, perform: { value in
-                    print(value)
                     perjanjianController.setNextButtonState()
                 })
                 .toggleStyle(SwitchToggleStyle(tint: Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))))

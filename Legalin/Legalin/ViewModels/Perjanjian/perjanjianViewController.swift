@@ -11,6 +11,9 @@ class PerjanjianController: ObservableObject {
     
     static let shared = PerjanjianController()
     
+    var coreDataVM = CoreDataViewModel()
+    var profil: [Akun] = []
+    
     //Step 1 attribute
     @Published var pihak1NIK: String!
     @Published var pihak1Nama: String!
@@ -130,6 +133,9 @@ class PerjanjianController: ObservableObject {
         nomorSeri = ""
         
         nextButtonState = false
+        
+        profil = coreDataVM.pihak1
+        sycnPihak1()
     }
     
     func checkEmptyString(item: String){
@@ -142,6 +148,25 @@ class PerjanjianController: ObservableObject {
         if (item == 0){
             nextButtonState = false
         }
+    }
+    
+    func sycnPihak1(){
+        
+        if (profil != []){
+            pihak1NIK = profil[0].ktp?.nik
+            pihak1Nama = profil[0].ktp?.nama
+            pihak1TanggalLahir = profil[0].ktp?.tanggalLahir
+            pihak1Alamat = profil[0].ktp?.alamat
+            pihak1RT = profil[0].ktp?.rt
+            pihak1RW = profil[0].ktp?.rw
+            pihak1Kelurahan = profil[0].ktp?.kelurahanDesa
+            pihak1Kecamatan = profil[0].ktp?.kecamatan
+            pihak1Kota = profil[0].ktp?.kotaKabupaten
+            pihak1Provinsi = profil[0].ktp?.provinsi
+            pihak1Pekerjaan = profil[0].pekerjaan
+            pihak1NomorHP = profil[0].nomorAktif
+        }
+        
     }
     
     func setNextButtonState() {
