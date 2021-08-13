@@ -106,15 +106,3 @@ struct step4Agunan_Previews: PreviewProvider {
         step4Agunan()
     }
 }
-
-//extension UINavigationController{
-//    override open func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        let appearance = UINavigationBarAppearance()
-//        appearance.backgroundColor = UIColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-//        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-//        
-//        navigationBar.standardAppearance = appearance
-//    }
-//}

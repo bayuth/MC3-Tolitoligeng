@@ -26,7 +26,7 @@ struct InfoAgunan: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("macbook pro 16'' 2019 2,4Ghz 8-core intel core i9 RAM 32GB ")
+                        Text("\(perjanjianController.namaBarang)")
                     }
                     .padding(.bottom, 8)
                     
@@ -35,7 +35,7 @@ struct InfoAgunan: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("space grey".capitalized)
+                        Text("\(String(describing: perjanjianController.warnaBarang ?? ""))".capitalized)
                     }
                     .padding(.bottom, 8)
                     
@@ -44,7 +44,7 @@ struct InfoAgunan: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("Rp 35.000.000".capitalized)
+                        Text("Rp \(String(describing: perjanjianController.hargaBarang ?? ""))".capitalized)
                     }
                     .padding(.bottom, 8)
                     
@@ -53,7 +53,7 @@ struct InfoAgunan: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("C02DV15AM6R")
+                        Text("\(perjanjianController.nomorSeri)")
                     }
                     .padding(.bottom, 8)
                 }
