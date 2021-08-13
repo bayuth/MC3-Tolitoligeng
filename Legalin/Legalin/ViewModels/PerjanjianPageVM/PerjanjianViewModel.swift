@@ -35,11 +35,25 @@ class PerjanjianViewModel: ObservableObject {
     }
     
     func fillListDraft(){
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = Locale(identifier: "id_ID")
         let listPinjamanDraft = coreDataVM.listPinjamanDraft
+        let dateFormatting = DateFormatter()
+        dateFormatting.dateFormat = "dd/MM/YYYY"
         
         listDraft = []
         for item in listPinjamanDraft{
-            listDraft.append(Agreements(agreementTitle: item.kredit?.namaSimulasi ?? "", amountOfLoan: String(item.kredit?.jumlahPinjaman ?? 0), Date: "\(String(describing: item.dateModified ))", lenderName: item.pihak2?.ktp?.nama ?? "", signStatus: false, offset: 0, isSwiped: false, pinjaman: item))
+            listDraft.append(Agreements(agreementTitle: getTujuan(tujuan: item.tujuan ?? ""), amountOfLoan: formatter.string(from: NSNumber(value: item.kredit?.jumlahPinjaman ?? 0)) ?? "", Date: dateFormatting.string(from: item.dateModified ?? Date()), lenderName: item.pihak2?.ktp?.nama ?? "", signStatus: false, offset: 0, isSwiped: false, pinjaman: item))
+        }
+        
+    }
+    func getTujuan(tujuan: String) -> String {
+        if tujuan == ""{
+            return "Draft"
+        }
+        else{
+            return tujuan
         }
     }
     
@@ -51,16 +65,22 @@ class PerjanjianViewModel: ObservableObject {
         //Data yang udah ttd
         let listPinjamanOnGoing = coreDataVM.listPinjamanOnGoing
         
+        let dateFormatting = DateFormatter()
+        dateFormatting.dateFormat = "dd/MM/YYYY"
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = Locale(identifier: "id_ID")
         listOnGoing = []
         
         //Masukin yang belum ttd
         for item in listPinjamanNotSigned{
-            listOnGoing.append(Agreements(agreementTitle: item.kredit?.namaSimulasi ?? "", amountOfLoan: String(item.kredit?.jumlahPinjaman ?? 0), Date: "\(String(describing: item.dateModified ))", lenderName: item.pihak2?.ktp?.nama ?? "", signStatus: false, offset: 0, isSwiped: false, pinjaman: item))
+            listOnGoing.append(Agreements(agreementTitle: item.kredit?.namaSimulasi ?? "", amountOfLoan: formatter.string(from: NSNumber(value: item.kredit?.jumlahPinjaman ?? 0)) ?? "",Date: dateFormatting.string(from: item.dateModified ?? Date()), lenderName: item.pihak2?.ktp?.nama ?? "", signStatus: false, offset: 0, isSwiped: false, pinjaman: item))
         }
         
         //Masukin yang udah ttd
         for item in listPinjamanOnGoing{
-            listOnGoing.append(Agreements(agreementTitle: item.kredit?.namaSimulasi ?? "", amountOfLoan: String(item.kredit?.jumlahPinjaman ?? 0), Date: "\(String(describing: item.dateModified ))", lenderName: item.pihak2?.ktp?.nama ?? "", signStatus: false, offset: 0, isSwiped: false, pinjaman: item))
+            listOnGoing.append(Agreements(agreementTitle: item.kredit?.namaSimulasi ?? "", amountOfLoan: formatter.string(from: NSNumber(value: item.kredit?.jumlahPinjaman ?? 0)) ?? "", Date: dateFormatting.string(from: item.dateModified ?? Date()), lenderName: item.pihak2?.ktp?.nama ?? "", signStatus: false, offset: 0, isSwiped: false, pinjaman: item))
         }
     }
     
@@ -68,11 +88,13 @@ class PerjanjianViewModel: ObservableObject {
         
         //Data riwayat
         let listPinjamanDone = coreDataVM.listPinjamanDone
+        let dateFormatting = DateFormatter()
+        dateFormatting.dateFormat = "dd/MM/YYYY"
         
         listDone = []
         
         for item in listPinjamanDone{
-            listDone.append(Agreements(agreementTitle: item.kredit?.namaSimulasi ?? "", amountOfLoan: String(item.kredit?.jumlahPinjaman ?? 0), Date: "\(String(describing: item.dateModified ))", lenderName: item.pihak2?.ktp?.nama ?? "", signStatus: false, offset: 0, isSwiped: false, pinjaman: item))
+            listDone.append(Agreements(agreementTitle: item.kredit?.namaSimulasi ?? "", amountOfLoan: String(item.kredit?.jumlahPinjaman ?? 0), Date: dateFormatting.string(from: item.dateModified ?? Date()), lenderName: item.pihak2?.ktp?.nama ?? "", signStatus: false, offset: 0, isSwiped: false, pinjaman: item))
         }
         
     }
