@@ -86,7 +86,8 @@ struct step3Detail: View {
                         destination: step4Agunan(masterPresentationMode4 : _masterPresentationMode3),
                         label: {
                             ButtonNext(text: "Lanjutkan", isDataComplete: true).padding(.bottom, 16).padding(.top, 16)
-                        })
+                        }
+                    ).simultaneousGesture(TapGesture().onEnded{perjanjianController.setNextButtonState()})
                     
                 }
                 .navigationBarTitle("Perjanjian Baru", displayMode: .inline)

@@ -70,9 +70,8 @@ struct InfoAgunan: View {
                 
             }
             else{
-                Button(action: {
-                    
-                }, label: {
+                NavigationLink(
+                    destination: GeneratePDF()){
                     HStack{
                         VStack(alignment: .leading){
                             Text("Preview")
@@ -95,7 +94,7 @@ struct InfoAgunan: View {
                             .stroke(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
                     )
                     .padding(.horizontal)
-                })
+                    }
             }
             Spacer()
             

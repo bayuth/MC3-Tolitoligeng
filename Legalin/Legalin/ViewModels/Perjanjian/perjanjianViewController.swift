@@ -67,6 +67,8 @@ class PerjanjianController: ObservableObject {
     @Published var hargaBarang: String!
     @Published var nomorSeri: String!
     
+    @Published var nextButtonState : Bool!
+    
     init(){
         resetValue()
     }
@@ -126,6 +128,90 @@ class PerjanjianController: ObservableObject {
         warnaBarang = ""
         hargaBarang = ""
         nomorSeri = ""
+        
+        nextButtonState = false
+    }
+    
+    func checkEmptyString(item: String){
+        if (item == ""){
+            nextButtonState = false
+        }
+    }
+    
+    func checkEmptyDouble(item: Double){
+        if (item == 0){
+            nextButtonState = false
+        }
+    }
+    
+    func setNextButtonState() {
+        
+        nextButtonState = true
+        
+        checkEmptyString(item: pihak1NIK)
+        checkEmptyString(item: pihak1Nama)
+        checkEmptyString(item: pihak1Alamat)
+        checkEmptyString(item: pihak1RT)
+        checkEmptyString(item: pihak1RW)
+        checkEmptyString(item: pihak1Kelurahan)
+        checkEmptyString(item: pihak1Kecamatan)
+        checkEmptyString(item: pihak1Kota)
+        checkEmptyString(item: pihak1Provinsi)
+        checkEmptyString(item: pihak1Pekerjaan)
+        checkEmptyString(item: pihak1NomorHP)
+        
+        checkEmptyString(item: pihak2NIK)
+        checkEmptyString(item: pihak2Nama)
+        checkEmptyString(item: pihak2Alamat)
+        checkEmptyString(item: pihak2RT)
+        checkEmptyString(item: pihak2RW)
+        checkEmptyString(item: pihak2Kelurahan)
+        checkEmptyString(item: pihak2Kecamatan)
+        checkEmptyString(item: pihak2Kota)
+        checkEmptyString(item: pihak2Provinsi)
+        checkEmptyString(item: pihak2Pekerjaan)
+        checkEmptyString(item: pihak2NomorHP)
+        checkEmptyString(item: pihak2NamaBank)
+        checkEmptyString(item: pihak2NomorRekening)
+        checkEmptyString(item: pihak2AtasNamaRekening)
+        
+        //Step 3
+        checkEmptyString(item: tujuanPeminjaman)
+        checkEmptyDouble(item: jumlahPinjaman)
+        checkEmptyDouble(item: bunga)
+        checkEmptyDouble(item: tenor)
+        
+        if (metodePembayaran == "Metode Pembayaran"){
+            nextButtonState = false
+        }
+        
+        if (tanggalJatuhTempo == "Pilih Tanggal"){
+            nextButtonState = false
+        }
+        
+        if (pengadilanNegeri == "Pengadilan Negeri"){
+            nextButtonState = false
+        }
+        
+        if (tanggalTandaTangan == "Pilih Tanggal"){
+            nextButtonState = false
+        }
+        
+        if (modalAgunanState == true){
+            
+            if (tipeBarangAgunan == "Detail"){
+                nextButtonState = false
+            }
+            
+            checkEmptyString(item: namaBarang)
+            checkEmptyString(item: warnaBarang)
+            checkEmptyString(item: hargaBarang)
+            
+            if (tipeBarangAgunan == "Elektronik"){
+                checkEmptyString(item: nomorSeri)
+            }
+            
+        }
         
     }
     

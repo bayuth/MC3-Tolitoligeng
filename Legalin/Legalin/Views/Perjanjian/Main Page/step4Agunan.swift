@@ -27,9 +27,12 @@ struct step4Agunan: View {
             .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
             
             HStack{
-                Toggle(isOn: $perjanjianController.modalAgunanState, label: {
-                    Text("Agunan")
-                }).toggleStyle(SwitchToggleStyle(tint: Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))))
+                Toggle(isOn: $perjanjianController.modalAgunanState){ Text("Agunan")
+                }.onChange(of: perjanjianController.modalAgunanState, perform: { value in
+                    print(value)
+                    perjanjianController.setNextButtonState()
+                })
+                .toggleStyle(SwitchToggleStyle(tint: Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))))
             }.zIndex(0.9)
             
             Divider().padding(.horizontal, -20)
@@ -52,8 +55,6 @@ struct step4Agunan: View {
                         } else{
                             inputTextViewCell(title: "Nomor Seri",textViewValue: $perjanjianController.nomorSeri, keyboardNum: false, emptyStateString: "Nomor seri barang elektronik")
                         }
-                        
-                        
                     }
                 }
             }
@@ -61,12 +62,12 @@ struct step4Agunan: View {
             
             NavigationLink(
                 destination: ConfirmationPage(masterPresentationMode5: _masterPresentationMode4)){
-                ButtonNext(text: "Buat Surat", isDataComplete: false)
-            }.disabled(disabledStaus)
+                ButtonNext(text: "Buat Surat", isDataComplete: perjanjianController.nextButtonState)
+            }.disabled(!perjanjianController.nextButtonState)
             
         }.frame(width: UIScreen.main.bounds.width - 35,
                 alignment: .leading)
-        .navigationBarTitle("Buat Perjanjian", displayMode: .inline)
+        .navigationBarTitle("Perjanjian Baru", displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading:
                                 Button(action: {
