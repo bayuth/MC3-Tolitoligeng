@@ -11,8 +11,13 @@ struct step1Peminjam: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-    @ObservedObject var trimKtp = functionTrimKtp()
+    @ObservedObject var trimKtp = functionTrimKtp(pihak: 1)
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
+    
     @State var showTanggalLahir = false
+    
+    @State var showAlert = false
+    
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateStyle = .medium
@@ -41,25 +46,25 @@ struct step1Peminjam: View {
                         }).padding(.bottom)
                     
                     VStack(alignment: .leading) {
-                        FormView(title: "NIK", profileValue: $trimKtp.ktpInfo.nik, keyboardNum: true)
-                        FormView(title: "Nama", profileValue: $trimKtp.ktpInfo.nama, keyboardNum: false)
+                        FormView(title: "NIK", profileValue: $perjanjianController.pihak1NIK, keyboardNum: true)
+                        FormView(title: "Nama", profileValue: $perjanjianController.pihak1Nama, keyboardNum: false)
                         
-						DatePicker("Tanggal Lahir", selection:$trimKtp.ktpInfo.tanggalLahir, displayedComponents: .date).font(.body).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                        DatePicker("Tanggal Lahir", selection:$perjanjianController.pihak1TanggalLahir, displayedComponents: .date).font(.body).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 						Divider()
 							.padding(.bottom)
                         
-                        FormView(title: "Alamat", profileValue: $trimKtp.ktpInfo.alamat, keyboardNum: false)
+                        FormView(title: "Alamat", profileValue: $perjanjianController.pihak1Alamat, keyboardNum: false)
                         HStack {
-                            FormView(title: "RT", profileValue: $trimKtp.ktpInfo.Rt, keyboardNum: true)
-                            FormView(title: "RW", profileValue: $trimKtp.ktpInfo.Rw, keyboardNum: true)
+                            FormView(title: "RT", profileValue: $perjanjianController.pihak1RT, keyboardNum: true)
+                            FormView(title: "RW", profileValue: $perjanjianController.pihak1RW, keyboardNum: true)
                         }
-                        FormView(title: "Kelurahan/Desa", profileValue: $trimKtp.ktpInfo.kelurahan, keyboardNum: false)
-                        FormView(title: "Kecamatan", profileValue: $trimKtp.ktpInfo.kecamatan, keyboardNum: false)
-                        FormView(title: "Kabupaten/Kota", profileValue: $trimKtp.ktpInfo.kota, keyboardNum: false)
+                        FormView(title: "Kelurahan/Desa", profileValue: $perjanjianController.pihak1Kelurahan, keyboardNum: false)
+                        FormView(title: "Kecamatan", profileValue: $perjanjianController.pihak1Kecamatan, keyboardNum: false)
+                        FormView(title: "Kabupaten/Kota", profileValue: $perjanjianController.pihak1Kota, keyboardNum: false)
                         VStack(alignment:.leading) {
-                            FormView(title: "Provinsi", profileValue: $trimKtp.ktpInfo.provinsi, keyboardNum: false)
-                            FormView(title: "Pekerjaan", profileValue: $trimKtp.ktpInfo.pekerjaan, keyboardNum: false)
-                            FormView(title: "Nomor Telepon", profileValue: $trimKtp.ktpInfo.nomorHp, keyboardNum: true)
+                            FormView(title: "Provinsi", profileValue: $perjanjianController.pihak1Provinsi, keyboardNum: false)
+                            FormView(title: "Pekerjaan", profileValue: $perjanjianController.pihak1Pekerjaan, keyboardNum: false)
+                            FormView(title: "Nomor Telepon", profileValue: $perjanjianController.pihak1NomorHP, keyboardNum: true)
                             Text("Pastikan semua data yang anda masukan sudah benar dan sesuai dengan KTP anda")
                                 .font(.caption2)
                                 .fontWeight(.regular)
@@ -86,8 +91,25 @@ struct step1Peminjam: View {
         .navigationBarTitle("Perjanjian Baru", displayMode: .inline)
         .navigationBarItems(trailing:
                                 Button("Tutup") {
-                                            presentationMode.wrappedValue.dismiss()
+                                    showAlert = true
                                 }.foregroundColor(.white))
+        .alert(isPresented: $showAlert, content: {
+            
+            Alert(title: Text("Simpan Draft"),
+                  message: Text("Apakah anda ingin menyimpan draft?"),
+                  primaryButton:
+                    .cancel(Text("Simpan")) {
+                        perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
+                        presentationMode.wrappedValue.dismiss()
+                                },
+                  secondaryButton:
+                    .destructive(Text("Hapus")){
+                        
+                        presentationMode.wrappedValue.dismiss()
+                    
+                  })
+            
+        })
     }
     }
 }

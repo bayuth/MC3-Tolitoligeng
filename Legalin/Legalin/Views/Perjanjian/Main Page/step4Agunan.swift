@@ -15,7 +15,9 @@ struct step4Agunan: View {
     
     @State var toggleState: Bool = false
     @State var disabledStaus: Bool = false
-    @EnvironmentObject var perjanjianController: PerjanjianController
+    @State var showAlert: Bool = false
+    
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     var body: some View {
         
@@ -27,15 +29,17 @@ struct step4Agunan: View {
             .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
             
             HStack{
-                Toggle(isOn: $toggleState, label: {
-                    Text("Agunan")
-                }).toggleStyle(SwitchToggleStyle(tint: Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))))
+                Toggle(isOn: $perjanjianController.modalAgunanState){ Text("Agunan")
+                }.onChange(of: perjanjianController.modalAgunanState, perform: { value in
+                    perjanjianController.setNextButtonState()
+                })
+                .toggleStyle(SwitchToggleStyle(tint: Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))))
             }.zIndex(0.9)
             
             Divider().padding(.horizontal, -20)
             
             VStack{
-                if (toggleState == true){
+                if(perjanjianController.modalAgunanState == true){
                     
                     inputToModal(title: "Tipe Barang", textViewValue: "Tipe Barang", tipeAgunan: $perjanjianController.tipeBarangAgunan, isPresented: false)
                     
@@ -52,21 +56,19 @@ struct step4Agunan: View {
                         } else{
                             inputTextViewCell(title: "Nomor Seri",textViewValue: $perjanjianController.nomorSeri, keyboardNum: false, emptyStateString: "Nomor seri barang elektronik")
                         }
-                        
-                        
                     }
                 }
             }
             Spacer()
             
             NavigationLink(
-                destination: ConfirmationPage()){
-                ButtonNext(text: "Buat Surat", isDataComplete: false)
-            }.disabled(disabledStaus)
+                destination: ConfirmationPage(masterPresentationMode5: _masterPresentationMode4)){
+                ButtonNext(text: "Buat Surat", isDataComplete: perjanjianController.nextButtonState)
+            }.disabled(!perjanjianController.nextButtonState)
             
         }.frame(width: UIScreen.main.bounds.width - 35,
                 alignment: .leading)
-        .navigationBarTitle("Buat Perjanjian", displayMode: .inline)
+        .navigationBarTitle("Perjanjian Baru", displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading:
                                 Button(action: {
@@ -79,8 +81,22 @@ struct step4Agunan: View {
                                 })
                             , trailing:
                                 Button("Tutup") {
-                                    masterPresentationMode4.wrappedValue.dismiss()
-                                }.foregroundColor(.white))
+                                    showAlert = true
+                                }.foregroundColor(.white)).alert(isPresented: $showAlert, content: {
+                                    
+                                    Alert(title: Text("Simpan Draft"),
+                                          message: Text("Apakah anda ingin menyimpan draft?"),
+                                          primaryButton:
+                                            .destructive(Text("Hapus")){
+                                                masterPresentationMode4.wrappedValue.dismiss()
+                                                        },
+                                          secondaryButton:
+                                            .cancel(Text("Simpan")) {
+                                                perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
+                                                masterPresentationMode4.wrappedValue.dismiss()
+                                          })
+                                    
+                                })
         
     }
 }
@@ -90,15 +106,3 @@ struct step4Agunan_Previews: PreviewProvider {
         step4Agunan()
     }
 }
-
-//extension UINavigationController{
-//    override open func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        let appearance = UINavigationBarAppearance()
-//        appearance.backgroundColor = UIColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-//        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-//        
-//        navigationBar.standardAppearance = appearance
-//    }
-//}

@@ -10,6 +10,7 @@ import SwiftUI
 struct ConfirmationPage: View {
     @State var offset: CGFloat = 0
     @Environment(\.presentationMode) var masterPresentationMode5
+    @Environment(\.presentationMode) var presentationMode
     var subview = [1, 2, 3, 4, 5]
     //    var position = 0
     
@@ -23,7 +24,7 @@ struct ConfirmationPage: View {
                 InfoPinjaman()
                     .tag(subview[3])
                 VStack{
-                    InfoAgunan(hideButton: false)
+                    InfoAgunan(hideButton: false, masterPresentationMode6: _masterPresentationMode5)
                         .tag(subview[4])
                 }
             }

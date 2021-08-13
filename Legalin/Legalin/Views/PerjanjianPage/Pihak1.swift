@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct Pihak1: View {
+    
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
+    
     var body: some View {
         ScrollView(){
             HStack{
@@ -22,7 +25,7 @@ struct Pihak1: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("1234567890098765")
+                        Text("\(perjanjianController.pihak1NIK)")
                     }
                     .padding(.bottom, 8)
                     
@@ -31,7 +34,7 @@ struct Pihak1: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("Debby Anggraini")
+                        Text("\(perjanjianController.pihak1Nama)")
                     }
                     .padding(.bottom, 8)
                     
@@ -40,7 +43,7 @@ struct Pihak1: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("30 Tahun")
+                        Text("\(perjanjianController.pihak1TanggalLahir)")
                     }
                     .padding(.bottom, 8)
                     
@@ -49,7 +52,7 @@ struct Pihak1: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("Jalan Kote")
+                        Text("\(perjanjianController.pihak1Alamat)")
                     }
                     .padding(.bottom, 8)
                     
@@ -58,7 +61,7 @@ struct Pihak1: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("Karyawan Swasta")
+                        Text("\(perjanjianController.pihak1Pekerjaan)")
                     }
                     .padding(.bottom, 8)
                     
@@ -67,7 +70,7 @@ struct Pihak1: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("081234567890")
+                        Text("\(perjanjianController.pihak1NomorHP)")
                     }
                     .padding(.bottom, 8)
                     

@@ -13,6 +13,8 @@ struct ModalTipeBarangAgunan: View {
     @Binding var isPresented: Bool
     @Binding var tipeAgunan: String
     
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
+    
     var body: some View {
         
         VStack(alignment: .leading){
@@ -58,6 +60,7 @@ struct ModalTipeBarangAgunan: View {
                                 tipeAgunan = "Elektronik"
                             }
                             
+                        perjanjianController.setNextButtonState()
                         isPresented = false
                         }
                 }

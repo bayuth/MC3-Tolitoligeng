@@ -18,13 +18,16 @@ struct ProfileView: View {
 		@State var nomorHp: String = ""
 		
 		@ObservedObject var profileKtp = ScanDataClass()
-		@ObservedObject var profiledata = functionTrimKtp()
+        @ObservedObject var profiledata = functionTrimKtp(pihak: 0)
+    
+        @ObservedObject var profileController: ProfileController = .shared
+        @ObservedObject var coreDataVM: CoreDataViewModel = .shared
 		
 		var body: some View {
 			NavigationView {
 					VStack(alignment: .center) {
 						
-						if profiledata.ktpInfo.nik == ""{
+                        if (coreDataVM.pihak1.count == 0) {
 							Image("Profile Empty")
 							Text("Belum Ada Profil")
 								.font(.headline).fontWeight(.bold).padding(.top, 10)
@@ -43,21 +46,21 @@ struct ProfileView: View {
 						else {
 							ScrollView{
 								VStack(alignment: .center) {
-									FormView(title: "NIK", profileValue: $profileKtp.nik, keyboardNum: true).disabled(true).padding(.top)
-									FormView(title: "Nama", profileValue: $profiledata.ktpInfo.nama, keyboardNum: false).disabled(true)
+                                    FormView(title: "NIK", profileValue: $profileController.pihak1NIK, keyboardNum: true).disabled(true).padding(.top)
+									FormView(title: "Nama", profileValue: $profileController.pihak1Nama, keyboardNum: false).disabled(true)
 									
-									FormView(title: "Alamat", profileValue: $profiledata.ktpInfo.alamat, keyboardNum: false).disabled(true)
+									FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false).disabled(true)
 									HStack {
-										FormView(title: "RT", profileValue: $profiledata.ktpInfo.Rt, keyboardNum: true).disabled(true)
-										FormView(title: "RW", profileValue: $profiledata.ktpInfo.Rw, keyboardNum: true).disabled(true)
+										FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true).disabled(true)
+										FormView(title: "RW", profileValue: $profileController.pihak1RW, keyboardNum: true).disabled(true)
 									}
-									FormView(title: "Kelurahan/Desa", profileValue: $profiledata.ktpInfo.kelurahan, keyboardNum: false).disabled(true)
-									FormView(title: "Kecamatan", profileValue: $profiledata.ktpInfo.kecamatan, keyboardNum: false).disabled(true)
-									FormView(title: "Kabupaten/Kota", profileValue: $profiledata.ktpInfo.kota, keyboardNum: false).disabled(true)
+									FormView(title: "Kelurahan/Desa", profileValue: $profileController.pihak1Kelurahan, keyboardNum: false).disabled(true)
+									FormView(title: "Kecamatan", profileValue: $profileController.pihak1Kecamatan, keyboardNum: false).disabled(true)
+									FormView(title: "Kabupaten/Kota", profileValue: $profileController.pihak1Kota, keyboardNum: false).disabled(true)
 									VStack {
-										FormView(title: "Provinsi", profileValue: $profiledata.ktpInfo.provinsi, keyboardNum: false).disabled(true)
-										FormView(title: "Pekerjaan", profileValue: $profiledata.ktpInfo.pekerjaan, keyboardNum: false).disabled(true)
-										FormView(title: "Nomor Telepon", profileValue: $profiledata.ktpInfo.nomorHp, keyboardNum: false).disabled(true)
+										FormView(title: "Provinsi", profileValue: $profileController.pihak1Provinsi, keyboardNum: false).disabled(true)
+										FormView(title: "Pekerjaan", profileValue: $profileController.pihak1Pekerjaan, keyboardNum: false).disabled(true)
+                                        FormView(title: "Nomor Telepon", profileValue: $profileController.pihak1NomorHP, keyboardNum: false).disabled(true)
 									}
 								}
 								.padding()

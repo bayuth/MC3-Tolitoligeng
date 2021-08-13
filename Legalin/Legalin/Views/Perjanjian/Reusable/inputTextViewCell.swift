@@ -12,6 +12,7 @@ struct inputTextViewCell: View {
     @State var title: String
     @Binding var textViewValue: String
     @State var keyboardNum: Bool
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     var emptyStateString: String
     
@@ -21,8 +22,12 @@ struct inputTextViewCell: View {
             Text(title).font(.footnote).fontWeight(.light)
             
             HStack{
+            
+                TextField(emptyStateString, text: $textViewValue, onEditingChanged: { _ in perjanjianController.setNextButtonState() })
+                    
+//            TextField(emptyStateString, text: $textViewValue)
                 
-            TextField(emptyStateString, text: $textViewValue).keyboardType(keyboardNum ? .numberPad : .default)
+                .keyboardType(keyboardNum ? .numberPad : .default)
             }
             
             Divider().padding(.horizontal, -20)

@@ -10,7 +10,8 @@ import SwiftUI
 struct loadingScreen: View {
     
     @State private var progressAmount: Double = 0
-    
+    @Environment(\.presentationMode) var masterPresentationMode7
+    @Environment(\.presentationMode) var presentationMode
     let timer = Timer.publish(every: 0.02, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -18,7 +19,9 @@ struct loadingScreen: View {
         VStack{
             NavigationView{
             NavigationLink(
-                destination: GeneratePDF(),
+                destination:
+                    PdfAction(masterPresentationMode8: _masterPresentationMode7, hideSwitch: true)
+                    .navigationBarBackButtonHidden(true),
                 isActive: .constant(progressAmount == 100)
                 ){
             
@@ -43,8 +46,8 @@ struct loadingScreen: View {
             }
                 }
             }.buttonStyle(PlainButtonStyle())
+            }.navigationBarBackButtonHidden(true)
         }
-        }.navigationBarHidden(true)
     }
 }
 
