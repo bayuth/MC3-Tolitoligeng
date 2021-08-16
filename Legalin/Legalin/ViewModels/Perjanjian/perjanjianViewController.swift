@@ -203,7 +203,7 @@ class PerjanjianController: ObservableObject {
         //Step 3
         checkEmptyString(item: tujuanPeminjaman)
         checkEmptyDouble(item: jumlahPinjaman)
-        checkEmptyDouble(item: bunga)
+//        checkEmptyDouble(item: bunga)
         checkEmptyDouble(item: tenor)
         
         if (metodePembayaran == "Metode Pembayaran"){
