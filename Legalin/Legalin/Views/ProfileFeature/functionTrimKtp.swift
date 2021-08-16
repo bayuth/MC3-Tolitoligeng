@@ -15,6 +15,7 @@ class functionTrimKtp: ObservableObject {
 //	@Published var ktpInfo:[ScanDataClass] = []
 	
 	func makeScannerView() -> ScannerView {
+		
 		ScannerView(completion: {
 			textPerPage in
 			if let outputText = textPerPage?.joined(separator: "\n").trimmingCharacters(in: .whitespacesAndNewlines){

@@ -7,8 +7,31 @@
 
 import SwiftUI
 import VisionKit
+import Vision
+import AVFoundation
 
-struct ScannerView: UIViewControllerRepresentable {
+class CameraManager: ObservableObject {
+	@Published var permissionGranted = false
+	
+	func requestPermission() {
+		AVCaptureDevice.requestAccess(for: .video, completionHandler: {accessGranted in
+			DispatchQueue.main.async {
+				self.permissionGranted = accessGranted
+			}
+		})
+	}
+}
+
+final class ScannerView: UIViewControllerRepresentable {
+	
+//	@Binding var alertCameraAccessNeeded:Bool
+	
+//	let cameraAuthStatus = AVCaptureDevice.authorizationStatus(for: .video)
+//	func requestCameraPermission() {
+//		AVCaptureDevice.requestAccess(for: .video, completionHandler: {accessGranted in
+//			guard accessGranted == true else {return}
+//		})
+//	}
 	
 	func makeCoordinator() -> Coordinator {
 		return Coordinator(completion: completionHandler)
@@ -35,7 +58,11 @@ struct ScannerView: UIViewControllerRepresentable {
 		}
 	}
 	
+	
+	
 	func makeUIViewController(context: Context) -> VNDocumentCameraViewController {
+		
+		print("masuk make uiviewcontroller")
 		let viewController = VNDocumentCameraViewController()
 		viewController.delegate = context.coordinator
 		return viewController
@@ -49,6 +76,7 @@ struct ScannerView: UIViewControllerRepresentable {
 	private let completionHandler: ([String]?) -> Void
 	
 	init(completion: @escaping ([String]?) -> Void) {
+		print("tes")
 		self.completionHandler = completion
 	}
 }

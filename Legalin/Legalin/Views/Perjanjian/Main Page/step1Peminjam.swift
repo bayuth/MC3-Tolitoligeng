@@ -10,6 +10,7 @@ import SwiftUI
 struct step1Peminjam: View {
     
     @Environment(\.presentationMode) var presentationMode
+	@StateObject var cameraManager = CameraManager()
     
     @ObservedObject var trimKtp = functionTrimKtp()
     @State var showTanggalLahir = false
@@ -31,7 +32,12 @@ struct step1Peminjam: View {
                     Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))) .padding(.bottom,7)
                     
                     Button(action: {
-                        trimKtp.showScannerSheet = true
+						if cameraManager.permissionGranted {
+							trimKtp.showScannerSheet = true
+						} else {
+							cameraManager.requestPermission()
+						}
+						
                     }, label: {
 						Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").fontWeight(.regular) .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
                     })
@@ -75,7 +81,7 @@ struct step1Peminjam: View {
                         }
                     }
                 }.padding(.top,10)
-            }
+			}
             
            
             
