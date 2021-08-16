@@ -11,21 +11,24 @@ import WebKit
 
 struct GeneratePDF : View {
     
+    
+    @Environment(\.presentationMode) var presentationMode
 //    let request: URLRequest
     var body: some View {
         VStack{
         WebView()
-        }.navigationBarTitle("Tipe Barang", displayMode: .inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Text("Batalkan").foregroundColor(.white)
-            }
-
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Text("Done")
-                        .foregroundColor(.white)
-                }
-            }.navigationBarBackButtonHidden(true)
+        }.navigationBarTitle("Draft PDF", displayMode: .inline)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+                                Button(action: {
+                                    presentationMode.wrappedValue.dismiss()
+                                }, label: {
+                                    Image(systemName: "chevron.left")
+                                        .foregroundColor(.white)
+                                    Text("Kembali")
+                                        .foregroundColor(.white)
+                                })
+        )
     }
 }
 

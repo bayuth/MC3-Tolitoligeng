@@ -17,7 +17,7 @@ struct Agreements : Identifiable{
     var signStatus : Bool
     var offset: CGFloat
     var isSwiped : Bool
-    
+    var pinjaman: Pinjaman
 
 }
 

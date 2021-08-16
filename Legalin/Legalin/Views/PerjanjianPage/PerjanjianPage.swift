@@ -15,9 +15,9 @@ struct PerjanjianPage: View {
     
     @State private var isPresented = false
     @State private var selectedSide: AgreementSegment = .onGoing
-    @StateObject var agreementData = PerjanjianViewModel()
+    @StateObject var agreementData: PerjanjianViewModel = .shared
     @State var offset: CGSize = .zero
-    @StateObject var perjanjianController = PerjanjianController()
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     var body: some View {
         NavigationView{
@@ -37,7 +37,9 @@ struct PerjanjianPage: View {
             .navigationTitle("Perjanjian")
             .navigationBarItems(trailing:
                                                 VStack{
-                                                    Button(action: { isPresented.toggle() })
+                                                    Button(action: { isPresented.toggle()
+                                                        perjanjianController.resetValue()
+                                                    })
                                                     {
                                                         Image(systemName: "plus")
                                                             .font(.title)
@@ -45,17 +47,18 @@ struct PerjanjianPage: View {
                                                     }
                                                     .fullScreenCover(isPresented: $isPresented, content: step1Peminjam.init)
                                                 }
-        )}.environmentObject(perjanjianController)
+        )}
     }
     
-    func getIndex(item: Agreements)->Int{
-        return agreementData.list.firstIndex { (item1) -> Bool in
-            return item.id == item1.id
-        } ?? 0
-    }
+    
 }
 
-
+//func getIndex(item: Agreements, items: PerjanjianViewModel)->Int{
+//    return items.list.firstIndex { (item1) -> Bool in
+//        return item.id == item1.id
+//        print(item1.id)
+//    } ?? 0
+//}
 
 enum AgreementSegment:String, CaseIterable{
     case onGoing = "Berlangsung"
@@ -65,22 +68,22 @@ enum AgreementSegment:String, CaseIterable{
 
 struct ChoosenSegment: View {
     var selectedSegment: AgreementSegment
-    @StateObject var agreementData = PerjanjianViewModel()
+    @StateObject var agreementData: PerjanjianViewModel = .shared
     @State private var location: CGPoint = CGPoint(x: 0, y: 0)
     
     
     var body: some View{
         switch selectedSegment {
         case .onGoing:
-            if agreementData.list.count == 0 {
+            if agreementData.listOnGoing.isEmpty {
                 EmptyStatePerjanjian()
             }
-            else if agreementData.list.count > 0{
-                ForEach(agreementData.list){ item in
+            else if agreementData.listOnGoing.count > 0{
+                ForEach(agreementData.listOnGoing){ item in
                     NavigationLink(
                         destination: DetailPerjanjian(),
                         label: {
-                            AgreementCardView(item: $agreementData.list[getIndex(item: item)], lists: $agreementData.list)
+                            AgreementCardView(item: $agreementData.listOnGoing[getIndex(item: item)], lists: $agreementData.listOnGoing)
                         })
                         .foregroundColor(.black)
                     
@@ -89,22 +92,34 @@ struct ChoosenSegment: View {
             
             
         case .history:
-            ForEach(agreementData.list){ item in
-                NavigationLink(
-                    destination: DetailPerjanjian(),
-                    label: {
-                        HistorySegmentedView(item: $agreementData.list[getIndex(item: item)], lists: $agreementData.list)
-                    })
-                    .foregroundColor(.black)
+            if agreementData.listDone.isEmpty {
+                EmptyStatePerjanjian()
+            }
+            else if agreementData.listDone.count > 0{
+                ForEach(agreementData.listDone){ item in
+                    NavigationLink(
+                        destination: DetailPerjanjian(),
+                        label: {
+                            HistorySegmentedView(item: $agreementData.listDone[getIndex2(item: item)], lists: $agreementData.listDone)
+                        })
+                        .foregroundColor(.black)
+                }
+                
             }
         case .daft:
-            ForEach(agreementData.list){ item in
-                NavigationLink(
-                    destination: DetailPerjanjian(),
-                    label: {
-                        DraftSegmentedView(item: $agreementData.list[getIndex(item: item)], lists: $agreementData.list)
-                    })
-                    .foregroundColor(.black)
+            if agreementData.listDraft.isEmpty {
+                EmptyStatePerjanjian()
+            }
+            else if agreementData.listDraft.count > 0{
+                ForEach(agreementData.listDraft){ item in
+                    NavigationLink(
+                        destination: DetailPerjanjian(),
+                        label: {
+                            DraftSegmentedView(item: $agreementData.listDraft[getIndex3(item: item)], lists: $agreementData.listDraft)
+                        })
+                        .foregroundColor(.black)
+                }
+                
             }
         }
     }
@@ -116,10 +131,23 @@ struct ChoosenSegment: View {
     }
     
     func getIndex(item: Agreements)->Int{
-        return agreementData.list.firstIndex { (item1) -> Bool in
+        return agreementData.listOnGoing.firstIndex { (item1) -> Bool in
             return item.id == item1.id
         } ?? 0
     }
+    
+    func getIndex2(item: Agreements)->Int{
+        return agreementData.listDone.firstIndex { (item1) -> Bool in
+            return item.id == item1.id
+        } ?? 0
+    }
+    
+    func getIndex3(item: Agreements)->Int{
+        return agreementData.listDraft.firstIndex { (item1) -> Bool in
+            return item.id == item1.id
+        } ?? 0
+    }
+    
 }
 
 struct PerjanjianPage_Previews: PreviewProvider {

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct InfoPinjaman: View {
+    
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
+    
     var body: some View {
         ScrollView{
             HStack{
@@ -22,7 +25,7 @@ struct InfoPinjaman: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("Modal proyek katering".capitalized)
+                        Text("\(String(describing: perjanjianController.tujuanPeminjaman ?? ""))".capitalized)
                     }
                     .padding(.bottom, 8)
                     
@@ -31,7 +34,7 @@ struct InfoPinjaman: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("Rp 25.000.000".capitalized)
+                        Text("Rp \(String(describing: perjanjianController.jumlahPinjaman ?? 0))".capitalized)
                     }
                     .padding(.bottom, 8)
                     
@@ -40,7 +43,7 @@ struct InfoPinjaman: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("3%".capitalized)
+                        Text("\(String(describing: perjanjianController.bunga ?? 0))%".capitalized)
                     }
                     .padding(.bottom, 8)
                     
@@ -49,7 +52,7 @@ struct InfoPinjaman: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("12 bulan".capitalized)
+                        Text("\(String(describing: perjanjianController.tenor ?? 0)) bulan".capitalized)
                     }
                     .padding(.bottom, 8)
                     
@@ -58,7 +61,7 @@ struct InfoPinjaman: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("Cicilan".capitalized)
+                        Text("\(String(describing: perjanjianController.metodePembayaran ?? ""))".capitalized)
                     }
                     .padding(.bottom, 8)
                     
@@ -67,7 +70,7 @@ struct InfoPinjaman: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("15".capitalized)
+                        Text("\(String(describing: perjanjianController.tanggalJatuhTempo ?? ""))".capitalized)
                     }
                     .padding(.bottom, 8)
                     
@@ -76,7 +79,7 @@ struct InfoPinjaman: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("pengadilan negeri jakarta selatan".capitalized)
+                        Text("pengadilan negeri \(String(describing: perjanjianController.pengadilanNegeri ?? ""))".capitalized)
                     }
                     .padding(.bottom, 8)
                     
@@ -85,7 +88,7 @@ struct InfoPinjaman: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("12 agustus 2021".capitalized)
+                        Text("\(String(describing: perjanjianController.tanggalTandaTangan ?? ""))".capitalized)
                     }
                     .padding(.bottom, 8)
                 }

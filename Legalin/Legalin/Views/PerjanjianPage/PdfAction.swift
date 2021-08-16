@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct PdfAction: View {
+    @Environment(\.presentationMode) var masterPresentationMode8
+    @Environment(\.presentationMode) var presentationMode
+    var hideSwitch: Bool = true
     var body: some View {
         VStack{
             VStack{
@@ -18,7 +21,7 @@ struct PdfAction: View {
                     .font(.headline)
                     .multilineTextAlignment(.center)
             }
-            .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, maxHeight: 228, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             .padding(.horizontal, 24)
             .background(
                 RoundedRectangle(cornerRadius: 8)
@@ -50,22 +53,43 @@ struct PdfAction: View {
                 
             }
             
-            List{
-                HStack{
-                    Text("Tanda Tangan")
-                    Spacer()
-                    Button(action:{
-                        
-                    }){
-                        Text("Belum")
-                            .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-                    }
-                }
-                Toggle(isOn: .constant(false), label: {
-                    Text("Pengingat")
+            if hideSwitch == true{
+                Spacer()
+                Button(action: {
+                    masterPresentationMode8.wrappedValue.dismiss()
+                    print("cobaaas")
+                }, label: {
+                    Text("Selesai")
+                        .frame(maxWidth: .infinity, maxHeight: 50)
+                        .foregroundColor(.white)
+                    
                 })
+                .frame(maxWidth: .infinity, maxHeight: 50)
+                .background(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                .specCornerRadius(8, corners: .allCorners)
+                .padding()
+                .padding(.bottom,30)
+                
             }
-            .padding(.top, 76)
+            else{
+                List{
+                    HStack{
+                        Text("Tanda Tangan")
+                        Spacer()
+                        Button(action:{
+                            
+                        }){
+                            Text("Belum")
+                                .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                        }
+                    }
+                    Toggle(isOn: .constant(false), label: {
+                        Text("Pengingat")
+                    })
+                }
+                .padding(.top, 76)
+            }
+            
             
         }
         .padding()
@@ -74,6 +98,6 @@ struct PdfAction: View {
 
 struct PdfAction_Previews: PreviewProvider {
     static var previews: some View {
-        PdfAction()
+        PdfAction(hideSwitch: true)
     }
 }

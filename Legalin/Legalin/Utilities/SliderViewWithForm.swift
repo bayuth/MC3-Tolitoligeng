@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct SliderViewWithForm: View {
-    @State private var sliderValue = 0.0
+    @Binding var sliderValue: Double
     @State private var isEditing = false
     @State var text1 = "halo"
     @State var text2 = "halo lagi"
     @State var title = "kamu"
-    @State var type = 0
+    @State var type: Int
     @State private var formattedText = ""
     @State private var rangeOfSlider = 0...50000000.0
     var valueMaxSlide: Double {
@@ -24,14 +24,19 @@ struct SliderViewWithForm: View {
         }else {
             return 1.0
         }
-        
     }
-    
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(title).font(.footnote).fontWeight(.light)
-            TextField(title, text: $formattedText)
+            TextField(title, text: $formattedText, onEditingChanged: { (isBegin) in
+                if isBegin {
+                    formattedText = ""
+                } else {
+                    textChanged(to: formattedText)
+                }
+            }
+            ).keyboardType(.numberPad)
             Divider()
             Slider(
                 value: $sliderValue,
@@ -62,25 +67,43 @@ struct SliderViewWithForm: View {
             .padding(.bottom, 10)
             Divider()
 		}.padding(.bottom,15)
+        .onAppear{
+            getFormattedText()
+        }
         
     }
     
+    func textChanged(to value: String) {
+        let valueString = Double(value) ?? 0.0
+        switch valueString {
+        case rangeOfSlider:
+            sliderValue = valueString
+        default:
+            sliderValue = rangeOfSlider.upperBound
+        }
+        getFormattedText()
+    }
+    
     func getFormattedText() {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = Locale(identifier: "id_ID")
+        let resultRupiah = formatter.string(from: NSNumber(value: sliderValue))!
         if type == 0 {
             rangeOfSlider = 0...50000000.0
-            formattedText = "Rp \(sliderValue)"
+            formattedText = resultRupiah
         }else if type == 1 {
             rangeOfSlider = 0...6.0
-            formattedText = "\(sliderValue) %"
+            formattedText = "\(String(format:"%.2f", sliderValue)) %"
         }else{
             rangeOfSlider = 0...24.0
-            formattedText = "\(sliderValue) bulan"
+            formattedText = "\(Int(sliderValue)) bulan"
         }
     }
 }
 
-struct SliderViewWithForm_Previews: PreviewProvider {
-    static var previews: some View {
-        SliderViewWithForm()
-    }
-}
+//struct SliderViewWithForm_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SliderViewWithForm()
+//    }
+//}

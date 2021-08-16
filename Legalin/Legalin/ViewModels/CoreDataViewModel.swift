@@ -16,10 +16,16 @@ class CoreDataViewModel: ObservableObject {
     //khusus buat pihak1, pihak1 yang diambil adalah profil user. cara ambilnya pihak1[0]
     //Dibuat dengan tutorial https://www.youtube.com/watch?v=huRKU-TAD3g&t=1846s
     
+    static let shared = CoreDataViewModel()
+    
     @Published var pihak1:[Akun] = []
     @Published var listPihak2:[Akun] = []
-    @Published var listPinjaman:[Pinjaman] = []
     @Published var listKredit:[Kredit] = []
+    
+    @Published var listPinjamanDraft:[Pinjaman] = []
+    @Published var listPinjamanNotSigned:[Pinjaman] = []
+    @Published var listPinjamanOnGoing:[Pinjaman] = []
+    @Published var listPinjamanDone:[Pinjaman] = []
     
     init(){
         getPihak1()
@@ -155,7 +161,7 @@ class CoreDataViewModel: ObservableObject {
     func getAllPihak2(){
         let request = NSFetchRequest<Akun>(entityName: "Akun")
         
-        let sort = NSSortDescriptor(keyPath: \Akun.dateCreated, ascending: true)
+        let sort = NSSortDescriptor(keyPath: \Akun.dateCreated, ascending: false)
         request.sortDescriptors = [sort]
         
         let predicateProfile = NSPredicate(format: "profileSelected == %@", NSNumber(value: false))
@@ -176,30 +182,69 @@ class CoreDataViewModel: ObservableObject {
         //Update modified date
         akun.dateModified = Date()
         
-//        Update pihak 1 & 2 attribute
+        if (ktpImage != nil){
+            akun.ktp?.image =  ktpImage
+        }
         
-//        Atribut KTP
-        akun.ktp?.image =  ktpImage
-        akun.ktp?.nik = NIK
-        akun.ktp?.nama = nama
-        akun.ktp?.tanggalLahir = tanggalLahir
+        if (NIK != nil){
+            akun.ktp?.nik = NIK
+        }
         
-        akun.ktp?.alamat = alamat
-        akun.ktp?.rt = rt
-        akun.ktp?.rw = rw
-        akun.ktp?.kecamatan = kecamatan
-        akun.ktp?.kelurahanDesa = kelurahanDesa
-        akun.ktp?.kotaKabupaten = kotaKabupaten
-        akun.ktp?.provinsi = provinsi
-    
-//        Atribut nonKTP
-        akun.pekerjaan = pekerjaan
-        akun.nomorAktif = nomorAktif
+        if (nama != nil){
+            akun.ktp?.nama = nama
+        }
         
-        //Input pihak 2 attribute
-        akun.namaBank = namaBank
-        akun.nomorRekening = nomorRekening
-        akun.atasNamaRekening = atasNamaRekening
+        if (tanggalLahir != nil){
+            akun.ktp?.tanggalLahir = tanggalLahir
+        }
+        
+        if (ktpImage != nil){
+            akun.ktp?.alamat = alamat
+        }
+        
+        if (NIK != nil){
+            akun.ktp?.rt = rt
+        }
+        
+        if (nama != nil){
+            akun.ktp?.rw = rw
+        }
+        
+        if (tanggalLahir != nil){
+            akun.ktp?.kecamatan = kecamatan
+        }
+        
+        if (tanggalLahir != nil){
+            akun.ktp?.kelurahanDesa = kelurahanDesa
+        }
+        
+        if (tanggalLahir != nil){
+            akun.ktp?.kotaKabupaten = kotaKabupaten
+        }
+        
+        if (tanggalLahir != nil){
+            akun.ktp?.provinsi = provinsi
+        }
+        
+        if (tanggalLahir != nil){
+            akun.pekerjaan = pekerjaan
+        }
+        
+        if (tanggalLahir != nil){
+            akun.nomorAktif = nomorAktif
+        }
+        
+        if (tanggalLahir != nil){
+            akun.namaBank = namaBank
+        }
+        
+        if (tanggalLahir != nil){
+            akun.nomorRekening = nomorRekening
+        }
+        
+        if (tanggalLahir != nil){
+            akun.atasNamaRekening = atasNamaRekening
+        }
         
         save()
         
@@ -241,17 +286,31 @@ class CoreDataViewModel: ObservableObject {
     }
     
     //Update agunan
-    func updateAgunan(agunan: Agunan, nama: String? = nil, harga: Int? = nil, nomorSeri:String? = nil, tipeBarang: String? = nil, warna: String? = nil){
+    func updateAgunan(agunan: Agunan, nama: String? = nil, harga: String? = nil, nomorSeri:String? = nil, tipeBarang: String? = nil, warna: String? = nil){
         
         //Update modified date
         agunan.dateModified = Date()
         
         //Generate Agunan Attribute
-        agunan.nama = nama
-        agunan.harga = Int64(harga ?? 0)
-        agunan.nomorSeri = nomorSeri
-        agunan.tipeBarang = tipeBarang
-        agunan.warna = warna
+        if(nama != nil){
+            agunan.nama = nama
+        }
+        
+        if(harga != nil){
+            agunan.harga = harga
+        }
+        
+        if(nomorSeri != nil){
+            agunan.nomorSeri = nomorSeri
+        }
+        
+        if(tipeBarang != nil){
+            agunan.tipeBarang = tipeBarang
+        }
+        
+        if(warna != nil){
+            agunan.warna = warna
+        }
         
         save()
         getAllPinjaman()
@@ -261,7 +320,7 @@ class CoreDataViewModel: ObservableObject {
     func getAllAgunan()->[Agunan]{
         let request = NSFetchRequest<Agunan>(entityName: "Agunan")
         
-        let sort = NSSortDescriptor(keyPath: \Agunan.dateCreated, ascending: true)
+        let sort = NSSortDescriptor(keyPath: \Agunan.dateCreated, ascending: false)
         request.sortDescriptors = [sort]
         
         var listAgunan:[Agunan] = []
@@ -300,16 +359,27 @@ class CoreDataViewModel: ObservableObject {
     }
     
     //Update atribut dari kredit
-    func updateKredit(kredit: Kredit, nama: String? = nil, bunga: Int? = nil, jumlahPinjaman: Int? = nil, tenor: Int? = nil){
+    func updateKredit(kredit: Kredit, nama: String? = nil, bunga: Double? = nil, jumlahPinjaman: Double? = nil, tenor: Double? = nil){
         
         //Change modified date
         kredit.dateModified = Date()
         
-        //Generate Credit attribute
-        kredit.namaSimulasi = nama
-        kredit.bunga = Int64(bunga ?? 0)
-        kredit.jumlahPinjaman = Int64(jumlahPinjaman ?? 0)
-        kredit.tenor = Int64(tenor ?? 0)
+        //Update Credit Attribute
+        if(nama != nil){
+            kredit.namaSimulasi = nama
+        }
+        
+        if(bunga != nil){
+            kredit.bunga = bunga ?? 0
+        }
+        
+        if(jumlahPinjaman != nil){
+            kredit.jumlahPinjaman = jumlahPinjaman ?? 0
+        }
+        
+        if(tenor != nil){
+            kredit.tenor = tenor ?? 0
+        }
         
         save()
         getAllKredit()
@@ -319,7 +389,7 @@ class CoreDataViewModel: ObservableObject {
     func getAllKredit(){
         let request = NSFetchRequest<Kredit>(entityName: "Kredit")
         
-        let sort = NSSortDescriptor(keyPath: \Kredit.dateCreated, ascending: true)
+        let sort = NSSortDescriptor(keyPath: \Kredit.dateCreated, ascending: false)
         request.sortDescriptors = [sort]
         
         let predicatePinjamanPage = NSPredicate(format: "pinjamanPage == %@", NSNumber(value: false))
@@ -389,32 +459,118 @@ class CoreDataViewModel: ObservableObject {
     }
     
     //Update pinjaman sesuai atribut yang ada
-    func updatePinjaman(pinjaman: Pinjaman, tujuan: String? = nil, metodePembayaran: String? = nil, jatuhTempo: Date? = nil, pengadilanNegeri: String? = nil, tanggalTandaTangan: Date? = nil, status: StatusSurat? = nil, reminder: Bool? = nil){
+    func updatePinjaman(pinjaman: Pinjaman, tujuan: String? = nil, metodePembayaran: String? = nil, jatuhTempo: String? = nil, pengadilanNegeri: String? = nil, tanggalTandaTangan: String? = nil, status: StatusSurat? = nil, reminder: Bool? = nil){
         
         //Generate Pinjaman attribute
-        pinjaman.tujuan = tujuan
-        pinjaman.metodePembayaran = tujuan
-        pinjaman.jatuhTempo = jatuhTempo
-        pinjaman.pengadilanNegeri = pengadilanNegeri
-        pinjaman.tanggalTandaTangan = tanggalTandaTangan
-        pinjaman.status = status?.rawValue
-        pinjaman.reminder = reminder ?? false
+        if (tujuan != nil) {
+            pinjaman.tujuan = tujuan
+        }
+        
+        if (metodePembayaran != nil){
+            pinjaman.metodePembayaran = metodePembayaran
+        }
+        
+        if (jatuhTempo != nil){
+            pinjaman.jatuhTempo = jatuhTempo
+        }
+        
+        if (pengadilanNegeri != nil){
+            pinjaman.pengadilanNegeri = pengadilanNegeri
+        }
+        
+        if (metodePembayaran != nil){
+            pinjaman.tanggalTandaTangan = tanggalTandaTangan
+        }
+        
+        if (metodePembayaran != nil){
+            pinjaman.status = status?.rawValue
+        }
+        
+        if (metodePembayaran != nil){
+            pinjaman.reminder = reminder ?? false
+        }
         
         save()
         getAllPinjaman()
     }
     
-    func getAllPinjaman(){
+    func getAllPinjamanDraft(){
         let request = NSFetchRequest<Pinjaman>(entityName: "Pinjaman")
         
-        let sort = NSSortDescriptor(keyPath: \Pinjaman.dateCreated, ascending: true)
+        let status = "draft"
+        
+        let predicatePinjamanPage = NSPredicate(format: "status == %@", status)
+        request.predicate = predicatePinjamanPage
+        
+        let sort = NSSortDescriptor(keyPath: \Pinjaman.dateCreated, ascending: false)
         request.sortDescriptors = [sort]
         
         do{
-            listPinjaman = try manager.context.fetch(request)
+            listPinjamanDraft = try manager.context.fetch(request)
         } catch let error {
             print("Error fetching. \(error.localizedDescription)")
         }
+    }
+    
+    func getAllPinjamanNotSigned(){
+        let request = NSFetchRequest<Pinjaman>(entityName: "Pinjaman")
+        
+        let status = "notSigned"
+        
+        let predicatePinjamanPage = NSPredicate(format: "status == %@", status)
+        request.predicate = predicatePinjamanPage
+        
+        let sort = NSSortDescriptor(keyPath: \Pinjaman.dateCreated, ascending: false)
+        request.sortDescriptors = [sort]
+        
+        do{
+            listPinjamanNotSigned = try manager.context.fetch(request)
+        } catch let error {
+            print("Error fetching. \(error.localizedDescription)")
+        }
+    }
+    
+    func getAllPinjamanOnGoing(){
+        let request = NSFetchRequest<Pinjaman>(entityName: "Pinjaman")
+        
+        let status = "onGoing"
+        
+        let predicatePinjamanPage = NSPredicate(format: "status == %@", status)
+        request.predicate = predicatePinjamanPage
+        
+        let sort = NSSortDescriptor(keyPath: \Pinjaman.dateCreated, ascending: false)
+        request.sortDescriptors = [sort]
+        
+        do{
+            listPinjamanOnGoing = try manager.context.fetch(request)
+        } catch let error {
+            print("Error fetching. \(error.localizedDescription)")
+        }
+    }
+    
+    func getAllPinjamanDone(){
+        let request = NSFetchRequest<Pinjaman>(entityName: "Pinjaman")
+        
+        let status = "done"
+        
+        let predicatePinjamanPage = NSPredicate(format: "status == %@", status)
+        request.predicate = predicatePinjamanPage
+        
+        let sort = NSSortDescriptor(keyPath: \Pinjaman.dateCreated, ascending: false)
+        request.sortDescriptors = [sort]
+        
+        do{
+            listPinjamanDone = try manager.context.fetch(request)
+        } catch let error {
+            print("Error fetching. \(error.localizedDescription)")
+        }
+    }
+    
+    func getAllPinjaman(){
+        getAllPinjamanDraft()
+        getAllPinjamanNotSigned()
+        getAllPinjamanOnGoing()
+        getAllPinjamanDone()
     }
     
     //Hapus pinjaman yang dipilih beserta agunan yang bersangkutan

@@ -23,9 +23,11 @@ struct NewProfileView: View {
 	@State var nampungDataKtp:[nampungKtpData] = []
 	@State var scandata:ScanData?
 	
-	@ObservedObject var trimKtp = functionTrimKtp()
+    @ObservedObject var trimKtp = functionTrimKtp(pihak: 0)
 	@Environment(\.presentationMode) var mode: Binding<PresentationMode>
 	@State var showingAlert = false
+    
+    @ObservedObject var profileController: ProfileController = .shared
 	
 	var body: some View {
 		ScrollView {
@@ -43,20 +45,20 @@ struct NewProfileView: View {
 					}).padding(.bottom)
 					
 					VStack {
-						FormView(title: "NIK", profileValue: $trimKtp.ktpInfo.nik, keyboardNum: true)
-						FormView(title: "Nama", profileValue: $trimKtp.ktpInfo.nama, keyboardNum: false)
-						FormView(title: "Alamat", profileValue: $trimKtp.ktpInfo.alamat, keyboardNum: false)
+                        FormView(title: "NIK", profileValue: $profileController.pihak1NIK, keyboardNum: true)
+						FormView(title: "Nama", profileValue: $profileController.pihak1Nama, keyboardNum: false)
+						FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false)
 						HStack {
-							FormView(title: "RT", profileValue: $trimKtp.ktpInfo.Rt, keyboardNum: true)
-							FormView(title: "RW", profileValue: $trimKtp.ktpInfo.Rw, keyboardNum: true)
+							FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true)
+							FormView(title: "RW", profileValue: $profileController.pihak1RW, keyboardNum: true)
 						}
-						FormView(title: "Kelurahan/Desa", profileValue: $trimKtp.ktpInfo.kelurahan, keyboardNum: false)
-						FormView(title: "Kecamatan", profileValue: $trimKtp.ktpInfo.kecamatan, keyboardNum: false)
-						FormView(title: "Kabupaten/Kota", profileValue: $trimKtp.ktpInfo.kota, keyboardNum: false)
+						FormView(title: "Kelurahan/Desa", profileValue: $profileController.pihak1Kelurahan, keyboardNum: false)
+						FormView(title: "Kecamatan", profileValue: $profileController.pihak1Kecamatan, keyboardNum: false)
+						FormView(title: "Kabupaten/Kota", profileValue: $profileController.pihak1Kota, keyboardNum: false)
 						VStack {
-							FormView(title: "Provinsi", profileValue: $trimKtp.ktpInfo.provinsi, keyboardNum: false)
-							FormView(title: "Pekerjaan", profileValue: $trimKtp.ktpInfo.pekerjaan, keyboardNum: false)
-							FormView(title: "Nomor Telepon", profileValue: $trimKtp.ktpInfo.nomorHp, keyboardNum: true)
+							FormView(title: "Provinsi", profileValue: $profileController.pihak1Provinsi, keyboardNum: false)
+							FormView(title: "Pekerjaan", profileValue: $profileController.pihak1Pekerjaan, keyboardNum: false)
+							FormView(title: "Nomor Telepon", profileValue: $profileController.pihak1NomorHP, keyboardNum: true)
 						}
 					}
 				}
@@ -69,6 +71,7 @@ struct NewProfileView: View {
 //				})
 				
 				Button(action: {
+                    profileController.updateProfileCoreData()
 					showingAlert = true
 					self.mode.wrappedValue.dismiss()
 				}, label: {
