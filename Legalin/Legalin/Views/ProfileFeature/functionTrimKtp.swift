@@ -57,14 +57,14 @@ class functionTrimKtp: ObservableObject {
 				if rtRwFromKtp?.contains(": ") == true {
 					rtRwFromKtp = outputText.components(separatedBy: ": ").joined(separator: "")
 					print(rtRwFromKtp)
-					if let rtIndex = rtRwFromKtp!.firstIndex(of: "/") {
-						var rt = rtRwFromKtp!.prefix(upTo: rtIndex)
+					if let rtIndex = rtRwFromKtp?.firstIndex(of: "/") {
+						let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
 						rtBersih = String(rt)
 						print(rtBersih)
 					}
-					if let rwIndex = rtRwFromKtp!.range(of: "/") {
-						var rw = rtRwFromKtp![rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
-						rwBersih = rw
+					if let rwIndex = rtRwFromKtp?.range(of: "/") {
+						let rw = rtRwFromKtp?[rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+						rwBersih = rw ?? ""
 						print(rwBersih)
 					}
 					
@@ -72,13 +72,13 @@ class functionTrimKtp: ObservableObject {
 				if rtRwFromKtp?.contains(":") == true {
 					rtRwFromKtp = outputText.components(separatedBy: ":").joined(separator: "")
 					print(rtRwFromKtp)
-					if let rtIndex = rtRwFromKtp!.firstIndex(of: "/") {
-						var rt = rtRwFromKtp!.prefix(upTo: rtIndex)
+					if let rtIndex = rtRwFromKtp?.firstIndex(of: "/") {
+						let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
 						rtBersih = String(rt)
 						print(rtBersih)
 					}
-					if let rwIndex = rtRwFromKtp!.range(of: "/") {
-						var rw = rtRwFromKtp![rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+					if let rwIndex = rtRwFromKtp?.range(of: "/") {
+						let rw = rtRwFromKtp![rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
 						rwBersih = rw
 						print(rwBersih)
 					}
@@ -86,13 +86,13 @@ class functionTrimKtp: ObservableObject {
 				if rtRwFromKtp?.contains(" ") == true {
 					rtRwFromKtp = outputText.components(separatedBy: " ").joined(separator: "")
 					print(rtRwFromKtp)
-					if let rtIndex = rtRwFromKtp!.firstIndex(of: "/") {
-						var rt = rtRwFromKtp!.prefix(upTo: rtIndex)
+					if let rtIndex = rtRwFromKtp?.firstIndex(of: "/") {
+						let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
 						rtBersih = String(rt)
 						print(rtBersih)
 					}
 					if let rwIndex = rtRwFromKtp!.range(of: "/") {
-						var rw = rtRwFromKtp![rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+						let rw = rtRwFromKtp![rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
 						rwBersih = rw
 						print(rwBersih)
 					}
@@ -100,13 +100,13 @@ class functionTrimKtp: ObservableObject {
 				else {
 					rtRwFromKtp = outputText.slice(from: "RT/RW", to: "Kel")
 					print(rtRwFromKtp)
-					if let rtIndex = rtRwFromKtp!.firstIndex(of: "/") {
-						var rt = rtRwFromKtp!.prefix(upTo: rtIndex)
+					if let rtIndex = rtRwFromKtp?.firstIndex(of: "/") {
+						let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
 						rtBersih = String(rt)
 						print(rtBersih)
 					}
-					if let rwIndex = rtRwFromKtp!.range(of: "/") {
-						var rw = rtRwFromKtp![rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+					if let rwIndex = rtRwFromKtp?.range(of: "/") {
+						let rw = rtRwFromKtp![rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
 						rwBersih = rw
 						print(rwBersih)
 					}
@@ -130,13 +130,13 @@ class functionTrimKtp: ObservableObject {
 				}
 				if tanggalLahir?.contains(",") == true{
 					if let tanggalLahirIndex = tanggalLahir?.range(of: ","){
-						var tanggal = tanggalLahir![tanggalLahirIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+						let tanggal = tanggalLahir![tanggalLahirIndex.upperBound...].trimmingCharacters(in: .whitespaces)
 						tanggalBersih = tanggal
 						print(tanggalBersih)
 					}
 				} else if tanggalLahir?.contains(".") == true{
 					if let tanggalLahirIndex = tanggalLahir?.range(of: "."){
-						var tanggal = tanggalLahir![tanggalLahirIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+						let tanggal = tanggalLahir![tanggalLahirIndex.upperBound...].trimmingCharacters(in: .whitespaces)
 						tanggalBersih = tanggal
 						print(tanggalBersih)
 					}

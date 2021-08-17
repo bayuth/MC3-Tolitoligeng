@@ -46,24 +46,25 @@ struct ProfileView: View {
 						else {
 							ScrollView{
 								VStack(alignment: .center) {
-                                    FormView(title: "NIK", profileValue: $profileController.pihak1NIK, keyboardNum: true).disabled(true).padding(.top)
-									FormView(title: "Nama", profileValue: $profileController.pihak1Nama, keyboardNum: false).disabled(true)
+									FormView(title: "NIK", profileValue: $profileController.pihak1NIK, keyboardNum: true, isDisable: true).padding(.top)
+									FormView(title: "Nama", profileValue: $profileController.pihak1Nama, keyboardNum: false, isDisable: true)
 									
-									FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false).disabled(true)
+									FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: true).disabled(true)
 									HStack {
-										FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true).disabled(true)
-										FormView(title: "RW", profileValue: $profileController.pihak1RW, keyboardNum: true).disabled(true)
+										FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: true)
+										FormView(title: "RW", profileValue: $profileController.pihak1RW, keyboardNum: true, isDisable: true)
 									}
-									FormView(title: "Kelurahan/Desa", profileValue: $profileController.pihak1Kelurahan, keyboardNum: false).disabled(true)
-									FormView(title: "Kecamatan", profileValue: $profileController.pihak1Kecamatan, keyboardNum: false).disabled(true)
-									FormView(title: "Kabupaten/Kota", profileValue: $profileController.pihak1Kota, keyboardNum: false).disabled(true)
+									FormView(title: "Kelurahan/Desa", profileValue: $profileController.pihak1Kelurahan, keyboardNum: false, isDisable: true)
+									FormView(title: "Kecamatan", profileValue: $profileController.pihak1Kecamatan, keyboardNum: false, isDisable: true)
+									FormView(title: "Kabupaten/Kota", profileValue: $profileController.pihak1Kota, keyboardNum: false, isDisable: true)
 									VStack {
-										FormView(title: "Provinsi", profileValue: $profileController.pihak1Provinsi, keyboardNum: false).disabled(true)
-										FormView(title: "Pekerjaan", profileValue: $profileController.pihak1Pekerjaan, keyboardNum: false).disabled(true)
-                                        FormView(title: "Nomor Telepon", profileValue: $profileController.pihak1NomorHP, keyboardNum: false).disabled(true)
+										FormView(title: "Provinsi", profileValue: $profileController.pihak1Provinsi, keyboardNum: false, isDisable: true)
+										FormView(title: "Pekerjaan", profileValue: $profileController.pihak1Pekerjaan, keyboardNum: false, isDisable: true)
+										FormView(title: "Nomor Telepon", profileValue: $profileController.pihak1NomorHP, keyboardNum: false, isDisable: true)
 									}
 								}
-								.padding()
+								.frame(width: UIScreen.main.bounds.width - 35,
+										alignment: .leading)
 								NavigationLink(
 									destination: NewProfileView(),
 									label: {
