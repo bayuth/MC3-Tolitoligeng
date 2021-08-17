@@ -64,21 +64,20 @@ struct NewProfileView: View {
 							}
 						}
 					}
-//					Button(action: {
-//						shown.toggle()
-//						profileController.updateProfileCoreData()
-//					}, label: {
-//						ButtonNext(text: "Simpan", isDataComplete: true)
-//					})
-					
-					Button("\(Text("Simpan").fontWeight(.semibold).foregroundColor(.white))") {
-//						profileController.updateProfileCoreData()
+					Button(action: {
 						shown.toggle()
-						
-					}
-					.frame(width: UIScreen.main.bounds.width - 35, height: 50, alignment: .center)
-					.background(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-					.cornerRadius(10)
+					}, label: {
+						ButtonNext(text: "Simpan", isDataComplete: true)
+					})
+					
+//					Button("\(Text("Simpan").fontWeight(.semibold).foregroundColor(.white))") {
+////						profileController.updateProfileCoreData()
+//						shown.toggle()
+//						
+//					}
+//					.frame(width: UIScreen.main.bounds.width - 35, height: 50, alignment: .center)
+//					.background(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+//					.cornerRadius(10)
 
 				}
 				.background(shown ? Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.5)) : Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)))

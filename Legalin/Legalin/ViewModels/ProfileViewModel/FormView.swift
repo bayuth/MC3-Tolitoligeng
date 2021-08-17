@@ -20,7 +20,7 @@ struct FormView: View {
 			VStack(alignment: .leading) {
 				
 				Text(title).font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
-				TextField(title, text: $profileValue).font(.headline).foregroundColor(Color(#colorLiteral(red: 0.6470588235, green: 0.6470588235, blue: 0.6470588235, alpha: 1))).keyboardType(keyboardNum ? .numberPad : .default).disabled(isDisable)
+				TextField(title, text: $profileValue).font(.body).foregroundColor(Color(#colorLiteral(red: 0.6470588235, green: 0.6470588235, blue: 0.6470588235, alpha: 1))).keyboardType(keyboardNum ? .numberPad : .default).disabled(isDisable)
 				Divider()
 				
 			}.padding(.bottom)

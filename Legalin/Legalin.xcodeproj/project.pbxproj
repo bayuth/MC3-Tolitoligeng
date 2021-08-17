@@ -53,6 +53,9 @@
 		5C8F9CFC26BCF69400CE994B /* extractKtpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F9CFA26BCF69400CE994B /* extractKtpInfo.swift */; };
 		5C8F9CFE26BCF6A700CE994B /* profileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F9CFD26BCF6A700CE994B /* profileData.swift */; };
 		5CC4E12726C3FD6600A7042A /* ButtonBorderedComingSoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC4E12626C3FD6600A7042A /* ButtonBorderedComingSoon.swift */; };
+		5CE3F8ED26CBFC8400569C67 /* PengaturanPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE3F8EC26CBFC8400569C67 /* PengaturanPage.swift */; };
+		5CE3F8EF26CBFD6B00569C67 /* ButtonKebijakanPrivasi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE3F8EE26CBFD6B00569C67 /* ButtonKebijakanPrivasi.swift */; };
+		5CE3F8F126CBFFB500569C67 /* KebijakanPrivasiPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE3F8F026CBFFB500569C67 /* KebijakanPrivasiPage.swift */; };
 		5E19B84B26C13B9E0071F7E7 /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 5E19B84A26C13B9E0071F7E7 /* template.html */; };
 		5E26F53D26BFA61900F51C6E /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E26F53C26BFA61900F51C6E /* WebView.swift */; };
 		5E27EEF126BA56880090573F /* pageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E27EEF026BA56880090573F /* pageIndicator.swift */; };
@@ -148,6 +151,9 @@
 		5C8F9CFA26BCF69400CE994B /* extractKtpInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extractKtpInfo.swift; sourceTree = "<group>"; };
 		5C8F9CFD26BCF6A700CE994B /* profileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileData.swift; sourceTree = "<group>"; };
 		5CC4E12626C3FD6600A7042A /* ButtonBorderedComingSoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonBorderedComingSoon.swift; sourceTree = "<group>"; };
+		5CE3F8EC26CBFC8400569C67 /* PengaturanPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PengaturanPage.swift; sourceTree = "<group>"; };
+		5CE3F8EE26CBFD6B00569C67 /* ButtonKebijakanPrivasi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonKebijakanPrivasi.swift; sourceTree = "<group>"; };
+		5CE3F8F026CBFFB500569C67 /* KebijakanPrivasiPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KebijakanPrivasiPage.swift; sourceTree = "<group>"; };
 		5E19B84A26C13B9E0071F7E7 /* template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template.html; sourceTree = "<group>"; };
 		5E26F53C26BFA61900F51C6E /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		5E27EEF026BA56880090573F /* pageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pageIndicator.swift; sourceTree = "<group>"; };
@@ -404,11 +410,14 @@
 				5C8F9CE226BCF66D00CE994B /* FormNumberView.swift */,
 				5C8F9CE326BCF66D00CE994B /* ProfileView.swift */,
 				5C8F9CE426BCF66D00CE994B /* NewProfileView.swift */,
+				5CE3F8EC26CBFC8400569C67 /* PengaturanPage.swift */,
+				5CE3F8F026CBFFB500569C67 /* KebijakanPrivasiPage.swift */,
 				5C8F9CE626BCF66D00CE994B /* functionTrimKtp.swift */,
 				5C8F9CE726BCF66D00CE994B /* scanKtpFeature */,
 				5C8F9CEC26BCF66D00CE994B /* ScanDataClass.swift */,
 				5C8F9CED26BCF66D00CE994B /* ButtonView.swift */,
 				5C7E999426C4DA5800BBBFE9 /* AlertSave.swift */,
+				5CE3F8EE26CBFD6B00569C67 /* ButtonKebijakanPrivasi.swift */,
 			);
 			path = ProfileFeature;
 			sourceTree = "<group>";
@@ -616,6 +625,7 @@
 				5E27EEFF26BA8E530090573F /* step3Detail.swift in Sources */,
 				5E5D23FD26B985FF00FC356E /* pengadilanNegeriDetailViewController.swift in Sources */,
 				5C8F9CFC26BCF69400CE994B /* extractKtpInfo.swift in Sources */,
+				5CE3F8F126CBFFB500569C67 /* KebijakanPrivasiPage.swift in Sources */,
 				5C8F9CEF26BCF66D00CE994B /* ProfileView.swift in Sources */,
 				5C8F9CFB26BCF69400CE994B /* FormView.swift in Sources */,
 				5CC4E12726C3FD6600A7042A /* ButtonBorderedComingSoon.swift in Sources */,
@@ -645,11 +655,13 @@
 				7558EA6826BD2CEA00E0B492 /* InfoPinjaman.swift in Sources */,
 				5C7E345726C0C6C40006D506 /* ButtonTutup.swift in Sources */,
 				4A3AF69626BB74D400614382 /* ItemListKredit.swift in Sources */,
+				5CE3F8ED26CBFC8400569C67 /* PengaturanPage.swift in Sources */,
 				5E35F36B26B801C30044D1FC /* ModalMetodePembayaran.swift in Sources */,
 				5C8F9CF826BCF66D00CE994B /* ButtonView.swift in Sources */,
 				5E375CE826BD340500DF834D /* popOverContent.swift in Sources */,
 				5E35F37F26B844450044D1FC /* ReadJsonData.swift in Sources */,
 				5C7E999526C4DA5800BBBFE9 /* AlertSave.swift in Sources */,
+				5CE3F8EF26CBFD6B00569C67 /* ButtonKebijakanPrivasi.swift in Sources */,
 				4AF0124526BCF14900E9C2FF /* NavigationBarModifier.swift in Sources */,
 				7558EA6626BD2B1D00E0B492 /* Pihak2.swift in Sources */,
 				5EBDDDD426B3B69900F53958 /* CoreDataViewModel.swift in Sources */,
