@@ -10,12 +10,6 @@ import SwiftUI
 struct ProfileView: View {
 	
 	//		@StateObject var ktpInfoKosong = ScanDataClass()
-	@State var nik: String = ""
-	@State var nama: String = ""
-	@State var birthDate = Date()
-	@State var alamat: String = ""
-	@State var pekerjaan: String = ""
-	@State var nomorHp: String = ""
 	
 	@ObservedObject var profileKtp = ScanDataClass()
 	@ObservedObject var profiledata = functionTrimKtp(pihak: 0)
