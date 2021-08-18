@@ -12,7 +12,7 @@ import SwiftUI
 struct ModalAddKredit: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var kreditData = ListKreditVM()
-    @EnvironmentObject var perjanjianController: PerjanjianController
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     var body: some View {
         NavigationView {

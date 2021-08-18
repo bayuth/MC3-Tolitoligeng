@@ -15,7 +15,7 @@ struct step4Agunan: View {
     
     @State var toggleState: Bool = false
     @State var disabledStaus: Bool = false
-    @State var showAlert: Bool = false
+    @State var showActionSheet = false
     
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     
@@ -81,22 +81,25 @@ struct step4Agunan: View {
                                 })
                             , trailing:
                                 Button("Tutup") {
-                                    showAlert = true
-                                }.foregroundColor(.white)).alert(isPresented: $showAlert, content: {
-                                    
-                                    Alert(title: Text("Simpan Draft"),
-                                          message: Text("Apakah anda ingin menyimpan draft?"),
-                                          primaryButton:
-                                            .destructive(Text("Hapus")){
-                                                masterPresentationMode4.wrappedValue.dismiss()
-                                                        },
-                                          secondaryButton:
-                                            .cancel(Text("Simpan")) {
-                                                perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
-                                                masterPresentationMode4.wrappedValue.dismiss()
-                                          })
-                                    
-                                })
+                                    showActionSheet = true
+                                }.foregroundColor(.white))
+        
+        .actionSheet(isPresented: $showActionSheet, content: {
+            
+            ActionSheet(
+                title: Text("Entri data perjanjian belum lengkap"),
+                buttons: [
+                    .default(Text("Simpan")) {
+                        perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
+                        self.presentationMode.wrappedValue.dismiss()
+                    },
+                    .destructive(Text("Hapus")) {
+                        self.presentationMode.wrappedValue.dismiss()
+                    },
+                    .cancel(Text("Batalkan"))
+                ])
+            
+        })
         
     }
 }
