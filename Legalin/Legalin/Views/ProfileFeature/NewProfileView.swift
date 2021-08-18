@@ -71,14 +71,16 @@ struct NewProfileView: View {
 					}, label: {
 						ButtonNext(text: "Simpan", isDataComplete: true)
 					}).padding(.bottom)
-				}
-				.background(shown ? Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.5)) : Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)))
+				}.padding(.horizontal)
+				
 				if shown {
 					AlertSave(shown: $shown, textField: $textfieldDisable)
 				}
 			}
-		}.frame(width: UIScreen.main.bounds.width - 35,
-				alignment: .leading)
+		}
+		.background(shown ? Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.5)) : Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)))
+//		.frame(width: UIScreen.main.bounds.width - 35,
+//				alignment: .leading)
 		
 		
 	}
