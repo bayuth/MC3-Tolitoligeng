@@ -86,7 +86,7 @@ struct ProfileView: View {
 								
 							}
 						}
-						
+						.background(shown ? Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.5)) : Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)))
 					}
 					
 				}
@@ -101,15 +101,12 @@ struct ProfileView: View {
 											label: {
 												Image(systemName: "gearshape.fill").foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 											})
-										Image(systemName: "square.and.pencil").foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-											.onTapGesture {
-												texfieldDisable = false
-											}
-//										NavigationLink(
-//											destination: NewProfileView(),
-//											label: {
-//												Image(systemName: "square.and.pencil").foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-//											})
+										if(coreDataVM.pihak1.count != 0) {
+											Image(systemName: "square.and.pencil").foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+												.onTapGesture {
+													texfieldDisable = false
+												}
+										}
 									}
 			)
 			.navigationBarTitleDisplayMode(.large)
