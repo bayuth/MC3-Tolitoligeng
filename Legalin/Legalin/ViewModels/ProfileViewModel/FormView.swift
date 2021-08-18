@@ -12,7 +12,7 @@ struct FormView: View {
 	@State var title:String
 	@Binding var profileValue:String
 	@State var keyboardNum:Bool
-	@State var isDisable:Bool
+	@Binding var isDisable:Bool
 	
     var body: some View {
 		

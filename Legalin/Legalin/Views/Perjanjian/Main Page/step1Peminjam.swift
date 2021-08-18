@@ -18,6 +18,7 @@ struct step1Peminjam: View {
     @State var showTanggalLahir = false
     
     @State var showAlert = false
+	@State var isDisable:Bool = false
     
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -52,25 +53,25 @@ struct step1Peminjam: View {
                         }).padding(.bottom)
                     
                     VStack(alignment: .leading) {
-						FormView(title: "NIK", profileValue: $perjanjianController.pihak1NIK, keyboardNum: true, isDisable: false)
-						FormView(title: "Nama", profileValue: $perjanjianController.pihak1Nama, keyboardNum: false, isDisable: false)
+						FormView(title: "NIK", profileValue: $perjanjianController.pihak1NIK, keyboardNum: true, isDisable: $isDisable)
+						FormView(title: "Nama", profileValue: $perjanjianController.pihak1Nama, keyboardNum: false, isDisable: $isDisable)
                         
                         DatePicker("Tanggal Lahir", selection:$perjanjianController.pihak1TanggalLahir, displayedComponents: .date).font(.body).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 						Divider()
 							.padding(.bottom)
                         
-						FormView(title: "Alamat", profileValue: $perjanjianController.pihak1Alamat, keyboardNum: false, isDisable: false)
+						FormView(title: "Alamat", profileValue: $perjanjianController.pihak1Alamat, keyboardNum: false, isDisable: $isDisable)
                         HStack {
-							FormView(title: "RT", profileValue: $perjanjianController.pihak1RT, keyboardNum: true, isDisable: false)
-							FormView(title: "RW", profileValue: $perjanjianController.pihak1RW, keyboardNum: true, isDisable: false)
+							FormView(title: "RT", profileValue: $perjanjianController.pihak1RT, keyboardNum: true, isDisable: $isDisable)
+							FormView(title: "RW", profileValue: $perjanjianController.pihak1RW, keyboardNum: true, isDisable: $isDisable)
                         }
-						FormView(title: "Kelurahan/Desa", profileValue: $perjanjianController.pihak1Kelurahan, keyboardNum: false, isDisable: false)
-						FormView(title: "Kecamatan", profileValue: $perjanjianController.pihak1Kecamatan, keyboardNum: false, isDisable: false)
-						FormView(title: "Kabupaten/Kota", profileValue: $perjanjianController.pihak1Kota, keyboardNum: false, isDisable: false)
+						FormView(title: "Kelurahan/Desa", profileValue: $perjanjianController.pihak1Kelurahan, keyboardNum: false, isDisable: $isDisable)
+						FormView(title: "Kecamatan", profileValue: $perjanjianController.pihak1Kecamatan, keyboardNum: false, isDisable: $isDisable)
+						FormView(title: "Kabupaten/Kota", profileValue: $perjanjianController.pihak1Kota, keyboardNum: false, isDisable: $isDisable)
                         VStack(alignment:.leading) {
-							FormView(title: "Provinsi", profileValue: $perjanjianController.pihak1Provinsi, keyboardNum: false, isDisable: false)
-							FormView(title: "Pekerjaan", profileValue: $perjanjianController.pihak1Pekerjaan, keyboardNum: false, isDisable: false)
-							FormView(title: "Nomor Telepon", profileValue: $perjanjianController.pihak1NomorHP, keyboardNum: true, isDisable: false)
+							FormView(title: "Provinsi", profileValue: $perjanjianController.pihak1Provinsi, keyboardNum: false, isDisable: $isDisable)
+							FormView(title: "Pekerjaan", profileValue: $perjanjianController.pihak1Pekerjaan, keyboardNum: false, isDisable: $isDisable)
+							FormView(title: "Nomor Telepon", profileValue: $perjanjianController.pihak1NomorHP, keyboardNum: true, isDisable: $isDisable)
                             Text("Pastikan semua data yang anda masukan sudah benar dan sesuai dengan KTP anda")
                                 .font(.caption2)
                                 .fontWeight(.regular)

@@ -22,6 +22,8 @@ struct ProfileView: View {
 	
 	@ObservedObject var profileController: ProfileController = .shared
 	@ObservedObject var coreDataVM: CoreDataViewModel = .shared
+	@State var shown = false
+	@State var texfieldDisable:Bool = true
 	
 	var body: some View {
 		NavigationView {
@@ -45,26 +47,46 @@ struct ProfileView: View {
 				
 				else {
 					ScrollView{
-						VStack(alignment: .center) {
-							FormView(title: "NIK", profileValue: $profileController.pihak1NIK, keyboardNum: true, isDisable: true).padding(.top)
-							FormView(title: "Nama", profileValue: $profileController.pihak1Nama, keyboardNum: false, isDisable: true)
-							
-							FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: true).disabled(true)
-							HStack {
-								FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: true)
-								FormView(title: "RW", profileValue: $profileController.pihak1RW, keyboardNum: true, isDisable: true)
+						ZStack {
+							VStack(alignment: .center) {
+								FormView(title: "NIK", profileValue: $profileController.pihak1NIK, keyboardNum: true, isDisable: $texfieldDisable).padding(.top)
+								FormView(title: "Nama", profileValue: $profileController.pihak1Nama, keyboardNum: false, isDisable: $texfieldDisable)
+								
+								FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable).disabled(true)
+								HStack {
+									FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: $texfieldDisable)
+									FormView(title: "RW", profileValue: $profileController.pihak1RW, keyboardNum: true, isDisable: $texfieldDisable)
+								}
+								FormView(title: "Kelurahan/Desa", profileValue: $profileController.pihak1Kelurahan, keyboardNum: false, isDisable: $texfieldDisable)
+								FormView(title: "Kecamatan", profileValue: $profileController.pihak1Kecamatan, keyboardNum: false, isDisable: $texfieldDisable)
+								FormView(title: "Kabupaten/Kota", profileValue: $profileController.pihak1Kota, keyboardNum: false, isDisable: $texfieldDisable)
+								VStack {
+									FormView(title: "Provinsi", profileValue: $profileController.pihak1Provinsi, keyboardNum: false, isDisable: $texfieldDisable)
+									FormView(title: "Pekerjaan", profileValue: $profileController.pihak1Pekerjaan, keyboardNum: false, isDisable: $texfieldDisable)
+									FormView(title: "Nomor Telepon", profileValue: $profileController.pihak1NomorHP, keyboardNum: false, isDisable: $texfieldDisable)
+									
+									Button(action: {
+										shown.toggle()
+									}, label: {
+										ZStack{
+											RoundedRectangle(cornerRadius: 10)
+												.foregroundColor(texfieldDisable ? Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)) : Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+												.frame(width: UIScreen.main.bounds.width - 35, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+											
+											Text("Simpan").fontWeight(.semibold).foregroundColor(.white)
+										}
+									}).disabled(texfieldDisable)
+									.padding(.bottom)
+								}
 							}
-							FormView(title: "Kelurahan/Desa", profileValue: $profileController.pihak1Kelurahan, keyboardNum: false, isDisable: true)
-							FormView(title: "Kecamatan", profileValue: $profileController.pihak1Kecamatan, keyboardNum: false, isDisable: true)
-							FormView(title: "Kabupaten/Kota", profileValue: $profileController.pihak1Kota, keyboardNum: false, isDisable: true)
-							VStack {
-								FormView(title: "Provinsi", profileValue: $profileController.pihak1Provinsi, keyboardNum: false, isDisable: true)
-								FormView(title: "Pekerjaan", profileValue: $profileController.pihak1Pekerjaan, keyboardNum: false, isDisable: true)
-								FormView(title: "Nomor Telepon", profileValue: $profileController.pihak1NomorHP, keyboardNum: false, isDisable: true)
+							.frame(width: UIScreen.main.bounds.width - 35,
+								   alignment: .leading)
+							if shown {
+								AlertSave(shown: $shown, textField: $texfieldDisable)
+								
 							}
 						}
-						.frame(width: UIScreen.main.bounds.width - 35,
-							   alignment: .leading)
+						
 					}
 					
 				}
@@ -79,12 +101,15 @@ struct ProfileView: View {
 											label: {
 												Image(systemName: "gearshape.fill").foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 											})
-										
-										NavigationLink(
-											destination: NewProfileView(),
-											label: {
-												Image(systemName: "square.and.pencil").foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-											})
+										Image(systemName: "square.and.pencil").foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+											.onTapGesture {
+												texfieldDisable = false
+											}
+//										NavigationLink(
+//											destination: NewProfileView(),
+//											label: {
+//												Image(systemName: "square.and.pencil").foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+//											})
 									}
 			)
 			.navigationBarTitleDisplayMode(.large)

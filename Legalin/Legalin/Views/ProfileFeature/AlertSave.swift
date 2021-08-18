@@ -11,6 +11,7 @@ struct AlertSave: View {
 	
 	@Binding var shown:Bool
 	@State private var showSaveAlert = false
+	@Binding var textField:Bool
 	@Environment(\.presentationMode) var saveMode: Binding<PresentationMode>
 	@ObservedObject var profileController: ProfileController = .shared
 	
@@ -23,6 +24,8 @@ struct AlertSave: View {
 			HStack{
 				Button("\(Text("Tutup").font(.headline).fontWeight(.semibold))") {
 					profileController.updateProfileCoreData()
+					shown.toggle()
+					textField.toggle()
 					self.saveMode.wrappedValue.dismiss()
 				}
 				.frame(width: UIScreen.main.bounds.width/2-25, height: 30)
@@ -37,6 +40,6 @@ struct AlertSave: View {
 
 struct AlertSave_Previews: PreviewProvider {
     static var previews: some View {
-		AlertSave(shown: .constant(false))
+		AlertSave(shown: .constant(false), textField: .constant(false))
     }
 }
