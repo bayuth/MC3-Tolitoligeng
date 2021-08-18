@@ -25,8 +25,8 @@ struct step3Detail: View {
     @State private var title2 = "Pengadilan Negeri"
     @State private var title3 = "Pilih Tanggal"
     
-    @State var showAlert = false
 	@State var isDisable:Bool = false
+    @State var showActionSheet = false
 	
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     
@@ -106,24 +106,25 @@ struct step3Detail: View {
                                         })
                                     , trailing:
                                         Button("Tutup") {
-                                            showAlert = true
-                                        }.foregroundColor(.white)).alert(isPresented: $showAlert, content: {
-                                            
-                                            Alert(title: Text("Simpan Draft"),
-                                                  message: Text("Apakah anda ingin menyimpan draft?"),
-                                                  primaryButton:
-                                                    .destructive(Text("Hapus")){
-                                                        masterPresentationMode3.wrappedValue.dismiss()
-                                                                },
-                                                  secondaryButton:
-                                                    .cancel(Text("Simpan")) {
-                                                        perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
-                                                        masterPresentationMode3.wrappedValue.dismiss()
-                                                  })
-                                            
-                                        })
+                                            showActionSheet = true
+                                        }.foregroundColor(.white))
                 
-            }
+            }.actionSheet(isPresented: $showActionSheet, content: {
+                
+                ActionSheet(
+                    title: Text("Entri data perjanjian belum lengkap"),
+                    buttons: [
+                        .default(Text("Simpan")) {
+                            perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
+                            self.masterPresentationMode3.wrappedValue.dismiss()
+                        },
+                        .destructive(Text("Hapus")) {
+                            self.masterPresentationMode3.wrappedValue.dismiss()
+                        },
+                        .cancel(Text("Batalkan"))
+                    ])
+                
+            })
         }.frame(width: UIScreen.main.bounds.width - 35,
                 alignment: .leading)
         

@@ -17,8 +17,8 @@ struct step2Pemberi: View {
 	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 	@State var showTanggalLahir = false
 	@State var titleLahir = "Pilih Tanggal Lahir"
-    @State var showAlert = false
 	@State var isDisable:Bool = false
+    @State var showActionSheet = false
     
 	let dateFormatter: DateFormatter = {
 		let df = DateFormatter()
@@ -105,23 +105,24 @@ struct step2Pemberi: View {
 								})
 							, trailing:
                                 Button("Tutup") {
-                                    showAlert = true
-                                }.foregroundColor(.white)).alert(isPresented: $showAlert, content: {
-                                    
-                                    Alert(title: Text("Simpan Draft"),
-                                          message: Text("Apakah anda ingin menyimpan draft?"),
-                                          primaryButton:
-                                            .destructive(Text("Hapus")){
-                                                
-                                                masterPresentationMode.wrappedValue.dismiss()
-                                                        },
-                                          secondaryButton:
-                                            .cancel(Text("Simpan")) {
-                                                perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
-                                                masterPresentationMode.wrappedValue.dismiss()
-                                          })
-                                    
-                                })
+                                    showActionSheet = true
+                                }.foregroundColor(.white))
+        .actionSheet(isPresented: $showActionSheet, content: {
+                    
+                    ActionSheet(
+                        title: Text("Entri data perjanjian belum lengkap"),
+                        buttons: [
+                            .default(Text("Simpan")) {
+                                perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
+                                self.masterPresentationMode.wrappedValue.dismiss()
+                            },
+                            .destructive(Text("Hapus")) {
+                                self.masterPresentationMode.wrappedValue.dismiss()
+                            },
+                            .cancel(Text("Batalkan"))
+                        ])
+                    
+                })
         
 	}
 }
