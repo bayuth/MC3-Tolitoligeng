@@ -18,7 +18,7 @@ struct ModalAddKredit: View {
     var body: some View {
         NavigationView {
             
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack{
 					FormView(title: "Tujuan Meminjam", profileValue: $kreditData.object.kreditTitle, keyboardNum: false, isDisable: $isDisable).padding(.horizontal, 16).padding(.top, 16)
                     SliderViewWithForm(sliderValue: $perjanjianController.jumlahPinjaman, text1: "Pinjaman Maksimal", text2: "Rp. 50.000.000", title: "Jumlah Pinjaman", type: 0).padding(.horizontal, 16)

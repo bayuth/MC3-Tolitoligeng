@@ -41,7 +41,7 @@ struct step3Detail: View {
         VStack(alignment: .leading) {
             pageIndicator(progressNumber: 3, progressName: "Detail Pinjaman", progressDetail: "Berikutnya: Agunan").padding(.bottom, 15).padding(.top,25)
             
-            ScrollView{
+            ScrollView(showsIndicators: false){
                 VStack(alignment: .leading){
                     ButtonBordered(icon: "doc.text", titleButton: "Pilih Kredit (Opsional)")
                         .padding(.horizontal, 4)

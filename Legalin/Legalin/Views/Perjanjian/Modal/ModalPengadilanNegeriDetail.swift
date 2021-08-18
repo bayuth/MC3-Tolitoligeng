@@ -20,7 +20,7 @@ struct ModalPengadilanNegeriDetail: View {
         
         VStack{
             Spacer()
-            ScrollView{
+            ScrollView(showsIndicators: false){
                 
                 ForEach(0..<dataDetail.kota.count){item in
                     

@@ -23,7 +23,7 @@ struct ModalMetodePembayaran: View {
                 
                 Spacer()
                 
-                ScrollView{
+                ScrollView(showsIndicators: false){
                     
                     CheckListCell(title: "Cicilan", selected: stateController.selected, mainNav: false, index: 0)
                         .onTapGesture {

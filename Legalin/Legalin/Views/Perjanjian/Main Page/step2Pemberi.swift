@@ -31,7 +31,7 @@ struct step2Pemberi: View {
 			
 			pageIndicator(progressNumber: 2, progressName: "Pihak 2 - Pemberi Peminjam", progressDetail: "Berikutnya: Detail Pinjaman").padding(.bottom, 15).padding(.top,25)
 			
-			ScrollView{
+			ScrollView(showsIndicators: false){
 				VStack(alignment: .leading) {
 					
                     ButtonBorderedComingSoon(icon: "person.fill", titleButton: "Pilih Identitas")

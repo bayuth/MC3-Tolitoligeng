@@ -12,7 +12,7 @@ struct Pihak1: View {
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     var body: some View {
-        ScrollView(){
+        ScrollView(showsIndicators: false){
             HStack{
                 VStack(alignment: .leading){
                     Text("Pihak 1 - Peminjam")

@@ -30,7 +30,7 @@ struct PerjanjianPage: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding()
                 
-                ScrollView{
+                ScrollView(showsIndicators: false){
                     ChoosenSegment(selectedSegment: selectedSide)
                 }
             }

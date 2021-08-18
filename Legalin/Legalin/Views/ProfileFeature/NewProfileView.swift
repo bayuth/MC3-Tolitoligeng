@@ -33,7 +33,7 @@ struct NewProfileView: View {
 	@State var textfieldDisable:Bool = false
 	
 	var body: some View {
-		ScrollView {
+		ScrollView(showsIndicators: false) {
 			ZStack {
 				VStack(alignment: .leading) {
 					VStack(alignment: .leading) {
