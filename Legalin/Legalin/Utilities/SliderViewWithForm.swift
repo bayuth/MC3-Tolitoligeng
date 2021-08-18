@@ -39,34 +39,37 @@ struct SliderViewWithForm: View {
             ).keyboardType(.numberPad)
             Divider()
             Slider(
-                value: $sliderValue,
-                in: rangeOfSlider,
-                step: valueMaxSlide,
-                onEditingChanged: { editing in
-                    isEditing = editing
-                    getFormattedText()
+                value: Binding(
+                    get: {
+                        self.sliderValue
+                    },
+                    set: {(newValue) in
+                        self.sliderValue = newValue
+                        getFormattedText()
+                    }),
+                    in: rangeOfSlider,
+                    step: valueMaxSlide
+                ).padding(.bottom, 11).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                .padding(.horizontal,10)
+                HStack{
+                    Text(text1)
+                        .foregroundColor(Color.init(hex: "#707070"))
+                        .font(.caption)
+                    Spacer()
+                    Text(text2)
+                        .foregroundColor(Color.init(hex: "#707070"))
+                        .font(.caption)
                 }
-            ).padding(.bottom, 11).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-			.padding(.horizontal,10)
-            HStack{
-                Text(text1)
-                    .foregroundColor(Color.init(hex: "#707070"))
-                    .font(.caption)
-                Spacer()
-                Text(text2)
-                    .foregroundColor(Color.init(hex: "#707070"))
-                    .font(.caption)
-            }
-            .frame(
-                minWidth: 0,
-                maxWidth: .infinity,
-                minHeight: 0,
-                maxHeight: 0,
-                alignment: .topLeading
-            )
-            .padding(.bottom, 10)
-            Divider()
-		}.padding(.bottom,15)
+                .frame(
+                    minWidth: 0,
+                    maxWidth: .infinity,
+                    minHeight: 0,
+                    maxHeight: 0,
+                    alignment: .topLeading
+                )
+                .padding(.bottom, 10)
+                Divider()
+        }.padding(.bottom,15)
         .onAppear{
             getFormattedText()
         }
