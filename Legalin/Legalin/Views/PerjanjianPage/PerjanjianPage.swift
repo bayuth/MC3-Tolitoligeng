@@ -36,18 +36,18 @@ struct PerjanjianPage: View {
             }
             .navigationTitle("Perjanjian")
             .navigationBarItems(trailing:
-                                                VStack{
-                                                    Button(action: { isPresented.toggle()
-                                                        perjanjianController.resetValue()
-                                                    })
-                                                    {
-                                                        Image(systemName: "plus")
-                                                            .font(.title)
-                                                            .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-                                                    }
-                                                    .fullScreenCover(isPresented: $isPresented, content: step1Peminjam.init)
-                                                }
-        )}
+                                    VStack{
+                                        Button(action: { isPresented.toggle()
+                                            perjanjianController.resetValue()
+                                        })
+                                        {
+                                            Image(systemName: "plus")
+                                                .font(.title)
+                                                .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                                        }
+                                        .fullScreenCover(isPresented: $isPresented, content: step1Peminjam.init)
+                                    }
+            )}
     }
     
     

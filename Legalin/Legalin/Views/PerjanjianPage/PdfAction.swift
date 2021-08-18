@@ -139,7 +139,7 @@ struct SignBtn: View{
         .alert(isPresented: $alertIsPresented, content: {
             Alert(title: Text("Surat Perjanjian Sudah di Tanda Tangan"), message: Text("Surat sudah ditanda tangan kedua belah pihak diatas materai?"), primaryButton: .default(Text("Sudah"),
                                                                                                                                                                                 action: {
-                                                                                                                                                            self.isSigned = true
+                                                                                                                                                                                    self.isSigned = true
                                                                                                                                                                                 }), secondaryButton: .cancel(Text("Belum")))
         })
     }
