@@ -15,7 +15,7 @@ struct ConfirmationPage: View {
     //    var position = 0
     
     var body: some View {
-        ScrollView(.init()){
+        ScrollView(.init(), showsIndicators: false){
             TabView{
                 Pihak1()
                     .tag(subview[1])

@@ -18,7 +18,7 @@ struct ModalPengadilanNegeri: View {
     
     var body: some View {
         
-        ScrollView{
+        ScrollView(showsIndicators: false){
             LazyVStack{
                 ForEach(provinsiData, id: \.provinsi) { item in
                     NavigationLink(

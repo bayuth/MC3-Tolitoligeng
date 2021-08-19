@@ -49,7 +49,7 @@ struct ProfileView: View {
 				}
 				
 				else {
-					ScrollView{
+					ScrollView(showsIndicators: false){
 						ZStack {
 							VStack(alignment: .center) {
 								FormView(title: "NIK", profileValue: $profileController.pihak1NIK, keyboardNum: true, isDisable: $texfieldDisable).padding(.top)

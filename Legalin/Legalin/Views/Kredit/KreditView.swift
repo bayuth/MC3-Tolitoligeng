@@ -19,7 +19,7 @@ struct KreditView: View {
                 if kreditData.list.isEmpty {
                     EmptyState()
                 }else {
-                    ScrollView{
+                    ScrollView(showsIndicators: false){
                         ForEach(kreditData.list){ item in
                             KreditCardView(item: $kreditData.list[getIndex(item: item)], lists: $kreditData.list)
 

@@ -33,7 +33,7 @@ struct step1Peminjam: View {
             
             pageIndicator(progressNumber: 1, progressName: "Pihak 1 - Peminjam", progressDetail: "Berikutnya: Pihak 2 - Pemberi Pinjaman").padding(.bottom, 15).padding(.top,25)
             
-            ScrollView{
+            ScrollView(showsIndicators: false){
                 VStack(alignment: .leading) {
                     
                     Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))) .padding(.bottom,7)

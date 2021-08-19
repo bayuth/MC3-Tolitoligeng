@@ -42,7 +42,7 @@ struct NewProfileView: View {
 	}()
 	
 	var body: some View {
-		ScrollView {
+		ScrollView(showsIndicators: false) {
 			ZStack {
 				VStack(alignment: .leading) {
 					VStack(alignment: .leading) {
