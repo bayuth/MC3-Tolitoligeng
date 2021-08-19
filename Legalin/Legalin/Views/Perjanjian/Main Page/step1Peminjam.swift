@@ -16,9 +16,10 @@ struct step1Peminjam: View {
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     @State var showTanggalLahir = false
+	@State var tanggalLahir = Date()
     
-    @State var showAlert = false
 	@State var isDisable:Bool = false
+    @State var showActionSheet = false
     
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -55,11 +56,22 @@ struct step1Peminjam: View {
                     VStack(alignment: .leading) {
 						FormView(title: "NIK", profileValue: $perjanjianController.pihak1NIK, keyboardNum: true, isDisable: $isDisable)
 						FormView(title: "Nama", profileValue: $perjanjianController.pihak1Nama, keyboardNum: false, isDisable: $isDisable)
-                        
-                        DatePicker("Tanggal Lahir", selection:$perjanjianController.pihak1TanggalLahir, displayedComponents: .date).font(.body).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-						Divider()
-							.padding(.bottom)
-                        
+						VStack(alignment: .leading){
+							Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+							Text(perjanjianController.pihak1TanggalLahir, formatter: dateFormatter)
+								.font(.body)
+								.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+								.onTapGesture {
+								showTanggalLahir.toggle()
+								}
+							Divider()
+								.padding(.bottom)
+						}
+						if showTanggalLahir {
+							DatePicker("", selection: $perjanjianController.pihak1TanggalLahir, displayedComponents: .date)
+								.datePickerStyle(GraphicalDatePickerStyle())
+						}
+						
 						FormView(title: "Alamat", profileValue: $perjanjianController.pihak1Alamat, keyboardNum: false, isDisable: $isDisable)
                         HStack {
 							FormView(title: "RT", profileValue: $perjanjianController.pihak1RT, keyboardNum: true, isDisable: $isDisable)
@@ -75,7 +87,7 @@ struct step1Peminjam: View {
                             Text("Pastikan semua data yang anda masukan sudah benar dan sesuai dengan KTP anda")
                                 .font(.caption2)
                                 .fontWeight(.regular)
-                                .foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+                                .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
                                 .multilineTextAlignment(.leading)
                                 .padding(.bottom,10)
                             
@@ -98,26 +110,25 @@ struct step1Peminjam: View {
         .navigationBarTitle("Perjanjian Baru", displayMode: .inline)
         .navigationBarItems(trailing:
                                 Button("Tutup") {
-                                    showAlert = true
+                                    showActionSheet = true
                                 }.foregroundColor(.white))
-        .alert(isPresented: $showAlert, content: {
-            
-            Alert(title: Text("Simpan Draft"),
-                  message: Text("Apakah anda ingin menyimpan draft?"),
-                  primaryButton:
-                    .cancel(Text("Simpan")) {
-                        perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
-                        presentationMode.wrappedValue.dismiss()
-                                },
-                  secondaryButton:
-                    .destructive(Text("Hapus")){
-                        
-                        presentationMode.wrappedValue.dismiss()
-                    
-                  })
-            
-        })
-    }
+        
+    }.actionSheet(isPresented: $showActionSheet, content: {
+        
+        ActionSheet(
+            title: Text("Entri data perjanjian belum lengkap"),
+            buttons: [
+                .default(Text("Simpan")) {
+                    perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
+                    self.presentationMode.wrappedValue.dismiss()
+                },
+                .destructive(Text("Hapus")) {
+                    self.presentationMode.wrappedValue.dismiss()
+                },
+                .cancel(Text("Batalkan"))
+            ])
+        
+    })
     }
 }
 

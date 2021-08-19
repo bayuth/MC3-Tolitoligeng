@@ -17,8 +17,8 @@ struct step2Pemberi: View {
 	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 	@State var showTanggalLahir = false
 	@State var titleLahir = "Pilih Tanggal Lahir"
-    @State var showAlert = false
 	@State var isDisable:Bool = false
+    @State var showActionSheet = false
     
 	let dateFormatter: DateFormatter = {
 		let df = DateFormatter()
@@ -51,9 +51,21 @@ struct step2Pemberi: View {
 					VStack {
 						FormView(title: "NIK", profileValue: $perjanjianController.pihak2NIK, keyboardNum: true, isDisable: $isDisable)
 						FormView(title: "Nama", profileValue: $perjanjianController.pihak2Nama, keyboardNum: false, isDisable: $isDisable)
-						DatePicker("Tanggal Lahir", selection:$perjanjianController.pihak2TanggalLahir, displayedComponents: .date).font(.body).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-						Divider()
-							.padding(.bottom)
+						VStack(alignment: .leading){
+							Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+							Text(perjanjianController.pihak1TanggalLahir, formatter: dateFormatter)
+								.font(.body)
+								.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+								.onTapGesture {
+								showTanggalLahir.toggle()
+								}
+							Divider()
+								.padding(.bottom)
+						}
+						if showTanggalLahir {
+							DatePicker("", selection: $perjanjianController.pihak1TanggalLahir, displayedComponents: .date)
+								.datePickerStyle(GraphicalDatePickerStyle())
+						}
 						FormView(title: "Alamat", profileValue: $perjanjianController.pihak2Alamat, keyboardNum: false, isDisable: $isDisable)
 						HStack {
 							FormView(title: "RT", profileValue: $perjanjianController.pihak2RT, keyboardNum: true, isDisable: $isDisable)
@@ -105,23 +117,24 @@ struct step2Pemberi: View {
 								})
 							, trailing:
                                 Button("Tutup") {
-                                    showAlert = true
-                                }.foregroundColor(.white)).alert(isPresented: $showAlert, content: {
-                                    
-                                    Alert(title: Text("Simpan Draft"),
-                                          message: Text("Apakah anda ingin menyimpan draft?"),
-                                          primaryButton:
-                                            .destructive(Text("Hapus")){
-                                                
-                                                masterPresentationMode.wrappedValue.dismiss()
-                                                        },
-                                          secondaryButton:
-                                            .cancel(Text("Simpan")) {
-                                                perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
-                                                masterPresentationMode.wrappedValue.dismiss()
-                                          })
-                                    
-                                })
+                                    showActionSheet = true
+                                }.foregroundColor(.white))
+        .actionSheet(isPresented: $showActionSheet, content: {
+                    
+                    ActionSheet(
+                        title: Text("Entri data perjanjian belum lengkap"),
+                        buttons: [
+                            .default(Text("Simpan")) {
+                                perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
+                                self.masterPresentationMode.wrappedValue.dismiss()
+                            },
+                            .destructive(Text("Hapus")) {
+                                self.masterPresentationMode.wrappedValue.dismiss()
+                            },
+                            .cancel(Text("Batalkan"))
+                        ])
+                    
+                })
         
 	}
 }

@@ -19,6 +19,15 @@ struct ProfileView: View {
 	@State var shown = false
 	@State var texfieldDisable:Bool = true
 	
+	@State var showTanggalLahir = false
+	@State var tanggalLahir = Date()
+	
+	let dateFormatter: DateFormatter = {
+		let df = DateFormatter()
+		df.dateStyle = .medium
+		return df
+	}()
+	
 	var body: some View {
 		NavigationView {
 			VStack(alignment: .center) {
@@ -45,7 +54,14 @@ struct ProfileView: View {
 							VStack(alignment: .center) {
 								FormView(title: "NIK", profileValue: $profileController.pihak1NIK, keyboardNum: true, isDisable: $texfieldDisable).padding(.top)
 								FormView(title: "Nama", profileValue: $profileController.pihak1Nama, keyboardNum: false, isDisable: $texfieldDisable)
-								
+								VStack(alignment: .leading){
+									Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+									Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
+										.font(.body)
+										.foregroundColor(.blue)
+									Divider()
+										.padding(.bottom)
+								}
 								FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable).disabled(true)
 								HStack {
 									FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: $texfieldDisable)
@@ -73,15 +89,15 @@ struct ProfileView: View {
 									.padding(.bottom)
 								}
 							}
-							.frame(width: UIScreen.main.bounds.width - 35,
-								   alignment: .leading)
+							.padding(.horizontal)
 							if shown {
 								AlertSave(shown: $shown, textField: $texfieldDisable)
 								
 							}
 						}
-						.background(shown ? Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.5)) : Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)))
+						
 					}
+					.background(shown ? Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.5)) : Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)))
 					
 				}
 				
