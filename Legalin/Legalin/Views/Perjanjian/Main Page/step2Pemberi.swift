@@ -51,9 +51,21 @@ struct step2Pemberi: View {
 					VStack {
 						FormView(title: "NIK", profileValue: $perjanjianController.pihak2NIK, keyboardNum: true, isDisable: $isDisable)
 						FormView(title: "Nama", profileValue: $perjanjianController.pihak2Nama, keyboardNum: false, isDisable: $isDisable)
-						DatePicker("Tanggal Lahir", selection:$perjanjianController.pihak2TanggalLahir, displayedComponents: .date).font(.body).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-						Divider()
-							.padding(.bottom)
+						VStack(alignment: .leading){
+							Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+							Text(perjanjianController.pihak1TanggalLahir, formatter: dateFormatter)
+								.font(.body)
+								.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+								.onTapGesture {
+								showTanggalLahir.toggle()
+								}
+							Divider()
+								.padding(.bottom)
+						}
+						if showTanggalLahir {
+							DatePicker("", selection: $perjanjianController.pihak1TanggalLahir, displayedComponents: .date)
+								.datePickerStyle(GraphicalDatePickerStyle())
+						}
 						FormView(title: "Alamat", profileValue: $perjanjianController.pihak2Alamat, keyboardNum: false, isDisable: $isDisable)
 						HStack {
 							FormView(title: "RT", profileValue: $perjanjianController.pihak2RT, keyboardNum: true, isDisable: $isDisable)
