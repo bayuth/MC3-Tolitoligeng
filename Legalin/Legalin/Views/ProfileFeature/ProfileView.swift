@@ -56,13 +56,22 @@ struct ProfileView: View {
 								FormView(title: "Nama", profileValue: $profileController.pihak1Nama, keyboardNum: false, isDisable: $texfieldDisable)
 								VStack(alignment: .leading){
 									Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-									Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
-										.font(.body)
-										.foregroundColor(.blue)
+									if Calendar.current.isDateInToday(profileController.pihak1TanggalLahir) {
+										Text("Pilih Tanggal Lahir")
+											.font(.body)
+											.fontWeight(.regular)
+											.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+									} else {
+										Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
+											.font(.body)
+											.fontWeight(.regular)
+											.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+									}
+									
 									Divider()
 										.padding(.bottom)
 								}
-								FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable).disabled(true)
+								FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable)
 								HStack {
 									FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: $texfieldDisable)
 									FormView(title: "RW", profileValue: $profileController.pihak1RW, keyboardNum: true, isDisable: $texfieldDisable)
