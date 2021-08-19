@@ -28,7 +28,7 @@ struct SliderViewWithForm: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(title).font(.footnote).fontWeight(.light)
+            Text(title).font(.footnote).fontWeight(.light).padding(.horizontal)
             TextField(title, text: $formattedText, onEditingChanged: { (isBegin) in
                 if isBegin {
                     formattedText = ""
@@ -37,6 +37,7 @@ struct SliderViewWithForm: View {
                 }
             }
             ).keyboardType(.numberPad)
+            .padding(.horizontal)
             Divider()
             Slider(
                 value: Binding(
@@ -50,7 +51,7 @@ struct SliderViewWithForm: View {
                     in: rangeOfSlider,
                     step: valueMaxSlide
                 ).padding(.bottom, 11).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-                .padding(.horizontal,10)
+                .padding(.horizontal)
                 HStack{
                     Text(text1)
                         .foregroundColor(Color.init(hex: "#707070"))
@@ -68,6 +69,7 @@ struct SliderViewWithForm: View {
                     alignment: .topLeading
                 )
                 .padding(.bottom, 10)
+                .padding(.horizontal)
                 Divider()
         }.padding(.bottom,15)
         .onAppear{

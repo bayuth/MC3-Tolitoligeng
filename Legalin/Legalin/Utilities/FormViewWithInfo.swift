@@ -27,6 +27,7 @@ struct FormViewWithInfo: View {
                 Text("A").hidden()
                     .anchorView(viewId: "infoPopOver")
                     .anchorFrame(rect: $testOriginFrame)
+                    .padding(.horizontal)
             }
             VStack(alignment: .leading) {
                 HStack{
@@ -42,7 +43,7 @@ struct FormViewWithInfo: View {
                                 .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
                         })
                     }
-                }
+                }.padding(.horizontal)
                 
                 if(title == "Metode Pembayaran"){
                     
@@ -60,7 +61,8 @@ struct FormViewWithInfo: View {
                             }
                         }
                         
-                    }.sheet(isPresented: $perjanjianController.modalMetodePembayaran){
+                    }.padding(.horizontal)
+                    .sheet(isPresented: $perjanjianController.modalMetodePembayaran){
                         NavigationView{
                             ModalMetodePembayaran(isPresented: $perjanjianController.modalMetodePembayaran, metodePembayaran: $profileValue)
                         }
@@ -83,7 +85,9 @@ struct FormViewWithInfo: View {
                             }
                         }
                         
-                    }.sheet(isPresented: $perjanjianController.modalPengadilanNegeri){
+                    }.padding(.horizontal)
+                    .sheet(isPresented: $perjanjianController.modalPengadilanNegeri)
+                    {
                         NavigationView{
                             ModalPengadilanNegeri(isPresented: $perjanjianController.modalPengadilanNegeri, pengadilanNegeri: $profileValue)
                         }
@@ -96,6 +100,7 @@ struct FormViewWithInfo: View {
                     
                     HStack{
                         Text(profileValue).font(.body)
+                            .padding(.horizontal)
                         Spacer()
                         
                     }

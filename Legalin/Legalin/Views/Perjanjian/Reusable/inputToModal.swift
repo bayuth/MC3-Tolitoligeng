@@ -17,7 +17,8 @@ struct inputToModal: View {
     var body: some View {
         
         VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
-            Text(title).font(.footnote).fontWeight(.light)
+            Text(title).font(.footnote).fontWeight(.light).padding(.horizontal)
+                .padding(.top)
             
             HStack{
             
@@ -39,7 +40,9 @@ struct inputToModal: View {
                 }
                 
             }.padding(.top, 5)
-            Divider().padding(.horizontal, -10)
+            .padding(.horizontal)
+            Divider()
+            
                 
             
         }).padding(.init(top: 10, leading: 0, bottom: 5, trailing: 0))
