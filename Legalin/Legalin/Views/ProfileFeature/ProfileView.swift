@@ -72,7 +72,7 @@ struct ProfileView: View {
 									
 									Divider()
 										.padding(.bottom)
-								}
+								}.padding(.horizontal)
 								FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable)
 								HStack {
 									FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: $texfieldDisable)
@@ -100,7 +100,7 @@ struct ProfileView: View {
 									.padding(.bottom)
 								}
 							}
-							.padding(.horizontal)
+//							.padding(.horizontal)
 							
 							if shown {
 								AlertSave(shown: $shown, textField: $texfieldDisable)
@@ -138,7 +138,7 @@ struct ProfileView: View {
 										}
 									}
 			)
-			.navigationBarTitleDisplayMode(.automatic)
+			.navigationBarTitleDisplayMode(.large)
 		}
 	}
 	
