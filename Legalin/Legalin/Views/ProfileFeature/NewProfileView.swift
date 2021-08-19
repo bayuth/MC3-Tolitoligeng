@@ -32,6 +32,15 @@ struct NewProfileView: View {
 	@State var isDisable:Bool = false
 	@State var textfieldDisable:Bool = false
 	
+	@State var showTanggalLahir = false
+	@State var tanggalLahir = Date()
+	
+	let dateFormatter: DateFormatter = {
+		let df = DateFormatter()
+		df.dateStyle = .medium
+		return df
+	}()
+	
 	var body: some View {
 		ScrollView {
 			ZStack {
@@ -51,6 +60,21 @@ struct NewProfileView: View {
 						VStack {
 							FormView(title: "NIK", profileValue: $profileController.pihak1NIK, keyboardNum: true, isDisable: $isDisable)
 							FormView(title: "Nama", profileValue: $profileController.pihak1Nama, keyboardNum: false, isDisable: $isDisable)
+							VStack(alignment: .leading){
+								Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+								Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
+									.font(.body)
+									.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+									.onTapGesture {
+									showTanggalLahir.toggle()
+									}
+								Divider()
+									.padding(.bottom)
+							}
+							if showTanggalLahir {
+								DatePicker("", selection: $profileController.pihak1TanggalLahir, displayedComponents: .date)
+									.datePickerStyle(GraphicalDatePickerStyle())
+							}
 							FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $isDisable)
 							HStack {
 								FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: $isDisable)
