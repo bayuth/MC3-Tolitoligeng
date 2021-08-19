@@ -26,7 +26,7 @@ struct ModalTipeBarangAgunan: View {
                 
                 Spacer()
                 
-                ScrollView{
+                ScrollView(showsIndicators: false){
                     
                     CheckListCell(title: "Umum", selected: stateController.selected, mainNav: false, index: 0)
                         .onTapGesture {

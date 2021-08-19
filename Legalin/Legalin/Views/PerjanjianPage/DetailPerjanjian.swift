@@ -19,7 +19,7 @@ struct DetailPerjanjian: View {
     
     var body: some View {
         //        NavigationView{
-        ScrollView(.init()){
+        ScrollView(.init(), showsIndicators: false){
             TabView{
                 if pdfIsEmpty == false{
                     PdfAction(hideSwitch: false)

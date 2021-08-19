@@ -43,9 +43,9 @@ struct NewProfileView: View {
 	}()
 	
 	var body: some View {
-		VStack(alignment: .leading){
-			ScrollView{
-				ZStack {
+		ScrollView(showsIndicators: false) {
+			ZStack {
+				VStack(alignment: .leading) {
 					VStack(alignment: .leading) {
 						
 						Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))) .padding(.bottom,7)
