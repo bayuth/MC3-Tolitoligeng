@@ -19,6 +19,8 @@ struct step4Agunan: View {
     
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     
+    var tipeAgunan = ["Umum", "Elektronik"]
+    
     var body: some View {
         
         VStack(alignment: .leading){
@@ -35,13 +37,19 @@ struct step4Agunan: View {
                 })
                 .toggleStyle(SwitchToggleStyle(tint: Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))))
             }.zIndex(0.9)
+            .padding(.horizontal)
             
-            Divider().padding(.horizontal, -20)
+            Divider()
             
             VStack{
                 if(perjanjianController.modalAgunanState == true){
                     
-                    inputToModal(title: "Tipe Barang", textViewValue: "Tipe Barang", tipeAgunan: $perjanjianController.tipeBarangAgunan, isPresented: false)
+                    InputPicker(title: "Tipe Barang", listItem: tipeAgunan, selectedItem: $perjanjianController.tipeBarangAgunan)
+                        
+            
+            Divider()
+                    
+//                    inputToModal(title: "Tipe Barang", textViewValue: "Tipe Barang", tipeAgunan: $perjanjianController.tipeBarangAgunan, isPresented: false)
                     
                     if(perjanjianController.tipeBarangAgunan != "Detail"){
                         
@@ -66,8 +74,7 @@ struct step4Agunan: View {
                 ButtonNext(text: "Buat Surat", isDataComplete: perjanjianController.nextButtonState)
             }.disabled(!perjanjianController.nextButtonState)
             
-        }.frame(width: UIScreen.main.bounds.width - 35,
-                alignment: .leading)
+        }
         .navigationBarTitle("Perjanjian Baru", displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading:
