@@ -107,7 +107,6 @@ struct ProfileView: View {
 				}
 				
 			}
-			
 			.navigationTitle("Profil")
 			.navigationBarItems(trailing:
 									HStack {
@@ -133,7 +132,6 @@ struct ProfileView: View {
 									}
 			)
 			.navigationBarTitleDisplayMode(.automatic)
-			.navigationBarColor(.white)
 		}
 	}
 	
