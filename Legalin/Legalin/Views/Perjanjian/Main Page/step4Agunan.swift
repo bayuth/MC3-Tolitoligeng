@@ -27,7 +27,7 @@ struct step4Agunan: View {
             
             HStack{
                 pageIndicator(progressNumber: 4, progressName: "Detail Agunan", progressDetail: "Langkah terakhir")
-            }.padding(.vertical, 15)
+            }.padding(.vertical)
             .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
             
             HStack{

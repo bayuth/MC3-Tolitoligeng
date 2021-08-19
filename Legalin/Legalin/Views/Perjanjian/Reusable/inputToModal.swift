@@ -18,6 +18,7 @@ struct inputToModal: View {
         
         VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
             Text(title).font(.footnote).fontWeight(.light).padding(.horizontal)
+                .padding(.top)
             
             HStack{
             
