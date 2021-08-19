@@ -100,6 +100,7 @@
 		756AE03626C414C0004A2570 /* EmptyPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756AE03526C414C0004A2570 /* EmptyPDF.swift */; };
 		759F0B3A26BD743B004804C7 /* MainApplicationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F0B3926BD743B004804C7 /* MainApplicationPage.swift */; };
 		75B627BC26BC1579008F2C2A /* DetailPerjanjian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B627BB26BC1579008F2C2A /* DetailPerjanjian.swift */; };
+		75D70D2726CD1013003628CA /* DoneKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D70D2626CD1013003628CA /* DoneKeyboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -197,6 +198,7 @@
 		756AE03526C414C0004A2570 /* EmptyPDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPDF.swift; sourceTree = "<group>"; };
 		759F0B3926BD743B004804C7 /* MainApplicationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApplicationPage.swift; sourceTree = "<group>"; };
 		75B627BB26BC1579008F2C2A /* DetailPerjanjian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPerjanjian.swift; sourceTree = "<group>"; };
+		75D70D2626CD1013003628CA /* DoneKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneKeyboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +341,7 @@
 				4AC4CAA026B25D5B00340A00 /* CoreData */,
 				4AF0124426BCF14900E9C2FF /* NavigationBarModifier.swift */,
 				4A6718CD26C0BAFB00D22C3B /* FormViewWithInfo.swift */,
+				75D70D2626CD1013003628CA /* DoneKeyboard.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				5E27EEF826BA8B990090573F /* ButtonNext.swift in Sources */,
 				756AE03626C414C0004A2570 /* EmptyPDF.swift in Sources */,
 				5E35F37126B833F20044D1FC /* ModalTipeBarangAgunan.swift in Sources */,
+				75D70D2726CD1013003628CA /* DoneKeyboard.swift in Sources */,
 				7558EA6426BD2A7500E0B492 /* Pihak1.swift in Sources */,
 				7558EA6826BD2CEA00E0B492 /* InfoPinjaman.swift in Sources */,
 				5C7E345726C0C6C40006D506 /* ButtonTutup.swift in Sources */,
@@ -805,7 +809,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Legalin/Preview Content\"";
-				DEVELOPMENT_TEAM = 52727RY679;
+				DEVELOPMENT_TEAM = 267ZBTAUVV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Legalin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -828,7 +832,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Legalin/Preview Content\"";
-				DEVELOPMENT_TEAM = 52727RY679;
+				DEVELOPMENT_TEAM = 267ZBTAUVV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Legalin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
