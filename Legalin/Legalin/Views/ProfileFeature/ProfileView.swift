@@ -90,8 +90,6 @@ struct ProfileView: View {
 								}
 							}
 							.padding(.horizontal)
-//							.frame(width: UIScreen.main.bounds.width - 35,
-//								   alignment: .leading)
 							if shown {
 								AlertSave(shown: $shown, textField: $texfieldDisable)
 								
