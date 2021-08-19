@@ -36,6 +36,7 @@ struct step1Peminjam: View {
 					ScrollView(showsIndicators: false){
 						VStack(alignment: .leading) {
 							
+                            VStack(alignment: .leading){
 							Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))) .padding(.bottom,7)
 							
 							Button(action: {
@@ -52,13 +53,14 @@ struct step1Peminjam: View {
 								.fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
 									trimKtp.makeScannerView()
 								}).padding(.bottom)
+                            }.padding(.horizontal)
 							
 							VStack(alignment: .leading) {
 								FormView(title: "NIK", profileValue: $perjanjianController.pihak1NIK, keyboardNum: true, isDisable: $isDisable)
 								FormView(title: "Nama", profileValue: $perjanjianController.pihak1Nama, keyboardNum: false, isDisable: $isDisable)
 								VStack(alignment: .leading){
 									Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
-										.padding(.bottom,5)
+                                        .padding(.bottom,5).padding(.horizontal)
 									if Calendar.current.isDateInToday(perjanjianController.pihak1TanggalLahir){
 										Text("Pilih Tanggal Lahir Sesuai KTP")
 											.font(.body)
@@ -66,12 +68,13 @@ struct step1Peminjam: View {
 											.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 											.onTapGesture {
 												showTanggalLahir.toggle()
-											}
+                                            }.padding(.horizontal)
 									} else {
 										Text(perjanjianController.pihak1TanggalLahir, formatter: dateFormatter)
 											.font(.body)
 											.fontWeight(.regular)
 											.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                                            .padding(.horizontal)
 											.onTapGesture {
 											showTanggalLahir.toggle()
 											}
@@ -103,6 +106,7 @@ struct step1Peminjam: View {
 										.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 										.multilineTextAlignment(.leading)
 										.padding(.bottom,10)
+                                        .padding(.horizontal)
 									
 									NavigationLink(
 										destination: step2Pemberi(masterPresentationMode: _presentationMode),
@@ -118,8 +122,7 @@ struct step1Peminjam: View {
 					
 					Spacer()
 					
-				}.frame(width: UIScreen.main.bounds.width - 35,
-						alignment: .leading)
+                }
 				.navigationBarTitle("Perjanjian Baru", displayMode: .inline)
 				.navigationBarItems(trailing:
 										Button("Tutup") {
