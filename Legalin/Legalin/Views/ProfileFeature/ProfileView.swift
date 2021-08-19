@@ -21,6 +21,8 @@ struct ProfileView: View {
 	
 	@State var showTanggalLahir = false
 	@State var tanggalLahir = Date()
+	@State var editIsDisabled:Bool = false
+	@State var editIsDisabledColor = Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))
 	
 	let dateFormatter: DateFormatter = {
 		let df = DateFormatter()
@@ -60,11 +62,11 @@ struct ProfileView: View {
 									Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
 										.font(.body)
 										.fontWeight(.regular)
-										.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+										.foregroundColor(Color(#colorLiteral(red: 0.6470588235, green: 0.6470588235, blue: 0.6470588235, alpha: 1)))
 									Divider()
 										.padding(.bottom)
 								}
-								FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable).disabled(true)
+								FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable)
 								HStack {
 									FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: $texfieldDisable)
 									FormView(title: "RW", profileValue: $profileController.pihak1RW, keyboardNum: true, isDisable: $texfieldDisable)
@@ -92,7 +94,7 @@ struct ProfileView: View {
 								}
 							}
 							.padding(.horizontal)
-
+							
 							if shown {
 								AlertSave(shown: $shown, textField: $texfieldDisable)
 								
@@ -112,17 +114,26 @@ struct ProfileView: View {
 										NavigationLink(
 											destination: PengaturanPage(),
 											label: {
-												Image(systemName: "gearshape.fill").foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+												Image(systemName: "gearshape.fill")
+													.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 											})
 										if(coreDataVM.pihak1.count != 0) {
-											Image(systemName: "square.and.pencil").foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+											Image(systemName: "square.and.pencil")
+												.foregroundColor(editIsDisabledColor)
+												.disabled(editIsDisabled)
 												.onTapGesture {
+													editIsDisabled.toggle()
+													if editIsDisabled == true {
+														editIsDisabledColor = Color(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
+													}
 													texfieldDisable = false
 												}
+											
 										}
 									}
 			)
-			.navigationBarTitleDisplayMode(.large)
+			.navigationBarTitleDisplayMode(.automatic)
+			.navigationBarColor(.white)
 		}
 	}
 	

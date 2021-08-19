@@ -58,7 +58,7 @@ class ProfileController: ObservableObject{
         
     }
     
-    func updatePihak1KTP(nik: String? = "", nama: String? = "", tanggalLahir: Date? = Date(), alamat: String? = "", RT:String? = "", RW: String? = "", kelurahan: String? = "", kecamatan: String? = "", kota: String? = "", provinsi: String? = ""){
+    func updatePihak1KTP(nik: String, nama: String, tanggalLahir: Date, alamat: String, RT:String, RW: String, kelurahan: String, kecamatan: String, kota: String, provinsi: String){
         
         pihak1NIK = nik ?? ""
         pihak1Nama = nama ?? ""

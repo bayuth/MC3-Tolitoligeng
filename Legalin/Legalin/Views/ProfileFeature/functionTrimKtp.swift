@@ -118,13 +118,13 @@ class functionTrimKtp: ObservableObject {
 				print(kecamatanFromKtp)
 //				GET KOTA
 				var kotaFromKtp = outputText.slice(from: "KOTA", to: "NIK")
-				print(kotaFromKtp)
+				print(kotaFromKtp ?? "")
 				if kotaFromKtp == "" {
 					kotaFromKtp = outputText.slice(from: "JAKARTA", to: "NIK")
-					print(kotaFromKtp)
+					print(kotaFromKtp ?? "")
 					if kotaFromKtp == "" {
 						kotaFromKtp = outputText.slice(from: "KABUPATEN", to: "NIK")
-						print(kotaFromKtp)
+						print(kotaFromKtp ?? "")
 					}
 				}
 //				GET PROVINSI
@@ -174,15 +174,15 @@ class functionTrimKtp: ObservableObject {
 				self.ktpInfo.updateData(nama: namaFromKtp ?? "", nik: nikFromKtp ?? "", tanggalLahir: date ?? Date() ,alamat: alamatFromKtp ?? "", Rt: rtBersih , Rw: rwBersih , kelurahan: kelurahanFromKtp ?? "", kecamatan: kecamatanFromKtp ?? "", kota: kotaFromKtp ?? "", provinsi: provinsiFromKtp ?? "", pekerjaan: "", nomorHp: "", namaBank: "", nomorRekening: "", atasNamaRekening: "")
                 
                 if(self.selectedPihak == 0){
-                    self.profileController.updatePihak1KTP(nik: nikFromKtp, nama: namaFromKtp, tanggalLahir: date ?? Date(), alamat: alamatFromKtp, RT: rtBersih, RW: rwBersih, kelurahan: kelurahanFromKtp, kecamatan: kecamatanFromKtp, kota: kotaFromKtp, provinsi: provinsiFromKtp)
+					self.profileController.updatePihak1KTP(nik: nikFromKtp ?? "", nama: namaFromKtp ?? "", tanggalLahir: date ?? Date(), alamat: alamatFromKtp ?? "", RT: rtBersih, RW: rwBersih, kelurahan: kelurahanFromKtp ?? "", kecamatan: kecamatanFromKtp ?? "", kota: kotaFromKtp ?? "", provinsi: provinsiFromKtp ?? "")
                 }
                 
                 if(self.selectedPihak == 1){
-                    self.perjanjianController.updatePihak1KTP(nik: nikFromKtp, nama: namaFromKtp, tanggalLahir: date ?? Date(), alamat: alamatFromKtp, RT: rtBersih, RW: rwBersih, kelurahan: kelurahanFromKtp, kecamatan: kecamatanFromKtp, kota: kotaFromKtp, provinsi: provinsiFromKtp)
+					self.perjanjianController.updatePihak1KTP(nik: nikFromKtp ?? "", nama: namaFromKtp ?? "", tanggalLahir: date ?? Date(), alamat: alamatFromKtp ?? "", RT: rtBersih, RW: rwBersih, kelurahan: kelurahanFromKtp ?? "", kecamatan: kecamatanFromKtp ?? "", kota: kotaFromKtp ?? "", provinsi: provinsiFromKtp ?? "")
                 }
                 
                 if(self.selectedPihak == 2){
-                    self.perjanjianController.updatePihak2KTP(nik: nikFromKtp, nama: namaFromKtp, tanggalLahir: date ?? Date(), alamat: alamatFromKtp, RT: rtBersih, RW: rwBersih, kelurahan: kelurahanFromKtp, kecamatan: kecamatanFromKtp, kota: kotaFromKtp, provinsi: provinsiFromKtp)
+					self.perjanjianController.updatePihak2KTP(nik: nikFromKtp ?? "", nama: namaFromKtp ?? "", tanggalLahir: date ?? Date(), alamat: alamatFromKtp ?? "", RT: rtBersih, RW: rwBersih, kelurahan: kelurahanFromKtp ?? "", kecamatan: kecamatanFromKtp ?? "", kota: kotaFromKtp ?? "", provinsi: provinsiFromKtp ?? "")
                 }
                 //Update to controller
                 
