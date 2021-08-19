@@ -33,13 +33,13 @@ class functionTrimKtp: ObservableObject {
 				let nikFromKtp = outputText.slice(from: "NIK", to: "Nama")
 				print(nikFromKtp)
 				var namaFromKtp = outputText.slice(from: "Nama", to:"Tempat")
-				if namaFromKtp!.contains(": ") == true{
+				if namaFromKtp?.contains(": ") == true{
 					namaFromKtp = namaFromKtp!.components(separatedBy: ": ").joined(separator: "")
 					print(namaFromKtp)
-				} else if namaFromKtp!.contains(":") == true{
+				} else if namaFromKtp?.contains(":") == true{
 					namaFromKtp = namaFromKtp!.components(separatedBy: ":").joined(separator: "")
 					print(namaFromKtp)
-				} else if namaFromKtp!.contains(" ") == true{
+				} else if namaFromKtp?.contains(" ") == true{
 					namaFromKtp = namaFromKtp!.components(separatedBy: " ").joined(separator: "")
 					print(namaFromKtp)
 				}
@@ -116,9 +116,28 @@ class functionTrimKtp: ObservableObject {
 				print(kelurahanFromKtp)
 				let kecamatanFromKtp = outputText.slice(from: "Kecamatan", to: "Agama")
 				print(kecamatanFromKtp)
-				let kotaFromKtp = outputText.slice(from: "KOTA", to: "NIK")
+//				GET KOTA
+				var kotaFromKtp = outputText.slice(from: "KOTA", to: "NIK")
 				print(kotaFromKtp)
+				if kotaFromKtp == "" {
+					kotaFromKtp = outputText.slice(from: "JAKARTA", to: "NIK")
+					print(kotaFromKtp)
+					if kotaFromKtp == "" {
+						kotaFromKtp = outputText.slice(from: "KABUPATEN", to: "NIK")
+						print(kotaFromKtp)
+					}
+				}
+//				GET PROVINSI
 				let provinsiFromKtp = outputText.slice(from: "PROVINSI", to: "KOTA")
+				if provinsiFromKtp == "" {
+					var provinsiFromKtp = outputText.slice(from: "PROVINSI", to: "KABUPATEN")
+					print(provinsiFromKtp)
+					if provinsiFromKtp == "" {
+						provinsiFromKtp = outputText.slice(from: "PROVINSI", to: "JAKARTA")
+						print(provinsiFromKtp)
+					}
+				}
+				
 				print(provinsiFromKtp)
 				
 				var tanggalLahir = outputText.slice(from: " Lahir", to: "Jenis")

@@ -70,12 +70,25 @@ struct NewProfileView: View {
 							FormView(title: "Nama", profileValue: $profileController.pihak1Nama, keyboardNum: false, isDisable: $isDisable)
 							VStack(alignment: .leading){
 								Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
-								Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
-									.font(.body)
-									.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-									.onTapGesture {
+									.padding(.bottom,5)
+								if Calendar.current.isDateInToday(profileController.pihak1TanggalLahir) {
+									Text("Pilih Tanggal Lahir Sesuai KTP")
+										.font(.body)
+										.fontWeight(.regular)
+										.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+										.onTapGesture {
 										showTanggalLahir.toggle()
 									}
+								} else {
+									Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
+										.font(.body)
+										.fontWeight(.regular)
+										.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+										.onTapGesture {
+											showTanggalLahir.toggle()
+										}
+								}
+								
 								Divider()
 									.padding(.bottom)
 							}
