@@ -79,6 +79,7 @@
 		5E375CFB26BEB47200DF834D /* InvoiceComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E375CFA26BEB47200DF834D /* InvoiceComposer.swift */; };
 		5E375CFE26BEB48800DF834D /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E375CFD26BEB48800DF834D /* PreviewViewController.swift */; };
 		5E3F136B26C5974800E3E0B6 /* profileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3F136A26C5974800E3E0B6 /* profileController.swift */; };
+		5E407FD726CE84BB003AD26C /* inputPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E407FD626CE84BB003AD26C /* inputPicker.swift */; };
 		5E5D23FD26B985FF00FC356E /* pengadilanNegeriDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5D23FC26B985FF00FC356E /* pengadilanNegeriDetailViewController.swift */; };
 		5E8578AD26B90BC30019FB61 /* ModalPengadilanNegeriDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8578AC26B90BC30019FB61 /* ModalPengadilanNegeriDetail.swift */; };
 		5E8578B026B945480019FB61 /* pinjamanCellStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8578AF26B945480019FB61 /* pinjamanCellStateController.swift */; };
@@ -179,6 +180,7 @@
 		5E375CFA26BEB47200DF834D /* InvoiceComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvoiceComposer.swift; sourceTree = "<group>"; };
 		5E375CFD26BEB48800DF834D /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		5E3F136A26C5974800E3E0B6 /* profileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileController.swift; sourceTree = "<group>"; };
+		5E407FD626CE84BB003AD26C /* inputPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inputPicker.swift; sourceTree = "<group>"; };
 		5E5D23FC26B985FF00FC356E /* pengadilanNegeriDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pengadilanNegeriDetailViewController.swift; sourceTree = "<group>"; };
 		5E8578AC26B90BC30019FB61 /* ModalPengadilanNegeriDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPengadilanNegeriDetail.swift; sourceTree = "<group>"; };
 		5E8578AF26B945480019FB61 /* pinjamanCellStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pinjamanCellStateController.swift; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				5C7E345626C0C6C40006D506 /* ButtonTutup.swift */,
 				5C3CF43226C2B62D00E7E8A1 /* ButtonBordered.swift */,
 				5CC4E12626C3FD6600A7042A /* ButtonBorderedComingSoon.swift */,
+				5E407FD626CE84BB003AD26C /* inputPicker.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				4A8FC94926C030A200E3917A /* SliderViewWithForm.swift in Sources */,
 				5C8F9CFE26BCF6A700CE994B /* profileData.swift in Sources */,
 				5E27EEFB26BA8E3B0090573F /* step2Pemberi.swift in Sources */,
+				5E407FD726CE84BB003AD26C /* inputPicker.swift in Sources */,
 				5E27EEF826BA8B990090573F /* ButtonNext.swift in Sources */,
 				756AE03626C414C0004A2570 /* EmptyPDF.swift in Sources */,
 				5E35F37126B833F20044D1FC /* ModalTipeBarangAgunan.swift in Sources */,

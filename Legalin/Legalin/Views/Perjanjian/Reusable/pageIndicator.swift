@@ -28,7 +28,6 @@ struct pageIndicator: View {
                     Text("A").hidden()
                         .anchorView(viewId: "infoPopOver")
                         .anchorFrame(rect: $testOriginFrame)
-                        .padding(.horizontal, -24)
                 }
                 
                 VStack(alignment: .center
@@ -76,8 +75,10 @@ struct pageIndicator: View {
                             }.padding(.leading,8)
                             .padding(.top,10)
                         }
-                       }).frame(width: UIScreen.main.bounds.width,
-                                alignment: .leading)
+                       })
+                    .padding(.horizontal)
+                    .frame(width: UIScreen.main.bounds.width ,
+                            alignment: .leading)
                 
             }.popoverView(content: {PopOverContent(frame: $secondPopoverFrame, show: $popOverState, popOverText: "Barang berharga yang dititipkan oleh peminjam dana (debitur) ke pemberi pinjaman (kreditur) sebagai jaminan.")}, background: {Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))}, isPresented: $popOverState, frame: $secondPopoverFrame, anchorFrame: nil, popoverType: .popover, position: .bottom, viewId: "infoPopOver", settings: DYPopoverViewSettings(arrowLength: 0,  cornerRadius: (10,10,10,10), offset: CGSize(width: 0, height: 0), animation: .default)
             )
@@ -87,6 +88,6 @@ struct pageIndicator: View {
 
 struct pageIndicator_Previews: PreviewProvider {
     static var previews: some View {
-        pageIndicator(progressNumber: 3, progressName: "Ayam", progressDetail: "Geus jalan")
+        pageIndicator(progressNumber: 4, progressName: "Ayam", progressDetail: "Geus jalan")
     }
 }

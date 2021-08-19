@@ -44,7 +44,7 @@ struct step3Detail: View {
             ScrollView(showsIndicators: false){
                 VStack(alignment: .leading){
                     ButtonBordered(icon: "doc.text", titleButton: "Pilih Kredit (Opsional)")
-                        .padding(.horizontal, 4)
+                        .padding(.horizontal)
 					FormView(title: "Tujuan Peminjaman", profileValue: $perjanjianController.tujuanPeminjaman, keyboardNum: false, isDisable: $isDisable)
                     SliderViewWithForm(sliderValue: $perjanjianController.jumlahPinjaman, text1: "Pinjaman Maksimal", text2: "Rp 50000000", title: "Jumlah Pinjaman", type: 0)
                     SliderViewWithForm(sliderValue: $perjanjianController.bunga, text1: "Bunga Maksimal", text2: "6 % per tahun", title: "Bunga", type: 1)
@@ -84,7 +84,7 @@ struct step3Detail: View {
                         }
                     }
                     ButtonBordered(icon: "percent", titleButton: "Lihat Simulasi Kredit")
-                        .padding(.horizontal, 4)
+                        .padding(.horizontal)
                     NavigationLink(
                         destination: step4Agunan(masterPresentationMode4 : _masterPresentationMode3),
                         label: {
@@ -125,8 +125,7 @@ struct step3Detail: View {
                     ])
                 
             })
-        }.frame(width: UIScreen.main.bounds.width - 35,
-                alignment: .leading)
+        }
         
     }
     func nameChanged(to value: Date) {

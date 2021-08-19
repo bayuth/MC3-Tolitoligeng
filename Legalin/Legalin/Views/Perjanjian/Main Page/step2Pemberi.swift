@@ -34,15 +34,17 @@ struct step2Pemberi: View {
 			ScrollView(showsIndicators: false){
 				VStack(alignment: .leading) {
 					
-                    ButtonBorderedComingSoon(icon: "person.fill", titleButton: "Pilih Identitas")
+                    ButtonBorderedComingSoon(icon: "person.fill", titleButton: "Pilih Identitas").padding(.horizontal)
 					
 					Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.bottom,7)
+                        .padding(.horizontal)
 					
 					Button(action: {
 						trimKtp.showScannerSheet = true
 					}, label: {
 						Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-					})
+                            .padding(.horizontal)
+                    })
 					Divider()
 						.fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
 							trimKtp.makeScannerView()
@@ -53,17 +55,32 @@ struct step2Pemberi: View {
 						FormView(title: "Nama", profileValue: $perjanjianController.pihak2Nama, keyboardNum: false, isDisable: $isDisable)
 						VStack(alignment: .leading){
 							Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
-							Text(perjanjianController.pihak1TanggalLahir, formatter: dateFormatter)
-								.font(.body)
-								.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-								.onTapGesture {
-								showTanggalLahir.toggle()
+								.padding(.bottom,5)
+                                .padding(.horizontal)
+							if Calendar.current.isDateInToday(perjanjianController.pihak2TanggalLahir) {
+								Text("Pilih Tanggal Lahir Sesuai KTP")
+									.font(.body)
+									.fontWeight(.regular)
+									.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                                    .padding(.horizontal)
+									.onTapGesture {
+									showTanggalLahir.toggle()
 								}
+							} else {
+								Text(perjanjianController.pihak2TanggalLahir, formatter: dateFormatter)
+									.font(.body)
+									.fontWeight(.regular)
+									.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                                    .padding(.horizontal)
+									.onTapGesture {
+										showTanggalLahir.toggle()
+									}
+							}
 							Divider()
 								.padding(.bottom)
 						}
 						if showTanggalLahir {
-							DatePicker("", selection: $perjanjianController.pihak1TanggalLahir, displayedComponents: .date)
+							DatePicker("", selection: $perjanjianController.pihak2TanggalLahir, displayedComponents: .date)
 								.datePickerStyle(GraphicalDatePickerStyle())
 						}
 						FormView(title: "Alamat", profileValue: $perjanjianController.pihak2Alamat, keyboardNum: false, isDisable: $isDisable)
@@ -87,6 +104,7 @@ struct step2Pemberi: View {
 								.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
 								.multilineTextAlignment(.leading)
 								.padding(.bottom,10)
+                                .padding(.horizontal)
                             
                             NavigationLink(
                                 destination: step3Detail(masterPresentationMode3 : _masterPresentationMode),
@@ -102,8 +120,7 @@ struct step2Pemberi: View {
 			
 			Spacer()
 			
-		}.frame(width: UIScreen.main.bounds.width - 35,
-				alignment: .leading)
+		}
 		.navigationBarBackButtonHidden(true)
 		.navigationBarTitle("Perjanjian Baru", displayMode: .inline)
 		.navigationBarItems(leading:

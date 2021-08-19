@@ -19,7 +19,8 @@ struct inputTextViewCell: View {
     var body: some View {
         
         VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
-            Text(title).font(.footnote).fontWeight(.light)
+            Text(title).font(.footnote).fontWeight(.light).padding(.horizontal)
+                .padding(.top)
             
             HStack{
             
@@ -28,11 +29,11 @@ struct inputTextViewCell: View {
 //            TextField(emptyStateString, text: $textViewValue)
                 
                 .keyboardType(keyboardNum ? .numberPad : .default)
-            }
+            }.padding(.horizontal)
             
-            Divider().padding(.horizontal, -20)
+            Divider()
             
-        }).padding(.init(top: 10, leading: 0, bottom: 5, trailing: 0))
+        })
         
     }
 }
