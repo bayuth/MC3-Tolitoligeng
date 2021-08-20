@@ -10,6 +10,7 @@ import SwiftUI
 struct step2Pemberi: View {
     
     @Environment(\.presentationMode) var masterPresentationMode
+	@StateObject var cameraManager = CameraManager()
     
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     
@@ -39,16 +40,37 @@ struct step2Pemberi: View {
 					Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.bottom,7)
                         .padding(.horizontal)
 					
-					Button(action: {
-						trimKtp.showScannerSheet = true
-					}, label: {
-						Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-                            .padding(.horizontal)
-                    })
-					Divider()
-						.fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
-							trimKtp.makeScannerView()
-						}).padding(.bottom)
+					if (perjanjianController.pihak2NIK != "" || perjanjianController.pihak2Nama != "" || perjanjianController.pihak2Alamat != "" || !Calendar.current.isDateInToday(perjanjianController.pihak2TanggalLahir) || perjanjianController.pihak2RT != "" || perjanjianController.pihak2RW != "" || perjanjianController.pihak2Kelurahan != "" || perjanjianController.pihak2Kecamatan != "" || perjanjianController.pihak2Kota != "" || perjanjianController.pihak2Provinsi != "") {
+						Button(action: {
+							if cameraManager.permissionGranted {
+								trimKtp.showScannerSheet = true
+							} else {
+								cameraManager.requestPermission()
+							}
+							
+						}, label: {
+							Text("Ambil Ulang Gambar KTP \(Image(systemName: "checkmark.rectangle.fill"))").fontWeight(.regular) .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+						}).padding(.horizontal)
+						Divider()
+							.fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
+								trimKtp.makeScannerView()
+							}).padding(.bottom)
+					} else {
+						Button(action: {
+							if cameraManager.permissionGranted {
+								trimKtp.showScannerSheet = true
+							} else {
+								cameraManager.requestPermission()
+							}
+							
+						}, label: {
+							Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").fontWeight(.regular) .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+						}).padding(.horizontal)
+						Divider()
+							.fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
+								trimKtp.makeScannerView()
+							}).padding(.bottom)
+					}
 					
 					VStack {
 						FormView(title: "NIK", profileValue: $perjanjianController.pihak2NIK, keyboardNum: true, isDisable: $isDisable)
@@ -82,6 +104,7 @@ struct step2Pemberi: View {
 						if showTanggalLahir {
 							DatePicker("", selection: $perjanjianController.pihak2TanggalLahir, displayedComponents: .date)
 								.datePickerStyle(GraphicalDatePickerStyle())
+								.padding(.horizontal)
 						}
 						FormView(title: "Alamat", profileValue: $perjanjianController.pihak2Alamat, keyboardNum: false, isDisable: $isDisable)
 						HStack {
