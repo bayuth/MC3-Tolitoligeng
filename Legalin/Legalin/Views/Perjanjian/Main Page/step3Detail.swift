@@ -98,8 +98,10 @@ struct step3Detail: View {
                     }
                     ButtonBordered(icon: "percent", titleButton: "Lihat Simulasi Kredit")
                         .padding(.horizontal)
+                    
+                    
                     NavigationLink(
-                        destination: step4Agunan(masterPresentationMode4 : _masterPresentationMode3 ,step1Redirect: $step1Redirect ,step2Redirect: $step2Redirect, step3Redirect: $step3Redirect),
+                        destination: step4Agunan(masterPresentationMode4 : _masterPresentationMode3 ,step1Redirect: $step1Redirect ,step2Redirect: $step2Redirect, step3Redirect: $step3Redirect),isActive: $step3Redirect,
                         label: {
                             ButtonNext(text: "Lanjutkan", isDataComplete: true).padding(.bottom, 16).padding(.top, 16)
                         }

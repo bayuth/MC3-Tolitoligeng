@@ -22,6 +22,7 @@ struct LegalinApp: App {
 //            step3Detail()
 //            GeneratePDF()
 //			step1Peminjam()
+//            TesNavigation()
 			MainApplicationPage()
         }
     }

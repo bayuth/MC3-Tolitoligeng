@@ -249,6 +249,8 @@ class PerjanjianController: ObservableObject {
         if page4State == false{
             nextButtonState = false
         }
+        
+        setRedirectPage()
     }
     
     func checkStep1() -> Bool {

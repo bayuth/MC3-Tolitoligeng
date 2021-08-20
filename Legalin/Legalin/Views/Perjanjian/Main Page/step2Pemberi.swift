@@ -134,10 +134,10 @@ struct step2Pemberi: View {
                                 .padding(.horizontal)
                             
                             NavigationLink(
-                                destination: step3Detail(masterPresentationMode3 : _masterPresentationMode ,step1Redirect: $step1Redirect, step2Redirect: $step2Redirect),
+                                destination: step3Detail(masterPresentationMode3 : _masterPresentationMode ,step1Redirect: self.$step1Redirect, step2Redirect: self.$step2Redirect),isActive: $step2Redirect,
                                 label: {
                                     ButtonNext(text: "Lanjutkan", isDataComplete: true)
-                                })
+                                }).isDetailLink(false)
 						}
 					}
 				}.padding(.top,10)

@@ -130,10 +130,10 @@ struct step1Peminjam: View {
                                         .padding(.horizontal)
 									
 									NavigationLink(
-                                        destination: step2Pemberi(masterPresentationMode: _presentationMode, step1Redirect: $step1Redirect),
+                                        destination: step2Pemberi(masterPresentationMode: _presentationMode, step1Redirect: self.$step1Redirect),isActive: $step1Redirect,
 										label: {
 											ButtonNext(text: "Lanjutkan", isDataComplete: true)
-										})
+                                        }).isDetailLink(false)
 								}
 							}
 						}.padding(.top,10)

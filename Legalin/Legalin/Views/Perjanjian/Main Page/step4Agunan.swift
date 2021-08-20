@@ -16,6 +16,7 @@ struct step4Agunan: View {
     @State var toggleState: Bool = false
     @State var disabledStaus: Bool = false
     @State var showActionSheet = false
+    @State var showAlert = false
     
     //Validation page redirect
     @Binding var step1Redirect: Bool
@@ -50,11 +51,11 @@ struct step4Agunan: View {
                 if(perjanjianController.modalAgunanState == true){
                     
                     InputPicker(title: "Tipe Barang", listItem: tipeAgunan, selectedItem: $perjanjianController.tipeBarangAgunan)
-                        
-            
-            Divider()
                     
-//                    inputToModal(title: "Tipe Barang", textViewValue: "Tipe Barang", tipeAgunan: $perjanjianController.tipeBarangAgunan, isPresented: false)
+                    
+                    Divider()
+                    
+                    //                    inputToModal(title: "Tipe Barang", textViewValue: "Tipe Barang", tipeAgunan: $perjanjianController.tipeBarangAgunan, isPresented: false)
                     
                     if(perjanjianController.tipeBarangAgunan != "Detail"){
                         
@@ -78,6 +79,29 @@ struct step4Agunan: View {
                 destination: ConfirmationPage(masterPresentationMode5: _masterPresentationMode4)){
                 ButtonNext(text: "Buat Surat", isDataComplete: perjanjianController.nextButtonState)
             }.disabled(!perjanjianController.nextButtonState)
+            .simultaneousGesture(TapGesture().onEnded{
+                
+                if perjanjianController.nextButtonState == false{
+                    showAlert = true
+                }
+                
+            })
+            .alert(isPresented: $showAlert, content: {
+                Alert(title: Text("Data belum lengkap"),
+                      message: Text("Mohon lengkapi data terlebih dahulu untuk melanjutkan"),
+                      dismissButton: .destructive(Text("Tutup")){
+                        
+                        if perjanjianController.redirectPage == "step1"{
+                            step1Redirect = false
+                        } else if perjanjianController.redirectPage == "step2"{
+                            step2Redirect = false
+                        } else if perjanjianController.redirectPage == "step3"{
+                            step3Redirect = false
+                        }
+                        
+                      } )
+            }).padding(.bottom,13)
+            
             
         }
         .navigationBarTitle("Perjanjian Baru", displayMode: .inline)
@@ -96,21 +120,21 @@ struct step4Agunan: View {
                                     showActionSheet = true
                                 }.foregroundColor(.white))
         .actionSheet(isPresented: $showActionSheet, content: {
-                    
-                    ActionSheet(
-                        title: Text("Entri data perjanjian belum lengkap"),
-                        buttons: [
-                            .default(Text("Simpan")) {
-                                perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
-                                self.masterPresentationMode4.wrappedValue.dismiss()
-                            },
-                            .destructive(Text("Hapus")) {
-                                self.masterPresentationMode4.wrappedValue.dismiss()
-                            },
-                            .cancel(Text("Batalkan"))
-                        ])
-                    
-                })
+            
+            ActionSheet(
+                title: Text("Entri data perjanjian belum lengkap"),
+                buttons: [
+                    .default(Text("Simpan")) {
+                        perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
+                        self.masterPresentationMode4.wrappedValue.dismiss()
+                    },
+                    .destructive(Text("Hapus")) {
+                        self.masterPresentationMode4.wrappedValue.dismiss()
+                    },
+                    .cancel(Text("Batalkan"))
+                ])
+            
+        })
     }
 }
 
