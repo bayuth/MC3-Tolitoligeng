@@ -101,6 +101,7 @@ struct FormViewWithInfo: View {
                     HStack{
                         Text(profileValue).font(.body)
                             .padding(.horizontal)
+                            .foregroundColor(Color.init(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
                         Spacer()
                         
                     }

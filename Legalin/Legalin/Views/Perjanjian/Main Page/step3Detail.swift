@@ -60,9 +60,6 @@ struct step3Detail: View {
                     InputPicker(title: "Metode Pembayaran", listItem: tipeAgunan, selectedItem: $perjanjianController.metodePembayaran)
                     
                     Divider()
-//                    FormViewWithInfo(title: "Metode Pembayaran", profileValue: $perjanjianController.metodePembayaran, showButton: true, showButtonInfo: false, info: "", buttonTitle: "Detail").padding(.top, 16).onTapGesture {
-//                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
-//                    }
                     VStack{
                         FormViewWithInfo(title: "Tanggal Jatuh Tempo", profileValue: $perjanjianController.tanggalJatuhTempo, showButton: false, showButtonInfo: true, info: "Hari pembayaran atau batas waktu pembayaran harus dilakukan oleh peminjam dana (debitur) ke pemberi pinjaman (kreditur).", buttonTitle: "").zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/).onTapGesture {
                             showPickerJatuhTempo.toggle()
