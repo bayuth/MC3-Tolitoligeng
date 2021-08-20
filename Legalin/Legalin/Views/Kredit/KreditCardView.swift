@@ -44,7 +44,7 @@ struct KreditCardView: View {
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 2)
                         
-                        Text(item.jumlahPinjaman)
+                        Text(item.jumlahPinjaman.toRupiahString())
                             .padding(.bottom, 8)
                         
                         Text("Bunga")
@@ -52,7 +52,7 @@ struct KreditCardView: View {
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 2)
                         
-                        Text(item.bunga)
+                        Text(" \(item.bunga) %")
                             .padding(.bottom, 8)
                         
                     }

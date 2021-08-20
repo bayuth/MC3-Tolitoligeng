@@ -38,6 +38,10 @@ struct SliderViewWithForm: View {
             }
             ).keyboardType(.numberPad)
             .padding(.horizontal)
+            .onTapGesture {}
+            .onLongPressGesture(
+                pressing: { isPressed in if isPressed { self.endEditing() } },
+                perform: {})
             Divider()
             Slider(
                 value: Binding(
@@ -48,29 +52,29 @@ struct SliderViewWithForm: View {
                         self.sliderValue = newValue
                         getFormattedText()
                     }),
-                    in: rangeOfSlider,
-                    step: valueMaxSlide
-                ).padding(.bottom, 11).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-                .padding(.horizontal)
-                HStack{
-                    Text(text1)
-                        .foregroundColor(Color.init(hex: "#707070"))
-                        .font(.caption)
-                    Spacer()
-                    Text(text2)
-                        .foregroundColor(Color.init(hex: "#707070"))
-                        .font(.caption)
-                }
-                .frame(
-                    minWidth: 0,
-                    maxWidth: .infinity,
-                    minHeight: 0,
-                    maxHeight: 0,
-                    alignment: .topLeading
-                )
-                .padding(.bottom, 10)
-                .padding(.horizontal)
-                Divider()
+                in: rangeOfSlider,
+                step: valueMaxSlide
+            ).padding(.bottom, 11).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+            .padding(.horizontal)
+            HStack{
+                Text(text1)
+                    .foregroundColor(Color.init(hex: "#707070"))
+                    .font(.caption)
+                Spacer()
+                Text(text2)
+                    .foregroundColor(Color.init(hex: "#707070"))
+                    .font(.caption)
+            }
+            .frame(
+                minWidth: 0,
+                maxWidth: .infinity,
+                minHeight: 0,
+                maxHeight: 0,
+                alignment: .topLeading
+            )
+            .padding(.bottom, 10)
+            .padding(.horizontal)
+            Divider()
         }.padding(.bottom,15)
         .onAppear{
             getFormattedText()
@@ -90,10 +94,8 @@ struct SliderViewWithForm: View {
     }
     
     func getFormattedText() {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.locale = Locale(identifier: "id_ID")
-        let resultRupiah = formatter.string(from: NSNumber(value: sliderValue))!
+        let resultRupiah = sliderValue.toRupiahString()
+        
         if type == 0 {
             rangeOfSlider = 0...50000000.0
             formattedText = resultRupiah

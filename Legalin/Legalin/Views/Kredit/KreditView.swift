@@ -32,7 +32,7 @@ struct KreditView: View {
                                     VStack{
                                         Button(action: {
                                             
-//                                            isPresented.toggle()
+                                            isPresented.toggle()
                                             
                                         })
                                         {
