@@ -157,6 +157,23 @@ class PerjanjianController: ObservableObject {
         }
     }
     
+    func syncPihak2(pihak2: Akun){
+        
+            pihak2NIK = pihak2.ktp?.nik ?? ""
+            pihak2Nama = pihak2.ktp?.nama ?? ""
+            pihak2TanggalLahir = pihak2.ktp?.tanggalLahir ?? Date()
+            pihak2Alamat = pihak2.ktp?.alamat ?? ""
+            pihak2RT = pihak2.ktp?.rt ?? ""
+            pihak2RW = pihak2.ktp?.rw ?? ""
+            pihak2Kelurahan = pihak2.ktp?.kelurahanDesa ?? ""
+            pihak2Kecamatan = pihak2.ktp?.kecamatan ?? ""
+            pihak2Kota = pihak2.ktp?.kotaKabupaten ?? ""
+            pihak2Provinsi = pihak2.ktp?.provinsi ?? ""
+            pihak2Pekerjaan = pihak2.pekerjaan ?? ""
+            pihak2NomorHP = pihak2.nomorAktif ?? ""
+        
+    }
+    
     func checkEmptyString(item: String){
         if (item == ""){
             nextButtonState = false
