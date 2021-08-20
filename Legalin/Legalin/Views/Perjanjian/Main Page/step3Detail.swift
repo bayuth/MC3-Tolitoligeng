@@ -51,7 +51,7 @@ struct step3Detail: View {
             ScrollView(showsIndicators: false){
                 VStack(alignment: .leading){
                     ButtonBordered(icon: "doc.text", titleButton: "Pilih Kredit (Opsional)")
-                        .padding(.horizontal)
+                        .padding()
 					FormView(title: "Tujuan Peminjaman", profileValue: $perjanjianController.tujuanPeminjaman, keyboardNum: false, isDisable: $isDisable)
                     SliderViewWithForm(sliderValue: $perjanjianController.jumlahPinjaman, text1: "Pinjaman Maksimal", text2: "Rp50.000.000", title: "Jumlah Pinjaman", type: 0)
                     SliderViewWithForm(sliderValue: $perjanjianController.bunga, text1: "Bunga Maksimal", text2: "6 % per tahun", title: "Bunga", type: 1)
