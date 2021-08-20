@@ -51,7 +51,7 @@ struct NewProfileView: View {
 						Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))) .padding(.bottom,7)
 							.padding(.horizontal)
 						
-						if (profileController.pihak1NIK != "" || profileController.pihak1Nama != "" || profileController.pihak1Alamat != "" || !Calendar.current.isDateInToday(profileController.pihak1TanggalLahir) || profileController.pihak1RT != "" || profileController.pihak1RW != "" || profileController.pihak1Kelurahan != "" || profileController.pihak1Kecamatan != "" || profileController.pihak1Kota != "" || profileController.pihak1Provinsi != "") {
+						if (profileController.pihak1IsOpenCam == true) {
 							Button(action: {
 								if cameraManager.permissionGranted {
 									trimKtp.showScannerSheet = true

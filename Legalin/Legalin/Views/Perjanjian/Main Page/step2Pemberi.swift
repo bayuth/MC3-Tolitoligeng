@@ -40,7 +40,7 @@ struct step2Pemberi: View {
 					Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.bottom,7)
                         .padding(.horizontal)
 					
-					if (perjanjianController.pihak2NIK != "" || perjanjianController.pihak2Nama != "" || perjanjianController.pihak2Alamat != "" || !Calendar.current.isDateInToday(perjanjianController.pihak2TanggalLahir) || perjanjianController.pihak2RT != "" || perjanjianController.pihak2RW != "" || perjanjianController.pihak2Kelurahan != "" || perjanjianController.pihak2Kecamatan != "" || perjanjianController.pihak2Kota != "" || perjanjianController.pihak2Provinsi != "") {
+					if (perjanjianController.pihak2IsOpenCam == true) {
 						Button(action: {
 							if cameraManager.permissionGranted {
 								trimKtp.showScannerSheet = true

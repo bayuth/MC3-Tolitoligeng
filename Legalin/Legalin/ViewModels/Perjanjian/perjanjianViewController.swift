@@ -29,6 +29,7 @@ class PerjanjianController: ObservableObject {
     @Published var pihak1Provinsi: String!
     @Published var pihak1Pekerjaan: String!
     @Published var pihak1NomorHP: String!
+	@Published var pihak1IsOpenCam: Bool!
     
     //Step 2 attribute
     @Published var pihak2NIK: String!
@@ -46,6 +47,7 @@ class PerjanjianController: ObservableObject {
     @Published var pihak2NamaBank: String!
     @Published var pihak2NomorRekening: String!
     @Published var pihak2AtasNamaRekening: String!
+	@Published var pihak2IsOpenCam: Bool!
     
     //Step 3 attribute
     @Published var tujuanPeminjaman: String!
@@ -240,7 +242,7 @@ class PerjanjianController: ObservableObject {
         
     }
     
-    func updatePihak1KTP(nik: String, nama: String, tanggalLahir: Date, alamat: String, RT:String, RW: String, kelurahan: String, kecamatan: String, kota: String, provinsi: String){
+	func updatePihak1KTP(nik: String, nama: String, tanggalLahir: Date, alamat: String, RT:String, RW: String, kelurahan: String, kecamatan: String, kota: String, provinsi: String, isOpenCam:Bool){
         
         pihak1NIK = nik
         pihak1Nama = nama
@@ -252,6 +254,7 @@ class PerjanjianController: ObservableObject {
         pihak1Kecamatan = kecamatan
         pihak1Kota = kota
         pihak1Provinsi = provinsi
+		pihak1IsOpenCam = isOpenCam
     }
     
     func updatePihak1NonKTP( pekerjaan: String? = "", nomorHP: String? = ""){
@@ -259,7 +262,7 @@ class PerjanjianController: ObservableObject {
         pihak1NomorHP = nomorHP
     }
     
-    func updatePihak2KTP(nik: String, nama: String, tanggalLahir: Date, alamat: String, RT:String, RW: String, kelurahan: String, kecamatan: String, kota: String, provinsi: String){
+	func updatePihak2KTP(nik: String, nama: String, tanggalLahir: Date, alamat: String, RT:String, RW: String, kelurahan: String, kecamatan: String, kota: String, provinsi: String, isOpenCam:Bool){
         
         pihak2NIK = nik
         pihak2Nama = nama
@@ -271,7 +274,7 @@ class PerjanjianController: ObservableObject {
         pihak2Kecamatan = kecamatan
         pihak2Kota = kota
         pihak2Provinsi = provinsi
-        
+        pihak2IsOpenCam = isOpenCam
     }
     
     func updatePihak2NonKTP(pekerjaan: String? = "", nomorHP: String? = "", namaBank: String? = "", nomorRekening: String? = "", atasNamaRekening: String? = ""){

@@ -28,6 +28,7 @@ class ProfileController: ObservableObject{
     @Published var pihak1Provinsi = ""
     @Published var pihak1Pekerjaan = ""
     @Published var pihak1NomorHP = ""
+	@Published var pihak1IsOpenCam = false
     
     init(){
         loadValue()
@@ -58,7 +59,7 @@ class ProfileController: ObservableObject{
         
     }
     
-    func updatePihak1KTP(nik: String, nama: String, tanggalLahir: Date, alamat: String, RT:String, RW: String, kelurahan: String, kecamatan: String, kota: String, provinsi: String){
+	func updatePihak1KTP(nik: String, nama: String, tanggalLahir: Date, alamat: String, RT:String, RW: String, kelurahan: String, kecamatan: String, kota: String, provinsi: String, isOpenCam:Bool){
         
         pihak1NIK = nik ?? ""
         pihak1Nama = nama ?? ""
@@ -70,6 +71,7 @@ class ProfileController: ObservableObject{
         pihak1Kecamatan = kecamatan ?? ""
         pihak1Kota = kota ?? ""
         pihak1Provinsi = provinsi ?? ""
+		pihak1IsOpenCam = isOpenCam
     }
     
     
