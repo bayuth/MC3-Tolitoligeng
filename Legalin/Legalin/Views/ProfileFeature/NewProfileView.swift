@@ -51,7 +51,7 @@ struct NewProfileView: View {
 						Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))) .padding(.bottom,7)
 							.padding(.horizontal)
 						
-						if (profileController.pihak1NIK != "") {
+						if (profileController.pihak1NIK != "" || profileController.pihak1Nama != "" || profileController.pihak1Alamat != "" || !Calendar.current.isDateInToday(profileController.pihak1TanggalLahir) || profileController.pihak1RT != "" || profileController.pihak1RW != "" || profileController.pihak1Kelurahan != "" || profileController.pihak1Kecamatan != "" || profileController.pihak1Kota != "" || profileController.pihak1Provinsi != "") {
 							Button(action: {
 								if cameraManager.permissionGranted {
 									trimKtp.showScannerSheet = true
@@ -113,6 +113,7 @@ struct NewProfileView: View {
 							if showTanggalLahir {
 								DatePicker("", selection: $profileController.pihak1TanggalLahir, displayedComponents: .date)
 									.datePickerStyle(GraphicalDatePickerStyle())
+									.padding(.horizontal)
 							}
 							
 							FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $isDisable)
