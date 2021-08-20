@@ -31,8 +31,8 @@ struct InputPicker: View {
                 
                 Text("A").opacity(0)
                     .padding(.horizontal)
-            }.padding(.vertical)
-            .background(Color.red.opacity(0.3))
+            }
+//            .background(Color.red.opacity(0.3))
             
         })
     

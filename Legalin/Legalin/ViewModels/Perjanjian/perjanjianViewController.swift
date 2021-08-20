@@ -122,7 +122,7 @@ class PerjanjianController: ObservableObject {
         tanggalJatuhTempo = "Pilih Tanggal"
 
         modalPengadilanNegeri = false
-        pengadilanNegeri = "Pengadilan Negeri"
+        pengadilanNegeri = "Pilih"
         
         tanggalTandaTangan = "Pilih Tanggal"
         
