@@ -20,6 +20,9 @@ struct step1Peminjam: View {
 	
 	@State var isDisable:Bool = false
 	@State var showActionSheet = false
+    
+    //Validation page redirect
+    @State var step1Redirect: Bool = false
 	
 	let dateFormatter: DateFormatter = {
 		let df = DateFormatter()
@@ -127,7 +130,7 @@ struct step1Peminjam: View {
                                         .padding(.horizontal)
 									
 									NavigationLink(
-										destination: step2Pemberi(masterPresentationMode: _presentationMode),
+                                        destination: step2Pemberi(masterPresentationMode: _presentationMode, step1Redirect: $step1Redirect),
 										label: {
 											ButtonNext(text: "Lanjutkan", isDataComplete: true)
 										})

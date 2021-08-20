@@ -27,6 +27,11 @@ struct step3Detail: View {
     
 	@State var isDisable:Bool = false
     @State var showActionSheet = false
+    
+    //Validation page redirect
+    @Binding var step1Redirect: Bool
+    @Binding var step2Redirect: Bool
+    @State var step3Redirect: Bool = false
 	
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     
@@ -94,7 +99,7 @@ struct step3Detail: View {
                     ButtonBordered(icon: "percent", titleButton: "Lihat Simulasi Kredit")
                         .padding(.horizontal)
                     NavigationLink(
-                        destination: step4Agunan(masterPresentationMode4 : _masterPresentationMode3),
+                        destination: step4Agunan(masterPresentationMode4 : _masterPresentationMode3 ,step1Redirect: $step1Redirect ,step2Redirect: $step2Redirect, step3Redirect: $step3Redirect),
                         label: {
                             ButtonNext(text: "Lanjutkan", isDataComplete: true).padding(.bottom, 16).padding(.top, 16)
                         }
@@ -147,8 +152,8 @@ struct step3Detail: View {
     }
 }
 
-struct step3Detail_Previews: PreviewProvider {
-    static var previews: some View {
-        step3Detail()
-    }
-}
+//struct step3Detail_Previews: PreviewProvider {
+//    static var previews: some View {
+//        step3Detail()
+//    }
+//}

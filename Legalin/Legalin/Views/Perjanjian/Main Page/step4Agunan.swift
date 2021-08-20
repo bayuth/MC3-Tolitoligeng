@@ -17,6 +17,11 @@ struct step4Agunan: View {
     @State var disabledStaus: Bool = false
     @State var showActionSheet = false
     
+    //Validation page redirect
+    @Binding var step1Redirect: Bool
+    @Binding var step2Redirect: Bool
+    @Binding var step3Redirect: Bool
+    
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     var tipeAgunan = ["Umum", "Elektronik"]
@@ -109,8 +114,8 @@ struct step4Agunan: View {
     }
 }
 
-struct step4Agunan_Previews: PreviewProvider {
-    static var previews: some View {
-        step4Agunan()
-    }
-}
+//struct step4Agunan_Previews: PreviewProvider {
+//    static var previews: some View {
+//        step4Agunan()
+//    }
+//}
