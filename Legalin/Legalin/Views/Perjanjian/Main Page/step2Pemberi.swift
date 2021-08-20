@@ -21,6 +21,10 @@ struct step2Pemberi: View {
 	@State var isDisable:Bool = false
     @State var showActionSheet = false
     
+    //Validation page redirect
+    @Binding var step1Redirect: Bool
+    @State var step2Redirect: Bool = false
+    
 	let dateFormatter: DateFormatter = {
 		let df = DateFormatter()
 		df.dateStyle = .medium
@@ -130,10 +134,10 @@ struct step2Pemberi: View {
                                 .padding(.horizontal)
                             
                             NavigationLink(
-                                destination: step3Detail(masterPresentationMode3 : _masterPresentationMode),
+                                destination: step3Detail(masterPresentationMode3 : _masterPresentationMode ,step1Redirect: self.$step1Redirect, step2Redirect: self.$step2Redirect),isActive: $step2Redirect,
                                 label: {
                                     ButtonNext(text: "Lanjutkan", isDataComplete: true)
-                                })
+                                }).isDetailLink(false)
 						}
 					}
 				}.padding(.top,10)
@@ -179,8 +183,8 @@ struct step2Pemberi: View {
 	}
 }
 
-struct step2Pemberi_Previews: PreviewProvider {
-	static var previews: some View {
-		step2Pemberi()
-	}
-}
+//struct step2Pemberi_Previews: PreviewProvider {
+//	static var previews: some View {
+//		step2Pemberi()
+//	}
+//}

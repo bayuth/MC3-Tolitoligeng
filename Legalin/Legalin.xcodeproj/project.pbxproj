@@ -78,6 +78,7 @@
 		5E375CF826BEB14E00DF834D /* GeneratePDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E375CF726BEB14E00DF834D /* GeneratePDFViewController.swift */; };
 		5E375CFB26BEB47200DF834D /* InvoiceComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E375CFA26BEB47200DF834D /* InvoiceComposer.swift */; };
 		5E375CFE26BEB48800DF834D /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E375CFD26BEB48800DF834D /* PreviewViewController.swift */; };
+		5E3D0F2926CFB010009F7A01 /* TesNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3D0F2826CFB010009F7A01 /* TesNavigation.swift */; };
 		5E3F136B26C5974800E3E0B6 /* profileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3F136A26C5974800E3E0B6 /* profileController.swift */; };
 		5E407FD726CE84BB003AD26C /* inputPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E407FD626CE84BB003AD26C /* inputPicker.swift */; };
 		5E5D23FD26B985FF00FC356E /* pengadilanNegeriDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5D23FC26B985FF00FC356E /* pengadilanNegeriDetailViewController.swift */; };
@@ -179,6 +180,7 @@
 		5E375CF726BEB14E00DF834D /* GeneratePDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePDFViewController.swift; sourceTree = "<group>"; };
 		5E375CFA26BEB47200DF834D /* InvoiceComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvoiceComposer.swift; sourceTree = "<group>"; };
 		5E375CFD26BEB48800DF834D /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		5E3D0F2826CFB010009F7A01 /* TesNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesNavigation.swift; sourceTree = "<group>"; };
 		5E3F136A26C5974800E3E0B6 /* profileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileController.swift; sourceTree = "<group>"; };
 		5E407FD626CE84BB003AD26C /* inputPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inputPicker.swift; sourceTree = "<group>"; };
 		5E5D23FC26B985FF00FC356E /* pengadilanNegeriDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pengadilanNegeriDetailViewController.swift; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 			isa = PBXGroup;
 			children = (
 				5EBDDDD626B4170500F53958 /* TestCoreDataView.swift */,
+				5E3D0F2826CFB010009F7A01 /* TesNavigation.swift */,
 			);
 			path = "Test Core Data";
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 				5C7E999526C4DA5800BBBFE9 /* AlertSave.swift in Sources */,
 				5CE3F8EF26CBFD6B00569C67 /* ButtonKebijakanPrivasi.swift in Sources */,
 				4AF0124526BCF14900E9C2FF /* NavigationBarModifier.swift in Sources */,
+				5E3D0F2926CFB010009F7A01 /* TesNavigation.swift in Sources */,
 				7558EA6626BD2B1D00E0B492 /* Pihak2.swift in Sources */,
 				5EBDDDD426B3B69900F53958 /* CoreDataViewModel.swift in Sources */,
 				5E8578B026B945480019FB61 /* pinjamanCellStateController.swift in Sources */,
