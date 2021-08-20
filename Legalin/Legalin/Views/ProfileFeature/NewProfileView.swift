@@ -49,21 +49,39 @@ struct NewProfileView: View {
 					VStack(alignment: .leading) {
 						
 						Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))) .padding(.bottom,7)
+							.padding(.horizontal)
 						
-						Button(action: {
-							if cameraManager.permissionGranted {
-								trimKtp.showScannerSheet = true
-							} else {
-								cameraManager.requestPermission()
-							}
-							
-						}, label: {
-							Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").fontWeight(.regular) .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-						})
-						Divider()
-							.fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
-								trimKtp.makeScannerView()
-							}).padding(.bottom)
+						if (profileController.pihak1NIK != "" || profileController.pihak1Nama != "" || profileController.pihak1Alamat != "" || !Calendar.current.isDateInToday(profileController.pihak1TanggalLahir) || profileController.pihak1RT != "" || profileController.pihak1RW != "" || profileController.pihak1Kelurahan != "" || profileController.pihak1Kecamatan != "" || profileController.pihak1Kota != "" || profileController.pihak1Provinsi != "") {
+							Button(action: {
+								if cameraManager.permissionGranted {
+									trimKtp.showScannerSheet = true
+								} else {
+									cameraManager.requestPermission()
+								}
+								
+							}, label: {
+								Text("Ambil Ulang Gambar KTP \(Image(systemName: "checkmark.rectangle.fill"))").fontWeight(.regular) .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+							}).padding(.horizontal)
+							Divider()
+								.fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
+									trimKtp.makeScannerView()
+								}).padding(.bottom)
+						} else {
+							Button(action: {
+								if cameraManager.permissionGranted {
+									trimKtp.showScannerSheet = true
+								} else {
+									cameraManager.requestPermission()
+								}
+								
+							}, label: {
+								Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").fontWeight(.regular) .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+							}).padding(.horizontal)
+							Divider()
+								.fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
+									trimKtp.makeScannerView()
+								}).padding(.bottom)
+						}
 						
 						VStack(alignment: .leading) {
 							FormView(title: "NIK", profileValue: $profileController.pihak1NIK, keyboardNum: true, isDisable: $isDisable)
@@ -91,10 +109,11 @@ struct NewProfileView: View {
 								
 								Divider()
 									.padding(.bottom)
-							}
+							}.padding(.horizontal)
 							if showTanggalLahir {
 								DatePicker("", selection: $profileController.pihak1TanggalLahir, displayedComponents: .date)
 									.datePickerStyle(GraphicalDatePickerStyle())
+									.padding(.horizontal)
 							}
 							
 							FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $isDisable)
@@ -115,6 +134,7 @@ struct NewProfileView: View {
 									.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 									.multilineTextAlignment(.leading)
 									.padding(.bottom,10)
+									.padding(.horizontal)
 								Button(action: {
 									shown.toggle()
 								}, label: {
@@ -123,7 +143,7 @@ struct NewProfileView: View {
 							}
 						}
 					}
-					.padding(.horizontal)
+					
 				}
 				if shown {
 					AlertSave(shown: $shown, textField: $textfieldDisable)
