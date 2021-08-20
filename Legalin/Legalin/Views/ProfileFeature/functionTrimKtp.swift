@@ -28,7 +28,7 @@ class functionTrimKtp: ObservableObject {
 			textPerPage in
 			if let outputText = textPerPage?.joined(separator: "\n").trimmingCharacters(in: .whitespacesAndNewlines){
 				
-//				print(outputText)
+				print(outputText)
 				
 				let nikFromKtp = outputText.slice(from: "NIK", to: "Nama")
 				print(nikFromKtp)
@@ -48,7 +48,7 @@ class functionTrimKtp: ObservableObject {
 					print(namaFromKtp)
 				}
 				
-				let alamatFromKtp = outputText.slice(from: "Alamat", to: "RT")
+				let alamatFromKtp = outputText.slice(from: "Alamat", to: "RT/RW")
 				print(alamatFromKtp)
 				
 				var rtRwFromKtp = outputText.slice(from: "RT/RW", to: "Kel")
@@ -67,7 +67,16 @@ class functionTrimKtp: ObservableObject {
 						rwBersih = rw ?? ""
 						print(rwBersih)
 					}
-					
+					if let rtIndex = rtRwFromKtp?.firstIndex(of: "\n") {
+						let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
+						rtBersih = String(rt)
+						print(rtBersih)
+					}
+					if let rwIndex = rtRwFromKtp?.range(of: "\n") {
+						let rw = rtRwFromKtp?[rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+						rwBersih = rw ?? ""
+						print(rwBersih)
+					}
 				}
 				if rtRwFromKtp?.contains(":") == true {
 					rtRwFromKtp = outputText.components(separatedBy: ":").joined(separator: "")
@@ -80,6 +89,16 @@ class functionTrimKtp: ObservableObject {
 					if let rwIndex = rtRwFromKtp?.range(of: "/") {
 						let rw = rtRwFromKtp![rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
 						rwBersih = rw
+						print(rwBersih)
+					}
+					if let rtIndex = rtRwFromKtp?.firstIndex(of: "\n") {
+						let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
+						rtBersih = String(rt)
+						print(rtBersih)
+					}
+					if let rwIndex = rtRwFromKtp?.range(of: "\n") {
+						let rw = rtRwFromKtp?[rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+						rwBersih = rw ?? ""
 						print(rwBersih)
 					}
 				}
@@ -96,6 +115,16 @@ class functionTrimKtp: ObservableObject {
 						rwBersih = rw
 						print(rwBersih)
 					}
+					if let rtIndex = rtRwFromKtp?.firstIndex(of: "\n") {
+						let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
+						rtBersih = String(rt)
+						print(rtBersih)
+					}
+					if let rwIndex = rtRwFromKtp?.range(of: "\n") {
+						let rw = rtRwFromKtp?[rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+						rwBersih = rw ?? ""
+						print(rwBersih)
+					}
 				}
 				else {
 					rtRwFromKtp = outputText.slice(from: "RT/RW", to: "Kel")
@@ -110,6 +139,16 @@ class functionTrimKtp: ObservableObject {
 						rwBersih = rw
 						print(rwBersih)
 					}
+					if let rtIndex = rtRwFromKtp?.firstIndex(of: "\n") {
+						let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
+						rtBersih = String(rt)
+						print(rtBersih)
+					}
+					if let rwIndex = rtRwFromKtp?.range(of: "\n") {
+						let rw = rtRwFromKtp?[rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+						rwBersih = rw ?? ""
+						print(rwBersih)
+					}
 					
 				}
 				let kelurahanFromKtp = outputText.slice(from: "Kel/Desa", to: "Kecamatan")
@@ -119,20 +158,24 @@ class functionTrimKtp: ObservableObject {
 //				GET KOTA
 				var kotaFromKtp = outputText.slice(from: "KOTA", to: "NIK")
 				print(kotaFromKtp ?? "")
-				if kotaFromKtp == "" {
+				if kotaFromKtp == nil {
+					print("masuk ke jakarta")
 					kotaFromKtp = outputText.slice(from: "JAKARTA", to: "NIK")
 					print(kotaFromKtp ?? "")
-					if kotaFromKtp == "" {
+					if kotaFromKtp == nil {
+						print("masuk ke kabupaten")
 						kotaFromKtp = outputText.slice(from: "KABUPATEN", to: "NIK")
 						print(kotaFromKtp ?? "")
 					}
 				}
 //				GET PROVINSI
-				let provinsiFromKtp = outputText.slice(from: "PROVINSI", to: "KOTA")
-				if provinsiFromKtp == "" {
-					var provinsiFromKtp = outputText.slice(from: "PROVINSI", to: "KABUPATEN")
+				var provinsiFromKtp = outputText.slice(from: "PROVINSI", to: "KOTA")
+				if provinsiFromKtp == nil {
+					print("masuk ke kabupaten")
+					provinsiFromKtp = outputText.slice(from: "PROVINSI", to: "KABUPATEN")
 					print(provinsiFromKtp)
-					if provinsiFromKtp == "" {
+					if provinsiFromKtp == nil {
+						print("masuk ke jakarta")
 						provinsiFromKtp = outputText.slice(from: "PROVINSI", to: "JAKARTA")
 						print(provinsiFromKtp)
 					}
