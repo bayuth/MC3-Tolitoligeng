@@ -18,62 +18,69 @@ class PerjanjianController: ObservableObject {
     var profil: [Akun] = []
     
     //Step 1 attribute
-    @Published var pihak1NIK: String!
-    @Published var pihak1Nama: String!
-    @Published var pihak1TanggalLahir: Date!
-    @Published var pihak1Alamat: String!
-    @Published var pihak1RT: String!
-    @Published var pihak1RW: String!
-    @Published var pihak1Kelurahan: String!
-    @Published var pihak1Kecamatan: String!
-    @Published var pihak1Kota: String!
-    @Published var pihak1Provinsi: String!
-    @Published var pihak1Pekerjaan: String!
-    @Published var pihak1NomorHP: String!
+    @Published var pihak1NIK: String = ""
+    @Published var pihak1Nama: String = ""
+    @Published var pihak1TanggalLahir: Date = Date()
+    @Published var pihak1Alamat: String = ""
+    @Published var pihak1RT: String = ""
+    @Published var pihak1RW: String = ""
+    @Published var pihak1Kelurahan: String = ""
+    @Published var pihak1Kecamatan: String = ""
+    @Published var pihak1Kota: String = ""
+    @Published var pihak1Provinsi: String = ""
+    @Published var pihak1Pekerjaan: String = ""
+    @Published var pihak1NomorHP: String = ""
     
     //Step 2 attribute
-    @Published var pihak2NIK: String!
-    @Published var pihak2Nama: String!
-    @Published var pihak2TanggalLahir: Date!
-    @Published var pihak2Alamat: String!
-    @Published var pihak2RT: String!
-    @Published var pihak2RW: String!
-    @Published var pihak2Kelurahan: String!
-    @Published var pihak2Kecamatan: String!
-    @Published var pihak2Kota: String!
-    @Published var pihak2Provinsi: String!
-    @Published var pihak2Pekerjaan: String!
-    @Published var pihak2NomorHP: String!
-    @Published var pihak2NamaBank: String!
-    @Published var pihak2NomorRekening: String!
-    @Published var pihak2AtasNamaRekening: String!
+    @Published var pihak2NIK: String = ""
+    @Published var pihak2Nama: String = ""
+    @Published var pihak2TanggalLahir: Date = Date()
+    @Published var pihak2Alamat: String = ""
+    @Published var pihak2RT: String = ""
+    @Published var pihak2RW: String = ""
+    @Published var pihak2Kelurahan: String = ""
+    @Published var pihak2Kecamatan: String = ""
+    @Published var pihak2Kota: String = ""
+    @Published var pihak2Provinsi: String = ""
+    @Published var pihak2Pekerjaan: String = ""
+    @Published var pihak2NomorHP: String = ""
+    @Published var pihak2NamaBank: String = ""
+    @Published var pihak2NomorRekening: String = ""
+    @Published var pihak2AtasNamaRekening: String = ""
     
     //Step 3 attribute
-    @Published var tujuanPeminjaman: String!
+    @Published var tujuanPeminjaman: String = ""
     
-    @Published var jumlahPinjaman: Double!
-    @Published var bunga: Double!
-    @Published var tenor: Double!
+    @Published var jumlahPinjaman: Double = 0
+    @Published var bunga: Double = 0
+    @Published var tenor: Double = 0
     
-    @Published var modalMetodePembayaran: Bool!
-    @Published var metodePembayaran: String!
+    @Published var modalMetodePembayaran: Bool! = false
+    @Published var metodePembayaran: String = "Metode Pembayaran"
     
-    @Published var tanggalJatuhTempo: String!
+    @Published var tanggalJatuhTempo: String = "Pilih Tanggal"
     
-    @Published var modalPengadilanNegeri: Bool!
-    @Published var pengadilanNegeri: String!
+    @Published var modalPengadilanNegeri: Bool = false
+    @Published var pengadilanNegeri: String = "Pilih"
     
-    @Published var tanggalTandaTangan: String!
+    @Published var tanggalTandaTangan: String = "Pilih Tanggal"
     
     //Step 4 attribute
-    @Published var modalAgunanState: Bool!
-    @Published var tipeBarangAgunan: String!
-    @Published var namaBarang: String!
-    @Published var warnaBarang: String!
-    @Published var hargaBarang: String!
-    @Published var nomorSeri: String!
+    @Published var modalAgunanState: Bool = false
+    @Published var tipeBarangAgunan: String = "Detail"
+    @Published var namaBarang: String = ""
+    @Published var warnaBarang: String = ""
+    @Published var hargaBarang: String = ""
+    @Published var nomorSeri: String = ""
     
-    @Published var nextButtonState : Bool!
+    //Validation
+    @Published var nextButtonState : Bool = false
+    @Published var page1State: Bool = false
+    @Published var page2State: Bool = false
+    @Published var page3State: Bool = false
+    @Published var page4State: Bool = false
+    
+    @Published var redirectPage: String = "step1"
     
     init(){
         resetValue()
@@ -123,7 +130,7 @@ class PerjanjianController: ObservableObject {
         tanggalJatuhTempo = "Pilih Tanggal"
 
         modalPengadilanNegeri = false
-        pengadilanNegeri = "Pengadilan Negeri"
+        pengadilanNegeri = "Pilih"
         
         tanggalTandaTangan = "Pilih Tanggal"
         
@@ -136,6 +143,10 @@ class PerjanjianController: ObservableObject {
         nomorSeri = ""
         
         nextButtonState = false
+        page1State = false
+        page2State = false
+        page3State = false
+        page4State = false
         
         profil = coreDataVM.pihak1
         sycnPihak1()
@@ -158,6 +169,21 @@ class PerjanjianController: ObservableObject {
         }
     }
     
+    func syncPihak2(pihak2: Akun){
+        
+            pihak2NIK = pihak2.ktp?.nik ?? ""
+            pihak2Nama = pihak2.ktp?.nama ?? ""
+            pihak2TanggalLahir = pihak2.ktp?.tanggalLahir ?? Date()
+            pihak2Alamat = pihak2.ktp?.alamat ?? ""
+            pihak2RT = pihak2.ktp?.rt ?? ""
+            pihak2RW = pihak2.ktp?.rw ?? ""
+            pihak2Kelurahan = pihak2.ktp?.kelurahanDesa ?? ""
+            pihak2Kecamatan = pihak2.ktp?.kecamatan ?? ""
+            pihak2Kota = pihak2.ktp?.kotaKabupaten ?? ""
+            pihak2Provinsi = pihak2.ktp?.provinsi ?? ""
+            pihak2Pekerjaan = pihak2.pekerjaan ?? ""
+            pihak2NomorHP = pihak2.nomorAktif ?? ""
+        
     func detailSync(pinjaman: Pinjaman){
         
         //Step 1
@@ -215,15 +241,43 @@ class PerjanjianController: ObservableObject {
         nomorSeri = pinjaman.agunan?.nomorSeri
     }
     
-    func checkEmptyString(item: String){
+    func checkEmptyString(item: String) -> Bool{
         if (item == ""){
-            nextButtonState = false
+            return false
+        } else {
+            return true
         }
     }
     
-    func checkEmptyDouble(item: Double){
+    func checkEmptyDouble(item: Double) -> Bool{
         if (item == 0){
-            nextButtonState = false
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func setRedirectPage(){
+        
+        var selected = false
+        
+        if (page1State == false){
+            redirectPage = "step1"
+            selected = true
+        }
+        
+        if(page2State == false) && (selected == false){
+            redirectPage = "step2"
+            selected = true
+        }
+        
+        if(page3State == false) && (selected == false){
+            redirectPage = "step3"
+            selected = true
+        }
+        
+        if (page4State == false) && (selected == false){
+            redirectPage = "step4"
         }
     }
     
@@ -231,74 +285,124 @@ class PerjanjianController: ObservableObject {
         
         nextButtonState = true
         
-        checkEmptyString(item: pihak1NIK)
-        checkEmptyString(item: pihak1Nama)
-        checkEmptyString(item: pihak1Alamat)
-        checkEmptyString(item: pihak1RT)
-        checkEmptyString(item: pihak1RW)
-        checkEmptyString(item: pihak1Kelurahan)
-        checkEmptyString(item: pihak1Kecamatan)
-        checkEmptyString(item: pihak1Kota)
-        checkEmptyString(item: pihak1Provinsi)
-        checkEmptyString(item: pihak1Pekerjaan)
-        checkEmptyString(item: pihak1NomorHP)
+        page1State = checkStep1()
+        page2State = checkStep2()
+        page3State = checkStep3()
+        page4State = checkStep4()
         
-        checkEmptyString(item: pihak2NIK)
-        checkEmptyString(item: pihak2Nama)
-        checkEmptyString(item: pihak2Alamat)
-        checkEmptyString(item: pihak2RT)
-        checkEmptyString(item: pihak2RW)
-        checkEmptyString(item: pihak2Kelurahan)
-        checkEmptyString(item: pihak2Kecamatan)
-        checkEmptyString(item: pihak2Kota)
-        checkEmptyString(item: pihak2Provinsi)
-        checkEmptyString(item: pihak2Pekerjaan)
-        checkEmptyString(item: pihak2NomorHP)
-        checkEmptyString(item: pihak2NamaBank)
-        checkEmptyString(item: pihak2NomorRekening)
-        checkEmptyString(item: pihak2AtasNamaRekening)
-        
-        //Step 3
-        checkEmptyString(item: tujuanPeminjaman)
-        checkEmptyDouble(item: jumlahPinjaman)
-//        checkEmptyDouble(item: bunga)
-        checkEmptyDouble(item: tenor)
-        
-        if (metodePembayaran == "Metode Pembayaran"){
+        if page1State == false {
             nextButtonState = false
         }
         
-        if (tanggalJatuhTempo == "Pilih Tanggal"){
+        if page2State == false {
             nextButtonState = false
         }
         
-        if (pengadilanNegeri == "Pengadilan Negeri"){
+        if page3State == false{
             nextButtonState = false
         }
         
-        if (tanggalTandaTangan == "Pilih Tanggal"){
+        if page4State == false{
             nextButtonState = false
         }
         
-        if (modalAgunanState == true){
-            
-            if (tipeBarangAgunan == "Detail"){
-                nextButtonState = false
-            }
-            
-            checkEmptyString(item: namaBarang)
-            checkEmptyString(item: warnaBarang)
-            checkEmptyString(item: hargaBarang)
-            
-            if (tipeBarangAgunan == "Elektronik"){
-                checkEmptyString(item: nomorSeri)
-            }
-            
-        }
-        
+        setRedirectPage()
     }
     
-    func updatePihak1KTP(nik: String? = "", nama: String? = "", tanggalLahir: Date? = Date(), alamat: String? = "", RT:String? = "", RW: String? = "", kelurahan: String? = "", kecamatan: String? = "", kota: String? = "", provinsi: String? = ""){
+    func checkStep1() -> Bool {
+        
+        var result = true
+        
+        result = checkEmptyString(item: pihak1NIK)
+        result = checkEmptyString(item: pihak1Nama)
+        result = checkEmptyString(item: pihak1Alamat)
+        result = checkEmptyString(item: pihak1RT)
+        result = checkEmptyString(item: pihak1RW)
+        result = checkEmptyString(item: pihak1Kelurahan)
+        result = checkEmptyString(item: pihak1Kecamatan)
+        result = checkEmptyString(item: pihak1Kota)
+        result = checkEmptyString(item: pihak1Provinsi)
+        result = checkEmptyString(item: pihak1Pekerjaan)
+        result = checkEmptyString(item: pihak1NomorHP)
+        
+        return result
+    }
+    
+    func checkStep2() -> Bool {
+        
+        var result = true
+        
+        result = checkEmptyString(item: pihak2NIK)
+        result = checkEmptyString(item: pihak2Nama)
+        result = checkEmptyString(item: pihak2Alamat)
+        result = checkEmptyString(item: pihak2RT)
+        result = checkEmptyString(item: pihak2RW)
+        result = checkEmptyString(item: pihak2Kelurahan)
+        result = checkEmptyString(item: pihak2Kecamatan)
+        result = checkEmptyString(item: pihak2Kota)
+        result = checkEmptyString(item: pihak2Provinsi)
+        result = checkEmptyString(item: pihak2Pekerjaan)
+        result = checkEmptyString(item: pihak2NomorHP)
+        result = checkEmptyString(item: pihak2NamaBank)
+        result = checkEmptyString(item: pihak2NomorRekening)
+        result = checkEmptyString(item: pihak2AtasNamaRekening)
+        
+        return result
+    }
+    
+    func checkStep3() -> Bool {
+        
+        var result = true
+        
+        result = checkEmptyString(item: tujuanPeminjaman)
+        result = checkEmptyDouble(item: jumlahPinjaman)
+        result = checkEmptyDouble(item: tenor)
+
+        if (metodePembayaran == "Metode Pembayaran"){
+            result = false
+        }
+
+        if (tanggalJatuhTempo == "Pilih Tanggal"){
+            result = false
+        }
+
+        if (pengadilanNegeri == "Pengadilan Negeri"){
+            result = false
+        }
+
+        if (tanggalTandaTangan == "Pilih Tanggal"){
+            result = false
+        }
+        
+        return result
+    }
+    
+    func checkStep4() -> Bool {
+        
+        var result = true
+        
+                if (modalAgunanState == true){
+        
+                    if (tipeBarangAgunan == "Detail"){
+                        result = false
+                    }
+        
+                    result = checkEmptyString(item: namaBarang)
+                    result = checkEmptyString(item: warnaBarang)
+                    result = checkEmptyString(item: hargaBarang)
+        
+                    if (tipeBarangAgunan == "Elektronik"){
+                        result = checkEmptyString(item: nomorSeri)
+                    }
+        
+                }
+        
+        return result
+    }
+    
+    
+    
+    func updatePihak1KTP(nik: String, nama: String, tanggalLahir: Date, alamat: String, RT:String, RW: String, kelurahan: String, kecamatan: String, kota: String, provinsi: String){
         
         pihak1NIK = nik
         pihak1Nama = nama
@@ -312,12 +416,12 @@ class PerjanjianController: ObservableObject {
         pihak1Provinsi = provinsi
     }
     
-    func updatePihak1NonKTP( pekerjaan: String? = "", nomorHP: String? = ""){
-        pihak1Pekerjaan = pekerjaan
-        pihak1NomorHP = nomorHP
+    func updatePihak1NonKTP( pekerjaan: String ,nomorHP: String){
+        pihak1Pekerjaan = pekerjaan ?? ""
+        pihak1NomorHP = nomorHP ?? ""
     }
     
-    func updatePihak2KTP(nik: String? = "", nama: String? = "", tanggalLahir: Date? = Date(), alamat: String? = "", RT:String? = "", RW: String? = "", kelurahan: String? = "", kecamatan: String? = "", kota: String? = "", provinsi: String? = ""){
+    func updatePihak2KTP(nik: String, nama: String, tanggalLahir: Date, alamat: String, RT:String, RW: String, kelurahan: String, kecamatan: String, kota: String, provinsi: String){
         
         pihak2NIK = nik
         pihak2Nama = nama
@@ -332,12 +436,12 @@ class PerjanjianController: ObservableObject {
         
     }
     
-    func updatePihak2NonKTP(pekerjaan: String? = "", nomorHP: String? = "", namaBank: String? = "", nomorRekening: String? = "", atasNamaRekening: String? = ""){
-        pihak2Pekerjaan = pekerjaan
-        pihak2NomorHP = nomorHP
-        pihak2NamaBank = namaBank
-        pihak2NomorRekening = nomorRekening
-        pihak2AtasNamaRekening = atasNamaRekening
+    func updatePihak2NonKTP(pekerjaan: String, nomorHP : String ,namaBank: String, nomorRekening : String, atasNamaRekening : String){
+        pihak2Pekerjaan = pekerjaan ?? ""
+        pihak2NomorHP = nomorHP ?? ""
+        pihak2NamaBank = namaBank ?? ""
+        pihak2NomorRekening = nomorRekening ?? ""
+        pihak2AtasNamaRekening = atasNamaRekening ?? ""
     }
     
     func updatePinjamanCoreData(status: StatusSurat){

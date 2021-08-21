@@ -16,8 +16,16 @@ struct step4Agunan: View {
     @State var toggleState: Bool = false
     @State var disabledStaus: Bool = false
     @State var showActionSheet = false
+    @State var showAlert = false
+    
+    //Validation page redirect
+    @Binding var step1Redirect: Bool
+    @Binding var step2Redirect: Bool
+    @Binding var step3Redirect: Bool
     
     @ObservedObject var perjanjianController: PerjanjianController = .shared
+    
+    var tipeAgunan = ["Umum", "Elektronik"]
     
     var body: some View {
         
@@ -25,7 +33,7 @@ struct step4Agunan: View {
             
             HStack{
                 pageIndicator(progressNumber: 4, progressName: "Detail Agunan", progressDetail: "Langkah terakhir")
-            }.padding(.vertical, 15)
+            }.padding(.vertical)
             .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
             
             HStack{
@@ -37,12 +45,17 @@ struct step4Agunan: View {
             }.zIndex(0.9)
             .padding(.horizontal)
             
-            Divider().padding(.horizontal, -20)
+            Divider()
             
             VStack{
                 if(perjanjianController.modalAgunanState == true){
                     
-                    inputToModal(title: "Tipe Barang", textViewValue: "Tipe Barang", tipeAgunan: $perjanjianController.tipeBarangAgunan, isPresented: false)
+                    InputPicker(title: "Tipe Barang", listItem: tipeAgunan, selectedItem: $perjanjianController.tipeBarangAgunan)
+                    
+                    
+                    Divider()
+                    
+                    //                    inputToModal(title: "Tipe Barang", textViewValue: "Tipe Barang", tipeAgunan: $perjanjianController.tipeBarangAgunan, isPresented: false)
                     
                     if(perjanjianController.tipeBarangAgunan != "Detail"){
                         
@@ -66,6 +79,29 @@ struct step4Agunan: View {
                 destination: ConfirmationPage(masterPresentationMode5: _masterPresentationMode4)){
                 ButtonNext(text: "Buat Surat", isDataComplete: perjanjianController.nextButtonState)
             }.disabled(!perjanjianController.nextButtonState)
+            .simultaneousGesture(TapGesture().onEnded{
+                
+                if perjanjianController.nextButtonState == false{
+                    showAlert = true
+                }
+                
+            })
+            .alert(isPresented: $showAlert, content: {
+                Alert(title: Text("Data belum lengkap"),
+                      message: Text("Mohon lengkapi data terlebih dahulu untuk melanjutkan"),
+                      dismissButton: .destructive(Text("Tutup")){
+                        
+                        if perjanjianController.redirectPage == "step1"{
+                            step1Redirect = false
+                        } else if perjanjianController.redirectPage == "step2"{
+                            step2Redirect = false
+                        } else if perjanjianController.redirectPage == "step3"{
+                            step3Redirect = false
+                        }
+                        
+                      } )
+            }).padding(.bottom,13)
+            
             
         }
 //        .frame(width: UIScreen.main.bounds.width - 35,alignment: .leading)
@@ -85,26 +121,26 @@ struct step4Agunan: View {
                                     showActionSheet = true
                                 }.foregroundColor(.white))
         .actionSheet(isPresented: $showActionSheet, content: {
-                    
-                    ActionSheet(
-                        title: Text("Entri data perjanjian belum lengkap"),
-                        buttons: [
-                            .default(Text("Simpan")) {
-                                perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
-                                self.masterPresentationMode4.wrappedValue.dismiss()
-                            },
-                            .destructive(Text("Hapus")) {
-                                self.masterPresentationMode4.wrappedValue.dismiss()
-                            },
-                            .cancel(Text("Batalkan"))
-                        ])
-                    
-                })
+            
+            ActionSheet(
+                title: Text("Entri data perjanjian belum lengkap"),
+                buttons: [
+                    .default(Text("Simpan")) {
+                        perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
+                        self.masterPresentationMode4.wrappedValue.dismiss()
+                    },
+                    .destructive(Text("Hapus")) {
+                        self.masterPresentationMode4.wrappedValue.dismiss()
+                    },
+                    .cancel(Text("Batalkan"))
+                ])
+            
+        })
     }
 }
 
-struct step4Agunan_Previews: PreviewProvider {
-    static var previews: some View {
-        step4Agunan()
-    }
-}
+//struct step4Agunan_Previews: PreviewProvider {
+//    static var previews: some View {
+//        step4Agunan()
+//    }
+//}

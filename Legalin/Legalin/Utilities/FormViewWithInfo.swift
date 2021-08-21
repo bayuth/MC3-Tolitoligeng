@@ -27,6 +27,7 @@ struct FormViewWithInfo: View {
                 Text("A").hidden()
                     .anchorView(viewId: "infoPopOver")
                     .anchorFrame(rect: $testOriginFrame)
+                    .padding(.horizontal)
             }
             VStack(alignment: .leading) {
                 HStack{
@@ -42,7 +43,7 @@ struct FormViewWithInfo: View {
                                 .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
                         })
                     }
-                }
+                }.padding(.horizontal)
                 
                 if(title == "Metode Pembayaran"){
                     
@@ -60,7 +61,8 @@ struct FormViewWithInfo: View {
                             }
                         }
                         
-                    }.sheet(isPresented: $perjanjianController.modalMetodePembayaran){
+                    }.padding(.horizontal)
+                    .sheet(isPresented: $perjanjianController.modalMetodePembayaran){
                         NavigationView{
                             ModalMetodePembayaran(isPresented: $perjanjianController.modalMetodePembayaran, metodePembayaran: $profileValue)
                         }
@@ -70,20 +72,22 @@ struct FormViewWithInfo: View {
                 } else if(title == "Pengadilan Negeri") {
                     
                     HStack{
-                        Text(profileValue).font(.body)
+                        Text("Pengadilan Negeri").font(.body)
                         Spacer()
                         if(showButton){
                             Button(action: {
                                 perjanjianController.modalPengadilanNegeri.toggle()
                             }) {
                                 HStack(spacing: 10) {
-                                    Text(buttonTitle).foregroundColor(Color.init(hex: "#C4C4C4"))
+                                    Text(profileValue).foregroundColor(Color.init(hex: "#C4C4C4"))
                                     Image(systemName: "chevron.right").foregroundColor(Color.init(hex: "#C4C4C4"))
                                 }
                             }
                         }
                         
-                    }.sheet(isPresented: $perjanjianController.modalPengadilanNegeri){
+                    }.padding(.horizontal)
+                    .sheet(isPresented: $perjanjianController.modalPengadilanNegeri)
+                    {
                         NavigationView{
                             ModalPengadilanNegeri(isPresented: $perjanjianController.modalPengadilanNegeri, pengadilanNegeri: $profileValue)
                         }
@@ -96,6 +100,7 @@ struct FormViewWithInfo: View {
                     
                     HStack{
                         Text(profileValue).font(.body)
+                            .padding(.horizontal)
                         Spacer()
                         
                     }

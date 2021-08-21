@@ -27,8 +27,15 @@ struct step3Detail: View {
     
 	@State var isDisable:Bool = false
     @State var showActionSheet = false
+    
+    //Validation page redirect
+    @Binding var step1Redirect: Bool
+    @Binding var step2Redirect: Bool
+    @State var step3Redirect: Bool = false
 	
     @ObservedObject var perjanjianController: PerjanjianController = .shared
+    
+    var tipeAgunan = ["Cicilan", "Kontan"]
     
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -44,14 +51,18 @@ struct step3Detail: View {
             ScrollView(showsIndicators: false){
                 VStack(alignment: .leading){
                     ButtonBordered(icon: "doc.text", titleButton: "Pilih Kredit (Opsional)")
-                        .padding(.horizontal, 4)
+                        .padding(.horizontal)
 					FormView(title: "Tujuan Peminjaman", profileValue: $perjanjianController.tujuanPeminjaman, keyboardNum: false, isDisable: $isDisable)
                     SliderViewWithForm(sliderValue: $perjanjianController.jumlahPinjaman, text1: "Pinjaman Maksimal", text2: "Rp 50000000", title: "Jumlah Pinjaman", type: 0)
                     SliderViewWithForm(sliderValue: $perjanjianController.bunga, text1: "Bunga Maksimal", text2: "6 % per tahun", title: "Bunga", type: 1)
                     SliderViewWithForm(sliderValue: $perjanjianController.tenor, text1: "Tenor Maksimal", text2: "24 bulan", title: "Tenor", type: 2)
-                    FormViewWithInfo(title: "Metode Pembayaran", profileValue: $perjanjianController.metodePembayaran, showButton: true, showButtonInfo: false, info: "", buttonTitle: "Detail").padding(.top, 16).onTapGesture {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
-                    }
+                    
+                    InputPicker(title: "Metode Pembayaran", listItem: tipeAgunan, selectedItem: $perjanjianController.metodePembayaran)
+                    
+                    Divider()
+//                    FormViewWithInfo(title: "Metode Pembayaran", profileValue: $perjanjianController.metodePembayaran, showButton: true, showButtonInfo: false, info: "", buttonTitle: "Detail").padding(.top, 16).onTapGesture {
+//                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
+//                    }
                     VStack{
                         FormViewWithInfo(title: "Tanggal Jatuh Tempo", profileValue: $perjanjianController.tanggalJatuhTempo, showButton: false, showButtonInfo: true, info: "Hari pembayaran atau batas waktu pembayaran harus dilakukan oleh peminjam dana (debitur) ke pemberi pinjaman (kreditur).", buttonTitle: "").zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/).onTapGesture {
                             showPickerJatuhTempo.toggle()
@@ -65,6 +76,8 @@ struct step3Detail: View {
                             )
                             .datePickerStyle(GraphicalDatePickerStyle())
                         }
+                        
+                        Divider()
                         
                         FormViewWithInfo(title: "Pengadilan Negeri", profileValue: $perjanjianController.pengadilanNegeri, showButton: true, showButtonInfo: true, info: "Pilihan domisili pengadilan negeri untuk upaya hukum penyelesaian perselisihan jika musyawarah tidak berhasil", buttonTitle: "Detail").zIndex(0.9).onTapGesture {
                             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
@@ -84,9 +97,11 @@ struct step3Detail: View {
                         }
                     }
                     ButtonBordered(icon: "percent", titleButton: "Lihat Simulasi Kredit")
-                        .padding(.horizontal, 4)
+                        .padding(.horizontal)
+                    
+                    
                     NavigationLink(
-                        destination: step4Agunan(masterPresentationMode4 : _masterPresentationMode3),
+                        destination: step4Agunan(masterPresentationMode4 : _masterPresentationMode3 ,step1Redirect: $step1Redirect ,step2Redirect: $step2Redirect, step3Redirect: $step3Redirect),isActive: $step3Redirect,
                         label: {
                             ButtonNext(text: "Lanjutkan", isDataComplete: true).padding(.bottom, 16).padding(.top, 16)
                         }
@@ -125,8 +140,7 @@ struct step3Detail: View {
                     ])
                 
             })
-        }.frame(width: UIScreen.main.bounds.width - 35,
-                alignment: .leading)
+        }
         
     }
     func nameChanged(to value: Date) {
@@ -140,8 +154,8 @@ struct step3Detail: View {
     }
 }
 
-struct step3Detail_Previews: PreviewProvider {
-    static var previews: some View {
-        step3Detail()
-    }
-}
+//struct step3Detail_Previews: PreviewProvider {
+//    static var previews: some View {
+//        step3Detail()
+//    }
+//}

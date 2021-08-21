@@ -10,6 +10,7 @@ import SwiftUI
 struct step2Pemberi: View {
     
     @Environment(\.presentationMode) var masterPresentationMode
+	@StateObject var cameraManager = CameraManager()
     
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     
@@ -19,6 +20,10 @@ struct step2Pemberi: View {
 	@State var titleLahir = "Pilih Tanggal Lahir"
 	@State var isDisable:Bool = false
     @State var showActionSheet = false
+    
+    //Validation page redirect
+    @Binding var step1Redirect: Bool
+    @State var step2Redirect: Bool = false
     
 	let dateFormatter: DateFormatter = {
 		let df = DateFormatter()
@@ -34,37 +39,76 @@ struct step2Pemberi: View {
 			ScrollView(showsIndicators: false){
 				VStack(alignment: .leading) {
 					
-                    ButtonBorderedComingSoon(icon: "person.fill", titleButton: "Pilih Identitas")
+                    ButtonBorderedComingSoon(icon: "person.fill", titleButton: "Pilih Identitas").padding(.horizontal)
 					
 					Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.bottom,7)
+                        .padding(.horizontal)
 					
-					Button(action: {
-						trimKtp.showScannerSheet = true
-					}, label: {
-						Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-					})
-					Divider()
-						.fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
-							trimKtp.makeScannerView()
-						}).padding(.bottom)
+					if (perjanjianController.pihak2NIK != "" || perjanjianController.pihak2Nama != "" || perjanjianController.pihak2Alamat != "" || !Calendar.current.isDateInToday(perjanjianController.pihak2TanggalLahir) || perjanjianController.pihak2RT != "" || perjanjianController.pihak2RW != "" || perjanjianController.pihak2Kelurahan != "" || perjanjianController.pihak2Kecamatan != "" || perjanjianController.pihak2Kota != "" || perjanjianController.pihak2Provinsi != "") {
+						Button(action: {
+							if cameraManager.permissionGranted {
+								trimKtp.showScannerSheet = true
+							} else {
+								cameraManager.requestPermission()
+							}
+							
+						}, label: {
+							Text("Ambil Ulang Gambar KTP \(Image(systemName: "checkmark.rectangle.fill"))").fontWeight(.regular) .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+						}).padding(.horizontal)
+						Divider()
+							.fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
+								trimKtp.makeScannerView()
+							}).padding(.bottom)
+					} else {
+						Button(action: {
+							if cameraManager.permissionGranted {
+								trimKtp.showScannerSheet = true
+							} else {
+								cameraManager.requestPermission()
+							}
+							
+						}, label: {
+							Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").fontWeight(.regular) .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+						}).padding(.horizontal)
+						Divider()
+							.fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
+								trimKtp.makeScannerView()
+							}).padding(.bottom)
+					}
 					
 					VStack {
 						FormView(title: "NIK", profileValue: $perjanjianController.pihak2NIK, keyboardNum: true, isDisable: $isDisable)
 						FormView(title: "Nama", profileValue: $perjanjianController.pihak2Nama, keyboardNum: false, isDisable: $isDisable)
 						VStack(alignment: .leading){
 							Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
-							Text(perjanjianController.pihak1TanggalLahir, formatter: dateFormatter)
-								.font(.body)
-								.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-								.onTapGesture {
-								showTanggalLahir.toggle()
+								.padding(.bottom,5)
+                                .padding(.horizontal)
+							if Calendar.current.isDateInToday(perjanjianController.pihak2TanggalLahir) {
+								Text("Pilih Tanggal Lahir Sesuai KTP")
+									.font(.body)
+									.fontWeight(.regular)
+									.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                                    .padding(.horizontal)
+									.onTapGesture {
+									showTanggalLahir.toggle()
 								}
+							} else {
+								Text(perjanjianController.pihak2TanggalLahir, formatter: dateFormatter)
+									.font(.body)
+									.fontWeight(.regular)
+									.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                                    .padding(.horizontal)
+									.onTapGesture {
+										showTanggalLahir.toggle()
+									}
+							}
 							Divider()
 								.padding(.bottom)
 						}
 						if showTanggalLahir {
-							DatePicker("", selection: $perjanjianController.pihak1TanggalLahir, displayedComponents: .date)
+							DatePicker("", selection: $perjanjianController.pihak2TanggalLahir, displayedComponents: .date)
 								.datePickerStyle(GraphicalDatePickerStyle())
+								.padding(.horizontal)
 						}
 						FormView(title: "Alamat", profileValue: $perjanjianController.pihak2Alamat, keyboardNum: false, isDisable: $isDisable)
 						HStack {
@@ -87,12 +131,13 @@ struct step2Pemberi: View {
 								.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
 								.multilineTextAlignment(.leading)
 								.padding(.bottom,10)
+                                .padding(.horizontal)
                             
                             NavigationLink(
-                                destination: step3Detail(masterPresentationMode3 : _masterPresentationMode),
+                                destination: step3Detail(masterPresentationMode3 : _masterPresentationMode ,step1Redirect: self.$step1Redirect, step2Redirect: self.$step2Redirect),isActive: $step2Redirect,
                                 label: {
                                     ButtonNext(text: "Lanjutkan", isDataComplete: true)
-                                })
+                                }).isDetailLink(false)
 						}
 					}
 				}.padding(.top,10)
@@ -102,8 +147,7 @@ struct step2Pemberi: View {
 			
 			Spacer()
 			
-		}.frame(width: UIScreen.main.bounds.width - 35,
-				alignment: .leading)
+		}
 		.navigationBarBackButtonHidden(true)
 		.navigationBarTitle("Perjanjian Baru", displayMode: .inline)
 		.navigationBarItems(leading:
@@ -139,8 +183,8 @@ struct step2Pemberi: View {
 	}
 }
 
-struct step2Pemberi_Previews: PreviewProvider {
-	static var previews: some View {
-		step2Pemberi()
-	}
-}
+//struct step2Pemberi_Previews: PreviewProvider {
+//	static var previews: some View {
+//		step2Pemberi()
+//	}
+//}

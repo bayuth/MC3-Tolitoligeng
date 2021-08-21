@@ -10,7 +10,7 @@ import UIKit
 
 struct DoneKeyboard: UIViewRepresentable {
     
-    @Binding var text: String
+    @State var text: String
     var hint: String
     var keyType: UIKeyboardType
     
