@@ -23,6 +23,7 @@ struct LegalinApp: App {
 //            GeneratePDF()
 //			step1Peminjam()
 			MainApplicationPage()
+//            DisclaimerPopUp(shouldShowOnBoarding: .constant(true))
         }
     }
 }

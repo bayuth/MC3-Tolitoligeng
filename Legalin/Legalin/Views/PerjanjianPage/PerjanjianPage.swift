@@ -70,6 +70,7 @@ struct ChoosenSegment: View {
     var selectedSegment: AgreementSegment
     @StateObject var agreementData: PerjanjianViewModel = .shared
     @State private var location: CGPoint = CGPoint(x: 0, y: 0)
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     
     var body: some View{
@@ -86,6 +87,7 @@ struct ChoosenSegment: View {
                             AgreementCardView(item: $agreementData.listOnGoing[getIndex(item: item)], lists: $agreementData.listOnGoing)
                         })
                         .foregroundColor(.black)
+                        .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listOnGoing[getIndex(item: item)].pinjaman)})
                     
                 }
             }
@@ -103,6 +105,7 @@ struct ChoosenSegment: View {
                             HistorySegmentedView(item: $agreementData.listDone[getIndex2(item: item)], lists: $agreementData.listDone)
                         })
                         .foregroundColor(.black)
+                        .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listDone[getIndex(item: item)].pinjaman)})
                 }
                 
             }
@@ -118,6 +121,7 @@ struct ChoosenSegment: View {
                             DraftSegmentedView(item: $agreementData.listDraft[getIndex3(item: item)], lists: $agreementData.listDraft)
                         })
                         .foregroundColor(.black)
+                        .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listDraft[getIndex(item: item)].pinjaman)})
                 }
                 
             }

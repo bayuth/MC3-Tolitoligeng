@@ -99,7 +99,11 @@
 		7558EA6C26BD367600E0B492 /* PdfAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA6B26BD367600E0B492 /* PdfAction.swift */; };
 		7558EA8F26BD691500E0B492 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA8E26BD691500E0B492 /* PageView.swift */; };
 		756AE03626C414C0004A2570 /* EmptyPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756AE03526C414C0004A2570 /* EmptyPDF.swift */; };
+		759A667C26CFFEE700A3F9BA /* PrivacyPolicyWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A667B26CFFEE700A3F9BA /* PrivacyPolicyWebView.swift */; };
+		759A667E26D001CE00A3F9BA /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A667D26D001CE00A3F9BA /* PrivacyPolicyView.swift */; };
 		759F0B3A26BD743B004804C7 /* MainApplicationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759F0B3926BD743B004804C7 /* MainApplicationPage.swift */; };
+		75ADDDDA26CF26200037C8DE /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ADDDD926CF26200037C8DE /* OnBoarding.swift */; };
+		75ADDDDC26CF49B50037C8DE /* CobaKeyboardLagi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ADDDDB26CF49B50037C8DE /* CobaKeyboardLagi.swift */; };
 		75B627BC26BC1579008F2C2A /* DetailPerjanjian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B627BB26BC1579008F2C2A /* DetailPerjanjian.swift */; };
 		75D70D2726CD1013003628CA /* DoneKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D70D2626CD1013003628CA /* DoneKeyboard.swift */; };
 /* End PBXBuildFile section */
@@ -198,7 +202,11 @@
 		7558EA6B26BD367600E0B492 /* PdfAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfAction.swift; sourceTree = "<group>"; };
 		7558EA8E26BD691500E0B492 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		756AE03526C414C0004A2570 /* EmptyPDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPDF.swift; sourceTree = "<group>"; };
+		759A667B26CFFEE700A3F9BA /* PrivacyPolicyWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyWebView.swift; sourceTree = "<group>"; };
+		759A667D26D001CE00A3F9BA /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		759F0B3926BD743B004804C7 /* MainApplicationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApplicationPage.swift; sourceTree = "<group>"; };
+		75ADDDD926CF26200037C8DE /* OnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
+		75ADDDDB26CF49B50037C8DE /* CobaKeyboardLagi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CobaKeyboardLagi.swift; sourceTree = "<group>"; };
 		75B627BB26BC1579008F2C2A /* DetailPerjanjian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPerjanjian.swift; sourceTree = "<group>"; };
 		75D70D2626CD1013003628CA /* DoneKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneKeyboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -272,6 +280,8 @@
 				4AC4CA9526B25D1300340A00 /* Info.plist */,
 				5EBDDDC726B2E83900F53958 /* Legalin.xcdatamodeld */,
 				4AC4CA9226B25D1300340A00 /* Preview Content */,
+				75ADDDD926CF26200037C8DE /* OnBoarding.swift */,
+				75ADDDDB26CF49B50037C8DE /* CobaKeyboardLagi.swift */,
 			);
 			path = Legalin;
 			sourceTree = "<group>";
@@ -344,6 +354,7 @@
 				4AF0124426BCF14900E9C2FF /* NavigationBarModifier.swift */,
 				4A6718CD26C0BAFB00D22C3B /* FormViewWithInfo.swift */,
 				75D70D2626CD1013003628CA /* DoneKeyboard.swift */,
+				759A667B26CFFEE700A3F9BA /* PrivacyPolicyWebView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -424,6 +435,7 @@
 				5C7E999426C4DA5800BBBFE9 /* AlertSave.swift */,
 				5CE3F8EE26CBFD6B00569C67 /* ButtonKebijakanPrivasi.swift */,
 				5C89058326CD383000069B49 /* DisclaimerPopUp.swift */,
+				759A667D26D001CE00A3F9BA /* PrivacyPolicyView.swift */,
 			);
 			path = ProfileFeature;
 			sourceTree = "<group>";
@@ -599,6 +611,7 @@
 				4AC4CA8F26B25D1300340A00 /* ContentView.swift in Sources */,
 				7558EA6A26BD31B700E0B492 /* InfoAgunan.swift in Sources */,
 				4AC4CAAA26B25D9100340A00 /* Fitur1.swift in Sources */,
+				75ADDDDA26CF26200037C8DE /* OnBoarding.swift in Sources */,
 				4A46144926C365F6001AA2D2 /* UlasanKredit.swift in Sources */,
 				75B627BC26BC1579008F2C2A /* DetailPerjanjian.swift in Sources */,
 				4AD8840A26BAEC7B00C5A6F5 /* PerjanjianViewModel.swift in Sources */,
@@ -622,6 +635,7 @@
 				7558EA6C26BD367600E0B492 /* PdfAction.swift in Sources */,
 				4AD8841426BAEC8C00C5A6F5 /* PerjanjianPage.swift in Sources */,
 				4A64032926B7892B00C78D44 /* KreditView.swift in Sources */,
+				759A667C26CFFEE700A3F9BA /* PrivacyPolicyWebView.swift in Sources */,
 				5C8F9CF526BCF66D00CE994B /* ScanData.swift in Sources */,
 				4AC4CAA226B25D6900340A00 /* CoreData.swift in Sources */,
 				5EBDDDC926B2E83900F53958 /* Legalin.xcdatamodeld in Sources */,
@@ -639,6 +653,7 @@
 				5E3F136B26C5974800E3E0B6 /* profileController.swift in Sources */,
 				4A3AF69A26BB769300614382 /* ListKredit.swift in Sources */,
 				5E35F37426B834CD0044D1FC /* ModalPengadilanNegeri.swift in Sources */,
+				75ADDDDC26CF49B50037C8DE /* CobaKeyboardLagi.swift in Sources */,
 				5E9C410F26BB9C70002AECCC /* inputToModal.swift in Sources */,
 				5E27EEF526BA8ADA0090573F /* step1Peminjam.swift in Sources */,
 				5C8F9CF026BCF66D00CE994B /* NewProfileView.swift in Sources */,
@@ -679,6 +694,7 @@
 				5E375CFE26BEB48800DF834D /* PreviewViewController.swift in Sources */,
 				5C8F9CEE26BCF66D00CE994B /* FormNumberView.swift in Sources */,
 				4AD8840626BAEC7300C5A6F5 /* SpecificCornerRadius.swift in Sources */,
+				759A667E26D001CE00A3F9BA /* PrivacyPolicyView.swift in Sources */,
 				5E9C411226BBCDB7002AECCC /* perjanjianViewController.swift in Sources */,
 				759F0B3A26BD743B004804C7 /* MainApplicationPage.swift in Sources */,
 				5E8578AD26B90BC30019FB61 /* ModalPengadilanNegeriDetail.swift in Sources */,

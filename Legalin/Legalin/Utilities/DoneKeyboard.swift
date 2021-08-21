@@ -21,7 +21,7 @@ struct DoneKeyboard: UIViewRepresentable {
     
     func makeUIView(context: Context) -> UITextField{
         let textView = UITextField()
-        textView.text = hint
+        textView.text = text
         textView.font = .systemFont(ofSize: 17)
         textView.keyboardType = keyType
         textView.attributedPlaceholder = NSAttributedString(string: hint, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])

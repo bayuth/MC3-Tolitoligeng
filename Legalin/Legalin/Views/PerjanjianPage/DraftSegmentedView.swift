@@ -10,12 +10,13 @@ import SwiftUI
 struct DraftSegmentedView: View {
     @Binding var item: Agreements
     @Binding var lists: [Agreements]
+    
+    
     var body: some View {
         ZStack{
             HStack(spacing: 0){
                 Spacer()
                 Button(action:{
-                    
                 }){
                     Image(systemName: "square.and.pencil")
                         .font(.title2)

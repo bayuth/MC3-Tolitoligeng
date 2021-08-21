@@ -35,6 +35,7 @@ struct step4Agunan: View {
                 })
                 .toggleStyle(SwitchToggleStyle(tint: Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))))
             }.zIndex(0.9)
+            .padding(.horizontal)
             
             Divider().padding(.horizontal, -20)
             
@@ -66,8 +67,8 @@ struct step4Agunan: View {
                 ButtonNext(text: "Buat Surat", isDataComplete: perjanjianController.nextButtonState)
             }.disabled(!perjanjianController.nextButtonState)
             
-        }.frame(width: UIScreen.main.bounds.width - 35,
-                alignment: .leading)
+        }
+//        .frame(width: UIScreen.main.bounds.width - 35,alignment: .leading)
         .navigationBarTitle("Perjanjian Baru", displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading:
