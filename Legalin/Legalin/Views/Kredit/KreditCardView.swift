@@ -10,16 +10,13 @@ import SwiftUI
 struct KreditCardView: View {
     @Binding var item: ItemListKredit
     @Binding var lists: [ItemListKredit]
+    var action: () -> Void
     
     var body: some View {
         ZStack{
             HStack(spacing: 0){
                 Spacer()
-                Button(action: {
-                    withAnimation(.easeIn){
-                        deleteItem()
-                    }
-                }){
+                Button(action: action){
                     Image(systemName: "trash.fill")
                         .font(.title2)
                         .foregroundColor(.white)
@@ -79,8 +76,8 @@ struct KreditCardView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(16)
-                
-            }
+                    
+                }
             }
             .background(
                 RoundedRectangle(cornerRadius: 8)
@@ -109,7 +106,7 @@ struct KreditCardView: View {
         if value.translation.width < 0{
             if -value.translation.width > UIScreen.main.bounds.width/2{
                 item.offset = -1000
-//                deleteItem()
+                //                deleteItem()
             }
             else if -item.offset > 50{
                 item.isSwiped = true
@@ -126,9 +123,4 @@ struct KreditCardView: View {
         }
     }
     
-    func deleteItem() {
-        lists.removeAll{ (item) -> Bool in
-            return self.item.id == item.id
-        }
-    }
 }

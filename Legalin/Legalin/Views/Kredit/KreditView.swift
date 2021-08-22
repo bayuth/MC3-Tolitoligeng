@@ -21,7 +21,9 @@ struct KreditView: View {
                 }else {
                     ScrollView(showsIndicators: false){
                         ForEach(kreditData.list){ item in
-                            KreditCardView(item: $kreditData.list[getIndex(item: item)], lists: $kreditData.list)
+                            KreditCardView(item: $kreditData.list[getIndex(item: item)], lists: $kreditData.list, action: {
+                                kreditData.deleteKredit(index: getIndex(item: item))
+                            })
 
                         }
                     }
@@ -43,6 +45,7 @@ struct KreditView: View {
                                         .fullScreenCover(isPresented: $isPresented, content: ModalAddKredit.init)
                                     }
             )
+            
         }
         
     }
@@ -50,6 +53,10 @@ struct KreditView: View {
         return kreditData.list.firstIndex { (item1) -> Bool in
             return item.id == item1.id
         } ?? 0
+    }
+    
+    func refreshData(){
+        kreditData.fillListDone()
     }
 }
 
