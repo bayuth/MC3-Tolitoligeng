@@ -21,6 +21,10 @@ struct step2Pemberi: View {
 	@State var isDisable:Bool = false
     @State var showActionSheet = false
     
+    //Validation page redirect
+    @Binding var step1Redirect: Bool
+    @State var step2Redirect: Bool = false
+    
 	let dateFormatter: DateFormatter = {
 		let df = DateFormatter()
 		df.dateStyle = .medium
@@ -34,9 +38,7 @@ struct step2Pemberi: View {
 			
 			ScrollView(showsIndicators: false){
 				VStack(alignment: .leading) {
-					
-                    ButtonBorderedComingSoon(icon: "person.fill", titleButton: "Pilih Identitas").padding(.horizontal)
-					
+                    ButtonBordered(icon: "person.fill", titleButton: "Pilih Identitas").padding(.horizontal)
 					Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.bottom,7)
                         .padding(.horizontal)
 					
@@ -130,10 +132,10 @@ struct step2Pemberi: View {
                                 .padding(.horizontal)
                             
                             NavigationLink(
-                                destination: step3Detail(masterPresentationMode3 : _masterPresentationMode),
+                                destination: step3Detail(masterPresentationMode3 : _masterPresentationMode ,step1Redirect: self.$step1Redirect, step2Redirect: self.$step2Redirect),isActive: $step2Redirect,
                                 label: {
                                     ButtonNext(text: "Lanjutkan", isDataComplete: true)
-                                })
+                                }).isDetailLink(false)
 						}
 					}
 				}.padding(.top,10)
@@ -179,8 +181,8 @@ struct step2Pemberi: View {
 	}
 }
 
-struct step2Pemberi_Previews: PreviewProvider {
-	static var previews: some View {
-		step2Pemberi()
-	}
-}
+//struct step2Pemberi_Previews: PreviewProvider {
+//	static var previews: some View {
+//		step2Pemberi()
+//	}
+//}
