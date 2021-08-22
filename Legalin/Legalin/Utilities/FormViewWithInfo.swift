@@ -31,7 +31,7 @@ struct FormViewWithInfo: View {
             }
             VStack(alignment: .leading) {
                 HStack{
-                    Text(title).font(.footnote).fontWeight(.light)
+                    Text(title).font(.footnote).fontWeight(.light).padding(.bottom, 14)
                     if(showButtonInfo){
                         Button(action: {
                             
