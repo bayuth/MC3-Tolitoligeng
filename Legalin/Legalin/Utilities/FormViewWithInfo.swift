@@ -31,7 +31,7 @@ struct FormViewWithInfo: View {
             }
             VStack(alignment: .leading) {
                 HStack{
-                    Text(title).font(.footnote).fontWeight(.light)
+                    Text(title).font(.footnote).fontWeight(.light).padding(.bottom, 14)
                     if(showButtonInfo){
                         Button(action: {
                             
@@ -41,7 +41,7 @@ struct FormViewWithInfo: View {
                         }, label: {
                             Image(systemName: "info.circle")
                                 .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-                        })
+                        }).padding(.bottom, 14)
                     }
                 }.padding(.horizontal)
                 
@@ -101,6 +101,7 @@ struct FormViewWithInfo: View {
                     HStack{
                         Text(profileValue).font(.body)
                             .padding(.horizontal)
+                            .foregroundColor(Color.init(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
                         Spacer()
                         
                     }
