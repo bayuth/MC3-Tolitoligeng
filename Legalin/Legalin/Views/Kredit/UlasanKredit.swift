@@ -67,7 +67,6 @@ struct UlasanKredit: View {
                     .padding()
                     Spacer()
                 }
-                
                 .background(
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
@@ -87,6 +86,7 @@ struct UlasanKredit: View {
                         .cornerRadius(8)
                 }
                 .padding(.bottom, 8)
+                .padding(.horizontal)
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
                     
@@ -101,8 +101,8 @@ struct UlasanKredit: View {
                                 .stroke(Color.init(hex: "104769"), lineWidth: 1)
                         )
                 }
-                .padding(.bottom, 18)
-            }.padding(.horizontal, 18)
+                .padding(.horizontal)
+            }
             
             
         }
