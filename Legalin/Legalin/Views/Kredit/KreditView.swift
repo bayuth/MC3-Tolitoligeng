@@ -9,7 +9,7 @@ import SwiftUI
 
 struct KreditView: View {
     var bayu = 0
-    @StateObject var kreditData = ListKreditVM()
+    @ObservedObject var kreditData = ListKreditVM()
     @Environment(\.presentationMode) var presentationMode
     @State private var isPresented = false
     
@@ -43,7 +43,6 @@ struct KreditView: View {
                                         .fullScreenCover(isPresented: $isPresented, content: ModalAddKredit.init)
                                     }
             )
-            
         }
         
     }

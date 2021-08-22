@@ -45,4 +45,10 @@ class ListKreditVM: ObservableObject {
         }
         
     }
+    
+    func addNewDataCredit(itemListKredit : ItemListKredit){
+        coreDataVM.updateKredit(kredit: coreDataVM.createKredit(pinjamanPage: false), nama: itemListKredit.kreditTitle, bunga: itemListKredit.bunga, jumlahPinjaman: itemListKredit.jumlahPinjaman, tenor: itemListKredit.tenor)
+        coreDataVM.getAllKredit()
+        fillListDone()
+    }
 }

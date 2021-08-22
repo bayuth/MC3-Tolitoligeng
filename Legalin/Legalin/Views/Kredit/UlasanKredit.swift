@@ -74,10 +74,10 @@ struct UlasanKredit: View {
                 .padding()
                 Spacer()
                 Button(action: {
+                    dataUlasan.addNewDataCredit(itemListKredit: dataUlasan.object)
                     presentationMode.wrappedValue.dismiss()
-                    
                 }) {
-                    Text("Simulasikan")
+                    Text("Selesai")
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .font(Font.body.bold())
                         .padding(.all , 12)
