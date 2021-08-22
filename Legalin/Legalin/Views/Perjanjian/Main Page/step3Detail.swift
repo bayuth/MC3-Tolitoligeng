@@ -36,12 +36,15 @@ struct step3Detail: View {
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     var tipeAgunan = ["Cicilan", "Kontan"]
+    var rangeDate = [1...28]
     
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateStyle = .medium
         return df
     }()
+    
+    
     @State private var valueDateJatuhTempo = "Pilih tanggal"
     var body: some View {
         
@@ -61,25 +64,7 @@ struct step3Detail: View {
                     
                     Divider()
                     VStack{
-                        if Calendar.current.isDateInToday(dateJatuhTempo) {
-                            FormViewWithInfo(title: "Tanggal Jatuh Tempo", profileValue: $perjanjianController.tanggalJatuhTempo, showButton: false, showButtonInfo: true, info: "Hari pembayaran atau batas waktu pembayaran harus dilakukan oleh peminjam dana (debitur) ke pemberi pinjaman (kreditur).", buttonTitle: "").zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/).onTapGesture {
-                                showPickerJatuhTempo.toggle()
-                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
-                            }
-                        } else {
-                            FormViewWithInfo(title: "Tanggal Jatuh Tempo", profileValue: $perjanjianController.tanggalJatuhTempo, showButton: false, showButtonInfo: true, info: "Hari pembayaran atau batas waktu pembayaran harus dilakukan oleh peminjam dana (debitur) ke pemberi pinjaman (kreditur).", buttonTitle: "").zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/).onTapGesture {
-                                showPickerJatuhTempo.toggle()
-                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
-                            }
-                        }
-                        if(showPickerJatuhTempo){
-                            DatePicker(
-                                "",
-                                selection: $dateJatuhTempo.onChange(nameChanged),
-                                displayedComponents: [.date]
-                            )
-                            .datePickerStyle(GraphicalDatePickerStyle())
-                        }
+                        InputPicker(title: "Tanggal Jatuh Tempo", listItem: perjanjianController.generateListString(), selectedItem: $perjanjianController.tanggalJatuhTempo)
                         
                         Divider()
                         
