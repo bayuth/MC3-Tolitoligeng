@@ -460,5 +460,14 @@ class PerjanjianController: ObservableObject {
             return Hasil
         
     }
+    
+    func generateListString() -> [String] {
+        let intArray: [Int] = Array(1...28)
+        var resultArray :[String] = []
+        intArray.forEach{
+            resultArray.append("\($0)")
+        }
+        return resultArray
+    }
 }
 
