@@ -34,7 +34,7 @@ struct UlasanKredit: View {
                                 .font(.footnote)
                                 .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                                 .padding(.bottom, 1)
-                            Text("\(Int(dataUlasan.object.bunga)) %".capitalized)
+                            Text("\(dataUlasan.object.bunga) %".capitalized)
                         }
                         .padding(.bottom, 8)
                         
@@ -43,7 +43,7 @@ struct UlasanKredit: View {
                                 .font(.footnote)
                                 .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                                 .padding(.bottom, 1)
-                            Text("\(String(describing: dataUlasan.object.tenor)) Bulan".capitalized)
+                            Text("\(Int(dataUlasan.object.tenor)) Bulan".capitalized)
                         }
                         .padding(.bottom, 8)
                         

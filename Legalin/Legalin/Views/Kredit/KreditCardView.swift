@@ -49,7 +49,7 @@ struct KreditCardView: View {
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 2)
                         
-                        Text(" \(item.bunga) %")
+                        Text("\(String(format: "%.2f", item.bunga))%")
                             .padding(.bottom, 8)
                         
                     }
@@ -62,7 +62,7 @@ struct KreditCardView: View {
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 2)
                         
-                        Text("\(item.tenor)")
+                        Text("\(Int(item.tenor)) bulan")
                             .padding(.bottom, 8)
                         
                         Text("Cicilan Perbulan")
@@ -70,7 +70,7 @@ struct KreditCardView: View {
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 2)
                         
-                        Text("\(item.cicilanPerbulan)")
+                        Text("\(generateCicilanPerbulan().toRupiahString())")
                             .padding(.bottom, 8)
                         
                     }
@@ -88,6 +88,18 @@ struct KreditCardView: View {
             .offset(x: item.offset)
             .gesture(DragGesture().onChanged(onChanged(value:)).onEnded(onEnd(value:)))
         }
+    }
+    
+    func generateTotalBunga() -> Double {
+        return (item.bunga / 100) / 12 * item.tenor
+    }
+    
+    func generateTotalPinjaman() -> Double {
+        return item.jumlahPinjaman * (1 + generateTotalBunga())
+    }
+    
+    func generateCicilanPerbulan() -> Double {
+        return generateTotalPinjaman() / item.tenor
     }
     
     func onChanged(value : DragGesture.Value){
