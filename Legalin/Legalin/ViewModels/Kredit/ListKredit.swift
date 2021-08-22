@@ -17,6 +17,6 @@ class ListKreditVM: ObservableObject {
     ]
     
     func hasNilField() -> Bool {
-        return object.kreditTitle == "" && object.bunga == 0.0 && object.jumlahPinjaman == 0.0 && object.tenor == 0.0
+        return object.kreditTitle == "" && object.jumlahPinjaman == 0.0 && object.tenor == 0.0
     }
 }

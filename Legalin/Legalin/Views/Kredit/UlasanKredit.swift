@@ -11,7 +11,6 @@ struct UlasanKredit: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var dataUlasan :ListKreditVM
     var body: some View {
-        //        NavigationView {
         ScrollView(showsIndicators: false){
             VStack {
                 HStack{
@@ -74,8 +73,11 @@ struct UlasanKredit: View {
                         .stroke(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
                 )
                 .padding()
+                Spacer()
                 Button(action: {
-                        presentationMode.wrappedValue.dismiss()                      }) {
+                    presentationMode.wrappedValue.dismiss()
+                    
+                }) {
                     Text("Simulasikan")
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .font(Font.body.bold())
@@ -83,9 +85,12 @@ struct UlasanKredit: View {
                         .foregroundColor(Color.white)
                         .background(Color.init(hex: "104769"))
                         .cornerRadius(8)
-                }.padding(.all, 18)
+                }
+                .padding(.bottom, 8)
                 Button(action: {
-                        presentationMode.wrappedValue.dismiss()                      }) {
+                    presentationMode.wrappedValue.dismiss()
+                    
+                }) {
                     Text("Buat Perjanjian")
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .font(.body)
@@ -95,8 +100,9 @@ struct UlasanKredit: View {
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color.init(hex: "104769"), lineWidth: 1)
                         )
-                }.padding(.horizontal, 18)
-            }
+                }
+                .padding(.bottom, 18)
+            }.padding(.horizontal, 18)
             
             
         }
@@ -112,7 +118,6 @@ struct UlasanKredit: View {
                                         .foregroundColor(.white)
                                 })
         )
-        //        }
         
         
     }
