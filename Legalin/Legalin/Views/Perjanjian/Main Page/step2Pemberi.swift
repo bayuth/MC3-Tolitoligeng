@@ -13,6 +13,8 @@ struct step2Pemberi: View {
 	@StateObject var cameraManager = CameraManager()
     
     @ObservedObject var perjanjianController: PerjanjianController = .shared
+	var coreDataVM: CoreDataViewModel = .shared
+	var listOfAkun:[Akun] = []
     
     @ObservedObject var trimKtp = functionTrimKtp(pihak: 2)
 	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -35,7 +37,12 @@ struct step2Pemberi: View {
 			ScrollView(showsIndicators: false){
 				VStack(alignment: .leading) {
 					
-                    ButtonBorderedComingSoon(icon: "person.fill", titleButton: "Pilih Identitas").padding(.horizontal)
+					Button(action: {
+						coreDataVM.listPihak2
+						
+					}, label: {
+						Text("get pihak 2")
+					})
 					
 					Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.bottom,7)
                         .padding(.horizontal)
