@@ -10,10 +10,10 @@ import SwiftUI
 
 
 struct ModalAddKredit: View {
-    @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var kreditData = ListKreditVM()
-    @ObservedObject var perjanjianController: PerjanjianController = .shared
-	@State var isDisable:Bool = false
+    @Environment(\.presentationMode) var masterPresentationModalAdd
+    @ObservedObject private var kreditData = ListKreditVM()
+    @ObservedObject private var perjanjianController: PerjanjianController = .shared
+	@State private var isDisable:Bool = false
     
     var body: some View {
         NavigationView {
@@ -27,7 +27,7 @@ struct ModalAddKredit: View {
                 }
                 if !kreditData.hasNilField(){
                     NavigationLink(
-                        destination: UlasanKredit(dataUlasan: kreditData),
+                        destination: UlasanKredit(presentationMode: _masterPresentationModalAdd, dataUlasan: kreditData),
                         label: {
                             Text("Simulasikan").font(.body).fontWeight(.bold).foregroundColor(.white).multilineTextAlignment(.center).padding(.vertical,15).padding(.horizontal,120).background(Color(#colorLiteral(red: 0, green: 0.2837583721, blue: 0.423648268, alpha: 1))).cornerRadius(10)
                         }).padding(.top,10).padding(.bottom, 16)
@@ -49,7 +49,7 @@ struct ModalAddKredit: View {
             .navigationBarTitle("Kredit Baru", displayMode: .inline)
             .navigationBarItems(leading:
                                     Button("Tutup", action: {
-                                        presentationMode.wrappedValue.dismiss()
+                                        masterPresentationModalAdd.wrappedValue.dismiss()
                                     })
                                     .foregroundColor(Color.init(hex: "#E6FFFFFF"))
             )
