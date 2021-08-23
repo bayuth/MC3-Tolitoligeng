@@ -57,6 +57,7 @@
 		5C8F9CFC26BCF69400CE994B /* extractKtpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F9CFA26BCF69400CE994B /* extractKtpInfo.swift */; };
 		5C8F9CFE26BCF6A700CE994B /* profileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F9CFD26BCF6A700CE994B /* profileData.swift */; };
 		5CC4E12726C3FD6600A7042A /* ButtonBorderedComingSoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC4E12626C3FD6600A7042A /* ButtonBorderedComingSoon.swift */; };
+		5CE26EBA26D3693F00706AAA /* ModalPilihIdentitas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE26EB926D3693F00706AAA /* ModalPilihIdentitas.swift */; };
 		5CE3F8ED26CBFC8400569C67 /* PengaturanPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE3F8EC26CBFC8400569C67 /* PengaturanPage.swift */; };
 		5CE3F8EF26CBFD6B00569C67 /* ButtonKebijakanPrivasi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE3F8EE26CBFD6B00569C67 /* ButtonKebijakanPrivasi.swift */; };
 		5CE3F8F126CBFFB500569C67 /* KebijakanPrivasiPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE3F8F026CBFFB500569C67 /* KebijakanPrivasiPage.swift */; };
@@ -162,6 +163,7 @@
 		5C8F9CFA26BCF69400CE994B /* extractKtpInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extractKtpInfo.swift; sourceTree = "<group>"; };
 		5C8F9CFD26BCF6A700CE994B /* profileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileData.swift; sourceTree = "<group>"; };
 		5CC4E12626C3FD6600A7042A /* ButtonBorderedComingSoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonBorderedComingSoon.swift; sourceTree = "<group>"; };
+		5CE26EB926D3693F00706AAA /* ModalPilihIdentitas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPilihIdentitas.swift; sourceTree = "<group>"; };
 		5CE3F8EC26CBFC8400569C67 /* PengaturanPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PengaturanPage.swift; sourceTree = "<group>"; };
 		5CE3F8EE26CBFD6B00569C67 /* ButtonKebijakanPrivasi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonKebijakanPrivasi.swift; sourceTree = "<group>"; };
 		5CE3F8F026CBFFB500569C67 /* KebijakanPrivasiPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KebijakanPrivasiPage.swift; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 				5E8578AC26B90BC30019FB61 /* ModalPengadilanNegeriDetail.swift */,
 				4AE8AB1426D31EB0004ECE6C /* ModalPilihKredit.swift */,
 				4A6C26AF26D34231006E7B62 /* ModalSimulasiKredit.swift */,
+				5CE26EB926D3693F00706AAA /* ModalPilihIdentitas.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				7558EA8F26BD691500E0B492 /* PageView.swift in Sources */,
 				7558EA6C26BD367600E0B492 /* PdfAction.swift in Sources */,
 				4AD8841426BAEC8C00C5A6F5 /* PerjanjianPage.swift in Sources */,
+				5CE26EBA26D3693F00706AAA /* ModalPilihIdentitas.swift in Sources */,
 				4A64032926B7892B00C78D44 /* KreditView.swift in Sources */,
 				5C8F9CF526BCF66D00CE994B /* ScanData.swift in Sources */,
 				4AC4CAA226B25D6900340A00 /* CoreData.swift in Sources */,
