@@ -48,7 +48,7 @@ class PerjanjianController: ObservableObject {
 	@Published var pihak2NomorRekening: String = ""
 	@Published var pihak2AtasNamaRekening: String = ""
 	@Published var pihak2IsOpenCam: Bool = false
-	
+	@Published var modalPilihIdentitas: Bool = false
     
     //Step 3 attribute
     @Published var tujuanPeminjaman: String = ""

@@ -165,7 +165,7 @@ class CoreDataViewModel: ObservableObject {
         request.sortDescriptors = [sort]
         
         let predicateProfile = NSPredicate(format: "profileSelected == %@", NSNumber(value: false))
-        let predicatePinjamanPage = NSPredicate(format: "pinjamanPage == %@", NSNumber(value: false))
+        let predicatePinjamanPage = NSPredicate(format: "pinjamanPage == %@", NSNumber(value: true))
         let andPredicate = NSCompoundPredicate(type: .and, subpredicates: [predicateProfile, predicatePinjamanPage])
         request.predicate = andPredicate
         

@@ -109,8 +109,10 @@ struct step1Peminjam: View {
 										.datePickerStyle(GraphicalDatePickerStyle())
 										.padding(.horizontal)
 								}
-								
-								FormView(title: "Alamat", profileValue: $perjanjianController.pihak1Alamat, keyboardNum: false, isDisable: $isDisable)
+								VStack {
+									FormView(title: "Alamat", profileValue: $perjanjianController.pihak1Alamat, keyboardNum: false, isDisable: $isDisable)
+									TextEditor(text: $perjanjianController.pihak1Alamat).foregroundColor(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)))
+								}
 								HStack {
 									FormView(title: "RT", profileValue: $perjanjianController.pihak1RT, keyboardNum: true, isDisable: $isDisable)
 									FormView(title: "RW", profileValue: $perjanjianController.pihak1RW, keyboardNum: true, isDisable: $isDisable)

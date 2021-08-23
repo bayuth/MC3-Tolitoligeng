@@ -114,6 +114,7 @@ struct NewProfileView: View {
 								DatePicker("", selection: $profileController.pihak1TanggalLahir, displayedComponents: .date)
 									.datePickerStyle(GraphicalDatePickerStyle())
 									.padding(.horizontal)
+									.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 							}
 							
 							FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $isDisable)
@@ -151,6 +152,7 @@ struct NewProfileView: View {
 			}
 			.background(shown ? Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.5)) : Color(#colorLiteral(red: 0.9607843137, green: 0.968627451, blue: 0.9725490196, alpha: 0)))
 		}
+		.navigationBarTitleDisplayMode(.inline)
 	}
 	
 	struct NewProfileView_Previews: PreviewProvider {
