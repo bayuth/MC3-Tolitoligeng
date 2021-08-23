@@ -8,40 +8,49 @@
 import SwiftUI
 
 struct MainApplicationPage: View {
+    @AppStorage("shouldShowOnBoarding") var shouldShowOnBoarding: Bool = true
+    @AppStorage("selection") var selection = 3
+    
     init(){
         UITabBar.appearance().backgroundColor = #colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)
         UITabBar.appearance().barTintColor = #colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)
         UITabBar.appearance().isTranslucent = true
     }
+
     var body: some View {
-        TabView{
+        ZStack{
+            TabView(selection: $selection){
+                PerjanjianPage()
+                    .tabItem {
+                        Text("Perjanjian")
+                            .foregroundColor(.white)
+                        Image("perjanjian")
+                    }
+                    .tag(1)
+                KreditView()
+                    .tabItem {
+                        Text("Kredit")
+                            .foregroundColor(.white)
+                        Image("kredit")
+                        
+                    }
+                    .tag(2)
+                ProfileView()
+                    .tabItem {
+                        Text("Profile")
+                            .foregroundColor(.white)
+                        Image("profile")
+                    }
+                    .tag(3)
+            }
             
-            PerjanjianPage()
-                .tabItem {
-                    Text("Perjanjian")
-                        .foregroundColor(.white)
-                    Image("perjanjian")
-                    
-                }
-            KreditView()
-                .tabItem {
-                    Text("Kredit")
-                        .foregroundColor(.white)
-                    Image("kredit")
-                    
-                }
-            ProfileView()
-                .tabItem {
-                    Text("Profile")
-                        .foregroundColor(.white)
-                    Image("profile")
-                }
+            .accentColor(.white)
+            DisclaimerPopUp(shouldShowOnBoarding: $shouldShowOnBoarding, selection: $selection)
         }
-        .accentColor(.white)
+        
     }
 }
 
- 
 
 struct MainApplicationPage_Previews: PreviewProvider {
     static var previews: some View {

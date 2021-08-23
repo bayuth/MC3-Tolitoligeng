@@ -104,6 +104,7 @@ struct step4Agunan: View {
             
             
         }
+//        .frame(width: UIScreen.main.bounds.width - 35,alignment: .leading)
         .navigationBarTitle("Perjanjian Baru", displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading:

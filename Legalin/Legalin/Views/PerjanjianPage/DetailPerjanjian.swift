@@ -12,9 +12,13 @@ struct DetailPerjanjian: View {
     
     @State var offset: CGFloat = 0
     var pdfIsEmpty : Bool = false
+//    @Binding var item: Agreements
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
+    @Environment(\.presentationMode) var presentationMode
+    var detailPerjanjian: Pinjaman
     
     
-    var subview = [1, 2, 3, 4, 5]
+//    var subview = [1, 2, 3, 4, 5]
     
     
     var body: some View {
@@ -23,20 +27,20 @@ struct DetailPerjanjian: View {
             TabView{
                 if pdfIsEmpty == false{
                     PdfAction(hideSwitch: false)
-                        .tag(subview[0])
+//                        .tag(subview[0])
                 }
                 else{
                     EmptyPDF()
                 }
                 
                 Pihak1()
-                    .tag(subview[1])
+//                    .tag(subview[1])
                 Pihak2()
-                    .tag(subview[2])
+//                    .tag(subview[2])
                 InfoPinjaman()
-                    .tag(subview[3])
+//                    .tag(subview[3])
                 InfoAgunan(hideButton: true)
-                    .tag(subview[4])
+//                    .tag(subview[4])
                 if pdfIsEmpty == false{
                     
                 }
@@ -65,6 +69,8 @@ struct DetailPerjanjian: View {
                                         
                                     }
                                     Button(action: {
+//                                        perjanjianController.deletePinjaman(pinjaman: detailPerjanjian)
+                                        self.presentationMode.wrappedValue.dismiss()
                                         
                                     }){
                                         Image(systemName: "trash")
@@ -97,8 +103,8 @@ extension View{
 //    }
 //}
 
-struct DetailPerjanjian_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailPerjanjian()
-    }
-}
+//struct DetailPerjanjian_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DetailPerjanjian()
+//    }
+//}
