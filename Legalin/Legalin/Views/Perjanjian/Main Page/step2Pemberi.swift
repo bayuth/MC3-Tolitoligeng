@@ -22,6 +22,7 @@ struct step2Pemberi: View {
 	@State var titleLahir = "Pilih Tanggal Lahir"
 	@State var isDisable:Bool = false
     @State var showActionSheet = false
+	@State var showModalPilihIdentitas = false
     
 	let dateFormatter: DateFormatter = {
 		let df = DateFormatter()
@@ -37,12 +38,22 @@ struct step2Pemberi: View {
 			ScrollView(showsIndicators: false){
 				VStack(alignment: .leading) {
 					
+//					NavigationLink(
+//						destination: ModalPilihIdentitas(),
+//						label: {
+//							ButtonBorderedComingSoon(icon: "person.fill", titleButton: "Pilih Identitas").padding(.horizontal)
+//						}).padding(.horizontal)
 					Button(action: {
-						coreDataVM.listPihak2
-						
+						showModalPilihIdentitas.toggle()
 					}, label: {
-						Text("get pihak 2")
+						ButtonBorderedComingSoon(icon: "person.fill", titleButton: "Pilih Identitas").padding(.horizontal)
+					}).sheet(isPresented: $showModalPilihIdentitas, content: {
+						ModalPilihIdentitas()
 					})
+//					ButtonBorderedComingSoon(icon: "person.fill", titleButton: "Pilih Identitas").padding(.horizontal)
+//						.sheet(isPresented: $showModalPilihIdentitas, content: {
+//							ModalPilihIdentitas()
+//						})
 					
 					Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.bottom,7)
                         .padding(.horizontal)

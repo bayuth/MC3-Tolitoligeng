@@ -45,6 +45,7 @@ struct step1Peminjam: View {
 										} else {
 											cameraManager.requestPermission()
 										}
+										perjanjianController.pihak1IsOpenCam = false
 										
 									}, label: {
 										Text("Ambil Ulang Gambar KTP \(Image(systemName: "checkmark.rectangle.fill"))").fontWeight(.regular) .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
