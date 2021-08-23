@@ -97,7 +97,9 @@ struct step3Detail: View {
                             .datePickerStyle(GraphicalDatePickerStyle())
                         }
                     }
-                    ButtonBordered(icon: "percent", titleButton: "Lihat Simulasi Kredit", action: {}).padding([.top, .leading])
+                    ButtonBordered(icon: "percent", titleButton: "Lihat Simulasi Kredit", action: {
+                        perjanjianController.modalSimulasiKredit.toggle()
+                    }).padding([.top, .leading])
                     NavigationLink(
                         destination: step4Agunan(masterPresentationMode4 : _masterPresentationMode3 ,step1Redirect: $step1Redirect ,step2Redirect: $step2Redirect, step3Redirect: $step3Redirect),isActive: $step3Redirect,
                         label: {
@@ -142,6 +144,12 @@ struct step3Detail: View {
             {
                 NavigationView{
                     ModalPilihKredit(isPresented: $perjanjianController.modalPilihKredit)
+                }
+            }
+            .sheet(isPresented: $perjanjianController.modalSimulasiKredit)
+            {
+                NavigationView{
+                    ModalSimulasiKredit(isPresented: $perjanjianController.modalSimulasiKredit, object: ItemListKredit( kreditTitle: perjanjianController.tujuanPeminjaman, tenor: perjanjianController.tenor, bunga: perjanjianController.bunga, jumlahPinjaman: perjanjianController.jumlahPinjaman, cicilanPerbulan: 0, offset: 0.0, isSwiped: false))
                 }
             }
         }
