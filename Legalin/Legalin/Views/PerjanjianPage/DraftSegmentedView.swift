@@ -10,6 +10,7 @@ import SwiftUI
 struct DraftSegmentedView: View {
     @Binding var item: Agreements
     @Binding var lists: [Agreements]
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     
     var body: some View {
@@ -73,7 +74,6 @@ struct DraftSegmentedView: View {
     func onChanged(value : DragGesture.Value){
         if value.translation.width < 0 {
             if item.isSwiped{
-//                item.offset = value.translation.width - 90
                 item.offset = value.translation.width - 160
             }
             else{
@@ -109,6 +109,7 @@ struct DraftSegmentedView: View {
         lists.removeAll{ (item) -> Bool in
             return self.item.id == item.id
         }
+        perjanjianController.deletePinjaman(pinjaman: item.pinjaman)
     }
 }
 

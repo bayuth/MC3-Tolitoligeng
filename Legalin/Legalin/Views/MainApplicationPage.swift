@@ -9,19 +9,17 @@ import SwiftUI
 
 struct MainApplicationPage: View {
     @AppStorage("shouldShowOnBoarding") var shouldShowOnBoarding: Bool = true
-    @State var selection1 = 1
-    @State var selection3 = 3
+    @AppStorage("selection") var selection = 3
     
     init(){
         UITabBar.appearance().backgroundColor = #colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)
         UITabBar.appearance().barTintColor = #colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)
         UITabBar.appearance().isTranslucent = true
     }
-    
 
     var body: some View {
         ZStack{
-            TabView(selection: $selection3){
+            TabView(selection: $selection){
                 PerjanjianPage()
                     .tabItem {
                         Text("Perjanjian")
@@ -45,22 +43,14 @@ struct MainApplicationPage: View {
                     }
                     .tag(3)
             }
+            
             .accentColor(.white)
-            DisclaimerPopUp(shouldShowOnBoarding: $shouldShowOnBoarding)
+            DisclaimerPopUp(shouldShowOnBoarding: $shouldShowOnBoarding, selection: $selection)
         }
         
     }
 }
 
-//func defaultTab(select:Int)->Int{
-//    if shouldShowOnBoarding{
-//        selection = 3
-//    }
-//    else{
-//        selection = 1
-//    }
-//    return selection
-//}
 
 struct MainApplicationPage_Previews: PreviewProvider {
     static var previews: some View {

@@ -98,4 +98,19 @@ class PerjanjianViewModel: ObservableObject {
         }
         
     }
+    
+    func bindingForId(id: UUID) -> Binding<Agreements> {
+            Binding<Agreements> { () -> Agreements in
+                self.listDraft.first(where: { $0.id == id }) ?? Agreements(agreementTitle: "", amountOfLoan: "", Date: "", lenderName: "", signStatus: false, offset: 1, isSwiped: false, pinjaman: Pinjaman())
+            } set: { (newValue) in
+                self.listDraft = self.listDraft.map { draft in
+                    if draft.id == id {
+                        return newValue
+                    } else {
+                        return draft
+                    }
+                }
+            }
+        }
+
 }

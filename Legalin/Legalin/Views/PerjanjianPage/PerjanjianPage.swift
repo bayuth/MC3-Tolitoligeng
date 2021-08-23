@@ -82,7 +82,7 @@ struct ChoosenSegment: View {
             else if agreementData.listOnGoing.count > 0{
                 ForEach(agreementData.listOnGoing){ item in
                     NavigationLink(
-                        destination: DetailPerjanjian(),
+                        destination: DetailPerjanjian(detailPerjanjian: agreementData.listOnGoing[getIndex(item: item)].pinjaman),
                         label: {
                             AgreementCardView(item: $agreementData.listOnGoing[getIndex(item: item)], lists: $agreementData.listOnGoing)
                         })
@@ -100,12 +100,12 @@ struct ChoosenSegment: View {
             else if agreementData.listDone.count > 0{
                 ForEach(agreementData.listDone){ item in
                     NavigationLink(
-                        destination: DetailPerjanjian(),
+                        destination: DetailPerjanjian(detailPerjanjian: agreementData.listDone[getIndex(item: item)].pinjaman),
                         label: {
                             HistorySegmentedView(item: $agreementData.listDone[getIndex2(item: item)], lists: $agreementData.listDone)
                         })
                         .foregroundColor(.black)
-                        .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listDone[getIndex(item: item)].pinjaman)})
+                        .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listDone[getIndex2(item: item)].pinjaman)})
                 }
                 
             }
@@ -114,14 +114,14 @@ struct ChoosenSegment: View {
                 EmptyStatePerjanjian()
             }
             else if agreementData.listDraft.count > 0{
-                ForEach(agreementData.listDraft){ item in
+                ForEach(agreementData.listDraft, id:\.id){ item in
                     NavigationLink(
-                        destination: DetailPerjanjian(),
+                        destination: DetailPerjanjian(detailPerjanjian: agreementData.listDraft[getIndex(item: item)].pinjaman),
                         label: {
-                            DraftSegmentedView(item: $agreementData.listDraft[getIndex3(item: item)], lists: $agreementData.listDraft)
+                            DraftSegmentedView(item: agreementData.bindingForId(id: item.id), lists: $agreementData.listDraft)
                         })
                         .foregroundColor(.black)
-                        .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listDraft[getIndex(item: item)].pinjaman)})
+                        .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listDraft[getIndex3(item: item)].pinjaman)})
                 }
                 
             }

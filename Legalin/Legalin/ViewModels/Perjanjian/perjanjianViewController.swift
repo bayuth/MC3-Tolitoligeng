@@ -86,6 +86,7 @@ class PerjanjianController: ObservableObject {
         resetValue()
     }
     
+    
     func resetValue(){
         
         //Step 1
@@ -183,63 +184,67 @@ class PerjanjianController: ObservableObject {
             pihak2Provinsi = pihak2.ktp?.provinsi ?? ""
             pihak2Pekerjaan = pihak2.pekerjaan ?? ""
             pihak2NomorHP = pihak2.nomorAktif ?? ""
+    }
         
     func detailSync(pinjaman: Pinjaman){
         
         //Step 1
-        pihak1NIK = pinjaman.pihak1?.ktp?.nik
-        pihak1Nama = pinjaman.pihak1?.ktp?.nama
-        pihak1TanggalLahir = pinjaman.pihak1?.ktp?.tanggalLahir
-        pihak1Alamat = pinjaman.pihak1?.ktp?.alamat
-        pihak1RT = pinjaman.pihak1?.ktp?.rt
-        pihak1RW = pinjaman.pihak1?.ktp?.rw
-        pihak1Kelurahan = pinjaman.pihak1?.ktp?.kelurahanDesa
-        pihak1Kecamatan = pinjaman.pihak1?.ktp?.kecamatan
-        pihak1Kota = pinjaman.pihak1?.ktp?.kotaKabupaten
-        pihak1Provinsi = pinjaman.pihak1?.ktp?.provinsi
-        pihak1Pekerjaan = pinjaman.pihak1?.pekerjaan
-        pihak1NomorHP = pinjaman.pihak1?.nomorAktif
+        pihak1NIK = pinjaman.pihak1?.ktp?.nik ?? ""
+        pihak1Nama = pinjaman.pihak1?.ktp?.nama ?? ""
+        pihak1TanggalLahir = pinjaman.pihak1?.ktp?.tanggalLahir ?? Date()
+        pihak1Alamat = pinjaman.pihak1?.ktp?.alamat ?? ""
+        pihak1RT = pinjaman.pihak1?.ktp?.rt ?? ""
+        pihak1RW = pinjaman.pihak1?.ktp?.rw ?? ""
+        pihak1Kelurahan = pinjaman.pihak1?.ktp?.kelurahanDesa ?? ""
+        pihak1Kecamatan = pinjaman.pihak1?.ktp?.kecamatan ?? ""
+        pihak1Kota = pinjaman.pihak1?.ktp?.kotaKabupaten ?? ""
+        pihak1Provinsi = pinjaman.pihak1?.ktp?.provinsi ?? ""
+        pihak1Pekerjaan = pinjaman.pihak1?.pekerjaan ?? ""
+        pihak1NomorHP = pinjaman.pihak1?.nomorAktif ?? ""
         
+        print("Masuk detail sync")
         //Step 2
-        pihak2Nama = pinjaman.pihak2?.ktp?.nama
-        pihak2TanggalLahir = pinjaman.pihak2?.ktp?.tanggalLahir
-        pihak2Alamat = pinjaman.pihak2?.ktp?.alamat
-        pihak2RT = pinjaman.pihak2?.ktp?.rt
-        pihak2RW = pinjaman.pihak2?.ktp?.rw
-        pihak2Kelurahan = pinjaman.pihak2?.ktp?.kelurahanDesa
-        pihak2Kecamatan = pinjaman.pihak2?.ktp?.kecamatan
-        pihak2Kota = pinjaman.pihak2?.ktp?.kotaKabupaten
-        pihak2Provinsi = pinjaman.pihak2?.ktp?.provinsi
-        pihak2Pekerjaan = pinjaman.pihak2?.pekerjaan
-        pihak2NomorHP = pinjaman.pihak2?.nomorAktif
-        pihak2NamaBank = pinjaman.pihak2?.namaBank
-        pihak2NomorRekening = pinjaman.pihak2?.nomorRekening
-        pihak2AtasNamaRekening = pinjaman.pihak2?.atasNamaRekening
+        pihak2Nama = pinjaman.pihak2?.ktp?.nama ?? ""
+        pihak2TanggalLahir = pinjaman.pihak2?.ktp?.tanggalLahir ?? Date()
+        pihak2Alamat = pinjaman.pihak2?.ktp?.alamat ?? ""
+        pihak2RT = pinjaman.pihak2?.ktp?.rt ?? ""
+        pihak2RW = pinjaman.pihak2?.ktp?.rw ?? ""
+        pihak2Kelurahan = pinjaman.pihak2?.ktp?.kelurahanDesa ?? ""
+        pihak2Kecamatan = pinjaman.pihak2?.ktp?.kecamatan ?? ""
+        pihak2Kota = pinjaman.pihak2?.ktp?.kotaKabupaten ?? ""
+        pihak2Provinsi = pinjaman.pihak2?.ktp?.provinsi ?? ""
+        pihak2Pekerjaan = pinjaman.pihak2?.pekerjaan ?? ""
+        pihak2NomorHP = pinjaman.pihak2?.nomorAktif ?? ""
+        pihak2NamaBank = pinjaman.pihak2?.namaBank ?? ""
+        pihak2NomorRekening = pinjaman.pihak2?.nomorRekening ?? ""
+        pihak2AtasNamaRekening = pinjaman.pihak2?.atasNamaRekening ?? ""
         
         //Step 3
-        tujuanPeminjaman = pinjaman.kredit?.namaSimulasi
-        jumlahPinjaman = pinjaman.kredit?.jumlahPinjaman
-        bunga = pinjaman.kredit?.bunga
-        tenor = pinjaman.kredit?.tenor
+        tujuanPeminjaman = pinjaman.kredit?.namaSimulasi ?? ""
+        jumlahPinjaman = pinjaman.kredit?.jumlahPinjaman ?? 0
+        bunga = pinjaman.kredit?.bunga ?? 0
+        tenor = pinjaman.kredit?.tenor ?? 0
         
         modalMetodePembayaran = false
-        metodePembayaran = pinjaman.metodePembayaran
+        metodePembayaran = pinjaman.metodePembayaran ?? ""
         
-        tanggalJatuhTempo = pinjaman.jatuhTempo
+        tanggalJatuhTempo = pinjaman.jatuhTempo ?? ""
         
         modalPengadilanNegeri = false
-        pengadilanNegeri = pinjaman.pengadilanNegeri
+        pengadilanNegeri = pinjaman.pengadilanNegeri ?? ""
         
-        tanggalTandaTangan = pinjaman.tanggalTandaTangan
+        tanggalTandaTangan = pinjaman.tanggalTandaTangan ?? ""
         
         //Step 4
         modalAgunanState = false
-        tipeBarangAgunan = pinjaman.agunan?.tipeBarang
-        namaBarang = pinjaman.agunan?.nama
-        warnaBarang = pinjaman.agunan?.warna
-        hargaBarang = pinjaman.agunan?.harga
-        nomorSeri = pinjaman.agunan?.nomorSeri
+        tipeBarangAgunan = pinjaman.agunan?.tipeBarang ?? ""
+        namaBarang = pinjaman.agunan?.nama ?? ""
+        warnaBarang = pinjaman.agunan?.warna ?? ""
+        hargaBarang = pinjaman.agunan?.harga ?? ""
+        nomorSeri = pinjaman.agunan?.nomorSeri ?? ""
+
     }
+    
     
     func checkEmptyString(item: String) -> Bool{
         if (item == ""){
@@ -463,6 +468,15 @@ class PerjanjianController: ObservableObject {
         coreDataVM.updateAgunan(agunan: newPinjaman.agunan!, nama: namaBarang, harga: hargaBarang, nomorSeri: nomorSeri, tipeBarang: tipeBarangAgunan, warna: warnaBarang)
         
         mainPageVM.fillAllAgreement()
+    }
+    
+    
+    func deletePinjaman(pinjaman:Pinjaman){
+        if pinjaman != nil{
+            coreDataVM.deletePinjaman(pinjaman: pinjaman)
+            mainPageVM.fillAllAgreement()
+        }
+        
     }
     
     func setTipeBarangAgunan(selected: String){

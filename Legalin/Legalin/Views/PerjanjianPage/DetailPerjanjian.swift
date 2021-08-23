@@ -12,6 +12,10 @@ struct DetailPerjanjian: View {
     
     @State var offset: CGFloat = 0
     var pdfIsEmpty : Bool = false
+//    @Binding var item: Agreements
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
+    @Environment(\.presentationMode) var presentationMode
+    var detailPerjanjian: Pinjaman
     
     
 //    var subview = [1, 2, 3, 4, 5]
@@ -65,6 +69,8 @@ struct DetailPerjanjian: View {
                                         
                                     }
                                     Button(action: {
+//                                        perjanjianController.deletePinjaman(pinjaman: detailPerjanjian)
+                                        self.presentationMode.wrappedValue.dismiss()
                                         
                                     }){
                                         Image(systemName: "trash")
@@ -97,8 +103,8 @@ extension View{
 //    }
 //}
 
-struct DetailPerjanjian_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailPerjanjian()
-    }
-}
+//struct DetailPerjanjian_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DetailPerjanjian()
+//    }
+//}
