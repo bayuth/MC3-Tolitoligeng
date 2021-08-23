@@ -11,11 +11,11 @@ struct ButtonBordered: View {
     @State private var showAlert = false
     @State var icon :String
     @State var titleButton :String
+    var action :() -> Void
     let titleAlert = "Akan Hadir!"
     let subTitleAlert = "Masih dalam pengerjaan."
     var body: some View {
-        Button(action: {
-                self.showAlert = true                      }) {
+        Button(action: action) {
             Text("\(Image(systemName: icon)) \(titleButton)").font(.subheadline)
                 .padding(6)
                 .cornerRadius(5)
@@ -28,11 +28,5 @@ struct ButtonBordered: View {
         .alert(isPresented: $showAlert, content: {
             Alert(title: Text(titleAlert), message: Text(subTitleAlert), dismissButton: .destructive(Text("Close").fontWeight(.black)))
         }).padding(.bottom,13)
-    }
-}
-
-struct ButtonPilihIdentitas_Previews: PreviewProvider {
-    static var previews: some View {
-        ButtonBordered(icon: "person.fill", titleButton: "Pilih Identitas")
     }
 }

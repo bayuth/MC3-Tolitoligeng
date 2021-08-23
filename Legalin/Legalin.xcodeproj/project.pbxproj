@@ -33,6 +33,7 @@
 		4AD8841626BAEC8C00C5A6F5 /* HistorySegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8841126BAEC8C00C5A6F5 /* HistorySegmentedView.swift */; };
 		4AD8841A26BAEC9A00C5A6F5 /* PerjanjianModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8841926BAEC9A00C5A6F5 /* PerjanjianModel.swift */; };
 		4AE3656726BFD18B00C1653A /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE3656626BFD18B00C1653A /* SliderView.swift */; };
+		4AE8AB1526D31EB0004ECE6C /* ModalPilihKredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE8AB1426D31EB0004ECE6C /* ModalPilihKredit.swift */; };
 		4AEDF74226BA35FB008DC272 /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEDF74126BA35FB008DC272 /* EmptyState.swift */; };
 		4AF0124526BCF14900E9C2FF /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0124426BCF14900E9C2FF /* NavigationBarModifier.swift */; };
 		5C3CF43326C2B62D00E7E8A1 /* ButtonBordered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3CF43226C2B62D00E7E8A1 /* ButtonBordered.swift */; };
@@ -135,6 +136,7 @@
 		4AD8841126BAEC8C00C5A6F5 /* HistorySegmentedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorySegmentedView.swift; sourceTree = "<group>"; };
 		4AD8841926BAEC9A00C5A6F5 /* PerjanjianModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerjanjianModel.swift; sourceTree = "<group>"; };
 		4AE3656626BFD18B00C1653A /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		4AE8AB1426D31EB0004ECE6C /* ModalPilihKredit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPilihKredit.swift; sourceTree = "<group>"; };
 		4AEDF74126BA35FB008DC272 /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		4AF0124426BCF14900E9C2FF /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		5C3CF43226C2B62D00E7E8A1 /* ButtonBordered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonBordered.swift; sourceTree = "<group>"; };
@@ -506,6 +508,7 @@
 				5E35F37026B833F20044D1FC /* ModalTipeBarangAgunan.swift */,
 				5E35F37326B834CD0044D1FC /* ModalPengadilanNegeri.swift */,
 				5E8578AC26B90BC30019FB61 /* ModalPengadilanNegeriDetail.swift */,
+				4AE8AB1426D31EB0004ECE6C /* ModalPilihKredit.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				5E9C410F26BB9C70002AECCC /* inputToModal.swift in Sources */,
 				5E27EEF526BA8ADA0090573F /* step1Peminjam.swift in Sources */,
 				5C8F9CF026BCF66D00CE994B /* NewProfileView.swift in Sources */,
+				4AE8AB1526D31EB0004ECE6C /* ModalPilihKredit.swift in Sources */,
 				5E375CEF26BE584300DF834D /* generatePDF.swift in Sources */,
 				5C6E0DB726BE4C84004CDD82 /* ButtonBack.swift in Sources */,
 				5C89058426CD383000069B49 /* DisclaimerPopUp.swift in Sources */,

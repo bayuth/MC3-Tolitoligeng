@@ -24,6 +24,7 @@ struct step3Detail: View {
     @State private var title1 = "Pilih Tanggal"
     @State private var title2 = "Pengadilan Negeri"
     @State private var title3 = "Pilih Tanggal"
+    @State private var modalPkTitle = "Pilih Kredit"
     
     @State var isDisable:Bool = false
     @State var showActionSheet = false
@@ -53,7 +54,9 @@ struct step3Detail: View {
             
             ScrollView(showsIndicators: false){
                 VStack(alignment: .leading){
-                    ButtonBordered(icon: "doc.text", titleButton: "Pilih Kredit (Opsional)")
+                    ButtonBordered(icon: "doc.text", titleButton: modalPkTitle,action: {
+                        perjanjianController.modalPilihKredit.toggle()
+                    })
                         .padding()
                     FormView(title: "Tujuan Peminjaman", profileValue: $perjanjianController.tujuanPeminjaman, keyboardNum: false, isDisable: $isDisable)
                     SliderViewWithForm(sliderValue: $perjanjianController.jumlahPinjaman, text1: "Pinjaman Maksimal", text2: "Rp 50.000.000", title: "Jumlah Pinjaman", type: 0)
@@ -94,7 +97,7 @@ struct step3Detail: View {
                             .datePickerStyle(GraphicalDatePickerStyle())
                         }
                     }
-                    ButtonBordered(icon: "percent", titleButton: "Lihat Simulasi Kredit").padding([.top, .leading])
+                    ButtonBordered(icon: "percent", titleButton: "Lihat Simulasi Kredit", action: {}).padding([.top, .leading])
                     NavigationLink(
                         destination: step4Agunan(masterPresentationMode4 : _masterPresentationMode3 ,step1Redirect: $step1Redirect ,step2Redirect: $step2Redirect, step3Redirect: $step3Redirect),isActive: $step3Redirect,
                         label: {
@@ -135,6 +138,12 @@ struct step3Detail: View {
                     ])
                 
             })
+            .sheet(isPresented: $perjanjianController.modalPilihKredit)
+            {
+                NavigationView{
+                    ModalPilihKredit(isPresented: $perjanjianController.modalPilihKredit, pengadilanNegeri: $modalPkTitle)
+                }
+            }
         }
         
     }
