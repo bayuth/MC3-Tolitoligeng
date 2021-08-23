@@ -118,7 +118,7 @@ struct ChoosenSegment: View {
                     NavigationLink(
                         destination: DetailPerjanjian(detailPerjanjian: agreementData.listDraft[getIndex(item: item)].pinjaman),
                         label: {
-                            DraftSegmentedView(item: agreementData.bindingForId(id: item.id), lists: $agreementData.listDraft)
+                            DraftSegmentedView(item: $agreementData.listDraft[getIndex3(item: item)], lists: $agreementData.listDraft)
                         })
                         .foregroundColor(.black)
                         .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listDraft[getIndex3(item: item)].pinjaman)})
