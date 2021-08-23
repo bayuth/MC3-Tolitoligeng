@@ -6,26 +6,64 @@
 //
 
 import UIKit
+import SwiftUI
 
 class InvoiceComposer: NSObject {
     
-    let pathToHTMLTemplate = Bundle.main.path(forResource: "template", ofType: "html")
-    
-    var nama1: String!
-    var nama2: String!
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     override init() {
         super.init()
     }
     
-    func renderInvoice(nama1: String? = "", nama2: String? = "") -> String! {
+    func renderInvoice() -> String! {
         
         do{
+            
+            let pathToHTMLTemplate = Bundle.main.path(forResource: "suratTanpaAgunanCicilan", ofType: "html")
+            //Change HTML Content
             var HTMLContent = try String(contentsOfFile: pathToHTMLTemplate!)
             
-//            HTMLContent = HTMLContent.replacingOccurrences(of: "#nama1#", with: nama1!)
-//
-//            HTMLContent = HTMLContent.replacingOccurrences(of: "#nama2#", with: nama2!)
+            //Page 1 Content
+            
+            //Hari Tanggal
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#HARI#", with: "TBA")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#TANGGAL#", with: "TBA")
+            
+            //General Content Pihak 1
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#NAMA_PIHAK_1#", with: perjanjianController.pihak1Nama)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#UMUR_PIHAK_1#", with: "TBA")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#PEKERJAAN_PIHAK_1#", with: perjanjianController.pihak1Pekerjaan)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#KTP_PIHAK_1#", with: perjanjianController.pihak1NIK)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#ALAMAT_PIHAK_1#", with: perjanjianController.pihak1Alamat)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#TELP_PIHAK_1#", with: perjanjianController.pihak1NomorHP)
+            
+            //General Content Pihak 2
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#NAMA_PIHAK_2#", with: perjanjianController.pihak2Nama)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#UMUR_PIHAK_2#", with: "TBA")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#PEKERJAAN_PIHAK_2#", with: perjanjianController.pihak2Pekerjaan)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#KTP_PIHAK_2#", with: perjanjianController.pihak2NIK)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#ALAMAT_PIHAK_2#", with: perjanjianController.pihak2Alamat)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#TELP_PIHAK_2#", with: perjanjianController.pihak2NomorHP)
+            
+            //Penjelasan di page 1
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#PINJAMAN_ANGKA#", with: String(perjanjianController.jumlahPinjaman))
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#PINJAMAN_HURUF#", with: "TBA")
+            
+            //Pasal 1
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#ANGSURAN_ANGKA#", with: "TBA")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#ANGSURAN_HURUF#", with: "TBA")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#TENOR#", with: "TBA")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#BANK#", with: perjanjianController.pihak2NamaBank)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#REKENING#", with: perjanjianController.pihak2NomorRekening)
+            
+            //Pasal 2
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#BUNGA_PERSEN#", with: "TBA")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#BUNGA_HURUF#", with: "TBA")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#BUNGA_ANGKA#", with: "TBA")
+            
+            //Pasal 7
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#KANTOR_PENGADILAN#", with: perjanjianController.pengadilanNegeri)
             
             return HTMLContent
         }

@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
 	
 	//		@StateObject var ktpInfoKosong = ScanDataClass()
+    
 	
 	init() {
 		UINavigationBar.changeAppearance(clear: true)
