@@ -198,51 +198,51 @@ class CoreDataViewModel: ObservableObject {
             akun.ktp?.tanggalLahir = tanggalLahir
         }
         
-        if (ktpImage != nil){
+        if (alamat != nil){
             akun.ktp?.alamat = alamat
         }
         
-        if (NIK != nil){
+        if (rt != nil){
             akun.ktp?.rt = rt
         }
         
-        if (nama != nil){
+        if (rw != nil){
             akun.ktp?.rw = rw
         }
         
-        if (tanggalLahir != nil){
+        if (kecamatan != nil){
             akun.ktp?.kecamatan = kecamatan
         }
         
-        if (tanggalLahir != nil){
+        if (kelurahanDesa != nil){
             akun.ktp?.kelurahanDesa = kelurahanDesa
         }
         
-        if (tanggalLahir != nil){
+        if (kotaKabupaten != nil){
             akun.ktp?.kotaKabupaten = kotaKabupaten
         }
         
-        if (tanggalLahir != nil){
+        if (provinsi != nil){
             akun.ktp?.provinsi = provinsi
         }
         
-        if (tanggalLahir != nil){
+        if (pekerjaan != nil){
             akun.pekerjaan = pekerjaan
         }
         
-        if (tanggalLahir != nil){
+        if (nomorAktif != nil){
             akun.nomorAktif = nomorAktif
         }
         
-        if (tanggalLahir != nil){
+        if (namaBank != nil){
             akun.namaBank = namaBank
         }
         
-        if (tanggalLahir != nil){
+        if (nomorRekening != nil){
             akun.nomorRekening = nomorRekening
         }
         
-        if (tanggalLahir != nil){
+        if (atasNamaRekening != nil){
             akun.atasNamaRekening = atasNamaRekening
         }
         

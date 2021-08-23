@@ -42,6 +42,11 @@ struct ModalPilihIdentitas: View {
 							perjanjianController.pihak2Kecamatan = selectedIdentitas.ktp?.kecamatan ?? ""
 							perjanjianController.pihak2Kota = selectedIdentitas.ktp?.kotaKabupaten ?? ""
 							perjanjianController.pihak2Provinsi = selectedIdentitas.ktp?.provinsi ?? ""
+							perjanjianController.pihak2Pekerjaan = selectedIdentitas.pekerjaan ?? ""
+							perjanjianController.pihak2NomorHP = selectedIdentitas.nomorAktif ?? ""
+							perjanjianController.pihak2NamaBank = selectedIdentitas.namaBank ?? ""
+							perjanjianController.pihak2NomorRekening = selectedIdentitas.nomorRekening ?? ""
+							perjanjianController.pihak2AtasNamaRekening = selectedIdentitas.atasNamaRekening ?? ""
 						}
 				}
 			}.navigationBarTitle("Pilih Identitas", displayMode: .inline)
