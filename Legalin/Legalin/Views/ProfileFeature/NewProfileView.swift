@@ -150,7 +150,7 @@ struct NewProfileView: View {
 					AlertSave(shown: $shown, textField: $textfieldDisable)
 				}
 			}
-			.background(shown ? Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.5)) : Color(#colorLiteral(red: 0.9607843137, green: 0.968627451, blue: 0.9725490196, alpha: 0)))
+//			.background(shown ? Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.5)) : Color(#colorLiteral(red: 0.9607843137, green: 0.968627451, blue: 0.9725490196, alpha: 0)))
 		}
 		.navigationBarTitleDisplayMode(.inline)
 	}

@@ -23,6 +23,7 @@ struct ProfileView: View {
 	@ObservedObject var coreDataVM: CoreDataViewModel = .shared
 	@State var shown = false
 	@State var texfieldDisable:Bool = true
+	var debugPopUp = true
 	
 	@State var showTanggalLahir = false
 	@State var tanggalLahir = Date()
@@ -37,108 +38,113 @@ struct ProfileView: View {
 	
 	var body: some View {
 		NavigationView {
-			VStack(alignment: .center) {
-
-				HStack {
+			ZStack {
+				VStack(alignment: .center) {
+					RoundedRectangle(cornerRadius: 10).fill(Color(.white))
+						.frame(maxWidth: .infinity, maxHeight: 1)
 					
-				}.frame(maxWidth: .infinity, maxHeight: 1)
-				
-				if (coreDataVM.pihak1.count == 0) {
-					Spacer()
-					Image("Profile Empty")
-					Text("Belum Ada Profil")
-						.font(.headline).fontWeight(.bold).padding(.top, 10)
-					Text("Buat profil baru untuk \n mempermudah membuat perjanjian")
-						.font(.body).padding(.top,-15)
-						
-						.multilineTextAlignment(.center).padding()
-					
-					NavigationLink(
-						destination: NewProfileView(),
-						label: {
-							ButtonNext(text: "Buat Profil", isDataComplete: true)
-						})
-					Spacer()
-				}
-				
-				else {
-					ScrollView(showsIndicators: false){
-						ZStack {
-							VStack(alignment: .center) {
-								FormView(title: "NIK", profileValue: $profileController.pihak1NIK, keyboardNum: true, isDisable: $texfieldDisable).padding(.top)
-								FormView(title: "Nama", profileValue: $profileController.pihak1Nama, keyboardNum: false, isDisable: $texfieldDisable)
-								VStack(alignment: .leading){
-									Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
-									if Calendar.current.isDateInToday(profileController.pihak1TanggalLahir) {
-										Text("Pilih Tanggal Lahir")
-											.font(.body)
-											.fontWeight(.regular)
-											.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
-									} else {
-										Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
-											.font(.body)
-											.fontWeight(.regular)
-											.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
-									}
-									if editIsDisabled {
-										Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
-											.font(.body)
-											.fontWeight(.regular)
-											.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
-											.onTapGesture {
-												showTanggalLahir.toggle()
-											}
-									}
-									Divider()
-										.padding(.bottom)
-								}.padding(.horizontal)
-								if showTanggalLahir {
-									DatePicker("", selection: $profileController.pihak1TanggalLahir, displayedComponents: .date)
-										.datePickerStyle(GraphicalDatePickerStyle())
-										.padding(.horizontal)
-										.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-								}
-								FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable)
-								HStack {
-									FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: $texfieldDisable)
-									FormView(title: "RW", profileValue: $profileController.pihak1RW, keyboardNum: true, isDisable: $texfieldDisable)
-								}
-								FormView(title: "Kelurahan/Desa", profileValue: $profileController.pihak1Kelurahan, keyboardNum: false, isDisable: $texfieldDisable)
-								FormView(title: "Kecamatan", profileValue: $profileController.pihak1Kecamatan, keyboardNum: false, isDisable: $texfieldDisable)
-								FormView(title: "Kabupaten/Kota", profileValue: $profileController.pihak1Kota, keyboardNum: false, isDisable: $texfieldDisable)
-								VStack {
-									FormView(title: "Provinsi", profileValue: $profileController.pihak1Provinsi, keyboardNum: false, isDisable: $texfieldDisable)
-									FormView(title: "Pekerjaan", profileValue: $profileController.pihak1Pekerjaan, keyboardNum: false, isDisable: $texfieldDisable)
-									FormView(title: "Nomor Telepon", profileValue: $profileController.pihak1NomorHP, keyboardNum: false, isDisable: $texfieldDisable)
-									
-									Button(action: {
-										shown.toggle()
-									}, label: {
-										ZStack{
-											RoundedRectangle(cornerRadius: 10)
-												.foregroundColor(texfieldDisable ? Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)) : Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-												.frame(width: UIScreen.main.bounds.width - 35, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-											
-											Text("Simpan").fontWeight(.semibold).foregroundColor(.white)
-										}
-									}).disabled(texfieldDisable)
-									.padding(.bottom)
-								}
-							}
-//							.padding(.horizontal)
+					if (coreDataVM.pihak1.count == 0) {
+						Spacer()
+						Image("Profile Empty")
+						Text("Belum Ada Profil")
+							.font(.headline).fontWeight(.bold).padding(.top, 10)
+						Text("Buat profil baru untuk \n mempermudah membuat perjanjian")
+							.font(.body).padding(.top,-15)
 							
-							if shown {
-								AlertSave(shown: $shown, textField: $texfieldDisable)
+							.multilineTextAlignment(.center).padding()
+						
+						NavigationLink(
+							destination: NewProfileView(),
+							label: {
+								ButtonNext(text: "Buat Profil", isDataComplete: true)
+							})
+						Spacer()
+					}
+					
+					else {
+						ScrollView(showsIndicators: false){
+							ZStack {
+								VStack(alignment: .center) {
+									FormView(title: "NIK", profileValue: $profileController.pihak1NIK, keyboardNum: true, isDisable: $texfieldDisable).padding(.top)
+									FormView(title: "Nama", profileValue: $profileController.pihak1Nama, keyboardNum: false, isDisable: $texfieldDisable)
+									VStack(alignment: .leading){
+										Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+										if Calendar.current.isDateInToday(profileController.pihak1TanggalLahir) {
+											Text("Pilih Tanggal Lahir")
+												.font(.body)
+												.fontWeight(.regular)
+												.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+										} else {
+											Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
+												.font(.body)
+												.fontWeight(.regular)
+												.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+										}
+										if editIsDisabled {
+											Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
+												.font(.body)
+												.fontWeight(.regular)
+												.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+												.onTapGesture {
+													showTanggalLahir.toggle()
+												}
+										}
+										Divider()
+											.padding(.bottom)
+									}.padding(.horizontal)
+									if showTanggalLahir {
+										DatePicker("", selection: $profileController.pihak1TanggalLahir, displayedComponents: .date)
+											.datePickerStyle(GraphicalDatePickerStyle())
+											.padding(.horizontal)
+											.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+									}
+									FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable)
+									HStack {
+										FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: $texfieldDisable)
+										FormView(title: "RW", profileValue: $profileController.pihak1RW, keyboardNum: true, isDisable: $texfieldDisable)
+									}
+									FormView(title: "Kelurahan/Desa", profileValue: $profileController.pihak1Kelurahan, keyboardNum: false, isDisable: $texfieldDisable)
+									FormView(title: "Kecamatan", profileValue: $profileController.pihak1Kecamatan, keyboardNum: false, isDisable: $texfieldDisable)
+									FormView(title: "Kabupaten/Kota", profileValue: $profileController.pihak1Kota, keyboardNum: false, isDisable: $texfieldDisable)
+									VStack {
+										FormView(title: "Provinsi", profileValue: $profileController.pihak1Provinsi, keyboardNum: false, isDisable: $texfieldDisable)
+										FormView(title: "Pekerjaan", profileValue: $profileController.pihak1Pekerjaan, keyboardNum: false, isDisable: $texfieldDisable)
+										FormView(title: "Nomor Telepon", profileValue: $profileController.pihak1NomorHP, keyboardNum: false, isDisable: $texfieldDisable)
+										
+										Button(action: {
+											shown.toggle()
+										}, label: {
+											ZStack{
+												RoundedRectangle(cornerRadius: 10)
+													.foregroundColor(texfieldDisable ? Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)) : Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+													.frame(width: UIScreen.main.bounds.width - 35, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+												
+												Text("Simpan").fontWeight(.semibold).foregroundColor(.white)
+											}
+										}).disabled(texfieldDisable)
+										.padding(.bottom)
+									}
+								}
+	//							.padding(.horizontal)
 								
+	//							if debugPopUp {
+	//								AlertSave(shown: $shown, textField: $texfieldDisable)
+	//									.edgesIgnoringSafeArea(.all)
+	//							}
 							}
+							Spacer()
 						}
+	//					.background(shown ? Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.5)) : Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)))
 						
 					}
-					.background(shown ? Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.5)) : Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)))
 					
 				}
-				
+				if shown {
+					AlertSave(shown: $shown, textField: $texfieldDisable)
+						.edgesIgnoringSafeArea(.all)
+				}
 			}
+			
 			.navigationTitle("Profil")
 			.navigationBarItems(trailing:
 									HStack {
