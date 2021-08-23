@@ -13,6 +13,7 @@ struct ModalPilihKredit: View {
     @Binding var isPresented: Bool
     @Binding var pengadilanNegeri: String
     @StateObject var vc = PengadilanDetailController()
+    @StateObject var vcKredit = ListKreditVM()
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -20,25 +21,25 @@ struct ModalPilihKredit: View {
         VStack{
             Spacer()
             ScrollView(showsIndicators: false){
-                
-//                ForEach(0..<dataDetail.kota.count){item in
-//
-//                    CheckListCell(title: "\(dataDetail.kota[item])", selected: getSelectedStatus(listSelected: vc.listSelected, index: item)
-//                                  //                                    vc.listSelected[item]
-//                                  , mainNav: false, index: item)
-//                        .onTapGesture {
-//                            vc.toggleView(index: item)
+                Text("Kredit Pinjaman")
+                    .font(.system(size: 17))
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                ForEach(0..<vcKredit.list.count){item in
+                    KreditChecklistCell(title: vcKredit.list[item].kreditTitle, rupiah: vcKredit.list[item].jumlahPinjaman, selected: getSelectedStatus(listSelected: vc.listSelected, index: item), mainNav: false, index: item)
+                        .onTapGesture {
+                            vc.toggleView(index: item)
 //                            vc.setSelectedPengadilan(selected: dataDetail.kota[item])
-//                        }
-//
-//                }
+                        }
+
+                }
             }.navigationBarTitle("Pilih Kredit", displayMode: .inline)
             .accentColor(.red)
             .navigationBarBackButtonHidden(true)
         }
-//        .onAppear {
-//            vc.setListSelected(total: kotaCount)
-//        }
+        .onAppear {
+            vc.setListSelected(total: vcKredit.list.count)
+        }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 HStack{
