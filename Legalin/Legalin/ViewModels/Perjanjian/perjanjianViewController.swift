@@ -17,35 +17,38 @@ class PerjanjianController: ObservableObject {
     var profil: [Akun] = []
     
     //Step 1 attribute
-    @Published var pihak1NIK: String = ""
-    @Published var pihak1Nama: String = ""
-    @Published var pihak1TanggalLahir: Date = Date()
-    @Published var pihak1Alamat: String = ""
-    @Published var pihak1RT: String = ""
-    @Published var pihak1RW: String = ""
-    @Published var pihak1Kelurahan: String = ""
-    @Published var pihak1Kecamatan: String = ""
-    @Published var pihak1Kota: String = ""
-    @Published var pihak1Provinsi: String = ""
-    @Published var pihak1Pekerjaan: String = ""
-    @Published var pihak1NomorHP: String = ""
-    
-    //Step 2 attribute
-    @Published var pihak2NIK: String = ""
-    @Published var pihak2Nama: String = ""
-    @Published var pihak2TanggalLahir: Date = Date()
-    @Published var pihak2Alamat: String = ""
-    @Published var pihak2RT: String = ""
-    @Published var pihak2RW: String = ""
-    @Published var pihak2Kelurahan: String = ""
-    @Published var pihak2Kecamatan: String = ""
-    @Published var pihak2Kota: String = ""
-    @Published var pihak2Provinsi: String = ""
-    @Published var pihak2Pekerjaan: String = ""
-    @Published var pihak2NomorHP: String = ""
-    @Published var pihak2NamaBank: String = ""
-    @Published var pihak2NomorRekening: String = ""
-    @Published var pihak2AtasNamaRekening: String = ""
+	@Published var pihak1NIK: String = ""
+	@Published var pihak1Nama: String = ""
+	@Published var pihak1TanggalLahir: Date = Date()
+	@Published var pihak1Alamat: String = ""
+	@Published var pihak1RT: String = ""
+	@Published var pihak1RW: String = ""
+	@Published var pihak1Kelurahan: String = ""
+	@Published var pihak1Kecamatan: String = ""
+	@Published var pihak1Kota: String = ""
+	@Published var pihak1Provinsi: String = ""
+	@Published var pihak1Pekerjaan: String = ""
+	@Published var pihak1NomorHP: String = ""
+	@Published var pihak1IsOpenCam: Bool = false
+	
+	//Step 2 attribute
+	@Published var pihak2NIK: String = ""
+	@Published var pihak2Nama: String = ""
+	@Published var pihak2TanggalLahir: Date = Date()
+	@Published var pihak2Alamat: String = ""
+	@Published var pihak2RT: String = ""
+	@Published var pihak2RW: String = ""
+	@Published var pihak2Kelurahan: String = ""
+	@Published var pihak2Kecamatan: String = ""
+	@Published var pihak2Kota: String = ""
+	@Published var pihak2Provinsi: String = ""
+	@Published var pihak2Pekerjaan: String = ""
+	@Published var pihak2NomorHP: String = ""
+	@Published var pihak2NamaBank: String = ""
+	@Published var pihak2NomorRekening: String = ""
+	@Published var pihak2AtasNamaRekening: String = ""
+	@Published var pihak2IsOpenCam: Bool = false
+	
     
     //Step 3 attribute
     @Published var tujuanPeminjaman: String = ""
@@ -348,7 +351,7 @@ class PerjanjianController: ObservableObject {
     
     
     
-    func updatePihak1KTP(nik: String, nama: String, tanggalLahir: Date, alamat: String, RT:String, RW: String, kelurahan: String, kecamatan: String, kota: String, provinsi: String){
+	func updatePihak1KTP(nik: String, nama: String, tanggalLahir: Date, alamat: String, RT:String, RW: String, kelurahan: String, kecamatan: String, kota: String, provinsi: String, isOpenCam:Bool){
         
         pihak1NIK = nik
         pihak1Nama = nama
@@ -360,6 +363,7 @@ class PerjanjianController: ObservableObject {
         pihak1Kecamatan = kecamatan
         pihak1Kota = kota
         pihak1Provinsi = provinsi
+		pihak1IsOpenCam = isOpenCam
     }
     
     func updatePihak1NonKTP( pekerjaan: String ,nomorHP: String){
@@ -367,7 +371,7 @@ class PerjanjianController: ObservableObject {
         pihak1NomorHP = nomorHP ?? ""
     }
     
-    func updatePihak2KTP(nik: String, nama: String, tanggalLahir: Date, alamat: String, RT:String, RW: String, kelurahan: String, kecamatan: String, kota: String, provinsi: String){
+	func updatePihak2KTP(nik: String, nama: String, tanggalLahir: Date, alamat: String, RT:String, RW: String, kelurahan: String, kecamatan: String, kota: String, provinsi: String, isOpenCam:Bool){
         
         pihak2NIK = nik
         pihak2Nama = nama
@@ -379,7 +383,7 @@ class PerjanjianController: ObservableObject {
         pihak2Kecamatan = kecamatan
         pihak2Kota = kota
         pihak2Provinsi = provinsi
-        
+        pihak2IsOpenCam = isOpenCam
     }
     
     func updatePihak2NonKTP(pekerjaan: String, nomorHP : String ,namaBank: String, nomorRekening : String, atasNamaRekening : String){

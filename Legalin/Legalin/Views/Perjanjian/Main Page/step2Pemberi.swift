@@ -13,6 +13,8 @@ struct step2Pemberi: View {
 	@StateObject var cameraManager = CameraManager()
     
     @ObservedObject var perjanjianController: PerjanjianController = .shared
+	var coreDataVM: CoreDataViewModel = .shared
+	var listOfAkun:[Akun] = []
     
     @ObservedObject var trimKtp = functionTrimKtp(pihak: 2)
 	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -20,6 +22,7 @@ struct step2Pemberi: View {
 	@State var titleLahir = "Pilih Tanggal Lahir"
 	@State var isDisable:Bool = false
     @State var showActionSheet = false
+	@State var showModalPilihIdentitas = false
     
     //Validation page redirect
     @Binding var step1Redirect: Bool
@@ -38,11 +41,19 @@ struct step2Pemberi: View {
 			
 			ScrollView(showsIndicators: false){
 				VStack(alignment: .leading) {
-                    ButtonBordered(icon: "person.fill", titleButton: "Pilih Identitas", action: {}).padding(.horizontal)
+					
+					Button(action: {
+						showModalPilihIdentitas.toggle()
+					}, label: {
+						ButtonBorderedComingSoon(icon: "person.fill", titleButton: "Pilih Identitas").padding(.horizontal)
+					}).sheet(isPresented: $showModalPilihIdentitas, content: {
+						ModalPilihIdentitas(showSheetView: self.$showModalPilihIdentitas)
+					})
+					
 					Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.bottom,7)
                         .padding(.horizontal)
 					
-					if (perjanjianController.pihak2NIK != "" || perjanjianController.pihak2Nama != "" || perjanjianController.pihak2Alamat != "" || !Calendar.current.isDateInToday(perjanjianController.pihak2TanggalLahir) || perjanjianController.pihak2RT != "" || perjanjianController.pihak2RW != "" || perjanjianController.pihak2Kelurahan != "" || perjanjianController.pihak2Kecamatan != "" || perjanjianController.pihak2Kota != "" || perjanjianController.pihak2Provinsi != "") {
+					if (perjanjianController.pihak2IsOpenCam == true) {
 						Button(action: {
 							if cameraManager.permissionGranted {
 								trimKtp.showScannerSheet = true
@@ -126,7 +137,7 @@ struct step2Pemberi: View {
 							Text("Pastikan semua data yang anda masukan sudah benar dan sesuai dengan KTP dan dokumen anda")
 								.font(.caption2)
 								.fontWeight(.regular)
-								.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+								.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 								.multilineTextAlignment(.leading)
 								.padding(.bottom,10)
                                 .padding(.horizontal)

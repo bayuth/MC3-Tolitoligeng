@@ -39,6 +39,7 @@
 		4AEDF74226BA35FB008DC272 /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEDF74126BA35FB008DC272 /* EmptyState.swift */; };
 		4AF0124526BCF14900E9C2FF /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0124426BCF14900E9C2FF /* NavigationBarModifier.swift */; };
 		5C3CF43326C2B62D00E7E8A1 /* ButtonBordered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3CF43226C2B62D00E7E8A1 /* ButtonBordered.swift */; };
+		5C5C7F9726D28133009CA05E /* ModalPilihIdentitas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5C7F9626D28133009CA05E /* ModalPilihIdentitas.swift */; };
 		5C6E0DB726BE4C84004CDD82 /* ButtonBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E0DB626BE4C84004CDD82 /* ButtonBack.swift */; };
 		5C7E345726C0C6C40006D506 /* ButtonTutup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E345626C0C6C40006D506 /* ButtonTutup.swift */; };
 		5C7E999526C4DA5800BBBFE9 /* AlertSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E999426C4DA5800BBBFE9 /* AlertSave.swift */; };
@@ -144,6 +145,7 @@
 		4AEDF74126BA35FB008DC272 /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		4AF0124426BCF14900E9C2FF /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		5C3CF43226C2B62D00E7E8A1 /* ButtonBordered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonBordered.swift; sourceTree = "<group>"; };
+		5C5C7F9626D28133009CA05E /* ModalPilihIdentitas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPilihIdentitas.swift; sourceTree = "<group>"; };
 		5C6E0DB626BE4C84004CDD82 /* ButtonBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonBack.swift; sourceTree = "<group>"; };
 		5C7E345626C0C6C40006D506 /* ButtonTutup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTutup.swift; sourceTree = "<group>"; };
 		5C7E999426C4DA5800BBBFE9 /* AlertSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertSave.swift; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 				5E8578AC26B90BC30019FB61 /* ModalPengadilanNegeriDetail.swift */,
 				4AE8AB1426D31EB0004ECE6C /* ModalPilihKredit.swift */,
 				4A6C26AF26D34231006E7B62 /* ModalSimulasiKredit.swift */,
+				5C5C7F9626D28133009CA05E /* ModalPilihIdentitas.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 				759F0B3A26BD743B004804C7 /* MainApplicationPage.swift in Sources */,
 				5E8578AD26B90BC30019FB61 /* ModalPengadilanNegeriDetail.swift in Sources */,
 				5E375CEC26BE583700DF834D /* loadingScreen.swift in Sources */,
+				5C5C7F9726D28133009CA05E /* ModalPilihIdentitas.swift in Sources */,
 				4A8C45AE26BA1188008E4B02 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
