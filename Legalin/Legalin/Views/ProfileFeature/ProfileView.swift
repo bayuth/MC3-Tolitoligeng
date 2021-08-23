@@ -12,6 +12,10 @@ struct ProfileView: View {
 	//		@StateObject var ktpInfoKosong = ScanDataClass()
     
 	
+	init() {
+		UINavigationBar.changeAppearance(clear: true)
+	}
+	
 	@ObservedObject var profileKtp = ScanDataClass()
 	@ObservedObject var profiledata = functionTrimKtp(pihak: 0)
 	
@@ -34,8 +38,13 @@ struct ProfileView: View {
 	var body: some View {
 		NavigationView {
 			VStack(alignment: .center) {
+
+				HStack {
+					
+				}.frame(maxWidth: .infinity, maxHeight: 1)
 				
 				if (coreDataVM.pihak1.count == 0) {
+					Spacer()
 					Image("Profile Empty")
 					Text("Belum Ada Profil")
 						.font(.headline).fontWeight(.bold).padding(.top, 10)
@@ -49,6 +58,7 @@ struct ProfileView: View {
 						label: {
 							ButtonNext(text: "Buat Profil", isDataComplete: true)
 						})
+					Spacer()
 				}
 				
 				else {
@@ -58,7 +68,7 @@ struct ProfileView: View {
 								FormView(title: "NIK", profileValue: $profileController.pihak1NIK, keyboardNum: true, isDisable: $texfieldDisable).padding(.top)
 								FormView(title: "Nama", profileValue: $profileController.pihak1Nama, keyboardNum: false, isDisable: $texfieldDisable)
 								VStack(alignment: .leading){
-									Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+									Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
 									if Calendar.current.isDateInToday(profileController.pihak1TanggalLahir) {
 										Text("Pilih Tanggal Lahir")
 											.font(.body)
@@ -70,10 +80,24 @@ struct ProfileView: View {
 											.fontWeight(.regular)
 											.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
 									}
-									
+									if editIsDisabled {
+										Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
+											.font(.body)
+											.fontWeight(.regular)
+											.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+											.onTapGesture {
+												showTanggalLahir.toggle()
+											}
+									}
 									Divider()
 										.padding(.bottom)
 								}.padding(.horizontal)
+								if showTanggalLahir {
+									DatePicker("", selection: $profileController.pihak1TanggalLahir, displayedComponents: .date)
+										.datePickerStyle(GraphicalDatePickerStyle())
+										.padding(.horizontal)
+										.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+								}
 								FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable)
 								HStack {
 									FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: $texfieldDisable)
@@ -126,7 +150,7 @@ struct ProfileView: View {
 											})
 										if(coreDataVM.pihak1.count != 0) {
 											Image(systemName: "square.and.pencil")
-												.foregroundColor(editIsDisabledColor)
+												.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 												.disabled(editIsDisabled)
 												.onTapGesture {
 													editIsDisabled.toggle()
@@ -143,6 +167,21 @@ struct ProfileView: View {
 		}
 	}
 	
+}
+
+extension UINavigationBar {
+	static func changeAppearance(clear: Bool) {
+		let appearance = UINavigationBarAppearance()
+		
+		if clear {
+			appearance.configureWithTransparentBackground()
+		} else {
+			appearance.configureWithDefaultBackground()
+		}
+		UINavigationBar.appearance().standardAppearance = appearance
+		UINavigationBar.appearance().compactAppearance = appearance
+		UINavigationBar.appearance().scrollEdgeAppearance = appearance
+	}
 }
 
 struct ProfileView_Previews: PreviewProvider {

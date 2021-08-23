@@ -42,13 +42,9 @@ struct step2Pemberi: View {
 			ScrollView(showsIndicators: false){
 				VStack(alignment: .leading) {
 					
-					Button(action: {
-						showModalPilihIdentitas.toggle()
-					}, label: {
-						ButtonBorderedComingSoon(icon: "person.fill", titleButton: "Pilih Identitas").padding(.horizontal)
-					}).sheet(isPresented: $showModalPilihIdentitas, content: {
-						ModalPilihIdentitas(showSheetView: self.$showModalPilihIdentitas)
-					})
+					ButtonBordered(icon: "person.fill", titleButton: "Pilih Identitas") {
+						perjanjianController.modalPilihIdentitas.toggle()
+					}.padding(.horizontal)
 					
 					Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.bottom,7)
                         .padding(.horizontal)
@@ -188,6 +184,11 @@ struct step2Pemberi: View {
                         ])
                     
                 })
+		.sheet(isPresented: $perjanjianController.modalPilihIdentitas, content: {
+			NavigationView {
+				ModalPilihIdentitas(isPresented: $perjanjianController.modalPilihIdentitas)
+			}
+		})
         
 	}
 }
