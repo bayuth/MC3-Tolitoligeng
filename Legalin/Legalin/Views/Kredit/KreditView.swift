@@ -9,7 +9,7 @@ import SwiftUI
 
 struct KreditView: View {
     var bayu = 0
-    @StateObject var kreditData = ListKreditVM()
+    @ObservedObject var kreditData = ListKreditVM()
     @Environment(\.presentationMode) var presentationMode
     @State private var isPresented = false
     
@@ -21,7 +21,9 @@ struct KreditView: View {
                 }else {
                     ScrollView(showsIndicators: false){
                         ForEach(kreditData.list){ item in
-                            KreditCardView(item: $kreditData.list[getIndex(item: item)], lists: $kreditData.list)
+                            KreditCardView(item: $kreditData.list[getIndex(item: item)], lists: $kreditData.list, action: {
+                                kreditData.deleteKredit(index: getIndex(item: item))
+                            })
 
                         }
                     }
@@ -32,7 +34,7 @@ struct KreditView: View {
                                     VStack{
                                         Button(action: {
                                             
-//                                            isPresented.toggle()
+                                            isPresented.toggle()
                                             
                                         })
                                         {
@@ -51,6 +53,10 @@ struct KreditView: View {
         return kreditData.list.firstIndex { (item1) -> Bool in
             return item.id == item1.id
         } ?? 0
+    }
+    
+    func refreshData(){
+        kreditData.fillListDone()
     }
 }
 
