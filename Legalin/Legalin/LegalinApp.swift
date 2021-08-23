@@ -20,10 +20,10 @@ struct LegalinApp: App {
 //            step4Agunan()
 //			ProfileView()
 //            step3Detail()
-            GeneratePDF()
+//            GeneratePDF()
 //			step1Peminjam()
 //            TesNavigation()
-//			MainApplicationPage()
+			MainApplicationPage()
 //            DisclaimerPopUp(shouldShowOnBoarding: .constant(true))
         }
     }

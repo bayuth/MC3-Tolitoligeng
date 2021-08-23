@@ -12,6 +12,9 @@ struct DetailPerjanjian: View {
     
     @State var offset: CGFloat = 0
     var pdfIsEmpty : Bool = false
+    @State var deleteSuccess: Bool = false
+    @Binding var item: Agreements
+    @Binding var lists: [Agreements]
 //    @Binding var item: Agreements
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     @Environment(\.presentationMode) var presentationMode
@@ -69,15 +72,22 @@ struct DetailPerjanjian: View {
                                         
                                     }
                                     Button(action: {
-//                                        perjanjianController.deletePinjaman(pinjaman: detailPerjanjian)
-                                        self.presentationMode.wrappedValue.dismiss()
-                                        
+//                                        print(item.agreementTitle)
+                                        perjanjianController.deletePinjamanDetail(pinjaman: detailPerjanjian)
+                                        self.deleteSuccess = true
+//                                        lists.removeAll{ (item) -> Bool in
+//                                            return self.item.id == item.id
+//                                        }
+                                        print("jalan")
                                     }){
                                         Image(systemName: "trash")
                                             .font(.title3)
                                             .foregroundColor(.white)
                                         
                                     }
+                                    .onChange(of: deleteSuccess, perform: { value in
+                                        self.presentationMode.wrappedValue.dismiss()
+                                    })
                                 }
         )
     }

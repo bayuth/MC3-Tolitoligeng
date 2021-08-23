@@ -480,9 +480,16 @@ class PerjanjianController: ObservableObject {
     func deletePinjaman(pinjaman:Pinjaman){
         if pinjaman != nil{
             coreDataVM.deletePinjaman(pinjaman: pinjaman)
-            mainPageVM.fillAllAgreement()
+//            mainPageVM.fillAllAgreement()
         }
         
+    }
+    
+    func deletePinjamanDetail(pinjaman: Pinjaman){
+        if pinjaman != nil{
+            coreDataVM.deletePinjaman(pinjaman: pinjaman)
+            mainPageVM.fillAllAgreement()
+        }
     }
     
     func setTipeBarangAgunan(selected: String){

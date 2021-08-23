@@ -82,7 +82,7 @@ struct ChoosenSegment: View {
             else if agreementData.listOnGoing.count > 0{
                 ForEach(agreementData.listOnGoing){ item in
                     NavigationLink(
-                        destination: DetailPerjanjian(detailPerjanjian: agreementData.listOnGoing[getIndex(item: item)].pinjaman),
+                        destination: DetailPerjanjian(item: $agreementData.listOnGoing[getIndex(item: item)], lists: $agreementData.listOnGoing, detailPerjanjian: agreementData.listOnGoing[getIndex(item: item)].pinjaman),
                         label: {
                             AgreementCardView(item: $agreementData.listOnGoing[getIndex(item: item)], lists: $agreementData.listOnGoing)
                         })
@@ -100,7 +100,7 @@ struct ChoosenSegment: View {
             else if agreementData.listDone.count > 0{
                 ForEach(agreementData.listDone){ item in
                     NavigationLink(
-                        destination: DetailPerjanjian(detailPerjanjian: agreementData.listDone[getIndex(item: item)].pinjaman),
+                        destination: DetailPerjanjian(item: $agreementData.listDone[getIndex2(item: item)], lists: $agreementData.listDone, detailPerjanjian: agreementData.listDone[getIndex2(item: item)].pinjaman),
                         label: {
                             HistorySegmentedView(item: $agreementData.listDone[getIndex2(item: item)], lists: $agreementData.listDone)
                         })
@@ -116,7 +116,7 @@ struct ChoosenSegment: View {
             else if agreementData.listDraft.count > 0{
                 ForEach(agreementData.listDraft, id:\.id){ item in
                     NavigationLink(
-                        destination: DetailPerjanjian(detailPerjanjian: agreementData.listDraft[getIndex(item: item)].pinjaman),
+                        destination: DetailPerjanjian(item: $agreementData.listDraft[getIndex3(item: item)], lists: $agreementData.listDraft, detailPerjanjian: agreementData.listDraft[getIndex3(item: item)].pinjaman),
                         label: {
                             DraftSegmentedView(item: $agreementData.listDraft[getIndex3(item: item)], lists: $agreementData.listDraft)
                         })

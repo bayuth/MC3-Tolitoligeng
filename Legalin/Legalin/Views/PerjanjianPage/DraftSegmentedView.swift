@@ -87,7 +87,7 @@ struct DraftSegmentedView: View {
         if value.translation.width < 0{
             if -value.translation.width > UIScreen.main.bounds.width/2{
                 item.offset = -1000
-//                deleteItem()
+                deleteItem()
             }
             else if -item.offset > 50{
                 item.isSwiped = true
@@ -106,10 +106,12 @@ struct DraftSegmentedView: View {
     }
     
     func deleteItem() {
+        print(item.agreementTitle)
+        perjanjianController.deletePinjaman(pinjaman: item.pinjaman)
         lists.removeAll{ (item) -> Bool in
             return self.item.id == item.id
         }
-        perjanjianController.deletePinjaman(pinjaman: item.pinjaman)
+        
     }
 }
 
