@@ -24,24 +24,28 @@ struct step3Detail: View {
     @State private var title1 = "Pilih Tanggal"
     @State private var title2 = "Pengadilan Negeri"
     @State private var title3 = "Pilih Tanggal"
+    @State private var modalPkTitle = "Pilih Kredit"
     
-	@State var isDisable:Bool = false
+    @State var isDisable:Bool = false
     @State var showActionSheet = false
     
     //Validation page redirect
     @Binding var step1Redirect: Bool
     @Binding var step2Redirect: Bool
     @State var step3Redirect: Bool = false
-	
+    
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     var tipeAgunan = ["Cicilan", "Kontan"]
+    var rangeDate = [1...28]
     
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateStyle = .medium
         return df
     }()
+    
+    
     @State private var valueDateJatuhTempo = "Pilih tanggal"
     var body: some View {
         
@@ -50,43 +54,40 @@ struct step3Detail: View {
             
             ScrollView(showsIndicators: false){
                 VStack(alignment: .leading){
-                    ButtonBordered(icon: "doc.text", titleButton: "Pilih Kredit (Opsional)")
-                        .padding(.horizontal)
-					FormView(title: "Tujuan Peminjaman", profileValue: $perjanjianController.tujuanPeminjaman, keyboardNum: false, isDisable: $isDisable)
-                    SliderViewWithForm(sliderValue: $perjanjianController.jumlahPinjaman, text1: "Pinjaman Maksimal", text2: "Rp 50000000", title: "Jumlah Pinjaman", type: 0)
+                    ButtonBordered(icon: "doc.text", titleButton: modalPkTitle,action: {
+                        perjanjianController.modalPilihKredit.toggle()
+                    })
+                        .padding()
+                    FormView(title: "Tujuan Peminjaman", profileValue: $perjanjianController.tujuanPeminjaman, keyboardNum: false, isDisable: $isDisable)
+                    SliderViewWithForm(sliderValue: $perjanjianController.jumlahPinjaman, text1: "Pinjaman Maksimal", text2: "Rp 50.000.000", title: "Jumlah Pinjaman", type: 0)
                     SliderViewWithForm(sliderValue: $perjanjianController.bunga, text1: "Bunga Maksimal", text2: "6 % per tahun", title: "Bunga", type: 1)
                     SliderViewWithForm(sliderValue: $perjanjianController.tenor, text1: "Tenor Maksimal", text2: "24 bulan", title: "Tenor", type: 2)
                     
                     InputPicker(title: "Metode Pembayaran", listItem: tipeAgunan, selectedItem: $perjanjianController.metodePembayaran)
                     
                     Divider()
-//                    FormViewWithInfo(title: "Metode Pembayaran", profileValue: $perjanjianController.metodePembayaran, showButton: true, showButtonInfo: false, info: "", buttonTitle: "Detail").padding(.top, 16).onTapGesture {
-//                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
-//                    }
                     VStack{
-                        FormViewWithInfo(title: "Tanggal Jatuh Tempo", profileValue: $perjanjianController.tanggalJatuhTempo, showButton: false, showButtonInfo: true, info: "Hari pembayaran atau batas waktu pembayaran harus dilakukan oleh peminjam dana (debitur) ke pemberi pinjaman (kreditur).", buttonTitle: "").zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/).onTapGesture {
-                            showPickerJatuhTempo.toggle()
-                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
-                        }
-                        if(showPickerJatuhTempo){
-                            DatePicker(
-                                "",
-                                selection: $dateJatuhTempo.onChange(nameChanged),
-                                displayedComponents: [.date]
-                            )
-                            .datePickerStyle(GraphicalDatePickerStyle())
-                        }
+                        InputPicker(title: "Tanggal Jatuh Tempo", listItem: perjanjianController.generateListString(), selectedItem: $perjanjianController.tanggalJatuhTempo)
                         
                         Divider()
                         
                         FormViewWithInfo(title: "Pengadilan Negeri", profileValue: $perjanjianController.pengadilanNegeri, showButton: true, showButtonInfo: true, info: "Pilihan domisili pengadilan negeri untuk upaya hukum penyelesaian perselisihan jika musyawarah tidak berhasil", buttonTitle: "Detail").zIndex(0.9).onTapGesture {
                             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
                         }
-                        FormViewWithInfo(title: "Tanggal Tanda Tangan", profileValue: $perjanjianController.tanggalTandaTangan, showButton: false, showButtonInfo: true, info: "Hari untuk peminjam dana (debitur) dan pemberi pinjaman (kreditur) bersama menandatangani surat perjanjian.", buttonTitle: "").zIndex(0.8)
-                            .onTapGesture {
-                                showPickerTandaTangan.toggle()
-                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
-                            }
+                        if Calendar.current.isDateInToday(dateJatuhTempo) {
+                            FormViewWithInfo(title: "Tanggal Tanda Tangan", profileValue: $perjanjianController.tanggalTandaTangan, showButton: false, showButtonInfo: true, info: "Hari untuk peminjam dana (debitur) dan pemberi pinjaman (kreditur) bersama menandatangani surat perjanjian.", buttonTitle: "").zIndex(0.8)
+                                .onTapGesture {
+                                    showPickerTandaTangan.toggle()
+                                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
+                                }
+                            
+                        }else{
+                            FormViewWithInfo(title: "Tanggal Tanda Tangan", profileValue: $perjanjianController.tanggalTandaTangan, showButton: false, showButtonInfo: true, info: "Hari untuk peminjam dana (debitur) dan pemberi pinjaman (kreditur) bersama menandatangani surat perjanjian.", buttonTitle: "").zIndex(0.8)
+                                .onTapGesture {
+                                    showPickerTandaTangan.toggle()
+                                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
+                                }
+                        }
                         if(showPickerTandaTangan){
                             DatePicker(
                                 "",
@@ -96,10 +97,9 @@ struct step3Detail: View {
                             .datePickerStyle(GraphicalDatePickerStyle())
                         }
                     }
-                    ButtonBordered(icon: "percent", titleButton: "Lihat Simulasi Kredit")
-                        .padding(.horizontal)
-                    
-                    
+                    ButtonBordered(icon: "percent", titleButton: "Lihat Simulasi Kredit", action: {
+                        perjanjianController.modalSimulasiKredit.toggle()
+                    }).padding([.top, .leading])
                     NavigationLink(
                         destination: step4Agunan(masterPresentationMode4 : _masterPresentationMode3 ,step1Redirect: $step1Redirect ,step2Redirect: $step2Redirect, step3Redirect: $step3Redirect),isActive: $step3Redirect,
                         label: {
@@ -140,16 +140,26 @@ struct step3Detail: View {
                     ])
                 
             })
+            .sheet(isPresented: $perjanjianController.modalPilihKredit)
+            {
+                NavigationView{
+                    ModalPilihKredit(isPresented: $perjanjianController.modalPilihKredit)
+                }
+            }
+            .sheet(isPresented: $perjanjianController.modalSimulasiKredit)
+            {
+                NavigationView{
+                    ModalSimulasiKredit(isPresented: $perjanjianController.modalSimulasiKredit, object: ItemListKredit( kreditTitle: perjanjianController.tujuanPeminjaman, tenor: perjanjianController.tenor, bunga: perjanjianController.bunga, jumlahPinjaman: perjanjianController.jumlahPinjaman, cicilanPerbulan: 0, offset: 0.0, isSwiped: false))
+                }
+            }
         }
         
     }
     func nameChanged(to value: Date) {
-        showPickerJatuhTempo.toggle()
         perjanjianController.tanggalJatuhTempo = dateFormatter.string(from: value)
     }
     
     func tandaTanganChanged(to value: Date) {
-        showPickerTandaTangan.toggle()
         perjanjianController.tanggalTandaTangan = dateFormatter.string(from: value)
     }
 }

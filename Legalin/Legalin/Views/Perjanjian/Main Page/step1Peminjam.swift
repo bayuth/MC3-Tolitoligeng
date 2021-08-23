@@ -41,13 +41,14 @@ struct step1Peminjam: View {
 							
                             VStack(alignment: .leading){
 							Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))) .padding(.bottom,7)
-								if (perjanjianController.pihak1NIK != "" || perjanjianController.pihak1Nama != "" || perjanjianController.pihak1Alamat != "" || !Calendar.current.isDateInToday(perjanjianController.pihak1TanggalLahir) || perjanjianController.pihak1RT != "" || perjanjianController.pihak1RW != "" || perjanjianController.pihak1Kelurahan != "" || perjanjianController.pihak1Kecamatan != "" || perjanjianController.pihak1Kota != "" || perjanjianController.pihak1Provinsi != "") {
+								if (perjanjianController.pihak1IsOpenCam == true) {
 									Button(action: {
 										if cameraManager.permissionGranted {
 											trimKtp.showScannerSheet = true
 										} else {
 											cameraManager.requestPermission()
 										}
+										perjanjianController.pihak1IsOpenCam = false
 										
 									}, label: {
 										Text("Ambil Ulang Gambar KTP \(Image(systemName: "checkmark.rectangle.fill"))").fontWeight(.regular) .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))

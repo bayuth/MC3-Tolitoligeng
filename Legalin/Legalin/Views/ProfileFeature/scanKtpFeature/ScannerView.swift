@@ -11,12 +11,13 @@ import Vision
 import AVFoundation
 
 class CameraManager: ObservableObject {
-	@Published var permissionGranted = false
+	@Published var permissionGranted = UserDefaults.standard.bool(forKey: "PermissionCamera")
 	
 	func requestPermission() {
 		AVCaptureDevice.requestAccess(for: .video, completionHandler: {accessGranted in
 			DispatchQueue.main.async {
 				self.permissionGranted = accessGranted
+				UserDefaults.standard.set(self.permissionGranted, forKey: "PermissionCamera")
 			}
 		})
 	}

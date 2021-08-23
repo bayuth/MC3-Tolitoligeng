@@ -35,13 +35,19 @@ extension Color {
         }
 }
 
+
 extension View {
  
     func navigationBarColor(_ backgroundColor: UIColor?) -> some View {
         self.modifier(NavigationBarModifier(backgroundColor: backgroundColor))
     }
+    
+    func endEditing() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
 
 }
+
 
 extension Binding {
     func onChange(_ handler: @escaping (Value) -> Void) -> Binding<Value> {
@@ -52,5 +58,14 @@ extension Binding {
                 handler(newValue)
             }
         )
+    }
+}
+
+extension Double {
+    func toRupiahString() -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = Locale(identifier: "id_ID")
+        return formatter.string(from: NSNumber(value: self))!
     }
 }
