@@ -42,22 +42,13 @@ struct step2Pemberi: View {
 			ScrollView(showsIndicators: false){
 				VStack(alignment: .leading) {
 					
-//					NavigationLink(
-//						destination: ModalPilihIdentitas(),
-//						label: {
-//							ButtonBorderedComingSoon(icon: "person.fill", titleButton: "Pilih Identitas").padding(.horizontal)
-//						}).padding(.horizontal)
 					Button(action: {
 						showModalPilihIdentitas.toggle()
 					}, label: {
 						ButtonBorderedComingSoon(icon: "person.fill", titleButton: "Pilih Identitas").padding(.horizontal)
 					}).sheet(isPresented: $showModalPilihIdentitas, content: {
-						ModalPilihIdentitas()
+						ModalPilihIdentitas(showSheetView: self.$showModalPilihIdentitas)
 					})
-//					ButtonBorderedComingSoon(icon: "person.fill", titleButton: "Pilih Identitas").padding(.horizontal)
-//						.sheet(isPresented: $showModalPilihIdentitas, content: {
-//							ModalPilihIdentitas()
-//						})
 					
 					Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.bottom,7)
                         .padding(.horizontal)
@@ -146,7 +137,7 @@ struct step2Pemberi: View {
 							Text("Pastikan semua data yang anda masukan sudah benar dan sesuai dengan KTP dan dokumen anda")
 								.font(.caption2)
 								.fontWeight(.regular)
-								.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+								.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 								.multilineTextAlignment(.leading)
 								.padding(.bottom,10)
                                 .padding(.horizontal)
