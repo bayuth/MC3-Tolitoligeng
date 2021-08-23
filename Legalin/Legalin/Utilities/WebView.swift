@@ -14,7 +14,6 @@
     
     func updateUIView(_ uiView: WKWebView, context: Context) {
         
-//        let invoiceHTML = invoiceComposer.renderInvoice(nama1: nama1, nama2: nama2)
         let invoiceHTML = invoiceComposer.renderInvoice()
     
         uiView.loadHTMLString(invoiceHTML!, baseURL: nil)
