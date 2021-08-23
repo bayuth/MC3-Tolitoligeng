@@ -61,7 +61,6 @@
 		5CE3F8ED26CBFC8400569C67 /* PengaturanPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE3F8EC26CBFC8400569C67 /* PengaturanPage.swift */; };
 		5CE3F8EF26CBFD6B00569C67 /* ButtonKebijakanPrivasi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE3F8EE26CBFD6B00569C67 /* ButtonKebijakanPrivasi.swift */; };
 		5CE3F8F126CBFFB500569C67 /* KebijakanPrivasiPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE3F8F026CBFFB500569C67 /* KebijakanPrivasiPage.swift */; };
-		5E19B84B26C13B9E0071F7E7 /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 5E19B84A26C13B9E0071F7E7 /* template.html */; };
 		5E26F53D26BFA61900F51C6E /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E26F53C26BFA61900F51C6E /* WebView.swift */; };
 		5E27EEF126BA56880090573F /* pageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E27EEF026BA56880090573F /* pageIndicator.swift */; };
 		5E27EEF526BA8ADA0090573F /* step1Peminjam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E27EEF426BA8ADA0090573F /* step1Peminjam.swift */; };
@@ -78,7 +77,6 @@
 		5E375CE826BD340500DF834D /* popOverContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E375CE726BD340500DF834D /* popOverContent.swift */; };
 		5E375CEC26BE583700DF834D /* loadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E375CEB26BE583700DF834D /* loadingScreen.swift */; };
 		5E375CEF26BE584300DF834D /* generatePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E375CEE26BE584300DF834D /* generatePDF.swift */; };
-		5E375CF326BE663B00DF834D /* templateSurat.html in Resources */ = {isa = PBXBuildFile; fileRef = 5E375CF226BE663B00DF834D /* templateSurat.html */; };
 		5E375CF826BEB14E00DF834D /* GeneratePDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E375CF726BEB14E00DF834D /* GeneratePDFViewController.swift */; };
 		5E375CFB26BEB47200DF834D /* InvoiceComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E375CFA26BEB47200DF834D /* InvoiceComposer.swift */; };
 		5E375CFE26BEB48800DF834D /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E375CFD26BEB48800DF834D /* PreviewViewController.swift */; };
@@ -93,6 +91,12 @@
 		5E9C410C26BB8DBF002AECCC /* inputTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C410B26BB8DBF002AECCC /* inputTextViewCell.swift */; };
 		5E9C410F26BB9C70002AECCC /* inputToModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C410E26BB9C70002AECCC /* inputToModal.swift */; };
 		5E9C411226BBCDB7002AECCC /* perjanjianViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C411126BBCDB7002AECCC /* perjanjianViewController.swift */; };
+		5EA4AF6F26D38713009D3400 /* suratTanpaAgunanCicilan.html in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4AF6926D38713009D3400 /* suratTanpaAgunanCicilan.html */; };
+		5EA4AF7026D38713009D3400 /* suratTanpaAgunanKontan.html in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4AF6A26D38713009D3400 /* suratTanpaAgunanKontan.html */; };
+		5EA4AF7126D38713009D3400 /* suratElektronikKontan.html in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4AF6B26D38713009D3400 /* suratElektronikKontan.html */; };
+		5EA4AF7226D38713009D3400 /* suratNonElektronikCicilan.html in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4AF6C26D38713009D3400 /* suratNonElektronikCicilan.html */; };
+		5EA4AF7326D38713009D3400 /* suratElektronikCicilan.html in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4AF6D26D38713009D3400 /* suratElektronikCicilan.html */; };
+		5EA4AF7426D38713009D3400 /* suratNonElektronikKontan.html in Resources */ = {isa = PBXBuildFile; fileRef = 5EA4AF6E26D38713009D3400 /* suratNonElektronikKontan.html */; };
 		5EBDDDC926B2E83900F53958 /* Legalin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDDDC726B2E83900F53958 /* Legalin.xcdatamodeld */; };
 		5EBDDDD426B3B69900F53958 /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDDDD326B3B69900F53958 /* CoreDataViewModel.swift */; };
 		5EBDDDD726B4170500F53958 /* TestCoreDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDDDD626B4170500F53958 /* TestCoreDataView.swift */; };
@@ -169,7 +173,6 @@
 		5CE3F8EC26CBFC8400569C67 /* PengaturanPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PengaturanPage.swift; sourceTree = "<group>"; };
 		5CE3F8EE26CBFD6B00569C67 /* ButtonKebijakanPrivasi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonKebijakanPrivasi.swift; sourceTree = "<group>"; };
 		5CE3F8F026CBFFB500569C67 /* KebijakanPrivasiPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KebijakanPrivasiPage.swift; sourceTree = "<group>"; };
-		5E19B84A26C13B9E0071F7E7 /* template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template.html; sourceTree = "<group>"; };
 		5E26F53C26BFA61900F51C6E /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		5E27EEF026BA56880090573F /* pageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pageIndicator.swift; sourceTree = "<group>"; };
 		5E27EEF426BA8ADA0090573F /* step1Peminjam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = step1Peminjam.swift; sourceTree = "<group>"; };
@@ -186,7 +189,6 @@
 		5E375CE726BD340500DF834D /* popOverContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = popOverContent.swift; sourceTree = "<group>"; };
 		5E375CEB26BE583700DF834D /* loadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingScreen.swift; sourceTree = "<group>"; };
 		5E375CEE26BE584300DF834D /* generatePDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = generatePDF.swift; sourceTree = "<group>"; };
-		5E375CF226BE663B00DF834D /* templateSurat.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = templateSurat.html; sourceTree = "<group>"; };
 		5E375CF726BEB14E00DF834D /* GeneratePDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePDFViewController.swift; sourceTree = "<group>"; };
 		5E375CFA26BEB47200DF834D /* InvoiceComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvoiceComposer.swift; sourceTree = "<group>"; };
 		5E375CFD26BEB48800DF834D /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +202,12 @@
 		5E9C410B26BB8DBF002AECCC /* inputTextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inputTextViewCell.swift; sourceTree = "<group>"; };
 		5E9C410E26BB9C70002AECCC /* inputToModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inputToModal.swift; sourceTree = "<group>"; };
 		5E9C411126BBCDB7002AECCC /* perjanjianViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = perjanjianViewController.swift; sourceTree = "<group>"; };
+		5EA4AF6926D38713009D3400 /* suratTanpaAgunanCicilan.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = suratTanpaAgunanCicilan.html; sourceTree = "<group>"; };
+		5EA4AF6A26D38713009D3400 /* suratTanpaAgunanKontan.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = suratTanpaAgunanKontan.html; sourceTree = "<group>"; };
+		5EA4AF6B26D38713009D3400 /* suratElektronikKontan.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = suratElektronikKontan.html; sourceTree = "<group>"; };
+		5EA4AF6C26D38713009D3400 /* suratNonElektronikCicilan.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = suratNonElektronikCicilan.html; sourceTree = "<group>"; };
+		5EA4AF6D26D38713009D3400 /* suratElektronikCicilan.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = suratElektronikCicilan.html; sourceTree = "<group>"; };
+		5EA4AF6E26D38713009D3400 /* suratNonElektronikKontan.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = suratNonElektronikKontan.html; sourceTree = "<group>"; };
 		5EBDDDC826B2E83900F53958 /* Legalin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Legalin.xcdatamodel; sourceTree = "<group>"; };
 		5EBDDDD326B3B69900F53958 /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
 		5EBDDDD626B4170500F53958 /* TestCoreDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataView.swift; sourceTree = "<group>"; };
@@ -347,11 +355,15 @@
 			isa = PBXGroup;
 			children = (
 				4AD8840526BAEC7200C5A6F5 /* SpecificCornerRadius.swift */,
-				5E375CFA26BEB47200DF834D /* InvoiceComposer.swift */,
 				5E375CFD26BEB48800DF834D /* PreviewViewController.swift */,
-				5E375CF226BE663B00DF834D /* templateSurat.html */,
-				5E19B84A26C13B9E0071F7E7 /* template.html */,
+				5E375CFA26BEB47200DF834D /* InvoiceComposer.swift */,
 				5E26F53C26BFA61900F51C6E /* WebView.swift */,
+				5EA4AF6D26D38713009D3400 /* suratElektronikCicilan.html */,
+				5EA4AF6B26D38713009D3400 /* suratElektronikKontan.html */,
+				5EA4AF6C26D38713009D3400 /* suratNonElektronikCicilan.html */,
+				5EA4AF6E26D38713009D3400 /* suratNonElektronikKontan.html */,
+				5EA4AF6926D38713009D3400 /* suratTanpaAgunanCicilan.html */,
+				5EA4AF6A26D38713009D3400 /* suratTanpaAgunanKontan.html */,
 				4AE3656626BFD18B00C1653A /* SliderView.swift */,
 				4A8FC94826C030A200E3917A /* SliderViewWithForm.swift */,
 				5E35F37D26B844310044D1FC /* Read JSON */,
@@ -604,11 +616,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E375CF326BE663B00DF834D /* templateSurat.html in Resources */,
+				5EA4AF7326D38713009D3400 /* suratElektronikCicilan.html in Resources */,
+				5EA4AF6F26D38713009D3400 /* suratTanpaAgunanCicilan.html in Resources */,
 				4AC4CA9426B25D1300340A00 /* Preview Assets.xcassets in Resources */,
-				5E19B84B26C13B9E0071F7E7 /* template.html in Resources */,
+				5EA4AF7226D38713009D3400 /* suratNonElektronikCicilan.html in Resources */,
 				4AC4CA9126B25D1300340A00 /* Assets.xcassets in Resources */,
+				5EA4AF7026D38713009D3400 /* suratTanpaAgunanKontan.html in Resources */,
+				5EA4AF7426D38713009D3400 /* suratNonElektronikKontan.html in Resources */,
 				5E35F37726B83BDC0044D1FC /* regions.json in Resources */,
+				5EA4AF7126D38713009D3400 /* suratElektronikKontan.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
