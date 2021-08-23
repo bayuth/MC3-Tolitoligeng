@@ -39,7 +39,7 @@ class PreviewViewController: UIViewController, WKNavigationDelegate{
     func createInvoiceAsHTML() {
         invoiceComposer = InvoiceComposer()
         
-        let invoiceHTML = invoiceComposer.renderInvoice(nama1: nama1, nama2: nama2)
+        let invoiceHTML = invoiceComposer.renderInvoice()
     
         webView.loadHTMLString(invoiceHTML!, baseURL: nil)
         

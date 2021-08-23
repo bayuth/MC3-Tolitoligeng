@@ -18,6 +18,7 @@ struct PerjanjianPage: View {
     @StateObject var agreementData: PerjanjianViewModel = .shared
     @State var offset: CGSize = .zero
     @ObservedObject var perjanjianController: PerjanjianController = .shared
+    @ObservedObject var coreDataVM: CoreDataViewModel = .shared
     
     var body: some View {
         NavigationView{

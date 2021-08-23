@@ -9,23 +9,46 @@ import UIKit
 
 class InvoiceComposer: NSObject {
     
-    let pathToHTMLTemplate = Bundle.main.path(forResource: "template", ofType: "html")
+    let pathToHTMLTemplate = Bundle.main.path(forResource: "surat1", ofType: "html")
     
-    var nama1: String!
-    var nama2: String!
+    var nama1: String = ""
+    var nama2: String = ""
+    
+    var hari: String = "Jumat"
+    var tanggal: String = "25 Januari 2021"
+    
+    var namaPihak1: String = "Mustika Ratu Cerah Jahanam"
+    var umurPihak1: String = "999 tahun"
+    var pekerjaanPihak1: String = "Inpluenser"
+    var NIKPihak1: String = "022 40221"
+    var alamatPihak1: String = "Jalan Kalimantan Timur no 27, Sumatera Barat, Indonesia, Semesta yang sangat luar biasa indah wonderful Indonesi"
+    var teleponPihak1: String = "089644444444"
+    
+    var pinjamanAngka: String = "LIMA MILIAR LIMA RATUS LIMA PULUH LIMA JUTA RUPIAH"
     
     override init() {
         super.init()
     }
     
-    func renderInvoice(nama1: String? = "", nama2: String? = "") -> String! {
+    func renderInvoice(
+//        nama1: String, nama2: String
+    ) -> String? {
         
         do{
             var HTMLContent = try String(contentsOfFile: pathToHTMLTemplate!)
             
-//            HTMLContent = HTMLContent.replacingOccurrences(of: "#nama1#", with: nama1!)
-//
-//            HTMLContent = HTMLContent.replacingOccurrences(of: "#nama2#", with: nama2!)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#HARI#", with: hari)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#TANGGAL#", with: tanggal)
+
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#NAMA_PIHAK_1#", with: namaPihak1)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#UMUR_PIHAK_1#", with: umurPihak1)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#PEKERJAAN_PIHAK_1#", with: pekerjaanPihak1)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#KTP_PIHAK_1#", with: NIKPihak1)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#ALAMAT_PIHAK_1#", with: alamatPihak1)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#TELP_PIHAK_1#", with: teleponPihak1)
+            
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#TELP_PIHAK_1#", with: teleponPihak1)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#PINJAMAN_ANGKA#", with: pinjamanAngka)
             
             return HTMLContent
         }

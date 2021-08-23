@@ -360,9 +360,9 @@ class PerjanjianController: ObservableObject {
         pihak1Provinsi = provinsi
     }
     
-    func updatePihak1NonKTP( pekerjaan: String ,nomorHP: String){
-        pihak1Pekerjaan = pekerjaan ?? ""
-        pihak1NomorHP = nomorHP ?? ""
+    func updatePihak1NonKTP(pekerjaan: String ,nomorHP: String){
+        pihak1Pekerjaan = pekerjaan
+        pihak1NomorHP = nomorHP
     }
     
     func updatePihak2KTP(nik: String, nama: String, tanggalLahir: Date, alamat: String, RT:String, RW: String, kelurahan: String, kecamatan: String, kota: String, provinsi: String){
@@ -406,7 +406,7 @@ class PerjanjianController: ObservableObject {
         //Update agunan atribut
         coreDataVM.updateAgunan(agunan: newPinjaman.agunan!, nama: namaBarang, harga: hargaBarang, nomorSeri: nomorSeri, tipeBarang: tipeBarangAgunan, warna: warnaBarang)
         
-        mainPageVM.fillAllAgreement()
+//        mainPageVM.fillAllAgreement()
     }
     
     func setTipeBarangAgunan(selected: String){
