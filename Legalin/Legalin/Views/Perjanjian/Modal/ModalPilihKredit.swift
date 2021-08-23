@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct ModalPilihKredit: View {
-    @State var dataDetail: RegionData!
-    var kotaCount: Int!
     @Binding var isPresented: Bool
-    @Binding var pengadilanNegeri: String
     @StateObject var vc = PengadilanDetailController()
     @StateObject var vcKredit = ListKreditVM()
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -29,9 +27,12 @@ struct ModalPilihKredit: View {
                     KreditChecklistCell(title: vcKredit.list[item].kreditTitle, rupiah: vcKredit.list[item].jumlahPinjaman, selected: getSelectedStatus(listSelected: vc.listSelected, index: item), mainNav: false, index: item)
                         .onTapGesture {
                             vc.toggleView(index: item)
-//                            vc.setSelectedPengadilan(selected: dataDetail.kota[item])
+                            let selectedKredit = vcKredit.list[item]
+                            perjanjianController.tujuanPeminjaman = selectedKredit.kreditTitle
+                            perjanjianController.jumlahPinjaman = selectedKredit.jumlahPinjaman
+                            perjanjianController.bunga = selectedKredit.bunga
+                            perjanjianController.tenor = selectedKredit.tenor
                         }
-
                 }
             }.navigationBarTitle("Pilih Kredit", displayMode: .inline)
             .accentColor(.red)
@@ -54,7 +55,6 @@ struct ModalPilihKredit: View {
                 Text("Done")
                     .foregroundColor(.white)
                     .onTapGesture {
-                        pengadilanNegeri = vc.selectedPengadilan
                         isPresented = false
                     }
             }
@@ -62,12 +62,4 @@ struct ModalPilihKredit: View {
         
     }
     
-}
-
-func getSelectedKredit(listSelected: [Bool], index: Int) -> Bool {
-    if (listSelected.count == 0){
-        return false
-    } else {
-        return listSelected[index]
-    }
 }

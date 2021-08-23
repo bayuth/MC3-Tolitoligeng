@@ -22,7 +22,7 @@ struct KreditChecklistCell: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .strokeBorder(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)), lineWidth: selected ? 1.5 : 0)
-                        .frame(width: UIScreen.main.bounds.width - 30, height: 54, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).animation(.easeIn(duration: 0.2)))
+                        .frame(width: UIScreen.main.bounds.width - 30, height: 76, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).animation(.easeIn(duration: 0.2)))
 
             VStack(alignment: .leading, spacing: 10, content: {
                 

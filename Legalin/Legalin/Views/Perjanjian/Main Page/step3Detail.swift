@@ -141,7 +141,7 @@ struct step3Detail: View {
             .sheet(isPresented: $perjanjianController.modalPilihKredit)
             {
                 NavigationView{
-                    ModalPilihKredit(isPresented: $perjanjianController.modalPilihKredit, pengadilanNegeri: $modalPkTitle)
+                    ModalPilihKredit(isPresented: $perjanjianController.modalPilihKredit)
                 }
             }
         }
