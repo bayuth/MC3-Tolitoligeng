@@ -148,6 +148,6 @@ struct SignBtn: View{
 
 struct PdfAction_Previews: PreviewProvider {
     static var previews: some View {
-        PdfAction(hideSwitch: false)
+        PdfAction(hideSwitch: true)
     }
 }

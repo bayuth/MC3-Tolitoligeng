@@ -42,7 +42,7 @@ class PerjanjianViewModel: ObservableObject {
         let dateFormatting = DateFormatter()
         dateFormatting.dateFormat = "dd/MM/YYYY"
         
-        listDraft = []
+        listDraft.removeAll()
         for item in listPinjamanDraft{
             listDraft.append(Agreements(agreementTitle: getTujuan(tujuan: item.tujuan ?? ""), amountOfLoan: formatter.string(from: NSNumber(value: item.kredit?.jumlahPinjaman ?? 0)) ?? "", Date: dateFormatting.string(from: item.dateModified ?? Date()), lenderName: item.pihak2?.ktp?.nama ?? "", signStatus: false, offset: 0, isSwiped: false, pinjaman: item))
         }

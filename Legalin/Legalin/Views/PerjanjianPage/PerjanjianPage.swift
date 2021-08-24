@@ -52,21 +52,15 @@ struct PerjanjianPage: View {
     
     
 }
-
-//func getIndex(item: Agreements, items: PerjanjianViewModel)->Int{
-//    return items.list.firstIndex { (item1) -> Bool in
-//        return item.id == item1.id
-//        print(item1.id)
-//    } ?? 0
-//}
-
 enum AgreementSegment:String, CaseIterable{
     case onGoing = "Berlangsung"
     case history = "Riwayat"
-    case daft = "Draf"
+    case draft = "Draft"
 }
 
 struct ChoosenSegment: View {
+    @Environment(\.presentationMode) var presentationMode
+    @State private var isPresented = false
     var selectedSegment: AgreementSegment
     @StateObject var agreementData: PerjanjianViewModel = .shared
     @State private var location: CGPoint = CGPoint(x: 0, y: 0)
@@ -81,13 +75,18 @@ struct ChoosenSegment: View {
             }
             else if agreementData.listOnGoing.count > 0{
                 ForEach(agreementData.listOnGoing){ item in
-                    NavigationLink(
-                        destination: DetailPerjanjian(detailPerjanjian: agreementData.listOnGoing[getIndex(item: item)].pinjaman),
-                        label: {
-                            AgreementCardView(item: $agreementData.listOnGoing[getIndex(item: item)], lists: $agreementData.listOnGoing)
-                        })
-                        .foregroundColor(.black)
-                        .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listOnGoing[getIndex(item: item)].pinjaman)})
+                    if item.offset != -160{
+                        NavigationLink(
+                            destination: DetailPerjanjian(detailPerjanjian: agreementData.listOnGoing[getIndex(item: item)].pinjaman),
+                            label: {
+                                AgreementCardView(item: $agreementData.listOnGoing[getIndex(item: item)], lists: $agreementData.listOnGoing)
+                            })
+                            .foregroundColor(.black)
+                            .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listOnGoing[getIndex(item: item)].pinjaman)})
+                    }
+                    else{
+                        AgreementCardView(item: $agreementData.listOnGoing[getIndex(item: item)], lists: $agreementData.listOnGoing)
+                    }
                     
                 }
             }
@@ -99,39 +98,42 @@ struct ChoosenSegment: View {
             }
             else if agreementData.listDone.count > 0{
                 ForEach(agreementData.listDone){ item in
-                    NavigationLink(
-                        destination: DetailPerjanjian(detailPerjanjian: agreementData.listDone[getIndex(item: item)].pinjaman),
-                        label: {
-                            HistorySegmentedView(item: $agreementData.listDone[getIndex2(item: item)], lists: $agreementData.listDone)
-                        })
-                        .foregroundColor(.black)
-                        .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listDone[getIndex2(item: item)].pinjaman)})
+                    if item.offset != -160{
+                        NavigationLink(
+                            destination: DetailPerjanjian(detailPerjanjian: agreementData.listDone[getIndex2(item: item)].pinjaman),
+                            label: {
+                                HistorySegmentedView(item: $agreementData.listDone[getIndex2(item: item)], lists: $agreementData.listDone)
+                            })
+                            .foregroundColor(.black)
+                            .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listDone[getIndex2(item: item)].pinjaman)})
+                    }
+                    else{
+                        HistorySegmentedView(item: $agreementData.listDone[getIndex2(item: item)], lists: $agreementData.listDone)
+                    }
                 }
                 
             }
-        case .daft:
-            if agreementData.listDraft.isEmpty {
+        case .draft:
+            if agreementData.listDraft.count == 0 {
                 EmptyStatePerjanjian()
             }
-            else if agreementData.listDraft.count > 0{
+            else{
                 ForEach(agreementData.listDraft, id:\.id){ item in
-                    NavigationLink(
-                        destination: DetailPerjanjian(detailPerjanjian: agreementData.listDraft[getIndex(item: item)].pinjaman),
-                        label: {
-                            DraftSegmentedView(item: $agreementData.listDraft[getIndex3(item: item)], lists: $agreementData.listDraft)
-                        })
-                        .foregroundColor(.black)
-                        .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listDraft[getIndex3(item: item)].pinjaman)})
+                    if item.offset != -160{
+                        NavigationLink(
+                            destination: DetailPerjanjian(detailPerjanjian: agreementData.listDraft[getIndex3(item: item)].pinjaman),
+                            label: {
+                                DraftSegmentedView(item: $agreementData.listDraft[getIndex3(item: item)], lists: $agreementData.listDraft)
+                            })
+                            .foregroundColor(.black)
+                            .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listDraft[getIndex3(item: item)].pinjaman)})
+                    }
+                    else{
+                        DraftSegmentedView(item: $agreementData.listDraft[getIndex3(item: item)], lists: $agreementData.listDraft)
+                    }
                 }
-                
             }
         }
-    }
-    var simpleDrag: some Gesture{
-        DragGesture()
-            .onChanged{ value in
-                self.location = value.location
-            }
     }
     
     func getIndex(item: Agreements)->Int{

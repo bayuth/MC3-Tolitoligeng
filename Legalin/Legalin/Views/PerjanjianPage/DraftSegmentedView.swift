@@ -106,10 +106,11 @@ struct DraftSegmentedView: View {
     }
     
     func deleteItem() {
+        print(item.agreementTitle)
+        perjanjianController.deletePinjaman(pinjaman: item.pinjaman)
         lists.removeAll{ (item) -> Bool in
             return self.item.id == item.id
         }
-        perjanjianController.deletePinjaman(pinjaman: item.pinjaman)
     }
 }
 
