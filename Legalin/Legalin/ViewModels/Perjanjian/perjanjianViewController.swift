@@ -411,8 +411,14 @@ class PerjanjianController: ObservableObject {
         return result
     }
     
+	func setPihak1OpenCamToFalse(isOpenCam:Bool){
+		pihak1IsOpenCam = isOpenCam
+	}
     
-    
+	func setPihak2OpenCamToFalse(isOpenCam:Bool){
+		pihak2IsOpenCam = isOpenCam
+	}
+	
 	func updatePihak1KTP(nik: String, nama: String, tanggalLahir: Date, alamat: String, RT:String, RW: String, kelurahan: String, kecamatan: String, kota: String, provinsi: String, isOpenCam:Bool){
         
         pihak1NIK = nik
@@ -427,7 +433,7 @@ class PerjanjianController: ObservableObject {
         pihak1Provinsi = provinsi
 		pihak1IsOpenCam = isOpenCam
     }
-    
+	
     func updatePihak1NonKTP( pekerjaan: String ,nomorHP: String){
         pihak1Pekerjaan = pekerjaan ?? ""
         pihak1NomorHP = nomorHP ?? ""

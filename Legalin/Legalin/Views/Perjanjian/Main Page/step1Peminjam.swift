@@ -48,7 +48,6 @@ struct step1Peminjam: View {
 										} else {
 											cameraManager.requestPermission()
 										}
-										perjanjianController.pihak1IsOpenCam = false
 										
 									}, label: {
 										Text("Ambil Ulang Gambar KTP \(Image(systemName: "checkmark.rectangle.fill"))").fontWeight(.regular) .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
@@ -110,8 +109,11 @@ struct step1Peminjam: View {
 										.padding(.horizontal)
 								}
 								VStack {
-									FormView(title: "Alamat", profileValue: $perjanjianController.pihak1Alamat, keyboardNum: false, isDisable: $isDisable)
-									TextEditor(text: $perjanjianController.pihak1Alamat).foregroundColor(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)))
+//									FormView(title: "Alamat", profileValue: $perjanjianController.pihak1Alamat, keyboardNum: false, isDisable: $isDisable)
+//									TextEditor(text: $perjanjianController.pihak1Alamat)
+//										.foregroundColor(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)))
+//										.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+									MultiLineFormView(alamat: $perjanjianController.pihak1Alamat)
 								}
 								HStack {
 									FormView(title: "RT", profileValue: $perjanjianController.pihak1RT, keyboardNum: true, isDisable: $isDisable)
@@ -159,10 +161,14 @@ struct step1Peminjam: View {
 					title: Text("Entri data perjanjian belum lengkap"),
 					buttons: [
 						.default(Text("Simpan")) {
+							perjanjianController.setPihak1OpenCamToFalse(isOpenCam: false)
+							perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
 							perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
 							self.presentationMode.wrappedValue.dismiss()
 						},
 						.destructive(Text("Hapus")) {
+							perjanjianController.setPihak1OpenCamToFalse(isOpenCam: false)
+							perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
 							self.presentationMode.wrappedValue.dismiss()
 						},
 						.cancel(Text("Batalkan"))

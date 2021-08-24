@@ -132,10 +132,14 @@ struct step3Detail: View {
                     title: Text("Entri data perjanjian belum lengkap"),
                     buttons: [
                         .default(Text("Simpan")) {
+							perjanjianController.setPihak1OpenCamToFalse(isOpenCam: false)
+							perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
                             perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
                             self.masterPresentationMode3.wrappedValue.dismiss()
                         },
                         .destructive(Text("Hapus")) {
+							perjanjianController.setPihak1OpenCamToFalse(isOpenCam: false)
+							perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
                             self.masterPresentationMode3.wrappedValue.dismiss()
                         },
                         .cancel(Text("Batalkan"))

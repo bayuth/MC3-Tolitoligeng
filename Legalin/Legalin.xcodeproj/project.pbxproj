@@ -59,6 +59,7 @@
 		5C8F9CFB26BCF69400CE994B /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F9CF926BCF69400CE994B /* FormView.swift */; };
 		5C8F9CFC26BCF69400CE994B /* extractKtpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F9CFA26BCF69400CE994B /* extractKtpInfo.swift */; };
 		5C8F9CFE26BCF6A700CE994B /* profileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F9CFD26BCF6A700CE994B /* profileData.swift */; };
+		5CB10D4026D4AEF100C8D6C1 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB10D3F26D4AEF100C8D6C1 /* DatePickerView.swift */; };
 		5CC4E12726C3FD6600A7042A /* ButtonBorderedComingSoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC4E12626C3FD6600A7042A /* ButtonBorderedComingSoon.swift */; };
 		5CE26EBC26D36F1E00706AAA /* IdentitasCheckList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE26EBB26D36F1E00706AAA /* IdentitasCheckList.swift */; };
 		5CE3F8ED26CBFC8400569C67 /* PengaturanPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE3F8EC26CBFC8400569C67 /* PengaturanPage.swift */; };
@@ -174,6 +175,7 @@
 		5C8F9CF926BCF69400CE994B /* FormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		5C8F9CFA26BCF69400CE994B /* extractKtpInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extractKtpInfo.swift; sourceTree = "<group>"; };
 		5C8F9CFD26BCF6A700CE994B /* profileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileData.swift; sourceTree = "<group>"; };
+		5CB10D3F26D4AEF100C8D6C1 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		5CC4E12626C3FD6600A7042A /* ButtonBorderedComingSoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonBorderedComingSoon.swift; sourceTree = "<group>"; };
 		5CE26EBB26D36F1E00706AAA /* IdentitasCheckList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentitasCheckList.swift; sourceTree = "<group>"; };
 		5CE3F8EC26CBFC8400569C67 /* PengaturanPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PengaturanPage.swift; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 			isa = PBXGroup;
 			children = (
 				5C8F9CF926BCF69400CE994B /* FormView.swift */,
+				5CB10D3F26D4AEF100C8D6C1 /* DatePickerView.swift */,
 			);
 			path = ProfileViewModel;
 			sourceTree = "<group>";
@@ -721,6 +724,7 @@
 				4A3AF69626BB74D400614382 /* ItemListKredit.swift in Sources */,
 				5CE3F8ED26CBFC8400569C67 /* PengaturanPage.swift in Sources */,
 				5E35F36B26B801C30044D1FC /* ModalMetodePembayaran.swift in Sources */,
+				5CB10D4026D4AEF100C8D6C1 /* DatePickerView.swift in Sources */,
 				5C8F9CF826BCF66D00CE994B /* ButtonView.swift in Sources */,
 				5E375CE826BD340500DF834D /* popOverContent.swift in Sources */,
 				5E35F37F26B844450044D1FC /* ReadJsonData.swift in Sources */,
