@@ -55,9 +55,14 @@ struct step3Detail: View {
             ScrollView(showsIndicators: false){
                 VStack(alignment: .leading){
                     ButtonBordered(icon: "doc.text", titleButton: modalPkTitle,action: {
-                        perjanjianController.modalPilihKredit.toggle()
+                        if !perjanjianController.coreDataVM.listKredit.isEmpty{
+                            perjanjianController.modalPilihKredit.toggle()
+                        }else{
+                            perjanjianController.modalEmpty.toggle()
+                        }
+                        
                     })
-                        .padding()
+                    .padding()
                     FormView(title: "Tujuan Peminjaman", profileValue: $perjanjianController.tujuanPeminjaman, keyboardNum: false, isDisable: $isDisable)
                     SliderViewWithForm(sliderValue: $perjanjianController.jumlahPinjaman, text1: "Pinjaman Maksimal", text2: "Rp 50.000.000", title: "Jumlah Pinjaman", type: 0)
                     SliderViewWithForm(sliderValue: $perjanjianController.bunga, text1: "Bunga Maksimal", text2: "6 % per tahun", title: "Bunga", type: 1)
@@ -89,12 +94,9 @@ struct step3Detail: View {
                                 }
                         }
                         if(showPickerTandaTangan){
-                            DatePicker(
-                                "",
-                                selection: $dateTandaTangan.onChange(tandaTanganChanged),
-                                displayedComponents: [.date]
-                            )
-                            .datePickerStyle(GraphicalDatePickerStyle())
+                            DatePicker("", selection:$dateTandaTangan.onChange(tandaTanganChanged), in: Date()...,
+                                       displayedComponents: [.date])
+                                .datePickerStyle(GraphicalDatePickerStyle())
                         }
                     }
                     ButtonBordered(icon: "percent", titleButton: "Lihat Simulasi Kredit", action: {
@@ -150,6 +152,12 @@ struct step3Detail: View {
             {
                 NavigationView{
                     ModalSimulasiKredit(isPresented: $perjanjianController.modalSimulasiKredit, object: ItemListKredit( kreditTitle: perjanjianController.tujuanPeminjaman, tenor: perjanjianController.tenor, bunga: perjanjianController.bunga, jumlahPinjaman: perjanjianController.jumlahPinjaman, cicilanPerbulan: 0, offset: 0.0, isSwiped: false))
+                }
+            }
+            .sheet(isPresented: $perjanjianController.modalEmpty)
+            {
+                NavigationView{
+                    ModalEmpty(conditionMessage: "Tidak Ada Kredit")
                 }
             }
         }

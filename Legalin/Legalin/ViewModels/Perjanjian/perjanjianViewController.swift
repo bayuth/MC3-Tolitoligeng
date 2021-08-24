@@ -66,6 +66,7 @@ class PerjanjianController: ObservableObject {
     @Published var modalPengadilanNegeri: Bool = false
     @Published var modalPilihKredit: Bool = false
     @Published var modalSimulasiKredit: Bool = false
+    @Published var modalEmpty: Bool = false
     @Published var pengadilanNegeri: String = "Pilih"
     
     @Published var tanggalTandaTangan: String = "Pilih Tanggal"
