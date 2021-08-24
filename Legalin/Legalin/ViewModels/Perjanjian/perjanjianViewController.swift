@@ -498,36 +498,36 @@ class PerjanjianController: ObservableObject {
         pengadilanNegeri = selected
     }
     
-    func convertNumToWord(bil: Int) -> String {
+    func convertNumToWord(bil: Double) -> String {
         
-            let angka = ["","Satu","Dua","Tiga","Empat","Lima","Enam",
-                     "Tujuh","Delapan","Sembilan","Sepuluh","Sebelas"]
+            let angka = [""," Satu"," Dua"," Tiga"," Empat"," Lima"," Enam",
+                     " Tujuh"," Delapan"," Sembilan"," Sepuluh"," Sebelas"]
             var Hasil = " "
         
             let n = bil
         
         if (n >= 0 && n <= 11){
-                Hasil = angka[n]
+                Hasil = angka[Int(n)]
         }
             else if (n < 20){
-                Hasil = convertNumToWord(bil: n-10) + " Belas "
+                Hasil = convertNumToWord(bil: n-10) + " Belas"
         }
             else if (n < 100){
-                Hasil = convertNumToWord(bil: n/10) + " Puluh " + convertNumToWord(bil: n%10)
+                Hasil = convertNumToWord(bil: n/10) + " Puluh" + convertNumToWord(bil: n.truncatingRemainder(dividingBy: 10))
             }   else if n < 200 {
-                Hasil = " Seratus " + convertNumToWord(bil: (n-100))}
+                Hasil = " Seratus" + convertNumToWord(bil: (n-100))}
             else if n < 1000 {
-                Hasil = convertNumToWord(bil: n/100) + " Ratus " + convertNumToWord(bil: n%100)}
+                Hasil = convertNumToWord(bil: n/100) + " Ratus" + convertNumToWord(bil: n.truncatingRemainder(dividingBy: 100))}
             else if n < 2000{
-                Hasil = " Seribu " + convertNumToWord(bil: n-1000)}
+                Hasil = " Seribu" + convertNumToWord(bil: n-1000)}
             else if n < 1000000{
-                Hasil = convertNumToWord(bil: n/1000) + " Ribu " + convertNumToWord(bil: n%1000)}
+                Hasil = convertNumToWord(bil: n/1000) + " Ribu" + convertNumToWord(bil: n.truncatingRemainder(dividingBy: 1000))}
             else if n < 1000000000{
-                Hasil = convertNumToWord(bil: n/1000000) + " Juta " + convertNumToWord(bil: (n%1000000))}
+                Hasil = convertNumToWord(bil: n/1000000) + " Juta" + convertNumToWord(bil: n.truncatingRemainder(dividingBy: 1000000))}
             else if n < 1000000000000{
-                Hasil = convertNumToWord(bil: (n/1000000000))  + " Milyar " + convertNumToWord(bil: (n%1000000000)) }
+                Hasil = convertNumToWord(bil: (n/1000000000))  + " Milyar " + convertNumToWord(bil: n.truncatingRemainder(dividingBy: 1000000000)) }
             else if n < 1000000000000000{
-                Hasil = convertNumToWord(bil: (n/1000000000000)) + " Triliyun " + convertNumToWord(bil: (n%1000000000000))}
+                Hasil = convertNumToWord(bil: (n/1000000000000)) + " Triliyun " + convertNumToWord(bil: (n.truncatingRemainder(dividingBy: 1000000000000)))}
             else if n == 1000000000000000{
                 Hasil = "Satu Kuadriliun"
             }
