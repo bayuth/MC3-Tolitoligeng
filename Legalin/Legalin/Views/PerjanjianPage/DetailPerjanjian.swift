@@ -13,9 +13,6 @@ struct DetailPerjanjian: View {
     @State var offset: CGFloat = 0
     var pdfIsEmpty : Bool = false
     @State var deleteSuccess: Bool = false
-    @Binding var item: Agreements
-    @Binding var lists: [Agreements]
-//    @Binding var item: Agreements
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     @Environment(\.presentationMode) var presentationMode
     var detailPerjanjian: Pinjaman
@@ -28,28 +25,27 @@ struct DetailPerjanjian: View {
         //        NavigationView{
         ScrollView(.init(), showsIndicators: false){
             TabView{
-                if pdfIsEmpty == false{
-                    PdfAction(hideSwitch: false)
-//                        .tag(subview[0])
+                if detailPerjanjian != nil{
+                    if detailPerjanjian.status == "draft"{
+                        EmptyPDF()
+                    }
+                    else{
+                        PdfAction(hideSwitch: false)
+                    }
+                    
+                    Pihak1()
+                        .onAppear{
+                            print(detailPerjanjian.status)
+                        }
+                    Pihak2()
+                    InfoPinjaman()
+                    InfoAgunan(hideButton: true)
                 }
                 else{
-                    EmptyPDF()
+                    Text("Kosong")
                 }
                 
-                Pihak1()
-//                    .tag(subview[1])
-                Pihak2()
-//                    .tag(subview[2])
-                InfoPinjaman()
-//                    .tag(subview[3])
-                InfoAgunan(hideButton: true)
-//                    .tag(subview[4])
-                if pdfIsEmpty == false{
-                    
-                }
-                else{
-                    
-                }
+
                 
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
@@ -59,7 +55,6 @@ struct DetailPerjanjian: View {
             }
             
         }
-        //            .navigationBarBackButtonHidden(true)
         .navigationBarTitle("Detail Perjanjian", displayMode: .inline)
         .navigationBarItems(trailing:
                                 HStack(spacing: 16){
@@ -73,8 +68,10 @@ struct DetailPerjanjian: View {
                                     }
                                     Button(action: {
 //                                        print(item.agreementTitle)
+                                        self.presentationMode.wrappedValue.dismiss()
                                         perjanjianController.deletePinjamanDetail(pinjaman: detailPerjanjian)
-                                        self.deleteSuccess = true
+//                                        self.deleteSuccess = true
+                                        
 //                                        lists.removeAll{ (item) -> Bool in
 //                                            return self.item.id == item.id
 //                                        }
@@ -85,9 +82,6 @@ struct DetailPerjanjian: View {
                                             .foregroundColor(.white)
                                         
                                     }
-                                    .onChange(of: deleteSuccess, perform: { value in
-                                        self.presentationMode.wrappedValue.dismiss()
-                                    })
                                 }
         )
     }
