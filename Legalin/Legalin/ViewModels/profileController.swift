@@ -52,6 +52,10 @@ class ProfileController: ObservableObject{
             pihak1NomorHP = profil[0].nomorAktif ?? ""
         }
     }
+	
+	func setProfileOpenCamToFalse(isOpenCam:Bool){
+		pihak1IsOpenCam = isOpenCam
+	}
     
     func updateProfileCoreData(){
         
