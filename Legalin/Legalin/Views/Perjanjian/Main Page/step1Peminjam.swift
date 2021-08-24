@@ -113,7 +113,10 @@ struct step1Peminjam: View {
 //									TextEditor(text: $perjanjianController.pihak1Alamat)
 //										.foregroundColor(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)))
 //										.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
-									MultiLineFormView(alamat: $perjanjianController.pihak1Alamat)
+									MultiLineFormView(alamat: $perjanjianController.pihak1Alamat, isDisable: $isDisable, emptyAlamat: "Alamat")
+									
+//									AutoSizingTF(hint: "Alamat Sesuai KTP", text: $perjanjianController.pihak1Alamat)
+//										.padding()
 								}
 								HStack {
 									FormView(title: "RT", profileValue: $perjanjianController.pihak1RT, keyboardNum: true, isDisable: $isDisable)
@@ -189,6 +192,25 @@ extension UINavigationController{
 		navigationBar.standardAppearance = appearance
 	}
 }
+
+//struct AutoSizingTF: UIViewRepresentable {
+//	var hint: String
+//	@Binding var text: String
+//
+//	func makeUIView(context: Context) -> UITextView {
+//		let textView = UITextView()
+////		display hint
+//		textView.text = hint
+//		textView.textColor = .gray
+//
+//		textView.font = .systemFont(ofSize: 20)
+//
+//		return textView
+//	}
+//
+//	func updateUIView(_ uiView: UITextView, context: Context) {
+//	}
+//}
 
 struct step1Peminjam_Previews: PreviewProvider {
 	static var previews: some View {

@@ -111,7 +111,9 @@ struct ProfileView: View {
 											.padding(.horizontal)
 											.accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 									}
-									FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable)
+//									FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable)
+									
+									MultiLineFormView(alamat: $profileController.pihak1Alamat, isDisable: $texfieldDisable)
 									HStack {
 										FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: $texfieldDisable)
 										FormView(title: "RW", profileValue: $profileController.pihak1RW, keyboardNum: true, isDisable: $texfieldDisable)
@@ -172,9 +174,13 @@ struct ProfileView: View {
 												.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 												.disabled(editIsDisabled)
 												.onTapGesture {
-													editIsDisabled.toggle()
+													editIsDisabled = true
 													if editIsDisabled == true {
-														editIsDisabledColor = Color(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
+														Image(systemName: "square.and.pencil")
+															.foregroundColor(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)))
+													}
+													if showTanggalLahir {
+														showTanggalLahir.toggle()
 													}
 													texfieldDisable = false
 												}
