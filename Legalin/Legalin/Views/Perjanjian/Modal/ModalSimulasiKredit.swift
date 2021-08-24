@@ -26,7 +26,7 @@ struct ModalSimulasiKredit: View {
                                 .font(.footnote)
                                 .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                                 .padding(.bottom, 1)
-                            Text(object.jumlahPinjaman.toRupiahString())
+                            Text(object.jumlahPinjaman.toRupiahString() == "NaN" ? "Rp0" : object.jumlahPinjaman.toRupiahString())
                         }
                         .padding(.bottom, 8)
                         
@@ -53,7 +53,7 @@ struct ModalSimulasiKredit: View {
                                 .font(.footnote)
                                 .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                                 .padding(.bottom, 1)
-                            Text(generateCicilanPerbulan().toRupiahString())
+                            Text(generateCicilanPerbulan().toRupiahString() == "NaN" ? "Rp0" : generateCicilanPerbulan().toRupiahString())
                         }
                         .padding(.bottom, 8)
                         VStack(alignment: .leading){
@@ -61,7 +61,7 @@ struct ModalSimulasiKredit: View {
                                 .font(.footnote)
                                 .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                                 .padding(.bottom, 1)
-                            Text(generateTotalPinjaman().toRupiahString())
+                            Text(generateTotalPinjaman().toRupiahString() == "NaN" ? "Rp0" : generateTotalPinjaman().toRupiahString())
                         }
                         .padding(.bottom, 8)
                     }
