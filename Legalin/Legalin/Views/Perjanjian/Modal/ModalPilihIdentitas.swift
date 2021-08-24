@@ -73,11 +73,14 @@ struct ModalPilihIdentitas: View {
 			}
 			
 			ToolbarItem(placement: .navigationBarTrailing) {
-				Text("Done")
-					.foregroundColor(.white)
-					.onTapGesture {
-						isPresented = false
-					}
+				if coreDataVM.listPihak2.count != 0 {
+					Text("Done")
+						.foregroundColor(.white)
+						.onTapGesture {
+							isPresented = false
+						}
+				}
+				
 			}
 		}
 		

@@ -114,7 +114,7 @@ struct NewProfileView: View {
 								DatePicker("", selection: $profileController.pihak1TanggalLahir, displayedComponents: .date)
 									.datePickerStyle(GraphicalDatePickerStyle())
 									.padding(.horizontal)
-									.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+									.accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 							}
 							
 							FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $isDisable)
@@ -138,6 +138,7 @@ struct NewProfileView: View {
 									.padding(.horizontal)
 								Button(action: {
 									shown.toggle()
+									profileController.setProfileOpenCamToFalse(isOpenCam: false)
 								}, label: {
 									ButtonNext(text: "Simpan", isDataComplete: true)
 								}).padding(.bottom)

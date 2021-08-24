@@ -23,6 +23,7 @@ struct ProfileView: View {
 	@ObservedObject var coreDataVM: CoreDataViewModel = .shared
 	@State var shown = false
 	@State var texfieldDisable:Bool = true
+	@State var dateIsDisable:Bool = false
 	var debugPopUp = true
 	
 	@State var showTanggalLahir = false
@@ -69,25 +70,37 @@ struct ProfileView: View {
 									FormView(title: "Nama", profileValue: $profileController.pihak1Nama, keyboardNum: false, isDisable: $texfieldDisable)
 									VStack(alignment: .leading){
 										Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
-										if Calendar.current.isDateInToday(profileController.pihak1TanggalLahir) {
-											Text("Pilih Tanggal Lahir")
-												.font(.body)
-												.fontWeight(.regular)
-												.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+//										DatePickerView(profileDate: $profileController.pihak1TanggalLahir, isDisable: $texfieldDisable)
+										if texfieldDisable {
+											if Calendar.current.isDateInToday(profileController.pihak1TanggalLahir) {
+												Text("Pilih Tanggal Lahir")
+													.font(.body)
+													.fontWeight(.regular)
+													.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+											} else {
+												Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
+													.font(.body)
+													.fontWeight(.regular)
+													.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+											}
 										} else {
-											Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
-												.font(.body)
-												.fontWeight(.regular)
-												.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
-										}
-										if editIsDisabled {
-											Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
-												.font(.body)
-												.fontWeight(.regular)
-												.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
-												.onTapGesture {
-													showTanggalLahir.toggle()
-												}
+											if Calendar.current.isDateInToday(profileController.pihak1TanggalLahir) {
+												Text("Pilih Tanggal Lahir")
+													.font(.body)
+													.fontWeight(.regular)
+													.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+													.onTapGesture {
+														showTanggalLahir.toggle()
+													}
+											} else {
+												Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
+													.font(.body)
+													.fontWeight(.regular)
+													.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+													.onTapGesture {
+														showTanggalLahir.toggle()
+													}
+											}
 										}
 										Divider()
 											.padding(.bottom)
@@ -96,7 +109,7 @@ struct ProfileView: View {
 										DatePicker("", selection: $profileController.pihak1TanggalLahir, displayedComponents: .date)
 											.datePickerStyle(GraphicalDatePickerStyle())
 											.padding(.horizontal)
-											.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+											.accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 									}
 									FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable)
 									HStack {
