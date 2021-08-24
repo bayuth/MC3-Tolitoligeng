@@ -62,7 +62,7 @@ struct step3Detail: View {
                         }
                         
                     })
-                        .padding()
+                    .padding()
                     FormView(title: "Tujuan Peminjaman", profileValue: $perjanjianController.tujuanPeminjaman, keyboardNum: false, isDisable: $isDisable)
                     SliderViewWithForm(sliderValue: $perjanjianController.jumlahPinjaman, text1: "Pinjaman Maksimal", text2: "Rp 50.000.000", title: "Jumlah Pinjaman", type: 0)
                     SliderViewWithForm(sliderValue: $perjanjianController.bunga, text1: "Bunga Maksimal", text2: "6 % per tahun", title: "Bunga", type: 1)
@@ -94,12 +94,9 @@ struct step3Detail: View {
                                 }
                         }
                         if(showPickerTandaTangan){
-                            DatePicker(
-                                "",
-                                selection: $dateTandaTangan.onChange(tandaTanganChanged),
-                                displayedComponents: [.date]
-                            )
-                            .datePickerStyle(GraphicalDatePickerStyle())
+                            DatePicker("", selection:$dateTandaTangan.onChange(tandaTanganChanged), in: Date()...,
+                                       displayedComponents: [.date])
+                                .datePickerStyle(GraphicalDatePickerStyle())
                         }
                     }
                     ButtonBordered(icon: "percent", titleButton: "Lihat Simulasi Kredit", action: {
