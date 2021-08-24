@@ -49,7 +49,7 @@ class PerjanjianController: ObservableObject {
 	@Published var pihak2NomorRekening: String = ""
 	@Published var pihak2AtasNamaRekening: String = ""
 	@Published var pihak2IsOpenCam: Bool = false
-	
+	@Published var modalPilihIdentitas: Bool = false
     
     //Step 3 attribute
     @Published var tujuanPeminjaman: String = ""
@@ -66,6 +66,7 @@ class PerjanjianController: ObservableObject {
     @Published var modalPengadilanNegeri: Bool = false
     @Published var modalPilihKredit: Bool = false
     @Published var modalSimulasiKredit: Bool = false
+    @Published var modalEmpty: Bool = false
     @Published var pengadilanNegeri: String = "Pilih"
     
     @Published var tanggalTandaTangan: String = "Pilih Tanggal"
@@ -410,8 +411,14 @@ class PerjanjianController: ObservableObject {
         return result
     }
     
+	func setPihak1OpenCamToFalse(isOpenCam:Bool){
+		pihak1IsOpenCam = isOpenCam
+	}
     
-    
+	func setPihak2OpenCamToFalse(isOpenCam:Bool){
+		pihak2IsOpenCam = isOpenCam
+	}
+	
 	func updatePihak1KTP(nik: String, nama: String, tanggalLahir: Date, alamat: String, RT:String, RW: String, kelurahan: String, kecamatan: String, kota: String, provinsi: String, isOpenCam:Bool){
         
         pihak1NIK = nik
@@ -426,7 +433,7 @@ class PerjanjianController: ObservableObject {
         pihak1Provinsi = provinsi
 		pihak1IsOpenCam = isOpenCam
     }
-    
+	
     func updatePihak1NonKTP( pekerjaan: String ,nomorHP: String){
         pihak1Pekerjaan = pekerjaan ?? ""
         pihak1NomorHP = nomorHP ?? ""
@@ -465,7 +472,7 @@ class PerjanjianController: ObservableObject {
         coreDataVM.updateAkun(akun: newPinjaman.pihak1! , NIK: pihak1NIK, nama: pihak1Nama, tanggalLahir: pihak1TanggalLahir, alamat: pihak1Alamat, rt: pihak1RT, rw: pihak1RW, kecamatan: pihak1Kecamatan, kelurahanDesa: pihak1Kelurahan, kotaKabupaten: pihak1Kota, provinsi: pihak1Provinsi, pekerjaan: pihak1Pekerjaan, nomorAktif: pihak1NomorHP)
         
         //Update pihak2 atribut
-        coreDataVM.updateAkun(akun: newPinjaman.pihak2! , NIK: pihak2NIK, nama: pihak2Nama, tanggalLahir: pihak2TanggalLahir, alamat: pihak2Alamat, rt: pihak2RT, rw: pihak2RW, kecamatan: pihak2Kecamatan, kelurahanDesa: pihak2Kelurahan, kotaKabupaten: pihak2Kota, provinsi: pihak2Provinsi, pekerjaan: pihak2Pekerjaan, nomorAktif: pihak2NomorHP)
+        coreDataVM.updateAkun(akun: newPinjaman.pihak2! , NIK: pihak2NIK, nama: pihak2Nama, tanggalLahir: pihak2TanggalLahir, alamat: pihak2Alamat, rt: pihak2RT, rw: pihak2RW, kecamatan: pihak2Kecamatan, kelurahanDesa: pihak2Kelurahan, kotaKabupaten: pihak2Kota, provinsi: pihak2Provinsi, pekerjaan: pihak2Pekerjaan, nomorAktif: pihak2NomorHP, namaBank: pihak2NamaBank, nomorRekening: pihak2NomorRekening, atasNamaRekening: pihak2AtasNamaRekening)
         
         //Update kredit atribut
         coreDataVM.updateKredit(kredit: newPinjaman.kredit!, nama: tujuanPeminjaman, bunga: bunga, jumlahPinjaman: jumlahPinjaman, tenor: tenor)

@@ -42,13 +42,9 @@ struct step2Pemberi: View {
 			ScrollView(showsIndicators: false){
 				VStack(alignment: .leading) {
 					
-					Button(action: {
-						showModalPilihIdentitas.toggle()
-					}, label: {
-						ButtonBorderedComingSoon(icon: "person.fill", titleButton: "Pilih Identitas").padding(.horizontal)
-					}).sheet(isPresented: $showModalPilihIdentitas, content: {
-						ModalPilihIdentitas(showSheetView: self.$showModalPilihIdentitas)
-					})
+					ButtonBordered(icon: "person.fill", titleButton: "Pilih Identitas") {
+						perjanjianController.modalPilihIdentitas.toggle()
+					}.padding(.horizontal)
 					
 					Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.bottom,7)
                         .padding(.horizontal)
@@ -178,16 +174,25 @@ struct step2Pemberi: View {
                         title: Text("Entri data perjanjian belum lengkap"),
                         buttons: [
                             .default(Text("Simpan")) {
+								perjanjianController.setPihak1OpenCamToFalse(isOpenCam: false)
+								perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
                                 perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
                                 self.masterPresentationMode.wrappedValue.dismiss()
                             },
                             .destructive(Text("Hapus")) {
+								perjanjianController.setPihak1OpenCamToFalse(isOpenCam: false)
+								perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
                                 self.masterPresentationMode.wrappedValue.dismiss()
                             },
                             .cancel(Text("Batalkan"))
                         ])
                     
                 })
+		.sheet(isPresented: $perjanjianController.modalPilihIdentitas, content: {
+			NavigationView {
+				ModalPilihIdentitas(isPresented: $perjanjianController.modalPilihIdentitas)
+			}
+		})
         
 	}
 }

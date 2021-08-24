@@ -74,7 +74,7 @@ struct step4Agunan: View {
                 }
             }
             Spacer()
-            
+			
             NavigationLink(
                 destination: ConfirmationPage(masterPresentationMode5: _masterPresentationMode4)){
                 ButtonNext(text: "Buat Surat", isDataComplete: perjanjianController.nextButtonState)
@@ -126,10 +126,14 @@ struct step4Agunan: View {
                 title: Text("Entri data perjanjian belum lengkap"),
                 buttons: [
                     .default(Text("Simpan")) {
+						perjanjianController.setPihak1OpenCamToFalse(isOpenCam: false)
+						perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
                         perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
                         self.masterPresentationMode4.wrappedValue.dismiss()
                     },
                     .destructive(Text("Hapus")) {
+						perjanjianController.setPihak1OpenCamToFalse(isOpenCam: false)
+						perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
                         self.masterPresentationMode4.wrappedValue.dismiss()
                     },
                     .cancel(Text("Batalkan"))
