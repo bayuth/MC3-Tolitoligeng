@@ -55,7 +55,12 @@ struct step3Detail: View {
             ScrollView(showsIndicators: false){
                 VStack(alignment: .leading){
                     ButtonBordered(icon: "doc.text", titleButton: modalPkTitle,action: {
-                        perjanjianController.modalPilihKredit.toggle()
+                        if !perjanjianController.coreDataVM.listKredit.isEmpty{
+                            perjanjianController.modalPilihKredit.toggle()
+                        }else{
+                            perjanjianController.modalEmpty.toggle()
+                        }
+                        
                     })
                     .padding()
                     FormView(title: "Tujuan Peminjaman", profileValue: $perjanjianController.tujuanPeminjaman, keyboardNum: false, isDisable: $isDisable)
@@ -147,6 +152,12 @@ struct step3Detail: View {
             {
                 NavigationView{
                     ModalSimulasiKredit(isPresented: $perjanjianController.modalSimulasiKredit, object: ItemListKredit( kreditTitle: perjanjianController.tujuanPeminjaman, tenor: perjanjianController.tenor, bunga: perjanjianController.bunga, jumlahPinjaman: perjanjianController.jumlahPinjaman, cicilanPerbulan: 0, offset: 0.0, isSwiped: false))
+                }
+            }
+            .sheet(isPresented: $perjanjianController.modalEmpty)
+            {
+                NavigationView{
+                    ModalEmpty(conditionMessage: "Tidak Ada Kredit")
                 }
             }
         }
