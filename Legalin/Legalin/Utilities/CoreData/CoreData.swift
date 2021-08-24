@@ -27,7 +27,7 @@ class CoreData {
     func save(){
         do{
             try context.save()
-            print("Saved successfully!")
+//            print("Saved successfully!")
         } catch let error {
             print("Error saving Core Data. \(error.localizedDescription)")
         }

@@ -430,6 +430,7 @@ class CoreDataViewModel: ObservableObject {
     func createPinjaman() -> Pinjaman{
 
         let newPinjaman = Pinjaman(context: manager.context)
+        print("New pinjaman created")
 
         //Generate UUID dan Date
         newPinjaman.uuid = UUID()
@@ -442,15 +443,19 @@ class CoreDataViewModel: ObservableObject {
 
         //Buat pihak1 di page pinjaman (loaner)
         newPinjaman.pihak1 = createPihak1(pinjamanPage: true)
+        print("pihak 1 pinjaman create")
 
         //Buat profil2 di pinjaman page (lender)
         newPinjaman.pihak2 = createPihak2(pinjamanPage: true)
+        print("pihak 2 pinjaman create")
 
         //Buat kredit di pinjaman page
         newPinjaman.kredit = createKredit(pinjamanPage: true)
+        print("kredit pinjaman create")
 
         //Buat agunan di pinjaman page
         newPinjaman.agunan = createAgunan()
+        print("agunan create")
 
         save()
         getAllPinjaman()
@@ -491,6 +496,7 @@ class CoreDataViewModel: ObservableObject {
         }
         
         save()
+        print("pinjaman updated")
         getAllPinjaman()
     }
     
@@ -578,31 +584,39 @@ class CoreDataViewModel: ObservableObject {
         
         if let agunan = pinjaman.agunan {
             self.manager.context.delete(agunan)
+            print("agunan deleted")
         }
         
         if let kredit = pinjaman.kredit {
             self.manager.context.delete(kredit)
+            print("kredit deleted")
         }
         
         if let pihak1ktp = pinjaman.pihak1?.ktp {
             self.manager.context.delete(pihak1ktp)
+            print("ktp pihak 1 deleted")
         }
         
         if let pihak2ktp = pinjaman.pihak2?.ktp {
             self.manager.context.delete(pihak2ktp)
+            print("ktp pihak 2 deleted")
+            
         }
         
         if let pihak1 = pinjaman.pihak1{
             self.manager.context.delete(pihak1)
+            print("pihak 1 deleted")
         }
         
         if let pihak2 = pinjaman.pihak2{
             self.manager.context.delete(pihak2)
+            print("pihak 2 deleted")
         }
         
         self.manager.context.delete(pinjaman)
         
         save()
+        print("pinjaman deleted")
         getAllPinjaman()
         
     }
