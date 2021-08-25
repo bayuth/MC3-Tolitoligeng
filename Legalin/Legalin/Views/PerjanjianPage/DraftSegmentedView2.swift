@@ -29,7 +29,6 @@ struct DraftSegmentedView2: View {
                 .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))))
         .padding(.horizontal)
         .contentShape(Rectangle())
-        
     }
     
     func getSimulasiName(nama: String) -> String{

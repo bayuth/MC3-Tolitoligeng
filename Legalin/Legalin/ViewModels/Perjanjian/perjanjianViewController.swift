@@ -465,6 +465,26 @@ class PerjanjianController: ObservableObject {
         pihak2AtasNamaRekening = atasNamaRekening ?? ""
     }
     
+    
+    func updatePinjamanCoreData2(pinjaman: Pinjaman){
+        
+        var newPinjaman = pinjaman
+        //Update pinjaman atribut
+        coreDataVM.updatePinjaman(pinjaman: newPinjaman, tujuan: tujuanPeminjaman, metodePembayaran: metodePembayaran, jatuhTempo: tanggalJatuhTempo, pengadilanNegeri: pengadilanNegeri, tanggalTandaTangan: tanggalTandaTangan, status: status)
+        
+        //Update pihak1 atribut
+        coreDataVM.updateAkun(akun: newPinjaman.pihak1! , NIK: pihak1NIK, nama: pihak1Nama, tanggalLahir: pihak1TanggalLahir, alamat: pihak1Alamat, rt: pihak1RT, rw: pihak1RW, kecamatan: pihak1Kecamatan, kelurahanDesa: pihak1Kelurahan, kotaKabupaten: pihak1Kota, provinsi: pihak1Provinsi, pekerjaan: pihak1Pekerjaan, nomorAktif: pihak1NomorHP)
+        
+        //Update pihak2 atribut
+        coreDataVM.updateAkun(akun: newPinjaman.pihak2! , NIK: pihak2NIK, nama: pihak2Nama, tanggalLahir: pihak2TanggalLahir, alamat: pihak2Alamat, rt: pihak2RT, rw: pihak2RW, kecamatan: pihak2Kecamatan, kelurahanDesa: pihak2Kelurahan, kotaKabupaten: pihak2Kota, provinsi: pihak2Provinsi, pekerjaan: pihak2Pekerjaan, nomorAktif: pihak2NomorHP, namaBank: pihak2NamaBank, nomorRekening: pihak2NomorRekening, atasNamaRekening: pihak2AtasNamaRekening)
+        
+        //Update kredit atribut
+        coreDataVM.updateKredit(kredit: newPinjaman.kredit!, nama: tujuanPeminjaman, bunga: bunga, jumlahPinjaman: jumlahPinjaman, tenor: tenor)
+        
+        //Update agunan atribut
+        coreDataVM.updateAgunan(agunan: newPinjaman.agunan!, nama: namaBarang, harga: hargaBarang, nomorSeri: nomorSeri, tipeBarang: tipeBarangAgunan, warna: warnaBarang)
+    }
+    
     func updatePinjamanCoreData(status: StatusSurat){
         
         var newPinjaman = coreDataVM.createPinjaman()
