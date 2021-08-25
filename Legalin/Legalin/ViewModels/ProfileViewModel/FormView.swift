@@ -10,6 +10,7 @@ import UIKit
 
 struct FormView: View {
 	
+	@Environment (\.colorScheme) var colorScheme
 	@State var title:String
 	@Binding var profileValue:String
 	@State var keyboardNum:Bool
@@ -20,8 +21,11 @@ struct FormView: View {
 		if isDisable{
 			VStack(alignment: .leading) {
 				
-				Text(title).font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.horizontal)
-				TextField(title, text: $profileValue).font(.body).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.horizontal)
+				Text(title).font(.footnote).fontWeight(.regular).foregroundColor(Color("labelColor")).padding(.horizontal)
+//				TextField(title, text: $profileValue).font(.body).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.horizontal)
+				TextField(title, text: $profileValue).font(.body)
+					.foregroundColor(Color("labelColor"))
+					.padding(.horizontal)
 					.lineLimit(3)
 				Divider()
 				
@@ -29,9 +33,10 @@ struct FormView: View {
 		} else {
 			VStack(alignment: .leading) {
 				
-                Text(title).font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.horizontal)
+                Text(title).font(.footnote).fontWeight(.regular).foregroundColor(Color("labelColor")).padding(.horizontal)
 //				TextField(title, text: $profileValue).font(.body).foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))).padding(.horizontal)
                 DoneKeyboard(text: $profileValue, hint: title, keyType: keyboardNum ? UIKeyboardType.numberPad : UIKeyboardType.default)
+					.foregroundColor(Color("formViewColor"))
 					.lineLimit(3)
 					.accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
                     .font(.body)

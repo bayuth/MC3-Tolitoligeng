@@ -34,10 +34,10 @@ struct AlertSave: View {
 						self.saveMode.wrappedValue.dismiss()
 					}
 					.frame(width: UIScreen.main.bounds.width/2-25, height: 30)
-					.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+					.foregroundColor(Color("tabBarColor"))
 				}
 			}.frame(width: UIScreen.main.bounds.width-100, height: 200, alignment: .center)
-			.background(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+			.background(Color("cardColor"))
 			.cornerRadius(12)
 			.clipped()
 		}

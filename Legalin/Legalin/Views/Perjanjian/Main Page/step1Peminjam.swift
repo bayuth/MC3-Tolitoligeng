@@ -50,7 +50,7 @@ struct step1Peminjam: View {
 										}
 										
 									}, label: {
-										Text("Ambil Ulang Gambar KTP \(Image(systemName: "checkmark.rectangle.fill"))").fontWeight(.regular) .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+										Text("Ambil Ulang Gambar KTP \(Image(systemName: "checkmark.rectangle.fill"))").fontWeight(.regular) .foregroundColor(Color("tabBarColor"))
 									})
 									Divider()
 										.fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
@@ -65,7 +65,7 @@ struct step1Peminjam: View {
 										}
 										
 									}, label: {
-										Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").fontWeight(.regular) .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+										Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").fontWeight(.regular) .foregroundColor(Color("tabBarColor"))
 									})
 									Divider()
 										.fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
@@ -79,13 +79,13 @@ struct step1Peminjam: View {
 								FormView(title: "NIK", profileValue: $perjanjianController.pihak1NIK, keyboardNum: true, isDisable: $isDisable)
 								FormView(title: "Nama", profileValue: $perjanjianController.pihak1Nama, keyboardNum: false, isDisable: $isDisable)
 								VStack(alignment: .leading){
-									Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+									Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color("labelColor"))
                                         .padding(.bottom,5).padding(.horizontal)
 									if Calendar.current.isDateInToday(perjanjianController.pihak1TanggalLahir){
 										Text("Pilih Tanggal Lahir Sesuai KTP")
 											.font(.body)
 											.fontWeight(.regular)
-											.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+											.foregroundColor(Color("tabBarColor"))
 											.onTapGesture {
 												showTanggalLahir.toggle()
                                             }.padding(.horizontal)
@@ -93,7 +93,7 @@ struct step1Peminjam: View {
 										Text(perjanjianController.pihak1TanggalLahir, formatter: dateFormatter)
 											.font(.body)
 											.fontWeight(.regular)
-											.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+											.foregroundColor(Color("tabBarColor"))
                                             .padding(.horizontal)
 											.onTapGesture {
 											showTanggalLahir.toggle()
@@ -105,18 +105,13 @@ struct step1Peminjam: View {
 								}
 								if showTanggalLahir {
 									DatePicker("", selection: $perjanjianController.pihak1TanggalLahir, displayedComponents: .date)
+										.accentColor(Color("tabBarColor"))
 										.datePickerStyle(GraphicalDatePickerStyle())
 										.padding(.horizontal)
 								}
 								VStack {
 //									FormView(title: "Alamat", profileValue: $perjanjianController.pihak1Alamat, keyboardNum: false, isDisable: $isDisable)
-//									TextEditor(text: $perjanjianController.pihak1Alamat)
-//										.foregroundColor(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)))
-//										.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
 									MultiLineFormView(alamat: $perjanjianController.pihak1Alamat, isDisable: $isDisable, emptyAlamat: "Alamat")
-									
-//									AutoSizingTF(hint: "Alamat Sesuai KTP", text: $perjanjianController.pihak1Alamat)
-//										.padding()
 								}
 								HStack {
 									FormView(title: "RT", profileValue: $perjanjianController.pihak1RT, keyboardNum: true, isDisable: $isDisable)
@@ -132,7 +127,7 @@ struct step1Peminjam: View {
 									Text("Pastikan semua data yang anda masukan sudah benar dan sesuai dengan KTP anda")
 										.font(.caption2)
 										.fontWeight(.regular)
-										.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+										.foregroundColor(Color("tabBarColor"))
 										.multilineTextAlignment(.leading)
 										.padding(.bottom,10)
                                         .padding(.horizontal)

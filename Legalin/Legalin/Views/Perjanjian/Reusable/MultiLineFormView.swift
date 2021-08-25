@@ -22,8 +22,9 @@ struct MultiLineFormView: View {
 			if isDisable {
 				AutoSizingTF(hint: "Alamat Sesuai KTP", text: $alamat, containerHeight: $containerHeight, onEnd: {
 					UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-				}).disabled(true)
-				.foregroundColor(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)))
+				})
+					.foregroundColor(Color("labelColor"))
+					.disabled(true)
 					.padding(.horizontal)
 					.frame(height: containerHeight <= 120 ? containerHeight : 120)
 	//				.background(Color(#colorLiteral(red: 0.9937283397, green: 0.9430401325, blue: 0.9090076685, alpha: 1)))
@@ -66,7 +67,7 @@ struct AutoSizingTF: UIViewRepresentable {
 //		display hint
 		if textView.text == nil {
 			textView.text = hint
-			textView.textColor = .gray
+//			textView.textColor = .gray
 			textView.font = .systemFont(ofSize: 18)
 		} else {
 			textView.text = text
@@ -123,7 +124,7 @@ struct AutoSizingTF: UIViewRepresentable {
 //			clear the placeholder if empty
 			if textView.text == parent.hint {
 				textView.text = ""
-				textView.textColor = UIColor(Color.primary)
+//				textView.textColor = UIColor(Color.primary)
 			}
 		}
 		
@@ -137,7 +138,7 @@ struct AutoSizingTF: UIViewRepresentable {
 		func textViewDidEndEditing(_ textView: UITextView) {
 			if textView.text == "" {
 				textView.text = parent.hint
-				textView.textColor = .gray
+//				textView.textColor = .gray
 			}
 		}
 	}

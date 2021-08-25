@@ -16,6 +16,8 @@ struct ProfileView: View {
 		UINavigationBar.changeAppearance(clear: true)
 	}
 	
+	@Environment (\.colorScheme) var colorScheme
+	
 	@ObservedObject var profileKtp = ScanDataClass()
 	@ObservedObject var profiledata = functionTrimKtp(pihak: 0)
 	
@@ -69,26 +71,26 @@ struct ProfileView: View {
 									FormView(title: "NIK", profileValue: $profileController.pihak1NIK, keyboardNum: true, isDisable: $texfieldDisable).padding(.top)
 									FormView(title: "Nama", profileValue: $profileController.pihak1Nama, keyboardNum: false, isDisable: $texfieldDisable)
 									VStack(alignment: .leading){
-										Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+										Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color("labelColor"))
 //										DatePickerView(profileDate: $profileController.pihak1TanggalLahir, isDisable: $texfieldDisable)
 										if texfieldDisable {
 											if Calendar.current.isDateInToday(profileController.pihak1TanggalLahir) {
 												Text("Pilih Tanggal Lahir")
 													.font(.body)
 													.fontWeight(.regular)
-													.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+													.foregroundColor(Color("tabBarColor"))
 											} else {
 												Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
 													.font(.body)
 													.fontWeight(.regular)
-													.foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+													.foregroundColor(Color("tabBarColor"))
 											}
 										} else {
 											if Calendar.current.isDateInToday(profileController.pihak1TanggalLahir) {
 												Text("Pilih Tanggal Lahir")
 													.font(.body)
 													.fontWeight(.regular)
-													.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+													.foregroundColor(Color("tabBarColor"))
 													.onTapGesture {
 														showTanggalLahir.toggle()
 													}
@@ -96,7 +98,7 @@ struct ProfileView: View {
 												Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
 													.font(.body)
 													.fontWeight(.regular)
-													.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+													.foregroundColor(Color("tabBarColor"))
 													.onTapGesture {
 														showTanggalLahir.toggle()
 													}
@@ -111,9 +113,9 @@ struct ProfileView: View {
 											.padding(.horizontal)
 											.accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 									}
-									FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable)
+//									FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable)
 									
-//									MultiLineFormView(alamat: $profileController.pihak1Alamat, isDisable: $texfieldDisable)
+									MultiLineFormView(alamat: $profileController.pihak1Alamat, isDisable: $texfieldDisable)
 									HStack {
 										FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: $texfieldDisable)
 										FormView(title: "RW", profileValue: $profileController.pihak1RW, keyboardNum: true, isDisable: $texfieldDisable)
@@ -167,11 +169,11 @@ struct ProfileView: View {
 											destination: PengaturanPage(),
 											label: {
 												Image(systemName: "gearshape.fill")
-													.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+													.foregroundColor(Color("tabBarColor"))
 											})
 										if(coreDataVM.pihak1.count != 0) {
 											Image(systemName: "square.and.pencil")
-												.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+												.foregroundColor(Color("tabBarColor"))
 												.disabled(editIsDisabled)
 												.onTapGesture {
 													editIsDisabled = true
