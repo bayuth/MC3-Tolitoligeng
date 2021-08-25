@@ -69,12 +69,9 @@ struct step3Detail: View {
                     SliderViewWithForm(sliderValue: $perjanjianController.tenor, text1: "Tenor Maksimal", text2: "24 bulan", title: "Tenor", type: 2)
                     
                     InputPicker(title: "Metode Pembayaran", listItem: tipeAgunan, selectedItem: $perjanjianController.metodePembayaran)
-                    
-                    Divider()
+                
                     VStack{
                         InputPicker(title: "Tanggal Jatuh Tempo", listItem: perjanjianController.generateListString(), selectedItem: $perjanjianController.tanggalJatuhTempo)
-                        
-                        Divider()
                         
                         FormViewWithInfo(title: "Pengadilan Negeri", profileValue: $perjanjianController.pengadilanNegeri, showButton: true, showButtonInfo: true, info: "Pilihan domisili pengadilan negeri untuk upaya hukum penyelesaian perselisihan jika musyawarah tidak berhasil", buttonTitle: "Detail").zIndex(0.9).onTapGesture {
                             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)

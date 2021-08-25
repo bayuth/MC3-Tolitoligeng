@@ -484,15 +484,15 @@ class CoreDataViewModel: ObservableObject {
             pinjaman.pengadilanNegeri = pengadilanNegeri
         }
         
-        if (metodePembayaran != nil){
+        if (tanggalTandaTangan != nil){
             pinjaman.tanggalTandaTangan = tanggalTandaTangan
         }
         
-        if (metodePembayaran != nil){
+        if (status != nil){
             pinjaman.status = status?.rawValue
         }
         
-        if (metodePembayaran != nil){
+        if (reminder != nil){
             pinjaman.reminder = reminder ?? false
         }
         

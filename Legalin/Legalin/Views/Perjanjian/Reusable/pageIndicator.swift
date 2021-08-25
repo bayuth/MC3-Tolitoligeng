@@ -82,7 +82,8 @@ struct pageIndicator: View {
                 
             }.popoverView(content: {PopOverContent(frame: $secondPopoverFrame, show: $popOverState, popOverText: "Barang berharga yang dititipkan oleh peminjam dana (debitur) ke pemberi pinjaman (kreditur) sebagai jaminan.")}, background: {Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))}, isPresented: $popOverState, frame: $secondPopoverFrame, anchorFrame: nil, popoverType: .popover, position: .bottom, viewId: "infoPopOver", settings: DYPopoverViewSettings(arrowLength: 0,  cornerRadius: (10,10,10,10), offset: CGSize(width: 0, height: 0), animation: .default)
             )
-        }.frame(width: UIScreen.main.bounds.width, height: 50, alignment: .leading)
+        }
+		.frame(width: UIScreen.main.bounds.width, height: 50, alignment: .leading)
     }
 }
 

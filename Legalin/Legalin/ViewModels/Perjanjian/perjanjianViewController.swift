@@ -89,6 +89,7 @@ class PerjanjianController: ObservableObject {
     @Published var page4State: Bool = false
     
     @Published var redirectPage: String = "step1"
+    @Published var endButtonPressed: Bool = false
     
 
     
@@ -161,7 +162,7 @@ class PerjanjianController: ObservableObject {
         page3State = false
         page4State = false
         
-        
+        endButtonPressed = false
         
         profil = coreDataVM.pihak1
         sycnPihak1()

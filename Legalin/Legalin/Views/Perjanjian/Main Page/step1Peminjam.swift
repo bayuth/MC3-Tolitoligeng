@@ -82,13 +82,20 @@ struct step1Peminjam: View {
 									Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
                                         .padding(.bottom,5).padding(.horizontal)
 									if Calendar.current.isDateInToday(perjanjianController.pihak1TanggalLahir){
-										Text("Pilih Tanggal Lahir Sesuai KTP")
+                                       
+                                        VStack{
+                                        Text("Pilih Tanggal Lahir Sesuai KTP")
 											.font(.body)
 											.fontWeight(.regular)
 											.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 											.onTapGesture {
 												showTanggalLahir.toggle()
                                             }.padding(.horizontal)
+                                        
+                                         .frame(maxWidth: .infinity, alignment: .leading)
+                                        Divider()
+                                        }
+                                            .background(Color(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)).opacity(perjanjianController.endButtonPressed ? 0.05 : 0.0))
 									} else {
 										Text(perjanjianController.pihak1TanggalLahir, formatter: dateFormatter)
 											.font(.body)
@@ -100,8 +107,7 @@ struct step1Peminjam: View {
 											}
 									}
 									
-									Divider()
-										.padding(.bottom)
+									
 								}
 								if showTanggalLahir {
 									DatePicker("", selection: $perjanjianController.pihak1TanggalLahir, displayedComponents: .date)
@@ -113,7 +119,10 @@ struct step1Peminjam: View {
 //									TextEditor(text: $perjanjianController.pihak1Alamat)
 //										.foregroundColor(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)))
 //										.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
-									MultiLineFormView(alamat: $perjanjianController.pihak1Alamat)
+									MultiLineFormView(alamat: $perjanjianController.pihak1Alamat, isDisable: $isDisable, emptyAlamat: "Alamat")
+									
+//									AutoSizingTF(hint: "Alamat Sesuai KTP", text: $perjanjianController.pihak1Alamat)
+//										.padding()
 								}
 								HStack {
 									FormView(title: "RT", profileValue: $perjanjianController.pihak1RT, keyboardNum: true, isDisable: $isDisable)
@@ -189,6 +198,25 @@ extension UINavigationController{
 		navigationBar.standardAppearance = appearance
 	}
 }
+
+//struct AutoSizingTF: UIViewRepresentable {
+//	var hint: String
+//	@Binding var text: String
+//
+//	func makeUIView(context: Context) -> UITextView {
+//		let textView = UITextView()
+////		display hint
+//		textView.text = hint
+//		textView.textColor = .gray
+//
+//		textView.font = .systemFont(ofSize: 20)
+//
+//		return textView
+//	}
+//
+//	func updateUIView(_ uiView: UITextView, context: Context) {
+//	}
+//}
 
 struct step1Peminjam_Previews: PreviewProvider {
 	static var previews: some View {

@@ -24,6 +24,7 @@ struct LegalinApp: App {
 //			step1Peminjam()
 //            TesNavigation()
 			MainApplicationPage()
+			
 //            DisclaimerPopUp(shouldShowOnBoarding: .constant(true))
         }
     }

@@ -68,5 +68,10 @@ extension Double {
         formatter.locale = Locale(identifier: "id_ID")
         return formatter.string(from: NSNumber(value: self))!
     }
+    
+    func rounded(toPlaces places:Int) -> Double {
+            let divisor = pow(10.0, Double(places))
+            return (self * divisor).rounded() / divisor
+        }
 }
 

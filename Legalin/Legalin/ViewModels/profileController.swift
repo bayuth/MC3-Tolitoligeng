@@ -40,7 +40,7 @@ class ProfileController: ObservableObject{
         if (profil.count != 0){
             pihak1NIK = profil[0].ktp?.nik ?? ""
             pihak1Nama = profil[0].ktp?.nama ?? ""
-            pihak1TanggalLahir = Date()
+			pihak1TanggalLahir = profil[0].ktp?.tanggalLahir ?? Date()
             pihak1Alamat = profil[0].ktp?.alamat ?? ""
             pihak1RT = profil[0].ktp?.rt ?? ""
             pihak1RW = profil[0].ktp?.rw ?? ""
