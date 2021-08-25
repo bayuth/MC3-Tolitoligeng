@@ -12,6 +12,8 @@ struct MultiLineFormView: View {
 	@Binding var isDisable:Bool
 	@State var emptyAlamat:String = "Type here"
 	var placeholderString = "Alamat"
+    
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
 	
 //	Auto updating textbox height
 	@State var containerHeight:CGFloat = 0
@@ -20,6 +22,7 @@ struct MultiLineFormView: View {
 		VStack(alignment: .leading) {
 			Text("Alamat").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.horizontal)
 			if isDisable {
+                VStack{
 				AutoSizingTF(hint: "Alamat Sesuai KTP", text: $alamat, containerHeight: $containerHeight, onEnd: {
 					UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
 				}, isDisable: isDisable)
@@ -28,7 +31,11 @@ struct MultiLineFormView: View {
 					.padding(.horizontal)
 					.frame(height: containerHeight <= 120 ? containerHeight : 120)
 					.cornerRadius(10)
+                    
+                Divider()
+                }.background(Color(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)).opacity(getRedIndicator() ? 0.05 : 0.0))
 			} else {
+                VStack{
 				AutoSizingTF(hint: "Alamat Sesuai KTP", text: $alamat, containerHeight: $containerHeight, onEnd: {
 					UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
 				}, isDisable: isDisable)
@@ -37,11 +44,21 @@ struct MultiLineFormView: View {
 					.padding(.horizontal)
 					.frame(height: containerHeight <= 120 ? containerHeight : 120)
 					.cornerRadius(10)
+                    
+                Divider()
+            }.background(Color(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)).opacity(getRedIndicator() ? 0.05 : 0.0))
 			}
 			
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
 	}
+    func getRedIndicator() -> Bool{
+        if ((alamat == "") && (perjanjianController.endButtonPressed == true)){
+            return true
+        } else {
+            return false
+        }
+    }
 }
 
 struct MultiLineFormView_Previews: PreviewProvider {

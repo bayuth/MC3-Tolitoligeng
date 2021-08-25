@@ -12,31 +12,45 @@ struct InputPicker: View {
     var title: String
     var listItem: [String]
     @Binding var selectedItem: String
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     var body: some View {
         
-        VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
-            Text(title).font(.footnote).fontWeight(.light).padding(.horizontal)
-                .padding(.top)
+        VStack(alignment: .leading, content: {
             
-            HStack{
-            Picker("\(getPickerTitle(title: selectedItem))", selection: $selectedItem) {
-                                ForEach(listItem, id: \.self) {
-                                    Text($0)
-                                }
-                }.pickerStyle(MenuPickerStyle())
-            .padding(.horizontal)
-            .foregroundColor(Color("tabBarColor"))
-                
-                Spacer()
-                
-                Text("A").opacity(0)
+            Text(title).font(.footnote).fontWeight(.light).padding(.horizontal)
+            
+            VStack{
+                HStack{
+                    Picker("\(getPickerTitle(title: selectedItem))", selection: $selectedItem) {
+                        ForEach(listItem, id: \.self) {
+                            Text($0)
+                        }
+                    }.pickerStyle(MenuPickerStyle())
                     .padding(.horizontal)
+                    .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                    
+                    Spacer()
+                    
+                    Text("A").opacity(0)
+                        .padding(.horizontal)
+                    
+                }
+                Divider()
             }
-//            .background(Color.red.opacity(0.3))
+            
+            .background(Color(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)).opacity(getRedIndicator() ? 0.05 : 0.0))
             
         })
+        
+    }
     
+    func getRedIndicator() -> Bool{
+        if (((selectedItem == "Detail") || (selectedItem == "Metode Pembayaran") || (selectedItem == "Pilih Tanggal")) && (perjanjianController.endButtonPressed == true)){
+            return true
+        } else {
+            return false
+        }
     }
 }
 
@@ -48,8 +62,8 @@ func getPickerTitle(title: String) -> String{
     }
 }
 
-//struct inputPicker_Previews: PreviewProvider {
-//    static var previews: some View {
-//        inputPicker()
-//    }
-//}
+struct inputPicker_Previews: PreviewProvider {
+    static var previews: some View {
+        InputPicker(title: "yes", listItem: ["yes", "yes"], selectedItem: .constant("Detail"))
+    }
+}

@@ -40,37 +40,15 @@ struct FormViewWithInfo: View {
                             
                         }, label: {
                             Image(systemName: "info.circle")
-                                .foregroundColor(Color("tabBarColor"))
-                        }).padding(.bottom, 14)
+                                .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                        })
                     }
                 }.padding(.horizontal)
                 
-                if(title == "Metode Pembayaran"){
+                
+                if(title == "Pengadilan Negeri") {
                     
-                    HStack{
-                        Text(profileValue).font(.body)
-                        Spacer()
-                        if(showButton){
-                            Button(action: {
-                                perjanjianController.modalMetodePembayaran.toggle()
-                            }) {
-                                HStack(spacing: 10) {
-                                    Text(buttonTitle).foregroundColor(Color.init(hex: "#C4C4C4"))
-                                    Image(systemName: "chevron.right").foregroundColor(Color.init(hex: "#C4C4C4"))
-                                }
-                            }
-                        }
-                        
-                    }.padding(.horizontal)
-                    .sheet(isPresented: $perjanjianController.modalMetodePembayaran){
-                        NavigationView{
-                            ModalMetodePembayaran(isPresented: $perjanjianController.modalMetodePembayaran, metodePembayaran: $profileValue)
-                        }
-                    }
-                    .padding(.top, 4)
-                    Divider()
-                } else if(title == "Pengadilan Negeri") {
-                    
+                    VStack{
                     HStack{
                         Text("Pengadilan Negeri").font(.body)
                         Spacer()
@@ -78,7 +56,7 @@ struct FormViewWithInfo: View {
                             Button(action: {
                                 perjanjianController.modalPengadilanNegeri.toggle()
                             }) {
-                                HStack(spacing: 10) {
+                                HStack {
                                     Text(profileValue).foregroundColor(Color.init(hex: "#C4C4C4"))
                                     Image(systemName: "chevron.right").foregroundColor(Color.init(hex: "#C4C4C4"))
                                 }
@@ -93,31 +71,34 @@ struct FormViewWithInfo: View {
                             ModalPengadilanNegeri(isPresented: $perjanjianController.modalPengadilanNegeri, pengadilanNegeri: $profileValue)
                         }
                     }
-                    .padding(.top, 4)
                     Divider()
+                    }.background(Color(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)).opacity(getRedIndicator() ? 0.05 : 0.0))
                 }
                 
                 else {
                     
-                    HStack{
-                        Text(profileValue)
-							.font(.body)
-							.fontWeight(.regular)
+                    VStack{
+                        Text(profileValue).font(.body)
                             .padding(.horizontal)
-                            .foregroundColor(Color("tabBarColor"))
-                        Spacer()
-                        
-                    }
+                            .foregroundColor(Color.init(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Divider()
+                    }.background(Color(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)).opacity(getRedIndicator() ? 0.05 : 0.0))
                     
                 }
                 
             }
             
-            .padding(.bottom)
         }.popoverView(content: {PopOverContent(frame: $secondPopoverFrame, show: $popOverState, popOverText: info)}, background: {Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))}, isPresented: $popOverState, frame: $secondPopoverFrame, anchorFrame: nil, popoverType: .popover, position: .bottom, viewId: "infoPopOver", settings: DYPopoverViewSettings(arrowLength: 0,  cornerRadius: (10,10,10,10), offset: CGSize(width: 0, height: -25), animation: .default)
         )
         
-        
+    }
+    func getRedIndicator() -> Bool{
+        if (((profileValue == "Pilih") || (profileValue == "Pilih Tanggal")) && (perjanjianController.endButtonPressed == true)){
+            return true
+        } else {
+            return false
+        }
     }
 }
 

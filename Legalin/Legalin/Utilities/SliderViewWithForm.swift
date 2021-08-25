@@ -16,6 +16,9 @@ struct SliderViewWithForm: View {
     @State var type: Int
     @State private var formattedText = ""
     @State private var rangeOfSlider = 0...50000000.0
+    
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
+    
     var valueMaxSlide: Double {
         if type == 0 {
             return 1000000.0
@@ -29,58 +32,75 @@ struct SliderViewWithForm: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title).font(.footnote).fontWeight(.light).padding(.horizontal)
-            TextField(title, text: $formattedText, onEditingChanged: { (isBegin) in
-                if isBegin {
-                    formattedText = ""
-                } else {
-                    textChanged(to: formattedText)
+            
+            VStack{
+                
+                TextField(title, text: $formattedText, onEditingChanged: { (isBegin) in
+                    if isBegin {
+                        formattedText = ""
+                    } else {
+                        textChanged(to: formattedText)
+                    }
                 }
-            }
-            ).keyboardType(.numberPad)
-            .padding(.horizontal)
-            .onTapGesture {}
-            .onLongPressGesture(
-                pressing: { isPressed in if isPressed { self.endEditing() } },
-                perform: {})
-            Divider()
-            Slider(
-                value: Binding(
-                    get: {
-                        self.sliderValue
-                    },
-                    set: {(newValue) in
-                        self.sliderValue = newValue
-                        self.getFormattedText()
-                    }),
-                in: rangeOfSlider,
-                step: valueMaxSlide
-            ).padding(.bottom, 11).accentColor(Color("tabBarColor"))
-            .padding(.horizontal)
-            .onChange(of: self.sliderValue, perform: { value in
-                getFormattedText()
-            })
-            HStack{
-                Text(text1)
-                    .foregroundColor(Color("labelColor"))
-                    .font(.caption)
-                Spacer()
-                Text(text2)
-                    .foregroundColor(Color(("monthAndPriceColorStep3")))
-                    .font(.caption)
-            }
-            .frame(
-                minWidth: 0,
-                maxWidth: .infinity,
-                minHeight: 0,
-                maxHeight: 0,
-                alignment: .topLeading
-            )
-            .padding(.bottom, 10)
-            .padding(.horizontal)
-            Divider()
-        }.padding(.bottom,15)
+                ).keyboardType(.numberPad)
+                .padding(.horizontal)
+                .onTapGesture {}
+                .onLongPressGesture(
+                    pressing: { isPressed in if isPressed { self.endEditing() } },
+                    perform: {})
+                Divider()
+                Slider(
+                    value: Binding(
+                        get: {
+                            self.sliderValue
+                        },
+                        set: {(newValue) in
+                            self.sliderValue = newValue
+                            self.getFormattedText()
+                        }),
+                    in: rangeOfSlider,
+                    step: valueMaxSlide
+                ).padding(.bottom, 11).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                .padding(.horizontal)
+                .onChange(of: self.sliderValue, perform: { value in
+                    getFormattedText()
+                })
+                HStack{
+                    Text(text1)
+                        .foregroundColor(Color.init(hex: "#707070"))
+                        .font(.caption)
+                    Spacer()
+                    Text(text2)
+                        .foregroundColor(Color.init(hex: "#707070"))
+                        .font(.caption)
+                }
+                .frame(
+                    minWidth: 0,
+                    maxWidth: .infinity,
+                    minHeight: 0,
+                    maxHeight: 0,
+                    alignment: .topLeading
+                )
+                .padding(.bottom, 10)
+                .padding(.horizontal)
+                Divider()
+            }.background(Color(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)).opacity(getRedIndicator() ? 0.05 : 0.0))
+            
+        }.padding(.bottom,10)
         .onAppear{
             getFormattedText()
+        }
+    }
+    
+    func getRedIndicator() -> Bool{
+        if (title != "Bunga"){
+            if ((sliderValue == 0) && (perjanjianController.endButtonPressed == true)){
+                return true
+            } else{
+                return false
+            }
+        } else {
+            return false
         }
         
     }
