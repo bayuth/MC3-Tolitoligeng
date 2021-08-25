@@ -52,9 +52,6 @@ struct step4Agunan: View {
                     
                     InputPicker(title: "Tipe Barang", listItem: tipeAgunan, selectedItem: $perjanjianController.tipeBarangAgunan)
                     
-                    
-                    Divider()
-                    
                     //                    inputToModal(title: "Tipe Barang", textViewValue: "Tipe Barang", tipeAgunan: $perjanjianController.tipeBarangAgunan, isPresented: false)
                     
                     if(perjanjianController.tipeBarangAgunan != "Detail"){
@@ -81,6 +78,7 @@ struct step4Agunan: View {
             }.disabled(!perjanjianController.nextButtonState)
             .simultaneousGesture(TapGesture().onEnded{
                 
+                perjanjianController.endButtonPressed = true
                 if perjanjianController.nextButtonState == false{
                     showAlert = true
                 }

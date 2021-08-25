@@ -84,7 +84,6 @@ struct pageIndicator: View {
             )
         }
 		.frame(width: UIScreen.main.bounds.width, height: 50, alignment: .leading)
-		.border(Color.black)
     }
 }
 
