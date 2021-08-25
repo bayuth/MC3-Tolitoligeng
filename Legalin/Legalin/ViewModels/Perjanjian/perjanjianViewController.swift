@@ -70,6 +70,8 @@ class PerjanjianController: ObservableObject {
     @Published var pengadilanNegeri: String = "Pilih"
     
     @Published var tanggalTandaTangan: String = "Pilih Tanggal"
+    //Reminder
+    @Published var reminder: Bool = false
     
     //Step 4 attribute
     @Published var modalAgunanState: Bool = false
@@ -87,6 +89,8 @@ class PerjanjianController: ObservableObject {
     @Published var page4State: Bool = false
     
     @Published var redirectPage: String = "step1"
+    
+
     
     init(){
         resetValue()
@@ -140,6 +144,8 @@ class PerjanjianController: ObservableObject {
         pengadilanNegeri = "Pilih"
         
         tanggalTandaTangan = "Pilih Tanggal"
+        // reminder
+        reminder = false
         
         //Step 4
         modalAgunanState = false
@@ -154,6 +160,8 @@ class PerjanjianController: ObservableObject {
         page2State = false
         page3State = false
         page4State = false
+        
+        
         
         profil = coreDataVM.pihak1
         sycnPihak1()
@@ -240,6 +248,8 @@ class PerjanjianController: ObservableObject {
         pengadilanNegeri = pinjaman.pengadilanNegeri ?? ""
         
         tanggalTandaTangan = pinjaman.tanggalTandaTangan ?? ""
+        //reminder
+        reminder = pinjaman.reminder ?? false
         
         //Step 4
         modalAgunanState = false
@@ -248,6 +258,8 @@ class PerjanjianController: ObservableObject {
         warnaBarang = pinjaman.agunan?.warna ?? ""
         hargaBarang = pinjaman.agunan?.harga ?? ""
         nomorSeri = pinjaman.agunan?.nomorSeri ?? ""
+        
+        
 
     }
     
@@ -462,11 +474,15 @@ class PerjanjianController: ObservableObject {
         pihak2AtasNamaRekening = atasNamaRekening ?? ""
     }
     
+    func turnOnReminder(status: StatusSurat, reminder: Bool){
+        self.reminder = reminder
+    }
+    
     func updatePinjamanCoreData(status: StatusSurat){
         
         var newPinjaman = coreDataVM.createPinjaman()
         //Update pinjaman atribut
-        coreDataVM.updatePinjaman(pinjaman: newPinjaman, tujuan: tujuanPeminjaman, metodePembayaran: metodePembayaran, jatuhTempo: tanggalJatuhTempo, pengadilanNegeri: pengadilanNegeri, tanggalTandaTangan: tanggalTandaTangan, status: status)
+        coreDataVM.updatePinjaman(pinjaman: newPinjaman, tujuan: tujuanPeminjaman, metodePembayaran: metodePembayaran, jatuhTempo: tanggalJatuhTempo, pengadilanNegeri: pengadilanNegeri, tanggalTandaTangan: tanggalTandaTangan, status: status, reminder: reminder)
         
         //Update pihak1 atribut
         coreDataVM.updateAkun(akun: newPinjaman.pihak1! , NIK: pihak1NIK, nama: pihak1Nama, tanggalLahir: pihak1TanggalLahir, alamat: pihak1Alamat, rt: pihak1RT, rw: pihak1RW, kecamatan: pihak1Kecamatan, kelurahanDesa: pihak1Kelurahan, kotaKabupaten: pihak1Kota, provinsi: pihak1Provinsi, pekerjaan: pihak1Pekerjaan, nomorAktif: pihak1NomorHP)
@@ -483,11 +499,12 @@ class PerjanjianController: ObservableObject {
         mainPageVM.fillAllAgreement()
     }
     
+//    func turnOnReminder(pinjaman)
+    
     
     func deletePinjaman(pinjaman:Pinjaman){
         if pinjaman != nil{
             coreDataVM.deletePinjaman(pinjaman: pinjaman)
-//            mainPageVM.fillAllAgreement()
         }
         
     }

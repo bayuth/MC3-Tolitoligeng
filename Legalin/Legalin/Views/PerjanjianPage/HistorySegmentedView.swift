@@ -10,6 +10,7 @@ import SwiftUI
 struct HistorySegmentedView: View {
     @Binding var item: Agreements
     @Binding var lists: [Agreements]
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
 
     var body: some View {
         ZStack{
@@ -128,6 +129,7 @@ struct HistorySegmentedView: View {
     }
     
     func deleteItem() {
+        perjanjianController.deletePinjaman(pinjaman: item.pinjaman)
         lists.removeAll{ (item) -> Bool in
             return self.item.id == item.id
         }

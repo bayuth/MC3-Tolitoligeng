@@ -11,6 +11,7 @@ struct AgreementCardView: View {
     
     @Binding var item: Agreements
     @Binding var lists: [Agreements]
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     var body: some View {
         ZStack{
@@ -138,6 +139,7 @@ struct AgreementCardView: View {
     }
     
     func deleteItem() {
+        perjanjianController.deletePinjaman(pinjaman: item.pinjaman)
         lists.removeAll{ (item) -> Bool in
             return self.item.id == item.id
         }

@@ -32,6 +32,9 @@ struct PerjanjianPage: View {
                 
                 ScrollView(showsIndicators: false){
                     ChoosenSegment(selectedSegment: selectedSide)
+                        .onAppear{
+                            UIApplication.shared.applicationIconBadgeNumber = 0
+                        }
                 }
             }
             .navigationTitle("Perjanjian")
