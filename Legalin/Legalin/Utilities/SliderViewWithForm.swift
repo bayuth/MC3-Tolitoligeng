@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct SliderViewWithForm: View {
     @Binding var sliderValue: Double
@@ -17,7 +18,22 @@ struct SliderViewWithForm: View {
     @State private var formattedText = ""
     @State private var rangeOfSlider = 0...50000000.0
     
+    @State private var someNumber = 123.0
+    @State private var someNumber2 = "123"
+    
     @ObservedObject var perjanjianController: PerjanjianController = .shared
+    
+    var formattedNumber : NSNumber {
+
+        let formatter = NumberFormatter()
+
+        guard let number = formatter.number(from: formattedText) else {
+            print("not valid to be converted")
+            return 0
+        }
+
+        return number
+    }
     
     var valueMaxSlide: Double {
         if type == 0 {
@@ -34,7 +50,7 @@ struct SliderViewWithForm: View {
             Text(title).font(.footnote).fontWeight(.light).padding(.horizontal)
             
             VStack{
-                
+                Text("number: \(self.formattedNumber)")
                 TextField(title, text: $formattedText, onEditingChanged: { (isBegin) in
                     if isBegin {
                         formattedText = ""
@@ -122,6 +138,7 @@ struct SliderViewWithForm: View {
         if type == 0 {
             rangeOfSlider = 0...50000000.0
             formattedText = resultRupiah
+            
         }else if type == 1 {
             rangeOfSlider = 0...6.0
             formattedText = "\(String(format:"%.2f", sliderValue)) %"
