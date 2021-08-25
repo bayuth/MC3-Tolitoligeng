@@ -466,7 +466,7 @@ class PerjanjianController: ObservableObject {
     }
     
     
-    func updatePinjamanCoreData2(pinjaman: Pinjaman){
+    func updatePinjamanCoreData2(pinjaman: Pinjaman, status: StatusSurat){
         
         var newPinjaman = pinjaman
         //Update pinjaman atribut
