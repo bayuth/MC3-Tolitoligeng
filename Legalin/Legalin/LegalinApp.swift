@@ -11,7 +11,7 @@ import SwiftUI
 struct LegalinApp: App {
     var body: some Scene {
         WindowGroup {
-//            TestCoreDataView()
+            TestCoreDataView()
 //            ModalPengadilanNegeri()
 //            ModalMetodePembayaran()
 //            ModalPengadilanNegeri()
@@ -23,7 +23,7 @@ struct LegalinApp: App {
 //            GeneratePDF()
 //			step1Peminjam()
 //            TesNavigation()
-			MainApplicationPage()
+//			MainApplicationPage()
 			
 //            DisclaimerPopUp(shouldShowOnBoarding: .constant(true))
         }

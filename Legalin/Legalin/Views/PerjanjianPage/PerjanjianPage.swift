@@ -65,7 +65,7 @@ struct ChoosenSegment: View {
     @StateObject var agreementData: PerjanjianViewModel = .shared
     @State private var location: CGPoint = CGPoint(x: 0, y: 0)
     @ObservedObject var perjanjianController: PerjanjianController = .shared
-    
+    @ObservedObject var coreDataVM: CoreDataViewModel = .shared
     
     var body: some View{
         switch selectedSegment {
@@ -114,11 +114,31 @@ struct ChoosenSegment: View {
                 
             }
         case .draft:
+              
+//            if coreDataVM.listPinjamanDraft.count == 0 {
+//                EmptyStatePerjanjian()
+//            }
+//            else{
+//
+//                List{
+//                    ForEach(coreDataVM.listPinjamanDraft, id:\.uuid){ item in
+//
+//                        NavigationLink(
+//                            destination: DetailPerjanjian(detailPerjanjian: item),
+//                            label: {
+//                                DraftSegmentedView2(item: item)
+//                            })
+//                            .foregroundColor(.black)
+//                }
+//                }
+//        }
+         
             if agreementData.listDraft.count == 0 {
                 EmptyStatePerjanjian()
             }
             else{
-                ForEach(agreementData.listDraft, id:\.id){ item in
+
+                    ForEach(agreementData.listDraft, id:\.id){ item in
                     if item.offset != -160{
                         NavigationLink(
                             destination: DetailPerjanjian(detailPerjanjian: agreementData.listDraft[getIndex3(item: item)].pinjaman),
@@ -132,7 +152,8 @@ struct ChoosenSegment: View {
                         DraftSegmentedView(item: $agreementData.listDraft[getIndex3(item: item)], lists: $agreementData.listDraft)
                     }
                 }
-            }
+                }
+            
         }
     }
     

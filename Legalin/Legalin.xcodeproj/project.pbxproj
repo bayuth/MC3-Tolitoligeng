@@ -104,6 +104,8 @@
 		5EBDDDC926B2E83900F53958 /* Legalin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDDDC726B2E83900F53958 /* Legalin.xcdatamodeld */; };
 		5EBDDDD426B3B69900F53958 /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDDDD326B3B69900F53958 /* CoreDataViewModel.swift */; };
 		5EBDDDD726B4170500F53958 /* TestCoreDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBDDDD626B4170500F53958 /* TestCoreDataView.swift */; };
+		5EE1770E26D65BBD0055D3BC /* DetailPerjanjian2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE1770D26D65BBD0055D3BC /* DetailPerjanjian2.swift */; };
+		5EE1771326D65C980055D3BC /* DraftSegmentedView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE1771226D65C980055D3BC /* DraftSegmentedView2.swift */; };
 		5EF3B05926BA46C200ABC1F7 /* step4Agunan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3B05826BA46C200ABC1F7 /* step4Agunan.swift */; };
 		750A862D26BEA54D0055886D /* ConfirmationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A862C26BEA54D0055886D /* ConfirmationPage.swift */; };
 		7558EA6426BD2A7500E0B492 /* Pihak1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA6326BD2A7500E0B492 /* Pihak1.swift */; };
@@ -219,6 +221,8 @@
 		5EBDDDC826B2E83900F53958 /* Legalin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Legalin.xcdatamodel; sourceTree = "<group>"; };
 		5EBDDDD326B3B69900F53958 /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
 		5EBDDDD626B4170500F53958 /* TestCoreDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataView.swift; sourceTree = "<group>"; };
+		5EE1770D26D65BBD0055D3BC /* DetailPerjanjian2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPerjanjian2.swift; sourceTree = "<group>"; };
+		5EE1771226D65C980055D3BC /* DraftSegmentedView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftSegmentedView2.swift; sourceTree = "<group>"; };
 		5EF3B05826BA46C200ABC1F7 /* step4Agunan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = step4Agunan.swift; sourceTree = "<group>"; };
 		750A862C26BEA54D0055886D /* ConfirmationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPage.swift; sourceTree = "<group>"; };
 		7558EA6326BD2A7500E0B492 /* Pihak1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pihak1.swift; sourceTree = "<group>"; };
@@ -414,7 +418,9 @@
 			children = (
 				4AD8840D26BAEC8C00C5A6F5 /* AgreementCardView.swift */,
 				4AD8840E26BAEC8C00C5A6F5 /* DraftSegmentedView.swift */,
+				5EE1771226D65C980055D3BC /* DraftSegmentedView2.swift */,
 				4AD8840F26BAEC8C00C5A6F5 /* PerjanjianPage.swift */,
+				5EE1770D26D65BBD0055D3BC /* DetailPerjanjian2.swift */,
 				4AD8841026BAEC8C00C5A6F5 /* EmptyStatePerjanjian.swift */,
 				4AD8841126BAEC8C00C5A6F5 /* HistorySegmentedView.swift */,
 				75B627BB26BC1579008F2C2A /* DetailPerjanjian.swift */,
@@ -688,8 +694,10 @@
 				5C8F9CFC26BCF69400CE994B /* extractKtpInfo.swift in Sources */,
 				5CE3F8F126CBFFB500569C67 /* KebijakanPrivasiPage.swift in Sources */,
 				5C8F9CEF26BCF66D00CE994B /* ProfileView.swift in Sources */,
+				5EE1770E26D65BBD0055D3BC /* DetailPerjanjian2.swift in Sources */,
 				5C8F9CFB26BCF69400CE994B /* FormView.swift in Sources */,
 				5CC4E12726C3FD6600A7042A /* ButtonBorderedComingSoon.swift in Sources */,
+				5EE1771326D65C980055D3BC /* DraftSegmentedView2.swift in Sources */,
 				5C8F9CF226BCF66D00CE994B /* functionTrimKtp.swift in Sources */,
 				5E3F136B26C5974800E3E0B6 /* profileController.swift in Sources */,
 				4A3AF69A26BB769300614382 /* ListKredit.swift in Sources */,

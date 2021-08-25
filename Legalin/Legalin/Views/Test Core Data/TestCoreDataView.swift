@@ -13,7 +13,20 @@ struct TestCoreDataView: View {
     @State var username: String = ""
     
     var body: some View {
+        NavigationView{
         VStack(spacing: 20){
+            
+            List{
+                ForEach(vm.listPinjamanDraft, id:\.uuid){ item in
+                    
+                    NavigationLink(
+                        destination: DetailPerjanjian(detailPerjanjian: item),
+                        label: {
+                            DraftSegmentedView2(item: item)
+                        })
+                        .foregroundColor(.black)
+                }.onDelete(perform: deletePerjanjian)
+            }
             
             Text("Core data: \(getInitText(pihak1: vm.pihak1))")
             
@@ -45,6 +58,14 @@ struct TestCoreDataView: View {
         }
         
         
+    }
+    }
+    
+    private func deletePerjanjian(at offsets: IndexSet){
+        
+        for offset in offsets{
+            vm.deletePinjaman(pinjaman: vm.listPinjamanDraft[offset])
+        }
     }
 }
 
