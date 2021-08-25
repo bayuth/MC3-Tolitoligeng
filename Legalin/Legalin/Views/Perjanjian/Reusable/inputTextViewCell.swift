@@ -22,6 +22,7 @@ struct inputTextViewCell: View {
             Text(title).font(.footnote).fontWeight(.light).padding(.horizontal)
                 .padding(.top)
             
+            VStack{
             HStack{
             
                 TextField(emptyStateString, text: $textViewValue, onEditingChanged: { _ in perjanjianController.setNextButtonState() })
@@ -32,9 +33,21 @@ struct inputTextViewCell: View {
             }.padding(.horizontal)
             
             Divider()
+            }.background(Color(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)).opacity(getRedIndicator() ? 0.05 : 0.0))
             
         })
         
+    }
+    func getRedIndicator() -> Bool{
+        if(title != "Nomor Seri Opsional"){
+        if ((textViewValue == "") && (perjanjianController.endButtonPressed == true)){
+            return true
+        } else {
+            return false
+        }
+        }else{
+            return false
+        }
     }
 }
 

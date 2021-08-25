@@ -89,14 +89,19 @@ struct step2Pemberi: View {
 								.padding(.bottom,5)
                                 .padding(.horizontal)
 							if Calendar.current.isDateInToday(perjanjianController.pihak2TanggalLahir) {
-								Text("Pilih Tanggal Lahir Sesuai KTP")
+								
+                                VStack{
+                                Text("Pilih Tanggal Lahir Sesuai KTP")
 									.font(.body)
 									.fontWeight(.regular)
 									.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
                                     .padding(.horizontal)
 									.onTapGesture {
 									showTanggalLahir.toggle()
-								}
+                                        
+								}.frame(maxWidth: .infinity, alignment: .leading)
+                                    Divider()
+                                }      .background(Color(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)).opacity(perjanjianController.endButtonPressed ? 0.05 : 0.0))
 							} else {
 								Text(perjanjianController.pihak2TanggalLahir, formatter: dateFormatter)
 									.font(.body)
@@ -106,9 +111,8 @@ struct step2Pemberi: View {
 									.onTapGesture {
 										showTanggalLahir.toggle()
 									}
+                                Divider()
 							}
-							Divider()
-								.padding(.bottom)
 						}
 						if showTanggalLahir {
 							DatePicker("", selection: $perjanjianController.pihak2TanggalLahir, displayedComponents: .date)
