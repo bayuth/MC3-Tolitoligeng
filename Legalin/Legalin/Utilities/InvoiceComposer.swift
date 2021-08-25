@@ -124,10 +124,10 @@ class InvoiceComposer: NSObject {
             HTMLContent = HTMLContent.replacingOccurrences(of: "#REKENING#", with: perjanjianController.pihak2NomorRekening)
             
             //Pasal 2
-            HTMLContent = HTMLContent.replacingOccurrences(of: "#BUNGA_PERSEN#", with: String(format: "%.0f", perjanjianController.bunga))
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#BUNGA_PERSEN#", with: String(format: "%.2f", perjanjianController.bunga) + "%")
             HTMLContent = HTMLContent.replacingOccurrences(of: "#BUNGA_HURUF#", with: convertBungaToWord(bil: perjanjianController.bunga*100, firstTime: true))
-            HTMLContent = HTMLContent.replacingOccurrences(of: "#BUNGA_ANGKA#", with: String(format: "%.0f", perjanjianController.bunga/perjanjianController.tenor))
-            HTMLContent = HTMLContent.replacingOccurrences(of: "#BUNGA_HURUF2#", with: convertBungaToWord(bil: perjanjianController.bunga/perjanjianController.tenor*100, firstTime: true))
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#BUNGA_ANGKA#", with: generateCicilanPerbulan2().toRupiahString())
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#BUNGA_HURUF2#", with: String(perjanjianController.convertNumToWord(bil: generateCicilanPerbulan2())))
             
             //Agunan
             HTMLContent = HTMLContent.replacingOccurrences(of: "#NAMA_BARANG#", with: perjanjianController.namaBarang)
@@ -161,9 +161,13 @@ class InvoiceComposer: NSObject {
         return generateTotalPinjaman() / perjanjianController.tenor
     }
     
+    func generateCicilanPerbulan2() -> Double {
+        return (generateTotalPinjaman() - perjanjianController.jumlahPinjaman) / perjanjianController.tenor
+    }
+    
     func convertBungaToWord(bil: Double, firstTime: Bool) -> String {
         
-        let angka = ["Nol","Satu","Dua","Tiga","Empat","Lima","Enam",
+        let angka = ["","Satu","Dua","Tiga","Empat","Lima","Enam",
                      "Tujuh","Delapan","Sembilan","Sepuluh","Sebelas"]
         var Hasil = " "
         
@@ -178,7 +182,7 @@ class InvoiceComposer: NSObject {
         else if (n < 100){
             
             if (firstTime == true){
-                Hasil = angka[Int(n)/10] + " Koma " + convertBungaToWord(bil: n.truncatingRemainder(dividingBy: 10), firstTime: false)
+                Hasil = "Nol" + " Koma " + convertBungaToWord(bil: n, firstTime: false)
             }else {
                 Hasil = convertBungaToWord(bil: n/10, firstTime: false) + " Puluh " + convertBungaToWord(bil: n.truncatingRemainder(dividingBy: 10), firstTime: false)
             }
