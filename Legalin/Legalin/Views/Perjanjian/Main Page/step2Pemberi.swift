@@ -115,7 +115,8 @@ struct step2Pemberi: View {
 								.datePickerStyle(GraphicalDatePickerStyle())
 								.padding(.horizontal)
 						}
-						FormView(title: "Alamat", profileValue: $perjanjianController.pihak2Alamat, keyboardNum: false, isDisable: $isDisable)
+//						FormView(title: "Alamat", profileValue: $perjanjianController.pihak2Alamat, keyboardNum: false, isDisable: $isDisable)
+						MultiLineFormView(alamat: $perjanjianController.pihak2Alamat, isDisable: $isDisable)
 						HStack {
 							FormView(title: "RT", profileValue: $perjanjianController.pihak2RT, keyboardNum: true, isDisable: $isDisable)
 							FormView(title: "RW", profileValue: $perjanjianController.pihak2RW, keyboardNum: true, isDisable: $isDisable)
