@@ -29,7 +29,7 @@ struct ModalAddKredit: View {
                     NavigationLink(
                         destination: UlasanKredit(presentationMode: _masterPresentationModalAdd, dataUlasan: kreditData),
                         label: {
-                            Text("Simulasikan").font(.body).fontWeight(.bold).foregroundColor(.white).multilineTextAlignment(.center).padding(.vertical,15).padding(.horizontal,120).background(Color(#colorLiteral(red: 0, green: 0.2837583721, blue: 0.423648268, alpha: 1))).cornerRadius(10)
+                            Text("Simulasikan").font(.body).fontWeight(.bold).foregroundColor(.white).multilineTextAlignment(.center).padding(.vertical,15).padding(.horizontal,120).background(Color("tabBarColor")).cornerRadius(10)
                         }).padding(.top,10).padding(.bottom, 16)
                 }else{
                     Button(action: {

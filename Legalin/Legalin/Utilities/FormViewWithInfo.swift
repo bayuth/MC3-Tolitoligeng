@@ -40,7 +40,7 @@ struct FormViewWithInfo: View {
                             
                         }, label: {
                             Image(systemName: "info.circle")
-                                .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                                .foregroundColor(Color("tabBarColor"))
                         }).padding(.bottom, 14)
                     }
                 }.padding(.horizontal)
@@ -86,6 +86,7 @@ struct FormViewWithInfo: View {
                         }
                         
                     }.padding(.horizontal)
+					.background(Color("defaultLightAndDarkColor"))
                     .sheet(isPresented: $perjanjianController.modalPengadilanNegeri)
                     {
                         NavigationView{
@@ -99,9 +100,11 @@ struct FormViewWithInfo: View {
                 else {
                     
                     HStack{
-                        Text(profileValue).font(.body)
+                        Text(profileValue)
+							.font(.body)
+							.fontWeight(.regular)
                             .padding(.horizontal)
-                            .foregroundColor(Color.init(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                            .foregroundColor(Color("tabBarColor"))
                         Spacer()
                         
                     }

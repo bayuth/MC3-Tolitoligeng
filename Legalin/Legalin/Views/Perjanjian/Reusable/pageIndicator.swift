@@ -44,7 +44,7 @@ struct pageIndicator: View {
                                 
                                 Circle()
                                     .trim(from: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, to: CGFloat(progressNumber/4.0))
-                                    .stroke(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)), lineWidth: 4)
+                                    .stroke(Color("tabBarColor"), lineWidth: 4)
                                     .frame(width: 48, height: 48)
                                     .rotationEffect(.degrees(270))
                                 
@@ -65,7 +65,7 @@ struct pageIndicator: View {
                                             
                                         }, label: {
                                             Image(systemName: "info.circle")
-                                                .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                                                .foregroundColor(Color("tabBarColor"))
                                         })
                                     }
                                 }

@@ -16,10 +16,10 @@ struct EmptyState: View {
                 .padding(.bottom, 24)
             
             Text("Tidak Ada Kredit")
-                .foregroundColor(Color(hex: "#707070"))
+				.foregroundColor(Color("textColor"))
                 .font(.headline)
             Text("Tambah kredit baru untuk memulai simulasi kredit")
-                .foregroundColor(Color(hex: "#707070"))
+				.foregroundColor(Color("textColor"))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 16)
                 .font(.subheadline)

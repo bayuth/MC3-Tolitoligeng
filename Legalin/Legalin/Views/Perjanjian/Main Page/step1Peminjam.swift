@@ -181,7 +181,7 @@ extension UINavigationController{
 		super.viewDidLoad()
 		
 		let appearance = UINavigationBarAppearance()
-		appearance.backgroundColor = #colorLiteral(red: 0, green: 0.2837583721, blue: 0.423648268, alpha: 1)
+		appearance.backgroundColor = UIColor(Color("tabBarColor"))
 		appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
 		
 		navigationBar.standardAppearance = appearance

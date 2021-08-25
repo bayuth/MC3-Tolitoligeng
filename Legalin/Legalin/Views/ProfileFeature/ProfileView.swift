@@ -111,7 +111,7 @@ struct ProfileView: View {
 										DatePicker("", selection: $profileController.pihak1TanggalLahir, displayedComponents: .date)
 											.datePickerStyle(GraphicalDatePickerStyle())
 											.padding(.horizontal)
-											.accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+											.accentColor(Color("tabBarColor"))
 									}
 //									FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable)
 									
@@ -133,7 +133,7 @@ struct ProfileView: View {
 										}, label: {
 											ZStack{
 												RoundedRectangle(cornerRadius: 10)
-													.foregroundColor(texfieldDisable ? Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)) : Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+													.foregroundColor(texfieldDisable ? Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)) : Color("tabBarColor"))
 													.frame(width: UIScreen.main.bounds.width - 35, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
 												
 												Text("Simpan").fontWeight(.semibold).foregroundColor(.white)
