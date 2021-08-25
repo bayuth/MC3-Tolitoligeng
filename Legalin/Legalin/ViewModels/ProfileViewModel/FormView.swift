@@ -22,6 +22,7 @@ struct FormView: View {
 				
 				Text(title).font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.horizontal)
 				TextField(title, text: $profileValue).font(.body).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.horizontal)
+					.lineLimit(3)
 				Divider()
 				
 			}.padding(.bottom)
@@ -31,6 +32,7 @@ struct FormView: View {
                 Text(title).font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.horizontal)
 //				TextField(title, text: $profileValue).font(.body).foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))).padding(.horizontal)
                 DoneKeyboard(text: $profileValue, hint: title, keyType: keyboardNum ? UIKeyboardType.numberPad : UIKeyboardType.default)
+					.lineLimit(3)
 					.accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
                     .font(.body)
                     .disabled(isDisable)

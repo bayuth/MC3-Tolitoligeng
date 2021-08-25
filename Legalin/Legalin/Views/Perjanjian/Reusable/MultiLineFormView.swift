@@ -61,9 +61,10 @@ struct AutoSizingTF: UIViewRepresentable {
 	}
 	
 	func makeUIView(context: Context) -> UITextView {
+//		let textView = UITextField()
 		let textView = UITextView()
 //		display hint
-		if self.text == "" {
+		if textView.text == nil {
 			textView.text = hint
 			textView.textColor = .gray
 			textView.font = .systemFont(ofSize: 18)
@@ -73,7 +74,8 @@ struct AutoSizingTF: UIViewRepresentable {
 			textView.font = .systemFont(ofSize: 18)
 		}
 		
-		
+//		textView.text = text
+//		textView.font = .systemFont(ofSize: 18)
 		textView.backgroundColor = .clear
 		
 		
@@ -127,7 +129,7 @@ struct AutoSizingTF: UIViewRepresentable {
 		
 //		updating text in SwifUI
 		func textViewDidChange(_ textView: UITextView) {
-			parent.text = textView.text
+			parent.text = textView.text ?? ""
 			parent.containerHeight = textView.contentSize.height
 		}
 		
