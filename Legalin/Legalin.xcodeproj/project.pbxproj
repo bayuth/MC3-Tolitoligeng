@@ -34,6 +34,7 @@
 		4AD8841526BAEC8C00C5A6F5 /* EmptyStatePerjanjian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8841026BAEC8C00C5A6F5 /* EmptyStatePerjanjian.swift */; };
 		4AD8841626BAEC8C00C5A6F5 /* HistorySegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8841126BAEC8C00C5A6F5 /* HistorySegmentedView.swift */; };
 		4AD8841A26BAEC9A00C5A6F5 /* PerjanjianModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8841926BAEC9A00C5A6F5 /* PerjanjianModel.swift */; };
+		4AE1EAE726D6A4C4008B8826 /* DetailKredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE1EAE626D6A4C4008B8826 /* DetailKredit.swift */; };
 		4AE3656726BFD18B00C1653A /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE3656626BFD18B00C1653A /* SliderView.swift */; };
 		4AE8AB1526D31EB0004ECE6C /* ModalPilihKredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE8AB1426D31EB0004ECE6C /* ModalPilihKredit.swift */; };
 		4AE8AB1726D32466004ECE6C /* KreditChecklistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE8AB1626D32466004ECE6C /* KreditChecklistCell.swift */; };
@@ -151,6 +152,7 @@
 		4AD8841026BAEC8C00C5A6F5 /* EmptyStatePerjanjian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStatePerjanjian.swift; sourceTree = "<group>"; };
 		4AD8841126BAEC8C00C5A6F5 /* HistorySegmentedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorySegmentedView.swift; sourceTree = "<group>"; };
 		4AD8841926BAEC9A00C5A6F5 /* PerjanjianModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerjanjianModel.swift; sourceTree = "<group>"; };
+		4AE1EAE626D6A4C4008B8826 /* DetailKredit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailKredit.swift; sourceTree = "<group>"; };
 		4AE3656626BFD18B00C1653A /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		4AE8AB1426D31EB0004ECE6C /* ModalPilihKredit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPilihKredit.swift; sourceTree = "<group>"; };
 		4AE8AB1626D32466004ECE6C /* KreditChecklistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KreditChecklistCell.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				4A3AF69C26BB7AA300614382 /* KreditCardView.swift */,
 				4A0AC6D426BCD7BF00430BE8 /* ModalAddKredit.swift */,
 				4A46144826C365F6001AA2D2 /* UlasanKredit.swift */,
+				4AE1EAE626D6A4C4008B8826 /* DetailKredit.swift */,
 			);
 			path = Kredit;
 			sourceTree = "<group>";
@@ -750,6 +753,7 @@
 				4A492B8426D48896002F0179 /* ModalEmpty.swift in Sources */,
 				5E8578AD26B90BC30019FB61 /* ModalPengadilanNegeriDetail.swift in Sources */,
 				5E375CEC26BE583700DF834D /* loadingScreen.swift in Sources */,
+				4AE1EAE726D6A4C4008B8826 /* DetailKredit.swift in Sources */,
 				5C5C7F9726D28133009CA05E /* ModalPilihIdentitas.swift in Sources */,
 				4A8C45AE26BA1188008E4B02 /* Helper.swift in Sources */,
 			);
