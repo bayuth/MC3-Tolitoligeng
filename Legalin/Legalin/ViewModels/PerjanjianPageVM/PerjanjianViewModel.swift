@@ -99,6 +99,11 @@ class PerjanjianViewModel: ObservableObject {
         
     }
     
+    func deletePinjamanDraft(index :Int) {
+        coreDataVM.deletePinjaman(pinjaman: coreDataVM.listPinjamanDraft[index])
+        fillListDraft()
+    }
+    
 //    func bindingForId(id: UUID) -> Binding<Agreements> {
 //            Binding<Agreements> { () -> Agreements in
 //                self.listDraft.first(where: { $0.id == id }) ?? Agreements(agreementTitle: "", amountOfLoan: "", Date: "", lenderName: "", signStatus: false, offset: 1, isSwiped: false, pinjaman: Pinjaman())

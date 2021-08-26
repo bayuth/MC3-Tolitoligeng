@@ -16,9 +16,12 @@ struct DetailPerjanjian: View {
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     @Environment(\.presentationMode) var presentationMode
     var detailPerjanjian: Pinjaman
+//    @Binding var item: Agreements
+//    @Binding var lists: [Agreements]
     
     
-//    var subview = [1, 2, 3, 4, 5]
+    
+    //    var subview = [1, 2, 3, 4, 5]
     
     
     var body: some View {
@@ -30,7 +33,7 @@ struct DetailPerjanjian: View {
                         EmptyPDF()
                     }
                     else{
-                        PdfAction(hideSwitch: false)
+                        PdfAction(pinjaman: detailPerjanjian, hideSwitch: false)
                     }
                     
                     Pihak1()
@@ -45,14 +48,18 @@ struct DetailPerjanjian: View {
                     Text("Kosong")
                 }
                 
-
+                
                 
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
             .onAppear{
                 setupAppearance()
+//                print(item.agreementTitle)
                 
             }
+//            .onDisappear{
+//                print(item.agreementTitle)
+//            }
             
         }
         .navigationBarTitle("Detail Perjanjian", displayMode: .inline)
@@ -67,14 +74,14 @@ struct DetailPerjanjian: View {
                                         
                                     }
                                     Button(action: {
-//                                        print(item.agreementTitle)
+                                        //                                        print(item.agreementTitle)
                                         self.presentationMode.wrappedValue.dismiss()
-                                        perjanjianController.deletePinjamanDetail(pinjaman: detailPerjanjian)
-//                                        self.deleteSuccess = true
                                         
-//                                        lists.removeAll{ (item) -> Bool in
-//                                            return self.item.id == item.id
-//                                        }
+                                                                                self.deleteSuccess = true
+                                        
+                                        //                                        lists.removeAll{ (item) -> Bool in
+                                        //                                            return self.item.id == item.id
+                                        //                                        }
                                         print("jalan")
                                     }){
                                         Image(systemName: "trash")
@@ -82,6 +89,17 @@ struct DetailPerjanjian: View {
                                             .foregroundColor(.white)
                                         
                                     }
+                                    .onChange(of: deleteSuccess, perform: { value in
+                                        print("Dismissed!")
+                                        var perjanjianController: PerjanjianController = .shared
+                                        perjanjianController.deletePinjaman(pinjaman: detailPerjanjian)
+//                                        if let idx = lists.firstIndex(where: { $0 === _item }){
+//                                            lists.remove(at: idx)
+//                                        }
+                                        //
+//                                        perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
+//                                        self.presentationMode.wrappedValue.dismiss()
+                                    })
                                 }
         )
     }
