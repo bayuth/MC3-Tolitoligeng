@@ -48,7 +48,9 @@ struct NewProfileView: View {
 				VStack(alignment: .leading) {
 					VStack(alignment: .leading) {
 						
-						Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))) .padding(.bottom,7)
+						Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+							.padding(.top)
+							.padding(.bottom,7)
 							.padding(.horizontal)
 						
 						if (profileController.pihak1IsOpenCam == true) {
@@ -135,7 +137,7 @@ struct NewProfileView: View {
 									.foregroundColor(Color("tabBarColor"))
 									.multilineTextAlignment(.leading)
 									.padding(.bottom,10)
-									.padding(.horizontal)
+									.padding(.horizontal,20)
 								Button(action: {
 									shown.toggle()
 									profileController.setProfileOpenCamToFalse(isOpenCam: false)
@@ -154,6 +156,17 @@ struct NewProfileView: View {
 //			.background(shown ? Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.5)) : Color(#colorLiteral(red: 0.9607843137, green: 0.968627451, blue: 0.9725490196, alpha: 0)))
 		}
 		.navigationBarTitleDisplayMode(.inline)
+		.navigationBarBackButtonHidden(true)
+		.navigationBarItems(leading:
+								Button(action: {
+									mode.wrappedValue.dismiss()
+								}, label: {
+									Image(systemName: "chevron.left")
+										.foregroundColor(.white)
+									Text("Profil")
+										.foregroundColor(.white)
+								})
+		)
 	}
 	
 	struct NewProfileView_Previews: PreviewProvider {

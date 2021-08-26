@@ -16,7 +16,7 @@ struct Pihak2: View {
         ScrollView(showsIndicators: false){
             HStack{
                 VStack(alignment: .leading){
-                    Text("Pihak 2 - Peminjam")
+                    Text("Pihak 2 - Pemberi Pinjaman")
                         .font(.headline)
                         .fontWeight(.semibold)
                         .padding(.bottom, 16)
