@@ -29,7 +29,7 @@ struct AgreementCardView: View {
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 2)
 
-                        Text(String(item.kredit?.jumlahPinjaman ?? 0))
+                        Text(item.kredit?.jumlahPinjaman.toRupiahString() ?? "")
                             .foregroundColor(Color("textColor"))
                             .padding(.bottom, 8)
                         
