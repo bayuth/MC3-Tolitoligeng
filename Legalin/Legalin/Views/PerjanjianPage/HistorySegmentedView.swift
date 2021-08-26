@@ -91,7 +91,7 @@ struct HistorySegmentedView: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 8)
-                    .foregroundColor(Color(#colorLiteral(red: 0.9607843137, green: 0.968627451, blue: 0.9725490196, alpha: 1)))
+                    .foregroundColor(Color("cardColor"))
             )
             .padding(.horizontal)
             .contentShape(Rectangle())
