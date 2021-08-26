@@ -104,7 +104,7 @@ struct ChoosenSegment: View {
                             label: {
                                 HistorySegmentedView(item: $agreementData.listDone[getIndex2(item: item)], lists: $agreementData.listDone)
                             })
-                            .foregroundColor(.black)
+							.foregroundColor(.black)
                             .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listDone[getIndex2(item: item)].pinjaman)})
                     }
                     else{

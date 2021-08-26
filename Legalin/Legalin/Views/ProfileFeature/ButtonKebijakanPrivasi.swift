@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ButtonKebijakanPrivasi: View {
+	
+	@Environment(\.presentationMode) var kebijakanmode: Binding<PresentationMode>
+	
     var body: some View {
 		VStack {
 			ZStack(alignment: .leading) {
@@ -23,9 +26,9 @@ struct ButtonKebijakanPrivasi: View {
 						.padding(.leading)
 				}
 				.frame(width: UIScreen.main.bounds.width - 50, height: 55, alignment: .leading)
-			}
+			}.clipped()
 		}
-        
+		
     }
 }
 

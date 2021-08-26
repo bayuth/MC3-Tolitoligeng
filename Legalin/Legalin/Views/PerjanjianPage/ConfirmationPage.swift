@@ -48,7 +48,7 @@ struct ConfirmationPage: View {
     }
     
     func setupAppearance() {
-        UIPageControl.appearance().currentPageIndicatorTintColor = #colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color("tabBarColor"))
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
     }
     

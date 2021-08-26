@@ -56,7 +56,17 @@ struct DetailPerjanjian: View {
             
         }
         .navigationBarTitle("Detail Perjanjian", displayMode: .inline)
-        .navigationBarItems(trailing:
+		.navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+											Button(action: {
+   									presentationMode.wrappedValue.dismiss()
+   								}, label: {
+   									Image(systemName: "chevron.left")
+   										.foregroundColor(.white)
+   									Text("Perjanjian")
+   										.foregroundColor(.white)
+   								})
+   							,trailing:
                                 HStack(spacing: 16){
                                     Button(action: {
                                         

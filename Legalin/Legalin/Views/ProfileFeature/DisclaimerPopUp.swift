@@ -21,7 +21,7 @@ struct DisclaimerPopUp: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 25)
                         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 1.7, alignment: .center)
-                        .foregroundColor(.white)
+                        .foregroundColor(Color("cardColor"))
                     VStack(alignment: .center) {
                         VStack {
                             Image("Logo Round")
@@ -38,7 +38,7 @@ struct DisclaimerPopUp: View {
                                 isPresented.toggle()
                             }, label: {
                                 Text("Kebijakan Privasi").font(.body)
-                                    .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                                    .foregroundColor(Color("tabBarColor"))
                                     .padding(.horizontal)
                             })
                             .fullScreenCover(isPresented: $isPresented, content: PrivacyPolicyView.init)
@@ -57,7 +57,7 @@ struct DisclaimerPopUp: View {
                             }
                         })
                         .frame(maxWidth: .infinity, maxHeight: 50)
-                        .background(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                        .background(Color("tabBarColor"))
                         .specCornerRadius(8, corners: .allCorners)
                         Spacer()
                     }.padding()
