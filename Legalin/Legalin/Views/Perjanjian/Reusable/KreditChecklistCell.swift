@@ -17,7 +17,7 @@ struct KreditChecklistCell: View {
     var body: some View{
         ZStack{
             RoundedRectangle(cornerRadius: 10)
-                .foregroundColor(selected ? Color(UIColor.systemBackground) : Color(#colorLiteral(red: 0.9607843137, green: 0.968627451, blue: 0.9725490196, alpha: 1))).animation(.easeIn(duration: 0.2))
+                .foregroundColor(selected ? Color(UIColor.systemBackground) : Color("cardColor")).animation(.easeIn(duration: 0.2))
                 .frame(width: UIScreen.main.bounds.width - 30, height: 64, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
@@ -33,7 +33,7 @@ struct KreditChecklistCell: View {
                         Text(rupiah.toRupiahString())
                             .font(.body)
                             .fontWeight(.light)
-                            .foregroundColor(Color.init(#colorLiteral(red: 0.6470588235, green: 0.6470588235, blue: 0.6470588235, alpha: 1)))
+							.foregroundColor(Color("formViewColor"))
                     }
                     .padding(.leading, 20)
                     

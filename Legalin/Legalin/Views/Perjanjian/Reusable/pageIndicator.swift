@@ -44,7 +44,7 @@ struct pageIndicator: View {
                                 
                                 Circle()
                                     .trim(from: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, to: CGFloat(progressNumber/4.0))
-                                    .stroke(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)), lineWidth: 4)
+                                    .stroke(Color("tabBarColor"), lineWidth: 4)
                                     .frame(width: 48, height: 48)
                                     .rotationEffect(.degrees(270))
                                 
@@ -65,13 +65,13 @@ struct pageIndicator: View {
                                             
                                         }, label: {
                                             Image(systemName: "info.circle")
-                                                .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                                                .foregroundColor(Color("tabBarColor"))
                                         })
                                     }
                                 }
                                 Text("\(progressDetail)")
                                     .font(.subheadline)
-                                    .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                                    .foregroundColor(Color("labelColor"))
                             }.padding(.leading,8)
                             .padding(.top,10)
                         }
@@ -80,7 +80,7 @@ struct pageIndicator: View {
                     .frame(width: UIScreen.main.bounds.width ,
                             alignment: .leading)
                 
-            }.popoverView(content: {PopOverContent(frame: $secondPopoverFrame, show: $popOverState, popOverText: "Barang berharga yang dititipkan oleh peminjam dana (debitur) ke pemberi pinjaman (kreditur) sebagai jaminan.")}, background: {Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))}, isPresented: $popOverState, frame: $secondPopoverFrame, anchorFrame: nil, popoverType: .popover, position: .bottom, viewId: "infoPopOver", settings: DYPopoverViewSettings(arrowLength: 0,  cornerRadius: (10,10,10,10), offset: CGSize(width: 0, height: 0), animation: .default)
+            }.popoverView(content: {PopOverContent(frame: $secondPopoverFrame, show: $popOverState, popOverText: "Barang berharga yang dititipkan oleh peminjam dana (debitur) ke pemberi pinjaman (kreditur) sebagai jaminan.")}, background: {Color("tabBarColor")}, isPresented: $popOverState, frame: $secondPopoverFrame, anchorFrame: nil, popoverType: .popover, position: .bottom, viewId: "infoPopOver", settings: DYPopoverViewSettings(arrowLength: 0,  cornerRadius: (10,10,10,10), offset: CGSize(width: 0, height: 0), animation: .default)
             )
         }
 		.frame(width: UIScreen.main.bounds.width, height: 50, alignment: .leading)

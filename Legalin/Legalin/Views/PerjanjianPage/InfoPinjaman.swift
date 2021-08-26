@@ -23,72 +23,80 @@ struct InfoPinjaman: View {
                     VStack(alignment: .leading){
                         Text("Tujuan")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("\(String(describing: perjanjianController.tujuanPeminjaman ?? ""))".capitalized)
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading){
                         Text("jumlah pinjaman".capitalized)
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("Rp \(String(describing: perjanjianController.jumlahPinjaman ?? 0))".capitalized)
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading){
                         Text("Bunga")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("\(String(describing: perjanjianController.bunga ?? 0))%".capitalized)
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading){
                         Text("Tenor")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("\(String(describing: perjanjianController.tenor ?? 0)) bulan".capitalized)
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading){
                         Text("metode pembayaran".capitalized)
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("\(String(describing: perjanjianController.metodePembayaran ?? ""))".capitalized)
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading){
                         Text("tanggal pembayaran".capitalized)
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("\(String(describing: perjanjianController.tanggalJatuhTempo ?? ""))".capitalized)
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading){
                         Text("pengadilan negeri".capitalized)
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("pengadilan negeri \(String(describing: perjanjianController.pengadilanNegeri ?? ""))".capitalized)
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading){
                         Text("tanggal tanda tangan".capitalized)
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("\(String(describing: perjanjianController.tanggalTandaTangan ?? ""))".capitalized)
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                 }
@@ -98,7 +106,7 @@ struct InfoPinjaman: View {
             
             .background(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                    .stroke(Color("tabBarColor"))
             )
             .padding()
 //            Spacer()

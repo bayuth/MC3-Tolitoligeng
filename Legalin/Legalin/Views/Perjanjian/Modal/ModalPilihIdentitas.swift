@@ -55,9 +55,10 @@ struct ModalPilihIdentitas: View {
 				}
 				
 			}.navigationBarTitle("Pilih Identitas", displayMode: .inline)
-			.accentColor(.red)
+//			.accentColor(.red)
 			.navigationBarBackButtonHidden(true)
 		}
+		.background(Color("defaultLightAndDarkColor"))
 		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
 		.onAppear {
 			vc.setListSelected(total: coreDataVM.listPihak2.count)

@@ -61,6 +61,7 @@
 		5C8F9CFE26BCF6A700CE994B /* profileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F9CFD26BCF6A700CE994B /* profileData.swift */; };
 		5CB10D4026D4AEF100C8D6C1 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB10D3F26D4AEF100C8D6C1 /* DatePickerView.swift */; };
 		5CC4E12726C3FD6600A7042A /* ButtonBorderedComingSoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC4E12626C3FD6600A7042A /* ButtonBorderedComingSoon.swift */; };
+		5CC5904826D5F85C00ECA4DD /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5904726D5F85C00ECA4DD /* CustomTextEditor.swift */; };
 		5CE26EBC26D36F1E00706AAA /* IdentitasCheckList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE26EBB26D36F1E00706AAA /* IdentitasCheckList.swift */; };
 		5CE3F8ED26CBFC8400569C67 /* PengaturanPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE3F8EC26CBFC8400569C67 /* PengaturanPage.swift */; };
 		5CE3F8EF26CBFD6B00569C67 /* ButtonKebijakanPrivasi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE3F8EE26CBFD6B00569C67 /* ButtonKebijakanPrivasi.swift */; };
@@ -177,6 +178,7 @@
 		5C8F9CFD26BCF6A700CE994B /* profileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileData.swift; sourceTree = "<group>"; };
 		5CB10D3F26D4AEF100C8D6C1 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		5CC4E12626C3FD6600A7042A /* ButtonBorderedComingSoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonBorderedComingSoon.swift; sourceTree = "<group>"; };
+		5CC5904726D5F85C00ECA4DD /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 		5CE26EBB26D36F1E00706AAA /* IdentitasCheckList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentitasCheckList.swift; sourceTree = "<group>"; };
 		5CE3F8EC26CBFC8400569C67 /* PengaturanPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PengaturanPage.swift; sourceTree = "<group>"; };
 		5CE3F8EE26CBFD6B00569C67 /* ButtonKebijakanPrivasi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonKebijakanPrivasi.swift; sourceTree = "<group>"; };
@@ -523,6 +525,7 @@
 				4AE8AB1626D32466004ECE6C /* KreditChecklistCell.swift */,
 				5CE26EBB26D36F1E00706AAA /* IdentitasCheckList.swift */,
 				5C85D4EF26D390840072F8F9 /* MultiLineFormView.swift */,
+				5CC5904726D5F85C00ECA4DD /* CustomTextEditor.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -689,6 +692,7 @@
 				5CE3F8F126CBFFB500569C67 /* KebijakanPrivasiPage.swift in Sources */,
 				5C8F9CEF26BCF66D00CE994B /* ProfileView.swift in Sources */,
 				5C8F9CFB26BCF69400CE994B /* FormView.swift in Sources */,
+				5CC5904826D5F85C00ECA4DD /* CustomTextEditor.swift in Sources */,
 				5CC4E12726C3FD6600A7042A /* ButtonBorderedComingSoon.swift in Sources */,
 				5C8F9CF226BCF66D00CE994B /* functionTrimKtp.swift in Sources */,
 				5E3F136B26C5974800E3E0B6 /* profileController.swift in Sources */,

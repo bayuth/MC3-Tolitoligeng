@@ -33,7 +33,9 @@ struct ModalPengadilanNegeriDetail: View {
                         }
                     
                 }
-            }.navigationBarTitle("Pengadilan Negeri", displayMode: .inline)
+            }
+			.background(Color("defaultLightAndDarkColor"))
+			.navigationBarTitle("Pengadilan Negeri", displayMode: .inline)
             .accentColor(.red)
             .navigationBarBackButtonHidden(true)
         }.onAppear {

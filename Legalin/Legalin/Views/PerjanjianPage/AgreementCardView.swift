@@ -43,6 +43,7 @@ struct AgreementCardView: View {
             .padding(.trailing)
             VStack(alignment: .leading){
                 Text(item.agreementTitle)
+					.foregroundColor(Color("textColor"))
                     .font(.title2)
                     .fontWeight(.semibold)
                     .padding(.horizontal)
@@ -52,18 +53,20 @@ struct AgreementCardView: View {
                     VStack(alignment: .leading){
                         Text("Jumlah Pinjaman")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 2)
                         
                         Text(item.amountOfLoan)
+							.foregroundColor(Color("textColor"))
                             .padding(.bottom, 8)
                         
                         Text("Tanggal Pembuatan")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 2)
                         
                         Text(item.Date)
+							.foregroundColor(Color("textColor"))
                             .padding(.bottom, 8)
                         
                     }
@@ -73,18 +76,20 @@ struct AgreementCardView: View {
                     VStack(alignment: .leading){
                         Text("Pemberi Pinjaman")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 2)
                         
                         Text(item.lenderName)
+							.foregroundColor(Color("textColor"))
                             .padding(.bottom, 8)
                         
                         Text("Status Tanda Tangan")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 2)
                         
                         Text("Belum")
+							.foregroundColor(Color("textColor"))
                             .padding(.bottom, 8)
                         
                     }
@@ -95,7 +100,7 @@ struct AgreementCardView: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 8)
-                    .foregroundColor(Color(#colorLiteral(red: 0.9607843137, green: 0.968627451, blue: 0.9725490196, alpha: 1)))
+                    .foregroundColor(Color("cardColor"))
             )
             .padding(.horizontal)
             .contentShape(Rectangle())

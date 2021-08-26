@@ -19,10 +19,10 @@ struct ButtonBordered: View {
             Text("\(Image(systemName: icon)) \(titleButton)").font(.subheadline)
                 .padding(6)
                 .cornerRadius(5)
-                .foregroundColor(Color.init(hex: "104769"))
+                .foregroundColor(Color("tabBarColor"))
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.init(hex: "104769"), lineWidth: 1)
+                        .stroke(Color("tabBarColor"), lineWidth: 1)
                 )
         }
         .alert(isPresented: $showAlert, content: {

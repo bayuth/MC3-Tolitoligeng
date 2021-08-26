@@ -25,27 +25,28 @@ struct MultiLineFormView: View {
                 VStack{
 				AutoSizingTF(hint: "Alamat Sesuai KTP", text: $alamat, containerHeight: $containerHeight, onEnd: {
 					UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-				}).disabled(true)
-				.foregroundColor(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)))
+				}, isDisable: isDisable)
+//					.foregroundColor(Color("labelColor"))
+					.disabled(true)
 					.padding(.horizontal)
 					.frame(height: containerHeight <= 120 ? containerHeight : 120)
-	//				.background(Color(#colorLiteral(red: 0.9937283397, green: 0.9430401325, blue: 0.9090076685, alpha: 1)))
 					.cornerRadius(10)
                     
                 Divider()
-                }.background(Color(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)).opacity(getRedIndicator() ? 0.05 : 0.0))
+                }.background(Color("emptyAlertColor").opacity(getRedIndicator() ? 0.15 : 0.0))
 			} else {
                 VStack{
 				AutoSizingTF(hint: "Alamat Sesuai KTP", text: $alamat, containerHeight: $containerHeight, onEnd: {
 					UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-				})
+				}, isDisable: isDisable)
+//				.foregroundColor(Color("formViewColor"))
 				.accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
 					.padding(.horizontal)
 					.frame(height: containerHeight <= 120 ? containerHeight : 120)
 					.cornerRadius(10)
                     
                 Divider()
-            }.background(Color(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)).opacity(getRedIndicator() ? 0.05 : 0.0))
+            }.background(Color("emptyAlertColor").opacity(getRedIndicator() ? 0.15 : 0.0))
 			}
 			
 		}
@@ -68,10 +69,12 @@ struct MultiLineFormView_Previews: PreviewProvider {
 
 struct AutoSizingTF: UIViewRepresentable {
 	
+	@Environment(\.colorScheme) var colorScheme
 	var hint: String
 	@Binding var text: String
 	@Binding var containerHeight: CGFloat
 	var onEnd : ()->()
+	var isDisable:Bool
 	
 	func makeCoordinator() -> Coordinator {
 		return AutoSizingTF.Coordinator(parent: self)
@@ -80,16 +83,32 @@ struct AutoSizingTF: UIViewRepresentable {
 	func makeUIView(context: Context) -> UITextView {
 //		let textView = UITextField()
 		let textView = UITextView()
-//		display hint
-		if textView.text == nil {
+		if self.text == "" && !isDisable{
 			textView.text = hint
-			textView.textColor = .gray
-			textView.font = .systemFont(ofSize: 18)
+			textView.font = .systemFont(ofSize: 17)
+			textView.textColor = UIColor(Color("labeColor"))
+			
 		} else {
 			textView.text = text
-//			textView.textColor = .black
-			textView.font = .systemFont(ofSize: 18)
+			textView.font = .systemFont(ofSize: 17)
+//			textView.textColor = UIColor(Color(.black))
+			
 		}
+		if isDisable {
+			textView.textColor = UIColor(Color("labelColor"))
+		} else {
+			textView.textColor = UIColor(Color("textColor"))
+		}
+//		display hint
+//		if textView.text == nil {
+//			textView.text = hint
+////			textView.textColor = .gray
+//			textView.font = .systemFont(ofSize: 18)
+//		} else {
+//			textView.text = text
+////			textView.textColor = .black
+//			textView.font = .systemFont(ofSize: 18)
+//		}
 		
 //		textView.text = text
 //		textView.font = .systemFont(ofSize: 18)
@@ -140,7 +159,7 @@ struct AutoSizingTF: UIViewRepresentable {
 //			clear the placeholder if empty
 			if textView.text == parent.hint {
 				textView.text = ""
-				textView.textColor = UIColor(Color.primary)
+//				textView.textColor = UIColor(Color.primary)
 			}
 		}
 		
@@ -154,7 +173,7 @@ struct AutoSizingTF: UIViewRepresentable {
 		func textViewDidEndEditing(_ textView: UITextView) {
 			if textView.text == "" {
 				textView.text = parent.hint
-				textView.textColor = .gray
+//				textView.textColor = .gray
 			}
 		}
 	}

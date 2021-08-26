@@ -24,36 +24,40 @@ struct InfoAgunan: View {
                     VStack(alignment: .leading){
                         Text("Nama Barang")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("\(perjanjianController.namaBarang)")
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading){
                         Text("warna".capitalized)
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("\(String(describing: perjanjianController.warnaBarang ?? ""))".capitalized)
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading){
                         Text("harga".capitalized)
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("Rp \(String(describing: perjanjianController.hargaBarang ?? ""))".capitalized)
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading){
                         Text("nomor seri".capitalized)
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("\(perjanjianController.nomorSeri)")
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                 }
@@ -63,7 +67,7 @@ struct InfoAgunan: View {
             
             .background(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                    .stroke(Color("tabBarColor"))
             )
             .padding(.horizontal)
             .padding(.vertical, 16)
@@ -78,13 +82,13 @@ struct InfoAgunan: View {
                         VStack(alignment: .leading){
                             Text("Preview")
                                 .font(.subheadline)
-                                .foregroundColor(.black)
+                                .foregroundColor(Color("textColor"))
                             Text("PDF")
                                 .font(.caption2)
-                                .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                                .foregroundColor(Color("labelColor"))
                             Text("256 KB")
                                 .font(.caption2)
-                                .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                                .foregroundColor(Color("labelColor"))
                         }
                         .padding(16)
                         Spacer()
@@ -93,7 +97,7 @@ struct InfoAgunan: View {
                     }
                     .background(
                         RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                            .stroke(Color("tabBarColor"))
                     )
                     .padding(.horizontal)
                 }
@@ -115,7 +119,7 @@ struct InfoAgunan: View {
 						perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
 					})
                     .frame(maxWidth: .infinity, maxHeight: 50)
-                    .background(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                    .background(Color("tabBarColor"))
                     .specCornerRadius(8, corners: .allCorners)
                     .padding()
                     .padding(.bottom,30)
