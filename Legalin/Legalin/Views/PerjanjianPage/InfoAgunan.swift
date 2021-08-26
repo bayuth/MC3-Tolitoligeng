@@ -11,6 +11,7 @@ struct InfoAgunan: View {
     var hideButton : Bool
     @Environment(\.presentationMode) var masterPresentationMode6
     @ObservedObject var perjanjianController: PerjanjianController = .shared
+    @State var pinjaman : Pinjaman
     
     var body: some View {
         VStack(alignment: .leading){
@@ -26,7 +27,7 @@ struct InfoAgunan: View {
                             .font(.footnote)
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(perjanjianController.namaBarang)")
+                        Text("\(pinjaman.agunan?.nama ?? "")")
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -36,7 +37,7 @@ struct InfoAgunan: View {
                             .font(.footnote)
 							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(String(describing: perjanjianController.warnaBarang ?? ""))".capitalized)
+                        Text("\(String(describing: pinjaman.agunan?.warna ?? ""))".capitalized)
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -46,7 +47,7 @@ struct InfoAgunan: View {
                             .font(.footnote)
 							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("Rp \(String(describing: perjanjianController.hargaBarang ?? ""))".capitalized)
+                        Text(Double(pinjaman.agunan?.harga ?? "")?.toRupiahString() ?? "")
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -56,7 +57,7 @@ struct InfoAgunan: View {
                             .font(.footnote)
 							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(perjanjianController.nomorSeri)")
+                        Text(pinjaman.agunan?.nomorSeri ?? "")
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -130,8 +131,8 @@ struct InfoAgunan: View {
     }
 }
 
-struct InfoAgunan_Previews: PreviewProvider {
-    static var previews: some View {
-        InfoAgunan(hideButton: true)
-    }
-}
+//struct InfoAgunan_Previews: PreviewProvider {
+//    static var previews: some View {
+//        InfoAgunan(hideButton: true)
+//    }
+//}

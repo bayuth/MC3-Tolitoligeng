@@ -10,6 +10,7 @@ import SwiftUI
 struct Pihak2: View {
     
     @ObservedObject var perjanjianController: PerjanjianController = .shared
+    @State var pinjaman : Pinjaman
     
     var body: some View {
         ScrollView(showsIndicators: false){
@@ -25,7 +26,7 @@ struct Pihak2: View {
                             .font(.footnote)
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(perjanjianController.pihak2NIK)")
+                        Text(pinjaman.pihak2?.ktp?.nik ?? "")
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -35,7 +36,7 @@ struct Pihak2: View {
                             .font(.footnote)
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(perjanjianController.pihak2Nama)")
+                        Text(pinjaman.pihak2?.ktp?.nama ?? "")
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -45,7 +46,7 @@ struct Pihak2: View {
                             .font(.footnote)
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(perjanjianController.pihak2TanggalLahir)")
+                        Text(calculateAge(date : pinjaman.pihak2?.ktp?.tanggalLahir ?? Date()))
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -55,7 +56,7 @@ struct Pihak2: View {
                             .font(.footnote)
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(perjanjianController.pihak2Alamat)")
+                        Text(pinjaman.pihak2?.ktp?.alamat ?? "")
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -65,7 +66,7 @@ struct Pihak2: View {
                             .font(.footnote)
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(perjanjianController.pihak2Pekerjaan)")
+                        Text(pinjaman.pihak2?.pekerjaan ?? "")
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -75,7 +76,7 @@ struct Pihak2: View {
                             .font(.footnote)
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(perjanjianController.pihak2NomorHP)")
+                        Text(pinjaman.pihak2?.nomorAktif ?? "")
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -85,7 +86,7 @@ struct Pihak2: View {
                             .font(.footnote)
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(perjanjianController.pihak2NamaBank)")
+                        Text(pinjaman.pihak2?.namaBank ?? "")
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -95,7 +96,7 @@ struct Pihak2: View {
                             .font(.footnote)
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(perjanjianController.pihak2NomorRekening)")
+                        Text(pinjaman.pihak2?.nomorRekening ?? "")
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -105,7 +106,7 @@ struct Pihak2: View {
                             .font(.footnote)
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(perjanjianController.pihak2AtasNamaRekening)")
+                        Text(pinjaman.pihak2?.atasNamaRekening ?? "")
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -122,10 +123,21 @@ struct Pihak2: View {
 //            Spacer()
         }
     }
-}
+    func calculateAge(date : Date) -> String{
+        
+        let now = Date()
+        let birthday: Date = date
+        let calendar = Calendar.current
 
-struct Pihak2_Previews: PreviewProvider {
-    static var previews: some View {
-        Pihak2()
+        let ageComponents = calendar.dateComponents([.year], from: birthday, to: now)
+        let age = String(ageComponents.year!)
+        
+        return age
     }
 }
+
+//struct Pihak2_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Pihak2()
+//    }
+//}

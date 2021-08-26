@@ -11,22 +11,23 @@ struct ConfirmationPage: View {
     @State var offset: CGFloat = 0
     @Environment(\.presentationMode) var masterPresentationMode5
     @Environment(\.presentationMode) var presentationMode
+//    var item: Pinjaman
     var subview = [1, 2, 3, 4, 5]
     //    var position = 0
     
     var body: some View {
         ScrollView(.init(), showsIndicators: false){
             TabView{
-                Pihak1()
-                    .tag(subview[1])
-                Pihak2()
-                    .tag(subview[2])
-                InfoPinjaman()
-                    .tag(subview[3])
-                VStack{
-                    InfoAgunan(hideButton: false, masterPresentationMode6: _masterPresentationMode5)
-                        .tag(subview[4])
-                }
+//                Pihak1(pinjaman: item)
+//                    .tag(subview[1])
+//                Pihak2(pinjaman: item)
+//                    .tag(subview[2])
+//                InfoPinjaman(pinjaman: item)
+//                    .tag(subview[3])
+//                VStack{
+//                    InfoAgunan(hideButton: false, masterPresentationMode6: _masterPresentationMode5, pinjaman: item)
+//                        .tag(subview[4])
+//                }
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
             .onAppear{
@@ -53,8 +54,8 @@ struct ConfirmationPage: View {
     }
     
 }
-struct ConfirmationPage_Previews: PreviewProvider {
-    static var previews: some View {
-        ConfirmationPage()
-    }
-}
+//struct ConfirmationPage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ConfirmationPage()
+//    }
+//}
