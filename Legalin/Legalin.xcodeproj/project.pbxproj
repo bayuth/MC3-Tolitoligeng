@@ -113,6 +113,7 @@
 		7558EA6C26BD367600E0B492 /* PdfAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA6B26BD367600E0B492 /* PdfAction.swift */; };
 		7558EA8F26BD691500E0B492 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558EA8E26BD691500E0B492 /* PageView.swift */; };
 		755E417E26D62E7200C261F3 /* NewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755E417D26D62E7200C261F3 /* NewCardView.swift */; };
+		755F2B0F26D6FF39004FFCC0 /* MainPerjanjianPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F2B0E26D6FF39004FFCC0 /* MainPerjanjianPage.swift */; };
 		756AE03626C414C0004A2570 /* EmptyPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756AE03526C414C0004A2570 /* EmptyPDF.swift */; };
 		759A667C26CFFEE700A3F9BA /* PrivacyPolicyWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A667B26CFFEE700A3F9BA /* PrivacyPolicyWebView.swift */; };
 		759A667E26D001CE00A3F9BA /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A667D26D001CE00A3F9BA /* PrivacyPolicyView.swift */; };
@@ -229,6 +230,7 @@
 		7558EA6B26BD367600E0B492 /* PdfAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfAction.swift; sourceTree = "<group>"; };
 		7558EA8E26BD691500E0B492 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		755E417D26D62E7200C261F3 /* NewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardView.swift; sourceTree = "<group>"; };
+		755F2B0E26D6FF39004FFCC0 /* MainPerjanjianPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPerjanjianPage.swift; sourceTree = "<group>"; };
 		756AE03526C414C0004A2570 /* EmptyPDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPDF.swift; sourceTree = "<group>"; };
 		759A667B26CFFEE700A3F9BA /* PrivacyPolicyWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyWebView.swift; sourceTree = "<group>"; };
 		759A667D26D001CE00A3F9BA /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 				750A862C26BEA54D0055886D /* ConfirmationPage.swift */,
 				756AE03526C414C0004A2570 /* EmptyPDF.swift */,
 				755E417D26D62E7200C261F3 /* NewCardView.swift */,
+				755F2B0E26D6FF39004FFCC0 /* MainPerjanjianPage.swift */,
 			);
 			path = PerjanjianPage;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 			files = (
 				4A0AC6D526BCD7BF00430BE8 /* ModalAddKredit.swift in Sources */,
 				4AC4CA8F26B25D1300340A00 /* ContentView.swift in Sources */,
+				755F2B0F26D6FF39004FFCC0 /* MainPerjanjianPage.swift in Sources */,
 				4AE8AB1726D32466004ECE6C /* KreditChecklistCell.swift in Sources */,
 				7558EA6A26BD31B700E0B492 /* InfoAgunan.swift in Sources */,
 				4AC4CAAA26B25D9100340A00 /* Fitur1.swift in Sources */,

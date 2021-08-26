@@ -68,96 +68,96 @@ struct ChoosenSegment: View {
     @StateObject var agreementData: PerjanjianViewModel = .shared
     @State private var location: CGPoint = CGPoint(x: 0, y: 0)
     @ObservedObject var perjanjianController: PerjanjianController = .shared
+    @ObservedObject var coreDataVM: CoreDataViewModel = .shared
     
     
     var body: some View{
         switch selectedSegment {
         case .onGoing:
-            if agreementData.listOnGoing.isEmpty {
-                EmptyStatePerjanjian()
-            }
-            else if agreementData.listOnGoing.count > 0{
-                ForEach(agreementData.listOnGoing){ item in
-                    if item.offset != -160{
-                        NavigationLink(
-                            destination: DetailPerjanjian(detailPerjanjian: agreementData.listOnGoing[getIndex(item: item)].pinjaman),
-                            label: {
-                                AgreementCardView(item: $agreementData.listOnGoing[getIndex(item: item)], lists: $agreementData.listOnGoing)
-                            })
-                            .foregroundColor(.black)
-                            .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listOnGoing[getIndex(item: item)].pinjaman)})
-                    }
-                    else{
-                        AgreementCardView(item: $agreementData.listOnGoing[getIndex(item: item)], lists: $agreementData.listOnGoing)
-                    }
-                    
-                }
-            }
+            Text("test")
+//            if agreementData.listOnGoing.isEmpty {
+//                EmptyStatePerjanjian()
+//            }
+//            else if agreementData.listOnGoing.count > 0{
+//                ForEach(agreementData.listOnGoing){ item in
+//                    if item.offset != -160{
+//                        NavigationLink(
+//                            destination: DetailPerjanjian(detailPerjanjian: agreementData.listOnGoing[getIndex(item: item)].pinjaman),
+//                            label: {
+//                                AgreementCardView(item: $agreementData.listOnGoing[getIndex(item: item)], lists: $agreementData.listOnGoing)
+//                            })
+//                            .foregroundColor(.black)
+//                            .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listOnGoing[getIndex(item: item)].pinjaman)})
+//                    }
+//                    else{
+//                        AgreementCardView(item: $agreementData.listOnGoing[getIndex(item: item)], lists: $agreementData.listOnGoing)
+//                    }
+//
+//                }
+//            }
             
             
         case .history:
-            if agreementData.listDone.isEmpty {
-                EmptyStatePerjanjian()
-            }
-            else if agreementData.listDone.count > 0{
-                ForEach(agreementData.listDone){ item in
-                    if item.offset != -160{
-                        NavigationLink(
-                            destination: DetailPerjanjian(detailPerjanjian: agreementData.listDone[getIndex2(item: item)].pinjaman),
-                            label: {
-                                HistorySegmentedView(item: $agreementData.listDone[getIndex2(item: item)], lists: $agreementData.listDone)
-                            })
-                            .foregroundColor(.black)
-                            .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listDone[getIndex2(item: item)].pinjaman)})
-                    }
-                    else{
-                        HistorySegmentedView(item: $agreementData.listDone[getIndex2(item: item)], lists: $agreementData.listDone)
-                    }
-                }
-                
-            }
+            Text("test")
+//            if agreementData.listDone.isEmpty {
+//                EmptyStatePerjanjian()
+//            }
+//            else if agreementData.listDone.count > 0{
+//                ForEach(agreementData.listDone){ item in
+//                    if item.offset != -160{
+//                        NavigationLink(
+//                            destination: DetailPerjanjian(detailPerjanjian: agreementData.listDone[getIndex2(item: item)].pinjaman),
+//                            label: {
+//                                HistorySegmentedView(item: $agreementData.listDone[getIndex2(item: item)], lists: $agreementData.listDone)
+//                            })
+//                            .foregroundColor(.black)
+//                            .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listDone[getIndex2(item: item)].pinjaman)})
+//                    }
+//                    else{
+//                        HistorySegmentedView(item: $agreementData.listDone[getIndex2(item: item)], lists: $agreementData.listDone)
+//                    }
+//                }
+//
+//            }
         case .draft:
-            if agreementData.listDraft.count == 0 {
-                EmptyStatePerjanjian()
-            }
-            else{
-                ForEach(agreementData.listDraft, id:\.id){ item in
-                    if item.offset != -160{
-                        NavigationLink(
-                            destination: DetailPerjanjian(detailPerjanjian: agreementData.listDraft[getIndex3(item: item)].pinjaman),
-                            label: {
-                                DraftSegmentedView(item: $agreementData.listDraft[getIndex3(item: item)], lists: $agreementData.listDraft)
-                            })
-                            .foregroundColor(.black)
-                            .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listDraft[getIndex3(item: item)].pinjaman)})
-                    }
-                    else{
-                        DraftSegmentedView(item: $agreementData.listDraft[getIndex3(item: item)], lists: $agreementData.listDraft)
-                    }
-                }
+            Text("coba")
+            List{
+                ForEach(coreDataVM.listPinjamanDraft, id:\.uuid){ item in
+                    
+                    NavigationLink(
+                        destination: DetailPerjanjian(detailPerjanjian: item),
+                        label: {
+                            DraftSegmentedView(item: item)
+                        })
+                        .foregroundColor(.black)
+                }.onDelete(perform: deleteDraft)
             }
         }
     }
     
-    func getIndex(item: Agreements)->Int{
-        return agreementData.listOnGoing.firstIndex { (item1) -> Bool in
-            return item.id == item1.id
-        } ?? 0
-    }
-    
-    func getIndex2(item: Agreements)->Int{
-        return agreementData.listDone.firstIndex { (item1) -> Bool in
-            return item.id == item1.id
-        } ?? 0
-    }
-    
-    func getIndex3(item: Agreements)->Int{
-        return agreementData.listDraft.firstIndex { (item1) -> Bool in
-            return item.id == item1.id
-        } ?? 0
+    private func deleteDraft(at offsets: IndexSet){
+        
+        for offset in offsets{
+            coreDataVM.deletePinjaman(pinjaman: coreDataVM.listPinjamanDraft[offset])
+        }
     }
     
 }
+//func getInitText(pihak1:[Akun]) -> String{
+//    if (pihak1.count == 0) {
+//        return "No Profile found"
+//    } else{
+//        return pihak1[0].ktp?.nama ?? "Name is empty"
+//    }
+//}
+//
+//func getButtonText(pihak1:[Akun]) -> String{
+//    if (pihak1.count == 0) {
+//        return "Create profile and update name"
+//    } else{
+//        return "Update profile name"
+//    }
+//}
 
 struct PerjanjianPage_Previews: PreviewProvider {
     static var previews: some View {
