@@ -11,6 +11,7 @@ struct DetailKredit: View {
     @Environment(\.presentationMode) var presentationMode
     var dataUlasan :ListKreditVM
     var index: Int
+    var onDelete: () -> ()
     var body: some View {
         VStack {
             HStack{
@@ -93,16 +94,13 @@ struct DetailKredit: View {
         .navigationBarTitle("Ulasan Kredit", displayMode: .inline)
         .navigationBarItems(trailing:
                                 Button(action: {
+                                    onDelete()
                                     presentationMode.wrappedValue.dismiss()
                                 }, label: {
                                     Image(systemName: "trash")
                                         .foregroundColor(.white)
                                 })
         )
-        .onDisappear(perform: {
-            dataUlasan.deleteDetailKredit(index: index)
-//            dataUlasan.fillListDone() -> this will make crash
-        })
     }
     /*
      Total Bunga : (Bunga%/12 x Tenor)

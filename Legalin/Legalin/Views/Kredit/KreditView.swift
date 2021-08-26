@@ -19,27 +19,27 @@ struct KreditView: View {
                 if kreditData.list.isEmpty {
                     EmptyState()
                 }else {
-                    ScrollView(showsIndicators: false){
+//                    ScrollView(showsIndicators: false){
+                    List{
                         ForEach(kreditData.list){ item in
-                            if item.offset != -160{
-                                NavigationLink(
-                                    destination: DetailKredit(dataUlasan: kreditData, index: getIndex(item: item)),
-                                    label: {
-                                        KreditCardView(item: $kreditData.list[getIndex(item: item)], lists: $kreditData.list, action: {
-                                            kreditData.deleteKredit(index: getIndex(item: item))
-                                        })
+                            NavigationLink(
+                                destination: DetailKredit(dataUlasan: kreditData, index: getIndex(item: item), onDelete: {
+                                    kreditData.deleteDetailKredit(index: getIndex(item: item))
+                                }),
+                                label: {
+                                    KreditCardView(item: $kreditData.list[getIndex(item: item)], lists: $kreditData.list, action: {
+                                        kreditData.deleteKredit(index: getIndex(item: item))
                                     })
-                                    .foregroundColor(.black)
-                                    .simultaneousGesture(TapGesture().onEnded{
-                                        kreditData.object = kreditData.list[getIndex(item: item)]
-                                    })
-                                
-                            }
-                            else{
-                                KreditCardView(item: $kreditData.list[getIndex(item: item)], lists: $kreditData.list, action: {
-                                    kreditData.deleteKredit(index: getIndex(item: item))
                                 })
-                            }
+                                .foregroundColor(.black)
+                                .simultaneousGesture(TapGesture().onEnded{
+                                    kreditData.object = kreditData.list[getIndex(item: item)]
+                                })
+                        }.listStyle(PlainListStyle())
+                        .onAppear(perform: {
+                            kreditData.fillListDone()
+                        })
+                        
                             //                            KreditCardView(item: $kreditData.list[getIndex(item: item)], lists: $kreditData.list, action: {
                             //                                kreditData.deleteKredit(index: getIndex(item: item))
                             //                            }).onTapGesture {
@@ -54,7 +54,7 @@ struct KreditView: View {
                         }
                     }
                     
-                }
+//                }
             }
             .navigationTitle("Kredit")
             .navigationBarItems(trailing:
