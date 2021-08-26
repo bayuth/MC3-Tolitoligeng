@@ -15,9 +15,8 @@ struct AgreementCardView: View {
     var body: some View {
         ZStack{
             VStack(alignment: .leading){
-                Text(item.agreementTitle)
-					.foregroundColor(Color("textColor"))
                 Text(item.kredit?.namaSimulasi ?? "")
+                    .foregroundColor(Color("textColor"))
                     .font(.title2)
                     .fontWeight(.semibold)
                     .padding(.horizontal)
@@ -29,10 +28,9 @@ struct AgreementCardView: View {
                             .font(.footnote)
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 2)
-                        
-                        Text(item.amountOfLoan)
-							.foregroundColor(Color("textColor"))
+
                         Text(String(item.kredit?.jumlahPinjaman ?? 0))
+                            .foregroundColor(Color("textColor"))
                             .padding(.bottom, 8)
                         
                         Text("Tanggal Pembuatan")
@@ -40,9 +38,9 @@ struct AgreementCardView: View {
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 2)
                         
-                        Text(item.Date)
-							.foregroundColor(Color("textColor"))
+							
                         Text(getDateString(inputDate: item.dateModified ?? Date()))
+                            .foregroundColor(Color("textColor"))
                             .padding(.bottom, 8)
                         
                     }
@@ -55,9 +53,9 @@ struct AgreementCardView: View {
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 2)
                         
-                        Text(item.lenderName)
-							.foregroundColor(Color("textColor"))
+							
                         Text(item.pihak2?.ktp?.nama ?? "")
+                            .foregroundColor(Color("textColor"))
                             .padding(.bottom, 8)
                         
                         Text("Status Tanda Tangan")
