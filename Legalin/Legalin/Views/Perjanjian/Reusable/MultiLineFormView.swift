@@ -20,7 +20,8 @@ struct MultiLineFormView: View {
 	
     var body: some View {
 		VStack(alignment: .leading) {
-			Text("Alamat").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.horizontal)
+			Text("Alamat").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+				.padding(.horizontal)
 			if isDisable {
                 VStack{
 				AutoSizingTF(hint: "Alamat Sesuai KTP", text: $alamat, containerHeight: $containerHeight, onEnd: {
@@ -85,8 +86,8 @@ struct AutoSizingTF: UIViewRepresentable {
 		let textView = UITextView()
 		if self.text == "" && !isDisable{
 			textView.text = hint
+			textView.textColor = UIColor(Color("textColor"))
 			textView.font = .systemFont(ofSize: 17)
-			textView.textColor = UIColor(Color("labeColor"))
 			
 		} else {
 			textView.text = text
