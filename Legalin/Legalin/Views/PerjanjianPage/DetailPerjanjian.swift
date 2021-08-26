@@ -36,13 +36,13 @@ struct DetailPerjanjian: View {
                         PdfAction(pinjaman: detailPerjanjian, hideSwitch: false)
                     }
                     
-                    Pihak1()
+                    Pihak1(pinjaman: detailPerjanjian)
                         .onAppear{
                             print(detailPerjanjian.status)
                         }
-                    Pihak2()
-                    InfoPinjaman()
-                    InfoAgunan(hideButton: true)
+                    Pihak2(pinjaman: detailPerjanjian)
+                    InfoPinjaman(pinjaman: detailPerjanjian)
+                    InfoAgunan(hideButton: true, pinjaman: detailPerjanjian)
                 }
                 else{
                     Text("Kosong")

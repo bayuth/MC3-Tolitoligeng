@@ -64,12 +64,12 @@ struct ChoosenSegmented: View {
     var body : some View{
         switch selectedSegment {
         case .onGoing:
-            if coreDataVM.listPinjamanOnGoing.isEmpty{
+            if coreDataVM.listPinjamanNotSigned.isEmpty{
                 EmptyStatePerjanjian()
             }
             else{
                 List{
-                    ForEach(coreDataVM.listPinjamanOnGoing, id:\.uuid){item in
+                    ForEach(coreDataVM.listPinjamanNotSigned, id:\.uuid){item in
                         ZStack{
                             NavigationLink(
                                 destination: DetailPerjanjian(detailPerjanjian: item),
