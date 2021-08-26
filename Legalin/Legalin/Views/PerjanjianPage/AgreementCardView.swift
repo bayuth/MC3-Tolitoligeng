@@ -21,6 +21,7 @@ struct AgreementCardView: View {
                     .fontWeight(.semibold)
                     .padding(.horizontal)
                     .padding(.top, 16)
+                    .lineLimit(1)
                 
                 HStack(alignment: .top){
                     VStack(alignment: .leading){
