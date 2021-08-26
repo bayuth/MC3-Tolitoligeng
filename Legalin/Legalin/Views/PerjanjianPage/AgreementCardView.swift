@@ -21,25 +21,30 @@ struct AgreementCardView: View {
                     .fontWeight(.semibold)
                     .padding(.horizontal)
                     .padding(.top, 16)
+                    .lineLimit(1)
                 
-                HStack{
+                HStack(alignment: .top){
                     VStack(alignment: .leading){
                         Text("Jumlah Pinjaman")
+                            .lineLimit(1)
                             .font(.footnote)
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 2)
 
                         Text(item.kredit?.jumlahPinjaman.toRupiahString() ?? "")
+                            .lineLimit(1)
                             .foregroundColor(Color("textColor"))
                             .padding(.bottom, 8)
                         
                         Text("Tanggal Pembuatan")
+                            .lineLimit(1)
                             .font(.footnote)
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 2)
                         
 							
                         Text(getDateString(inputDate: item.dateModified ?? Date()))
+                            .lineLimit(1)
                             .foregroundColor(Color("textColor"))
                             .padding(.bottom, 8)
                         
@@ -52,21 +57,34 @@ struct AgreementCardView: View {
                             .font(.footnote)
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 2)
+                            .lineLimit(1)
                         
 							
                         Text(item.pihak2?.ktp?.nama ?? "")
                             .foregroundColor(Color("textColor"))
                             .padding(.bottom, 8)
+                            .lineLimit(1)
                         
                         Text("Status Tanda Tangan")
                             .font(.footnote)
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 2)
+                            .lineLimit(1)
                         
-                        Text("Belum")
-							.foregroundColor(Color("textColor"))
-                        Text(item.status ?? "")
-                            .padding(.bottom, 8)
+                        
+                        if item.status == "onGoing"{
+                            Text("Berjalan")
+                                .foregroundColor(Color("textColor"))
+                                .padding(.bottom, 8)
+                                .lineLimit(1)
+                        }
+                        else if item.status == "notSign"{
+                            Text("Belum Tanda tangan")
+                                .foregroundColor(Color("textColor"))
+                                .padding(.bottom, 8)
+                                .lineLimit(1)
+                        }
+                        
                         
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
