@@ -81,6 +81,8 @@ class PerjanjianController: ObservableObject {
     @Published var hargaBarang: String = ""
     @Published var nomorSeri: String = ""
     
+    @Published var statusSurat: String = "draft"
+    
     //Validation
     @Published var nextButtonState : Bool = false
     @Published var page1State: Bool = false
@@ -91,7 +93,9 @@ class PerjanjianController: ObservableObject {
     @Published var redirectPage: String = "step1"
     @Published var endButtonPressed: Bool = false
     
-
+    //Sender
+    @Published var sender: String = "perjanjianBaru"
+    @Published var detailPinjaman: Pinjaman?
     
     init(){
         resetValue()
@@ -155,6 +159,9 @@ class PerjanjianController: ObservableObject {
         warnaBarang = ""
         hargaBarang = ""
         nomorSeri = ""
+        
+        statusSurat = "draft"
+        sender = "perjanjianBaru"
         
         nextButtonState = false
         page1State = false
@@ -250,7 +257,7 @@ class PerjanjianController: ObservableObject {
         
         tanggalTandaTangan = pinjaman.tanggalTandaTangan ?? ""
         //reminder
-        reminder = pinjaman.reminder ?? false
+        reminder = pinjaman.reminder 
         
         //Step 4
         modalAgunanState = false
@@ -260,8 +267,10 @@ class PerjanjianController: ObservableObject {
         hargaBarang = pinjaman.agunan?.harga ?? ""
         nomorSeri = pinjaman.agunan?.nomorSeri ?? ""
         
-        
-
+        statusSurat = pinjaman.status ?? ""
+        sender = "detailPage"
+        detailPinjaman = pinjaman
+        endButtonPressed = true
     }
     
     
@@ -479,9 +488,9 @@ class PerjanjianController: ObservableObject {
         self.reminder = reminder
     }
     
-    func updatePinjamanCoreData(status: StatusSurat){
+    func updatePinjamanCoreData(pinjaman: Pinjaman, status: StatusSurat){
         
-        var newPinjaman = coreDataVM.createPinjaman()
+        var newPinjaman = pinjaman
         //Update pinjaman atribut
         coreDataVM.updatePinjaman(pinjaman: newPinjaman, tujuan: tujuanPeminjaman, metodePembayaran: metodePembayaran, jatuhTempo: tanggalJatuhTempo, pengadilanNegeri: pengadilanNegeri, tanggalTandaTangan: tanggalTandaTangan, status: status, reminder: reminder)
         

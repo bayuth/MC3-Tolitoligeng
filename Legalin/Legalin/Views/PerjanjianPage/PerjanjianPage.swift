@@ -19,6 +19,7 @@ struct PerjanjianPage: View {
     @State var offset: CGSize = .zero
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     
+    
     var body: some View {
         NavigationView{
             VStack{
@@ -69,7 +70,7 @@ struct ChoosenSegment: View {
     @State private var location: CGPoint = CGPoint(x: 0, y: 0)
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     @ObservedObject var coreDataVM: CoreDataViewModel = .shared
-    
+    @State var actionState: Int? = 0
     
     var body: some View{
         switch selectedSegment {
@@ -145,7 +146,7 @@ struct ChoosenSegment: View {
                 ForEach(coreDataVM.listPinjamanDraft, id:\.uuid){ item in
                     
                     NavigationLink(
-                        destination: DetailPerjanjian(detailPerjanjian: item),
+                        destination: DetailPerjanjian(actionState: $actionState),
                         label: {
                             DraftSegmentedView(item: item)
                         })

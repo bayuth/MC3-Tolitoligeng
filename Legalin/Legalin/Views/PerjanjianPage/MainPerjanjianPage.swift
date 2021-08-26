@@ -58,27 +58,35 @@ enum Segment:String, CaseIterable{
 
 struct ChoosenSegmented: View {    
     @ObservedObject var coreDataVM: CoreDataViewModel = .shared
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
     var cobaItem = [1, 2, 3, 4]
+    
+    @State var actionState: Int? = 0
     
     var selectedSegment: Segment
     var body : some View{
         switch selectedSegment {
         case .onGoing:
-            if coreDataVM.listPinjamanNotSigned.isEmpty{
+            if coreDataVM.listPinjamanOnGoing.isEmpty{
                 EmptyStatePerjanjian()
             }
             else{
                 List{
-                    ForEach(coreDataVM.listPinjamanNotSigned, id:\.uuid){item in
+                    ForEach(coreDataVM.listPinjamanOnGoing, id:\.uuid){item in
                         ZStack{
                             NavigationLink(
-                                destination: DetailPerjanjian(detailPerjanjian: item),
+                                destination: DetailPerjanjian(actionState: $actionState),
+                                tag:1, selection: $actionState,
                                 label: {
-                                    EmptyView()
+                                    AgreementCardView(item: item)
                                 }
                             )
                             .opacity(0)
                             AgreementCardView(item: item)
+                                .simultaneousGesture(TapGesture().onEnded{
+                                perjanjianController.detailSync(pinjaman: item)
+                                actionState = 1
+                                })
                         }
                     }.onDelete(perform: deleteOnGoing)
                 }
@@ -95,13 +103,18 @@ struct ChoosenSegmented: View {
                     ForEach(coreDataVM.listPinjamanDone, id:\.uuid){item in
                         ZStack{
                             NavigationLink(
-                                destination: DetailPerjanjian(detailPerjanjian: item),
+                                destination: DetailPerjanjian(actionState: $actionState),
+                                tag:2, selection: $actionState,
                                 label: {
-                                    EmptyView()
+                                    AgreementCardView(item: item)
                                 }
                             )
                             .opacity(0)
                             AgreementCardView(item: item)
+                                .simultaneousGesture(TapGesture().onEnded{
+                                perjanjianController.detailSync(pinjaman: item)
+                                actionState = 2
+                                })
                         }
                     }.onDelete(perform: deleteHistory)
                 }
@@ -118,13 +131,18 @@ struct ChoosenSegmented: View {
                     ForEach(coreDataVM.listPinjamanDraft, id:\.uuid){item in
                         ZStack{
                             NavigationLink(
-                                destination: DetailPerjanjian(detailPerjanjian: item),
+                                destination: DetailPerjanjian(actionState: $actionState),
+                                tag:3, selection: $actionState,
                                 label: {
-                                    EmptyView()
+                                    DraftSegmentedView(item: item)
                                 }
                             )
                             .opacity(0)
                             DraftSegmentedView(item: item)
+                                .simultaneousGesture(TapGesture().onEnded{
+                                perjanjianController.detailSync(pinjaman: item)
+                                actionState = 3
+                                })
                         }
                         
                     }.onDelete(perform: deleteDraft)

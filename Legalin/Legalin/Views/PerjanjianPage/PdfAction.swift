@@ -53,7 +53,7 @@ struct PdfAction: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     @ObservedObject var coreDataVM: CoreDataViewModel = .shared
-    @State var pinjaman : Pinjaman
+//    @State var pinjaman : Pinjaman
 //    @State var alertIsPresented = false
     var hideSwitch: Bool = false
     
@@ -130,28 +130,28 @@ struct PdfAction: View {
                     HStack{
                         Text("Tanda Tangan")
                         Spacer()
-                        if pinjaman.status == "notSigned"{
-                            SignBtn(pinjaman: pinjaman)
+                        if perjanjianController.statusSurat == "notSigned"{
+                            SignBtn(pinjaman: perjanjianController.detailPinjaman!)
                         }
                         else{
-                            SignBtn(pinjaman: pinjaman)
+                            SignBtn(pinjaman: perjanjianController.detailPinjaman!)
                                 .disabled(true)
                         }
                     }
-                    if pinjaman.status == "onGoing"{
-                        Toggle(isOn: $pinjaman.reminder, label: {
+                    if perjanjianController.statusSurat == "onGoing"{
+                        Toggle(isOn: $perjanjianController.reminder, label: {
                             Text("Pengingat")
                         })
                         .toggleStyle(SwitchToggleStyle(tint: Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))))
-                        .onChange(of: pinjaman.reminder, perform: { value in
+                        .onChange(of: perjanjianController.reminder, perform: { value in
                             if value{
                                 NotificationManager.instance.notification()
-                                coreDataVM.updatePinjaman(pinjaman: pinjaman, reminder: value)
+                                coreDataVM.updatePinjaman(pinjaman: perjanjianController.detailPinjaman!, reminder: value)
                                 print(value)
                                 
                             }
                             else{
-                                coreDataVM.updatePinjaman(pinjaman: pinjaman, reminder: value)
+                                coreDataVM.updatePinjaman(pinjaman: perjanjianController.detailPinjaman!, reminder: value)
                                 print(value)
                             }
                             

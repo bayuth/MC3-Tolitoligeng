@@ -10,7 +10,7 @@ import SwiftUI
 struct InfoPinjaman: View {
     
     @ObservedObject var perjanjianController: PerjanjianController = .shared
-    @State var pinjaman : Pinjaman
+
     
     var body: some View {
         ScrollView(showsIndicators: false){
@@ -26,7 +26,7 @@ struct InfoPinjaman: View {
                             .font(.footnote)
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(String(describing: pinjaman.kredit?.namaSimulasi))".capitalized)
+                        Text("\(String(describing: perjanjianController.tujuanPeminjaman))")
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -36,7 +36,7 @@ struct InfoPinjaman: View {
                             .font(.footnote)
 							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text(pinjaman.kredit?.jumlahPinjaman.toRupiahString() ?? "")
+                        Text(perjanjianController.jumlahPinjaman.toRupiahString())
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -46,7 +46,7 @@ struct InfoPinjaman: View {
                             .font(.footnote)
 							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(String(describing: pinjaman.kredit?.bunga ?? 0))%".capitalized)
+                        Text("\(String(describing: perjanjianController.bunga))%")
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -56,7 +56,7 @@ struct InfoPinjaman: View {
                             .font(.footnote)
 							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(String(describing:pinjaman.kredit?.tenor ?? 0)) bulan".capitalized)
+                        Text("\(String(describing:perjanjianController.tenor)) bulan")
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -66,7 +66,7 @@ struct InfoPinjaman: View {
                             .font(.footnote)
 							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(String(describing: pinjaman.metodePembayaran ?? ""))".capitalized)
+                        Text("\(String(describing: perjanjianController.metodePembayaran))".capitalized)
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -76,7 +76,7 @@ struct InfoPinjaman: View {
                             .font(.footnote)
 							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(String(describing: pinjaman.metodePembayaran ?? ""))".capitalized)
+                        Text("\(String(describing: perjanjianController.tanggalJatuhTempo))".capitalized)
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -86,7 +86,7 @@ struct InfoPinjaman: View {
                             .font(.footnote)
 							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("pengadilan negeri \(String(describing: pinjaman.pengadilanNegeri ?? ""))".capitalized)
+                        Text("pengadilan negeri \(String(describing: perjanjianController.pengadilanNegeri))".capitalized)
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -96,7 +96,7 @@ struct InfoPinjaman: View {
                             .font(.footnote)
 							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(String(describing: pinjaman.tanggalTandaTangan ?? ""))".capitalized)
+                        Text("\(String(describing: perjanjianController.tanggalTandaTangan))".capitalized)
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
