@@ -11,7 +11,7 @@ struct EmptyPDF: View {
     var body: some View {
         VStack{
             Image("Letter Empty")
-            Text("surat Belum Terbuat")
+            Text("Surat Belum Terbuat")
                 .font(.headline)
                 .foregroundColor(Color("textColor"))
                 .padding(.top, 48)

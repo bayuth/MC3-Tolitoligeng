@@ -119,26 +119,26 @@ struct ChoosenSegment: View {
 //                }
 //
 //            }
-            if agreementData.listDone.isEmpty {
-                EmptyStatePerjanjian()
-            }
-            else if agreementData.listDone.count > 0{
-                ForEach(agreementData.listDone){ item in
-                    if item.offset != -160{
-                        NavigationLink(
-                            destination: DetailPerjanjian(detailPerjanjian: agreementData.listDone[getIndex2(item: item)].pinjaman),
-                            label: {
-                                HistorySegmentedView(item: $agreementData.listDone[getIndex2(item: item)], lists: $agreementData.listDone)
-                            })
-							.foregroundColor(.black)
-                            .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listDone[getIndex2(item: item)].pinjaman)})
-                    }
-                    else{
-                        HistorySegmentedView(item: $agreementData.listDone[getIndex2(item: item)], lists: $agreementData.listDone)
-                    }
-                }
-                
-            }
+//            if agreementData.listDone.isEmpty {
+//                EmptyStatePerjanjian()
+//            }
+//            else if agreementData.listDone.count > 0{
+//                ForEach(agreementData.listDone){ item in
+//                    if item.offset != -160{
+//                        NavigationLink(
+//                            destination: DetailPerjanjian(detailPerjanjian: agreementData.listDone[getIndex2(item: item)].pinjaman),
+//                            label: {
+//                                HistorySegmentedView(item: $agreementData.listDone[getIndex2(item: item)], lists: $agreementData.listDone)
+//                            })
+//							.foregroundColor(.black)
+//                            .simultaneousGesture(TapGesture().onEnded{perjanjianController.detailSync(pinjaman: agreementData.listDone[getIndex2(item: item)].pinjaman)})
+//                    }
+//                    else{
+//                        HistorySegmentedView(item: $agreementData.listDone[getIndex2(item: item)], lists: $agreementData.listDone)
+//                    }
+//                }
+//
+//            }
         case .draft:
             Text("coba")
             List{

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainPerjanjianPage: View {
     init(){
-        UISegmentedControl.appearance().selectedSegmentTintColor = #colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color("tabBarColor"))
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
     }
     @State private var isPresented = false
@@ -42,7 +42,7 @@ struct MainPerjanjianPage: View {
                                         {
                                             Image(systemName: "plus")
                                                 .font(.title)
-                                                .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                                                .foregroundColor(Color("tabBarColor"))
                                         }
                                         .fullScreenCover(isPresented: $isPresented, content: step1Peminjam.init)
                                     }
