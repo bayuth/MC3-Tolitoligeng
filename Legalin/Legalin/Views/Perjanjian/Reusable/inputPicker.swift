@@ -28,7 +28,7 @@ struct InputPicker: View {
                         }
                     }.pickerStyle(MenuPickerStyle())
                     .padding(.horizontal)
-                    .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                    .foregroundColor(Color("tabBarColor"))
                     
                     Spacer()
                     
@@ -39,7 +39,7 @@ struct InputPicker: View {
                 Divider()
             }
             
-            .background(Color(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)).opacity(getRedIndicator() ? 0.05 : 0.0))
+            .background(Color("emptyAlertColor").opacity(getRedIndicator() ? 0.15 : 0.0))
             
         })
         

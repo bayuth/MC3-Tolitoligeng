@@ -95,7 +95,7 @@ struct step1Peminjam: View {
                                          .frame(maxWidth: .infinity, alignment: .leading)
                                         Divider()
                                         }
-                                            .background(Color(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)).opacity(perjanjianController.endButtonPressed ? 0.05 : 0.0))
+                                            .background(Color("emptyAlertColor").opacity(perjanjianController.endButtonPressed ? 0.15 : 0.0))
 									} else {
 										Text(perjanjianController.pihak1TanggalLahir, formatter: dateFormatter)
 											.font(.body)

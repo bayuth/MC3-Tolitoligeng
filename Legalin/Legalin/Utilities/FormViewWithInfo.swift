@@ -40,7 +40,7 @@ struct FormViewWithInfo: View {
                             
                         }, label: {
                             Image(systemName: "info.circle")
-                                .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                                .foregroundColor(Color("tabBarColor"))
                         })
                     }
                 }.padding(.horizontal)
@@ -72,7 +72,7 @@ struct FormViewWithInfo: View {
                         }
                     }
                     Divider()
-                    }.background(Color(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)).opacity(getRedIndicator() ? 0.05 : 0.0))
+                    }.background(Color("emptyAlertColor").opacity(getRedIndicator() ? 0.15 : 0.0))
                 }
                 
                 else {
@@ -80,16 +80,16 @@ struct FormViewWithInfo: View {
                     VStack{
                         Text(profileValue).font(.body)
                             .padding(.horizontal)
-                            .foregroundColor(Color.init(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                            .foregroundColor(Color.init("tabBarColor"))
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Divider()
-                    }.background(Color(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)).opacity(getRedIndicator() ? 0.05 : 0.0))
+                    }.background(Color("emptyAlertColor").opacity(getRedIndicator() ? 0.15 : 0.0))
                     
                 }
                 
             }
             
-        }.popoverView(content: {PopOverContent(frame: $secondPopoverFrame, show: $popOverState, popOverText: info)}, background: {Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))}, isPresented: $popOverState, frame: $secondPopoverFrame, anchorFrame: nil, popoverType: .popover, position: .bottom, viewId: "infoPopOver", settings: DYPopoverViewSettings(arrowLength: 0,  cornerRadius: (10,10,10,10), offset: CGSize(width: 0, height: -25), animation: .default)
+        }.popoverView(content: {PopOverContent(frame: $secondPopoverFrame, show: $popOverState, popOverText: info)}, background: {Color("tabBarColor")}, isPresented: $popOverState, frame: $secondPopoverFrame, anchorFrame: nil, popoverType: .popover, position: .bottom, viewId: "infoPopOver", settings: DYPopoverViewSettings(arrowLength: 0,  cornerRadius: (10,10,10,10), offset: CGSize(width: 0, height: -25), animation: .default)
         )
         
     }

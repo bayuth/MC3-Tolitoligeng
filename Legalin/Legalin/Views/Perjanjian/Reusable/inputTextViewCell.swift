@@ -33,7 +33,7 @@ struct inputTextViewCell: View {
             }.padding(.horizontal)
             
             Divider()
-            }.background(Color(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)).opacity(getRedIndicator() ? 0.05 : 0.0))
+            }.background(Color("emptyAlertColor").opacity(getRedIndicator() ? 0.15 : 0.0))
             
         })
         
