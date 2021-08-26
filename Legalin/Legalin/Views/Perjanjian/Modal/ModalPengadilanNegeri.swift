@@ -37,6 +37,7 @@ struct ModalPengadilanNegeri: View {
             }
             
         }
+		.background(Color("defaultLightAndDarkColor"))
         .navigationBarTitle("Pengadilan Negeri", displayMode: .inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

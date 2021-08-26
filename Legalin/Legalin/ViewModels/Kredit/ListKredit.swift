@@ -57,4 +57,8 @@ class ListKreditVM: ObservableObject {
         coreDataVM.getAllKredit()
         fillListDone()
     }
+    
+    func deleteDetailKredit(index :Int) {
+        coreDataVM.deleteKredit(kredit: coreDataVM.listKredit[index])
+    }
 }

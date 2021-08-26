@@ -71,14 +71,14 @@ struct PdfAction: View {
                         
                         Text("Surat perjanjian hutang - Modal proyek katering - 25/07/2021")
                             .font(.headline)
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("textColor"))
                             .multilineTextAlignment(.center)
                     }
                     .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, maxHeight: 228, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .padding(.horizontal, 24)
                     .background(
                         RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                            .stroke(Color("tabBarColor"))
                     )
                 })
             
@@ -94,15 +94,15 @@ struct PdfAction: View {
                 HStack{
                     Image(systemName: "square.and.arrow.up")
                         .font(.title2)
-                        .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                        .foregroundColor(Color("tabBarColor"))
                     Text("Bagikan atau Cetak")
-                        .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                        .foregroundColor(Color("tabBarColor"))
                 }
                 .padding(.vertical, 4)
                 .padding(.horizontal, 8)
                 .background(
                     RoundedRectangle(cornerRadius: 4)
-                        .stroke(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                        .stroke(Color("tabBarColor"))
                 )
                 
             }
@@ -119,7 +119,7 @@ struct PdfAction: View {
                     
                 })
                 .frame(maxWidth: .infinity, maxHeight: 50)
-                .background(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                .background(Color("tabBarColor"))
                 .specCornerRadius(8, corners: .allCorners)
                 .padding()
                 .padding(.bottom,30)
@@ -195,14 +195,14 @@ struct SignBtn: View{
             if pinjaman.status == "onGoing"{
                 HStack{
                     Text("Sudah")
-                        .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                        .foregroundColor(Color("tabBarColor"))
                     Image(systemName: "checkmark")
-                        .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                        .foregroundColor(Color("tabBarColor"))
                 }
             }
             else{
                 Text("Belum")
-                    .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                    .foregroundColor(Color("tabBarColor"))
             }
             
         })

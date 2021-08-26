@@ -60,7 +60,7 @@ struct NewProfileView: View {
 								}
 								
 							}, label: {
-								Text("Ambil Ulang Gambar KTP \(Image(systemName: "checkmark.rectangle.fill"))").fontWeight(.regular) .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+								Text("Ambil Ulang Gambar KTP \(Image(systemName: "checkmark.rectangle.fill"))").fontWeight(.regular) .foregroundColor(Color("tabBarColor"))
 							}).padding(.horizontal)
 							Divider()
 								.fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
@@ -75,7 +75,7 @@ struct NewProfileView: View {
 								}
 								
 							}, label: {
-								Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").fontWeight(.regular) .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+								Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").fontWeight(.regular) .foregroundColor(Color("tabBarColor"))
 							}).padding(.horizontal)
 							Divider()
 								.fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
@@ -87,13 +87,13 @@ struct NewProfileView: View {
 							FormView(title: "NIK", profileValue: $profileController.pihak1NIK, keyboardNum: true, isDisable: $isDisable)
 							FormView(title: "Nama", profileValue: $profileController.pihak1Nama, keyboardNum: false, isDisable: $isDisable)
 							VStack(alignment: .leading){
-								Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+								Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color("labelColor"))
 									.padding(.bottom,5)
 								if Calendar.current.isDateInToday(profileController.pihak1TanggalLahir) {
 									Text("Pilih Tanggal Lahir Sesuai KTP")
 										.font(.body)
 										.fontWeight(.regular)
-										.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+										.foregroundColor(Color("tabBarColor"))
 										.onTapGesture {
 										showTanggalLahir.toggle()
 									}
@@ -101,7 +101,7 @@ struct NewProfileView: View {
 									Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
 										.font(.body)
 										.fontWeight(.regular)
-										.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+										.foregroundColor(Color("tabBarColor"))
 										.onTapGesture {
 											showTanggalLahir.toggle()
 										}
@@ -114,7 +114,7 @@ struct NewProfileView: View {
 								DatePicker("", selection: $profileController.pihak1TanggalLahir, displayedComponents: .date)
 									.datePickerStyle(GraphicalDatePickerStyle())
 									.padding(.horizontal)
-									.accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+									.accentColor(Color("tabBarColor"))
 							}
 							
 							FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $isDisable)
@@ -132,7 +132,7 @@ struct NewProfileView: View {
 								Text("Pastikan semua data yang anda masukan sudah benar dan sesuai dengan KTP anda")
 									.font(.caption2)
 									.fontWeight(.regular)
-									.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+									.foregroundColor(Color("tabBarColor"))
 									.multilineTextAlignment(.leading)
 									.padding(.bottom,10)
 									.padding(.horizontal)

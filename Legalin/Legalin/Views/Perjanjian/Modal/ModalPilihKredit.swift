@@ -35,9 +35,10 @@ struct ModalPilihKredit: View {
                         }
                 }
             }.navigationBarTitle("Pilih Kredit", displayMode: .inline)
-            .accentColor(.red)
             .navigationBarBackButtonHidden(true)
         }
+		.background(Color("defaultLightAndDarkColor"))
+		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .onAppear {
             vc.setListSelected(total: vcKredit.list.count)
         }

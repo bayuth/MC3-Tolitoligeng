@@ -108,18 +108,6 @@ struct UlasanKredit: View {
         }
         .navigationBarTitle("Ulasan Kredit", displayMode: .inline)
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading:
-                                Button(action: {
-                                    presentationMode.wrappedValue.dismiss()
-                                }, label: {
-                                    Image(systemName: "chevron.left")
-                                        .foregroundColor(.white)
-                                    Text("Perjanjian")
-                                        .foregroundColor(.white)
-                                })
-        )
-        
-        
     }
     /*
      Total Bunga : (Bunga%/12 x Tenor)

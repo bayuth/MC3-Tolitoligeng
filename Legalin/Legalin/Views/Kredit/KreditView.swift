@@ -21,12 +21,39 @@ struct KreditView: View {
                 }else {
                     ScrollView(showsIndicators: false){
                         ForEach(kreditData.list){ item in
-                            KreditCardView(item: $kreditData.list[getIndex(item: item)], lists: $kreditData.list, action: {
-                                kreditData.deleteKredit(index: getIndex(item: item))
-                            })
-
+                            if item.offset != -160{
+                                NavigationLink(
+                                    destination: DetailKredit(dataUlasan: kreditData, index: getIndex(item: item)),
+                                    label: {
+                                        KreditCardView(item: $kreditData.list[getIndex(item: item)], lists: $kreditData.list, action: {
+                                            kreditData.deleteKredit(index: getIndex(item: item))
+                                        })
+                                    })
+                                    .foregroundColor(.black)
+                                    .simultaneousGesture(TapGesture().onEnded{
+                                        kreditData.object = kreditData.list[getIndex(item: item)]
+                                    })
+                                
+                            }
+                            else{
+                                KreditCardView(item: $kreditData.list[getIndex(item: item)], lists: $kreditData.list, action: {
+                                    kreditData.deleteKredit(index: getIndex(item: item))
+                                })
+                            }
+                            //                            KreditCardView(item: $kreditData.list[getIndex(item: item)], lists: $kreditData.list, action: {
+                            //                                kreditData.deleteKredit(index: getIndex(item: item))
+                            //                            }).onTapGesture {
+                            //                                NavigationLink(
+                            //                                    destination: DetailKredit(dataUlasan: kreditData),
+                            //                                    label: {
+                            //                                        KreditCardView(item: $kreditData.list[getIndex(item: item)], lists: $kreditData.list, action: {
+                            //                                            kreditData.deleteKredit(index: getIndex(item: item))
+                            //                                        })
+                            //                                    })
+                            //                            }
                         }
                     }
+                    
                 }
             }
             .navigationTitle("Kredit")
@@ -40,7 +67,7 @@ struct KreditView: View {
                                         {
                                             Image(systemName: "plus")
                                                 .font(.title)
-                                                .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                                                .foregroundColor(Color("tabBarColor"))
                                         }
                                         .fullScreenCover(isPresented: $isPresented, content: ModalAddKredit.init)
                                     }
@@ -65,6 +92,6 @@ struct KreditView: View {
 struct KreditView_Previews: PreviewProvider {
     static var previews: some View {
         KreditView()
-            
+        
     }
 }

@@ -34,6 +34,7 @@ struct HistorySegmentedView: View {
             .padding(.trailing)
             VStack(alignment: .leading){
                 Text(item.agreementTitle)
+					.foregroundColor(Color("textColor"))
                     .font(.title2)
                     .fontWeight(.semibold)
                     .padding(.horizontal)
@@ -43,18 +44,20 @@ struct HistorySegmentedView: View {
                     VStack(alignment: .leading){
                         Text("Jumlah Pinjaman")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 2)
                         
                         Text(item.amountOfLoan)
+							.foregroundColor(Color("textColor"))
                             .padding(.bottom, 8)
                         
                         Text("Tanggal Pembuatan")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 2)
                         
                         Text(item.Date)
+							.foregroundColor(Color("textColor"))
                             .padding(.bottom, 8)
                         
                     }
@@ -64,18 +67,20 @@ struct HistorySegmentedView: View {
                     VStack(alignment: .leading){
                         Text("Pemberi Pinjaman")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 2)
                         
                         Text(item.lenderName)
+							.foregroundColor(Color("textColor"))
                             .padding(.bottom, 8)
                         
                         Text("Status Tanda Tangan")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 2)
                         
                         Text("Belum")
+							.foregroundColor(Color("textColor"))
                             .padding(.bottom, 8)
                         
                     }

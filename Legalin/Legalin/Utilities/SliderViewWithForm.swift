@@ -60,18 +60,18 @@ struct SliderViewWithForm: View {
                         }),
                     in: rangeOfSlider,
                     step: valueMaxSlide
-                ).padding(.bottom, 11).accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                ).padding(.bottom, 11).accentColor(Color("tabBarColor"))
                 .padding(.horizontal)
                 .onChange(of: self.sliderValue, perform: { value in
                     getFormattedText()
                 })
                 HStack{
                     Text(text1)
-                        .foregroundColor(Color.init(hex: "#707070"))
+                        .foregroundColor(Color("labelColor"))
                         .font(.caption)
                     Spacer()
                     Text(text2)
-                        .foregroundColor(Color.init(hex: "#707070"))
+                        .foregroundColor(Color("monthAndPriceColorStep3"))
                         .font(.caption)
                 }
                 .frame(
@@ -84,7 +84,7 @@ struct SliderViewWithForm: View {
                 .padding(.bottom, 10)
                 .padding(.horizontal)
                 Divider()
-            }.background(Color(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)).opacity(getRedIndicator() ? 0.05 : 0.0))
+            }.background(Color("emptyAlertColor").opacity(getRedIndicator() ? 0.15 : 0.0))
             
         }.padding(.bottom,10)
         .onAppear{

@@ -46,7 +46,7 @@ struct step2Pemberi: View {
 						perjanjianController.modalPilihIdentitas.toggle()
 					}.padding(.horizontal)
 					
-					Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.bottom,7)
+					Text("KTP").font(.footnote).fontWeight(.medium).foregroundColor(Color("labelColor")).padding(.bottom,7)
                         .padding(.horizontal)
 					
 					if (perjanjianController.pihak2IsOpenCam == true) {
@@ -58,7 +58,7 @@ struct step2Pemberi: View {
 							}
 							
 						}, label: {
-							Text("Ambil Ulang Gambar KTP \(Image(systemName: "checkmark.rectangle.fill"))").fontWeight(.regular) .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+							Text("Ambil Ulang Gambar KTP \(Image(systemName: "checkmark.rectangle.fill"))").fontWeight(.regular) .foregroundColor(Color("tabBarColor"))
 						}).padding(.horizontal)
 						Divider()
 							.fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
@@ -73,7 +73,7 @@ struct step2Pemberi: View {
 							}
 							
 						}, label: {
-							Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").fontWeight(.regular) .foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+							Text("Ambil gambar KTP untuk isi otomatis \(Image(systemName: "camera.fill"))").fontWeight(.regular) .foregroundColor(Color("tabBarColor"))
 						}).padding(.horizontal)
 						Divider()
 							.fullScreenCover(isPresented: $trimKtp.showScannerSheet, content: {
@@ -85,7 +85,7 @@ struct step2Pemberi: View {
 						FormView(title: "NIK", profileValue: $perjanjianController.pihak2NIK, keyboardNum: true, isDisable: $isDisable)
 						FormView(title: "Nama", profileValue: $perjanjianController.pihak2Nama, keyboardNum: false, isDisable: $isDisable)
 						VStack(alignment: .leading){
-							Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+							Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color("labelColor"))
 								.padding(.bottom,5)
                                 .padding(.horizontal)
 							if Calendar.current.isDateInToday(perjanjianController.pihak2TanggalLahir) {
@@ -94,19 +94,19 @@ struct step2Pemberi: View {
                                 Text("Pilih Tanggal Lahir Sesuai KTP")
 									.font(.body)
 									.fontWeight(.regular)
-									.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+									.foregroundColor(Color("tabBarColor"))
                                     .padding(.horizontal)
 									.onTapGesture {
 									showTanggalLahir.toggle()
                                         
 								}.frame(maxWidth: .infinity, alignment: .leading)
                                     Divider()
-                                }      .background(Color(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)).opacity(perjanjianController.endButtonPressed ? 0.05 : 0.0))
+                                }      .background(Color("emptyAlertColor").opacity(perjanjianController.endButtonPressed ? 0.15 : 0.0))
 							} else {
 								Text(perjanjianController.pihak2TanggalLahir, formatter: dateFormatter)
 									.font(.body)
 									.fontWeight(.regular)
-									.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+									.foregroundColor(Color("tabBarColor"))
                                     .padding(.horizontal)
 									.onTapGesture {
 										showTanggalLahir.toggle()
@@ -116,6 +116,7 @@ struct step2Pemberi: View {
 						}
 						if showTanggalLahir {
 							DatePicker("", selection: $perjanjianController.pihak2TanggalLahir, displayedComponents: .date)
+								.accentColor(Color("tabBarColor"))
 								.datePickerStyle(GraphicalDatePickerStyle())
 								.padding(.horizontal)
 						}
@@ -138,7 +139,7 @@ struct step2Pemberi: View {
 							Text("Pastikan semua data yang anda masukan sudah benar dan sesuai dengan KTP dan dokumen anda")
 								.font(.caption2)
 								.fontWeight(.regular)
-								.foregroundColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+								.foregroundColor(Color("tabBarColor"))
 								.multilineTextAlignment(.leading)
 								.padding(.bottom,10)
                                 .padding(.horizontal)

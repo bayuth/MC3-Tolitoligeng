@@ -23,81 +23,90 @@ struct Pihak2: View {
                     VStack(alignment: .leading){
                         Text("NIK")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("\(perjanjianController.pihak2NIK)")
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading){
                         Text("Nama")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("\(perjanjianController.pihak2Nama)")
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading){
                         Text("Umur")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("\(perjanjianController.pihak2TanggalLahir)")
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading){
                         Text("Alamat")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("\(perjanjianController.pihak2Alamat)")
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading){
                         Text("Pekerjaan")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("\(perjanjianController.pihak2Pekerjaan)")
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading){
                         Text("Nomor Handphone")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("\(perjanjianController.pihak2NomorHP)")
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading){
                         Text("Nama Bank")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("\(perjanjianController.pihak2NamaBank)")
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading){
                         Text("Nomor Rekening")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("\(perjanjianController.pihak2NomorRekening)")
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                     
                     VStack(alignment: .leading){
                         Text("Atas Nama Rekening")
                             .font(.footnote)
-                            .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
+                            .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
                         Text("\(perjanjianController.pihak2AtasNamaRekening)")
+							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
                 }
@@ -107,7 +116,7 @@ struct Pihak2: View {
             
             .background(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+                    .stroke(Color("tabBarColor"))
             )
             .padding()
 //            Spacer()

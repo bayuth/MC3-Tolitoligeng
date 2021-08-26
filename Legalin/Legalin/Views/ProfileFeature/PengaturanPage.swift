@@ -10,14 +10,16 @@ import SwiftUI
 struct PengaturanPage: View {
     var body: some View {
 		NavigationView {
-			VStack {
+			VStack(alignment: .leading) {
 				NavigationLink(
 					destination: KebijakanPrivasiPage(),
 					label: {
 						ButtonKebijakanPrivasi().foregroundColor(.black)
 					})
-			}.frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 500, alignment: .center)
+			}
+			.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
 		}
+		.navigationBarTitleDisplayMode(.inline)
     }
 }
 

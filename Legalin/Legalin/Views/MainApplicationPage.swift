@@ -12,8 +12,10 @@ struct MainApplicationPage: View {
     @AppStorage("selection") var selection = 3
     
     init(){
-        UITabBar.appearance().backgroundColor = #colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)
-        UITabBar.appearance().barTintColor = #colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)
+        UITabBar.appearance().backgroundColor = UIColor(Color("tabBarColor"))
+        UITabBar.appearance().barTintColor = UIColor(Color("tabBarColor"))
+		UITabBar.appearance().selectedItem?.badgeColor = UIColor(Color("labelColor"))
+		UITabBar.appearance().unselectedItemTintColor = UIColor(Color("tabBarUnselected"))
         UITabBar.appearance().isTranslucent = true
     }
 
@@ -44,7 +46,7 @@ struct MainApplicationPage: View {
                     .tag(3)
             }
             
-            .accentColor(.white)
+            .accentColor(Color("tabBarSelectedColor"))
             DisclaimerPopUp(shouldShowOnBoarding: $shouldShowOnBoarding, selection: $selection)
         }
         

@@ -93,6 +93,7 @@ struct step3Detail: View {
                         if(showPickerTandaTangan){
                             DatePicker("", selection:$dateTandaTangan.onChange(tandaTanganChanged), in: Date()...,
                                        displayedComponents: [.date])
+								.accentColor(Color("tabBarColor"))
                                 .datePickerStyle(GraphicalDatePickerStyle())
                         }
                     }
