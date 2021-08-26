@@ -37,7 +37,7 @@ struct ConfirmationPage: View {
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading:
                                 Button(action: {
-                                    masterPresentationMode5.wrappedValue.dismiss()
+                                    presentationMode.wrappedValue.dismiss()
                                 }, label: {
                                     Image(systemName: "chevron.left")
                                         .foregroundColor(.white)
