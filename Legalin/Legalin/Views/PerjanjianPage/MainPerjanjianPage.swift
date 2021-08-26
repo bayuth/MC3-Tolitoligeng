@@ -59,7 +59,7 @@ enum Segment:String, CaseIterable{
 struct ChoosenSegmented: View {    
     @ObservedObject var coreDataVM: CoreDataViewModel = .shared
     @ObservedObject var perjanjianController: PerjanjianController = .shared
-    var cobaItem = [1, 2, 3, 4]
+    
     
     @State var actionState: Int? = 0
     

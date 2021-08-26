@@ -1,7 +1,7 @@
-    import SwiftUI
-    import WebKit
-    
-    struct WebView : UIViewRepresentable {
+import SwiftUI
+import WebKit
+
+struct WebView : UIViewRepresentable {
     
     var invoiceComposer = InvoiceComposer()
     var nama1: String = "Ayam"
@@ -15,7 +15,7 @@
     func updateUIView(_ uiView: WKWebView, context: Context) {
         
         let invoiceHTML = invoiceComposer.renderInvoice()
-    
+        
         uiView.loadHTMLString(invoiceHTML!, baseURL: nil)
     }
 }

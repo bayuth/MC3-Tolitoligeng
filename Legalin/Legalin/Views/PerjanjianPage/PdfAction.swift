@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UserNotifications
+import WebKit
 
 class NotificationManager{
     static let instance = NotificationManager()
@@ -58,6 +59,8 @@ struct PdfAction: View {
     var hideSwitch: Bool = false
     
     @State private var showShareSheet: Bool = false
+    @State var items : [Any] = []
+    @State var pdf = InvoiceComposer()
     var body: some View {
         
         VStack{
@@ -89,7 +92,9 @@ struct PdfAction: View {
                 .padding(.horizontal, 32)
             
             Button(action:{
-                shareAction()
+                items.removeAll()
+                items.append(pdf.renderInvoice())
+                shareAction(item: items)
             }){
                 HStack{
                     Image(systemName: "square.and.arrow.up")
@@ -173,15 +178,27 @@ struct PdfAction: View {
         .padding()
     }
     
-    private func shareAction(){
+    private func shareAction(item: [Any]){
         showShareSheet.toggle()
         
-        let url = URL(string: "https://apple.com")
-        let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        let item = item
+        let av = UIActivityViewController(activityItems: item, applicationActivities: nil)
         
         UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
     }
+    
 }
+
+//struct ShareSheet: UIViewControllerRepresentable {
+//    var item : [Any]
+//    func makeUIViewController(context: Context) -> some UIActivityViewController {
+//        let controller = UIActivityViewController(activityItems: item, applicationActivities: nil)
+//    }
+//
+//    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
+//
+//    }
+//}
 
 struct SignBtn: View{
     @State var alertIsPresented = false
@@ -214,6 +231,7 @@ struct SignBtn: View{
         })
     }
 }
+
 
 
 //struct PdfAction_Previews: PreviewProvider {
