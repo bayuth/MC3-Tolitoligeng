@@ -22,7 +22,7 @@ struct MainApplicationPage: View {
     var body: some View {
         ZStack{
             TabView(selection: $selection){
-                PerjanjianPage()
+                MainPerjanjianPage()
                     .tabItem {
                         Text("Perjanjian")
                             .foregroundColor(.white)

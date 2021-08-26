@@ -13,17 +13,18 @@ struct loadingScreen: View {
     @Environment(\.presentationMode) var masterPresentationMode7
     @Environment(\.presentationMode) var presentationMode
     let timer = Timer.publish(every: 0.02, on: .main, in: .common).autoconnect()
-    
+    @State private var pinjaman = Pinjaman()
     var body: some View {
         
         VStack{
             NavigationView{
             NavigationLink(
                 destination:
-                    PdfAction(masterPresentationMode8: _masterPresentationMode7, hideSwitch: true)
+                    PdfAction(masterPresentationMode8: _masterPresentationMode7, pinjaman: pinjaman, hideSwitch: true)
                     .navigationBarBackButtonHidden(true),
                 isActive: .constant(progressAmount == 100)
-                ){
+                )
+            {
             
                 VStack{
                 
@@ -51,8 +52,8 @@ struct loadingScreen: View {
     }
 }
 
-struct loadingScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        loadingScreen()
-    }
-}
+//struct loadingScreen_Previews: PreviewProvider {
+//    static var previews: some View {
+//        loadingScreen()
+//    }
+//}

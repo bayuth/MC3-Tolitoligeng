@@ -6,14 +6,60 @@
 //
 
 import SwiftUI
+import UserNotifications
+
+class NotificationManager{
+    static let instance = NotificationManager()
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
+//    @ObservedObject var coreDataVM: CoreDataViewModel = .shared
+    
+    
+    func requestAuthorization(){
+        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
+        UNUserNotificationCenter.current().requestAuthorization(options: options){ (success, error) in
+            if let error = error{
+                print("Error: \(error)")
+            }
+            else{
+                print("success")
+            }
+            
+        }
+    }
+    func notification(){
+        let content = UNMutableNotificationContent()
+        content.title = perjanjianController.tujuanPeminjaman
+        content.subtitle = "BAYAR UTANG OY UDAH TANGGAL \(perjanjianController.tanggalJatuhTempo)"
+        content.sound = .default
+//        content.badge = 1
+        
+        var dateComponent = DateComponents()
+        dateComponent.hour = 22
+        dateComponent.minute = 20
+//        dateComponent.day = Int(perjanjianController.tanggalJatuhTempo)
+        
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
+        
+        //notification
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
+        print("notifikasi jalan")
+    }
+}
 
 struct PdfAction: View {
     @Environment(\.presentationMode) var masterPresentationMode8
     @Environment(\.presentationMode) var presentationMode
-    var hideSwitch: Bool = true
-    @State var toggleIsOn: Bool = false
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
+    @ObservedObject var coreDataVM: CoreDataViewModel = .shared
+    @State var pinjaman : Pinjaman
+//    @State var alertIsPresented = false
+    var hideSwitch: Bool = false
+    
     @State private var showShareSheet: Bool = false
     var body: some View {
+        
         VStack{
             
             NavigationLink(
@@ -84,18 +130,40 @@ struct PdfAction: View {
                     HStack{
                         Text("Tanda Tangan")
                         Spacer()
-                        if SignBtn().isSigned{
-                            SignBtn()
-                                .disabled(true)
+                        if pinjaman.status == "notSigned"{
+                            SignBtn(pinjaman: pinjaman)
                         }
                         else{
-                            SignBtn()
+                            SignBtn(pinjaman: pinjaman)
+                                .disabled(true)
                         }
                     }
-                    Toggle(isOn: $toggleIsOn, label: {
-                        Text("Pengingat")
-                    })
-                    .toggleStyle(SwitchToggleStyle(tint: Color("tabBarColor")))
+                    if pinjaman.status == "onGoing"{
+                        Toggle(isOn: $pinjaman.reminder, label: {
+                            Text("Pengingat")
+                        })
+                        .toggleStyle(SwitchToggleStyle(tint: Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))))
+                        .onChange(of: pinjaman.reminder, perform: { value in
+                            if value{
+                                NotificationManager.instance.notification()
+                                coreDataVM.updatePinjaman(pinjaman: pinjaman, reminder: value)
+                                print(value)
+                                
+                            }
+                            else{
+                                coreDataVM.updatePinjaman(pinjaman: pinjaman, reminder: value)
+                                print(value)
+                            }
+                            
+                        })
+                    }
+                    else{
+                        Toggle(isOn: .constant(false), label: {
+                            Text("Pengingat")
+                        })
+                        .toggleStyle(SwitchToggleStyle(tint: Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))))
+                    }
+                    
                 }
                 .padding(.top, 76)
             }
@@ -118,11 +186,13 @@ struct PdfAction: View {
 struct SignBtn: View{
     @State var alertIsPresented = false
     @State var isSigned = false
+    @ObservedObject var coreDataVM: CoreDataViewModel = .shared
+    @State var pinjaman : Pinjaman
     var body: some View{
         Button(action: {
             self.alertIsPresented = true
         }, label: {
-            if isSigned{
+            if pinjaman.status == "onGoing"{
                 HStack{
                     Text("Sudah")
                         .foregroundColor(Color("tabBarColor"))
@@ -139,15 +209,15 @@ struct SignBtn: View{
         .alert(isPresented: $alertIsPresented, content: {
             Alert(title: Text("Surat Perjanjian Sudah di Tanda Tangan"), message: Text("Surat sudah ditanda tangan kedua belah pihak diatas materai?"), primaryButton: .default(Text("Sudah"),
                                                                                                                                                                                 action: {
-                                                                                                                                                                                    self.isSigned = true
+                                                                                                                                                                                    pinjaman.status = "onGoing"
                                                                                                                                                                                 }), secondaryButton: .cancel(Text("Belum")))
         })
     }
 }
 
 
-struct PdfAction_Previews: PreviewProvider {
-    static var previews: some View {
-        PdfAction(hideSwitch: true)
-    }
-}
+//struct PdfAction_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PdfAction(hideSwitch: false)
+//    }
+//}

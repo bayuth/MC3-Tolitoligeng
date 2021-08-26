@@ -440,6 +440,7 @@ class CoreDataViewModel: ObservableObject {
         //Init Status dan Reminder
         newPinjaman.status = StatusSurat.draft.rawValue
         newPinjaman.reminder = false
+        
 
         //Buat pihak1 di page pinjaman (loaner)
         newPinjaman.pihak1 = createPihak1(pinjamanPage: true)
