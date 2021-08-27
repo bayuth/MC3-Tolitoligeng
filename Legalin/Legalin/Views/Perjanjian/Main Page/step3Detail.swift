@@ -35,6 +35,7 @@ struct step3Detail: View {
     @State var step3Redirect: Bool = false
     
     @ObservedObject var perjanjianController: PerjanjianController = .shared
+    @ObservedObject var coreDataVM: CoreDataViewModel = .shared
     
     var tipeAgunan = ["Cicilan", "Kontan"]
     var rangeDate = [1...28]
@@ -132,10 +133,18 @@ struct step3Detail: View {
                         .default(Text("Simpan")) {
 							perjanjianController.setPihak1OpenCamToFalse(isOpenCam: false)
 							perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
-                            perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
+                            
+                            if (perjanjianController.sender == "perjanjianBaru"){
+                            perjanjianController.updatePinjamanCoreData(pinjaman: coreDataVM.createPinjaman(), status: StatusSurat.draft)
+                            }
+                            
+                            if (perjanjianController.sender == "detailPage"){
+                                perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat.draft)
+                            }
+                            
                             self.masterPresentationMode3.wrappedValue.dismiss()
                         },
-                        .destructive(Text("Hapus")) {
+                        .destructive(Text(getTextKembali())) {
 							perjanjianController.setPihak1OpenCamToFalse(isOpenCam: false)
 							perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
                             self.masterPresentationMode3.wrappedValue.dismiss()
@@ -171,6 +180,14 @@ struct step3Detail: View {
     
     func tandaTanganChanged(to value: Date) {
         perjanjianController.tanggalTandaTangan = dateFormatter.string(from: value)
+    }
+    
+    func getTextKembali() -> String {
+        if perjanjianController.sender == "perjanjianBaru"{
+            return "Hapus"
+        } else {
+            return "Kembali"
+        }
     }
 }
 

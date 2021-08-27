@@ -17,6 +17,8 @@ struct step4Agunan: View {
     @State var disabledStaus: Bool = false
     @State var showActionSheet = false
     @State var showAlert = false
+    @State var showAlertDetail = false
+    @State var completeAlert = false
     
     //Validation page redirect
     @Binding var step1Redirect: Bool
@@ -24,6 +26,7 @@ struct step4Agunan: View {
     @Binding var step3Redirect: Bool
     
     @ObservedObject var perjanjianController: PerjanjianController = .shared
+    @ObservedObject var coreDataVM: CoreDataViewModel = .shared
     
     var tipeAgunan = ["Umum", "Elektronik"]
     
@@ -72,36 +75,69 @@ struct step4Agunan: View {
             }
             Spacer()
 			
-            NavigationLink(
-                destination: ConfirmationPage(masterPresentationMode5: _masterPresentationMode4)){
+            
+            if (perjanjianController.sender == "perjanjianBaru"){
+                NavigationLink(
+                    destination: ConfirmationPage(masterPresentationMode5: _masterPresentationMode4)){
+                    ButtonNext(text: "Buat Surat", isDataComplete: perjanjianController.nextButtonState)
+                }.disabled(!perjanjianController.nextButtonState)
+                .simultaneousGesture(TapGesture().onEnded{
+                    
+                    perjanjianController.endButtonPressed = true
+                    if perjanjianController.nextButtonState == false{
+                        showAlert = true
+                    }
+                    
+                })
+            } else {
                 ButtonNext(text: "Buat Surat", isDataComplete: perjanjianController.nextButtonState)
-            }.disabled(!perjanjianController.nextButtonState)
-            .simultaneousGesture(TapGesture().onEnded{
-                
-                perjanjianController.endButtonPressed = true
-                if perjanjianController.nextButtonState == false{
-                    showAlert = true
-                }
-                
-            })
-            .alert(isPresented: $showAlert, content: {
-                Alert(title: Text("Data belum lengkap"),
-                      message: Text("Mohon lengkapi data terlebih dahulu untuk melanjutkan"),
-                      dismissButton: .destructive(Text("Tutup")){
+                    .simultaneousGesture(TapGesture().onEnded{
                         
-                        if perjanjianController.redirectPage == "step1"{
-                            step1Redirect = false
-                        } else if perjanjianController.redirectPage == "step2"{
-                            step2Redirect = false
-                        } else if perjanjianController.redirectPage == "step3"{
-                            step3Redirect = false
+                        if perjanjianController.nextButtonState == false{
+                            
+                            showAlert = true
+                            
+                        } else {
+                            perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat.notSigned)
+                            
+                            completeAlert = true
+                            showAlert = true
+                            
+                            print("jalan")
                         }
                         
-                      } )
-            }).padding(.bottom,13)
-            
+                    })
+            }
             
         }
+        
+        .alert(isPresented: $showAlert, content: {
+            
+            if completeAlert == false {
+            
+            return Alert(title: Text("Data belum lengkap"),
+                  message: Text("Mohon lengkapi data terlebih dahulu untuk melanjutkan"),
+                  dismissButton: .destructive(Text("Tutup")){
+                    
+                    if perjanjianController.redirectPage == "step1"{
+                        step1Redirect = false
+                    } else if perjanjianController.redirectPage == "step2"{
+                        step2Redirect = false
+                    } else if perjanjianController.redirectPage == "step3"{
+                        step3Redirect = false
+                    }
+                    
+                  } )
+            } else {
+            
+            return Alert(title: Text("Surat Berhasil Dibuat"),
+                message: Text("Jangan lupa untuk menandatangani surat"),
+                dismissButton: .destructive(Text("Tutup")){
+                            self.masterPresentationMode4.wrappedValue.dismiss()
+                } )
+            }
+                
+        }).padding(.bottom,13)
 //        .frame(width: UIScreen.main.bounds.width - 35,alignment: .leading)
         .navigationBarTitle("Perjanjian Baru", displayMode: .inline)
         .navigationBarBackButtonHidden(true)
@@ -126,10 +162,18 @@ struct step4Agunan: View {
                     .default(Text("Simpan")) {
 						perjanjianController.setPihak1OpenCamToFalse(isOpenCam: false)
 						perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
-                        perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
+                        
+                        if (perjanjianController.sender == "perjanjianBaru"){
+                        perjanjianController.updatePinjamanCoreData(pinjaman: coreDataVM.createPinjaman(), status: StatusSurat.draft)
+                        }
+                        
+                        if (perjanjianController.sender == "detailPage"){
+                            perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat.draft)
+                        }
+                        
                         self.masterPresentationMode4.wrappedValue.dismiss()
                     },
-                    .destructive(Text("Hapus")) {
+                    .destructive(Text(getTextKembali())) {
 						perjanjianController.setPihak1OpenCamToFalse(isOpenCam: false)
 						perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
                         self.masterPresentationMode4.wrappedValue.dismiss()
@@ -138,6 +182,13 @@ struct step4Agunan: View {
                 ])
             
         })
+    }
+    func getTextKembali() -> String {
+        if perjanjianController.sender == "perjanjianBaru"{
+            return "Hapus"
+        } else {
+            return "Kembali"
+        }
     }
 }
 

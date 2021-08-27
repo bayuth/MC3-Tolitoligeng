@@ -17,13 +17,12 @@ class CoreDataViewModel: ObservableObject {
     //Dibuat dengan tutorial https://www.youtube.com/watch?v=huRKU-TAD3g&t=1846s
     
     static let shared = CoreDataViewModel()
-    
     @Published var pihak1:[Akun] = []
     @Published var listPihak2:[Akun] = []
     @Published var listKredit:[Kredit] = []
     
     @Published var listPinjamanDraft:[Pinjaman] = []
-    @Published var listPinjamanNotSigned:[Pinjaman] = []
+//    @Published var listPinjamanNotSigned:[Pinjaman] = []
     @Published var listPinjamanOnGoing:[Pinjaman] = []
     @Published var listPinjamanDone:[Pinjaman] = []
     
@@ -519,30 +518,31 @@ class CoreDataViewModel: ObservableObject {
         }
     }
     
-    func getAllPinjamanNotSigned(){
-        let request = NSFetchRequest<Pinjaman>(entityName: "Pinjaman")
-        
-        let status = "notSigned"
-        
-        let predicatePinjamanPage = NSPredicate(format: "status == %@", status)
-        request.predicate = predicatePinjamanPage
-        
-        let sort = NSSortDescriptor(keyPath: \Pinjaman.dateCreated, ascending: false)
-        request.sortDescriptors = [sort]
-        
-        do{
-            listPinjamanNotSigned = try manager.context.fetch(request)
-        } catch let error {
-            print("Error fetching. \(error.localizedDescription)")
-        }
-    }
+//    func getAllPinjamanNotSigned(){
+//        let request = NSFetchRequest<Pinjaman>(entityName: "Pinjaman")
+//
+//        let status = "notSigned"
+//
+//        let predicatePinjamanPage = NSPredicate(format: "status == %@", status)
+//        request.predicate = predicatePinjamanPage
+//
+//        let sort = NSSortDescriptor(keyPath: \Pinjaman.dateCreated, ascending: false)
+//        request.sortDescriptors = [sort]
+//
+//        do{
+//            listPinjamanNotSigned = try manager.context.fetch(request)
+//        } catch let error {
+//            print("Error fetching. \(error.localizedDescription)")
+//        }
+//    }
     
     func getAllPinjamanOnGoing(){
         let request = NSFetchRequest<Pinjaman>(entityName: "Pinjaman")
         
         let status = "onGoing"
+        let status2 = "notSigned"
         
-        let predicatePinjamanPage = NSPredicate(format: "status == %@", status)
+        let predicatePinjamanPage = NSPredicate(format: "status == %@ OR status == %@", status, status2)
         request.predicate = predicatePinjamanPage
         
         let sort = NSSortDescriptor(keyPath: \Pinjaman.dateCreated, ascending: false)
@@ -575,7 +575,7 @@ class CoreDataViewModel: ObservableObject {
     
     func getAllPinjaman(){
         getAllPinjamanDraft()
-        getAllPinjamanNotSigned()
+//        getAllPinjamanNotSigned()
         getAllPinjamanOnGoing()
         getAllPinjamanDone()
     }

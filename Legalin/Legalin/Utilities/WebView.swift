@@ -4,8 +4,6 @@
     struct WebView : UIViewRepresentable {
     
     var invoiceComposer = InvoiceComposer()
-    var nama1: String = "Ayam"
-    var nama2: String = "Babi"
     var webView = WKWebView()
     
     func makeUIView(context: Context) -> WKWebView  {

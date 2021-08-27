@@ -18,16 +18,16 @@ struct ConfirmationPage: View {
     var body: some View {
         ScrollView(.init(), showsIndicators: false){
             TabView{
-//                Pihak1(pinjaman: item)
-//                    .tag(subview[1])
-//                Pihak2(pinjaman: item)
-//                    .tag(subview[2])
-//                InfoPinjaman(pinjaman: item)
-//                    .tag(subview[3])
-//                VStack{
-//                    InfoAgunan(hideButton: false, masterPresentationMode6: _masterPresentationMode5, pinjaman: item)
-//                        .tag(subview[4])
-//                }
+                Pihak1()
+                    .tag(subview[1])
+                Pihak2()
+                    .tag(subview[2])
+                InfoPinjaman()
+                    .tag(subview[3])
+                VStack{
+                    InfoAgunan(hideButton: false, masterPresentationMode6: _masterPresentationMode5)
+                        .tag(subview[4])
+                }
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
             .onAppear{

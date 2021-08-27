@@ -60,7 +60,7 @@ class PerjanjianViewModel: ObservableObject {
     func fillListOnGoing(){
         
         //Data yang belum ttd
-        let listPinjamanNotSigned = coreDataVM.listPinjamanNotSigned
+//        let listPinjamanNotSigned = coreDataVM.listPinjamanNotSigned
         
         //Data yang udah ttd
         let listPinjamanOnGoing = coreDataVM.listPinjamanOnGoing
@@ -73,10 +73,10 @@ class PerjanjianViewModel: ObservableObject {
         formatter.locale = Locale(identifier: "id_ID")
         listOnGoing = []
         
-        //Masukin yang belum ttd
-        for item in listPinjamanNotSigned{
-            listOnGoing.append(Agreements(agreementTitle: item.kredit?.namaSimulasi ?? "", amountOfLoan: formatter.string(from: NSNumber(value: item.kredit?.jumlahPinjaman ?? 0)) ?? "",Date: dateFormatting.string(from: item.dateModified ?? Date()), lenderName: item.pihak2?.ktp?.nama ?? "", signStatus: false, offset: 0, isSwiped: false, pinjaman: item))
-        }
+//        //Masukin yang belum ttd
+//        for item in listPinjamanNotSigned{
+//            listOnGoing.append(Agreements(agreementTitle: item.kredit?.namaSimulasi ?? "", amountOfLoan: formatter.string(from: NSNumber(value: item.kredit?.jumlahPinjaman ?? 0)) ?? "",Date: dateFormatting.string(from: item.dateModified ?? Date()), lenderName: item.pihak2?.ktp?.nama ?? "", signStatus: false, offset: 0, isSwiped: false, pinjaman: item))
+//        }
         
         //Masukin yang udah ttd
         for item in listPinjamanOnGoing{

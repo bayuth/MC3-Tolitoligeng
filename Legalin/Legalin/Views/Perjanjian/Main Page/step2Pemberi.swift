@@ -182,10 +182,18 @@ struct step2Pemberi: View {
                             .default(Text("Simpan")) {
 								perjanjianController.setPihak1OpenCamToFalse(isOpenCam: false)
 								perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
-                                perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
+                                
+                                if (perjanjianController.sender == "perjanjianBaru"){
+                                perjanjianController.updatePinjamanCoreData(pinjaman: coreDataVM.createPinjaman(), status: StatusSurat.draft)
+                                }
+                                
+                                if (perjanjianController.sender == "detailPage"){
+                                    perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat.draft)
+                                }
+                                
                                 self.masterPresentationMode.wrappedValue.dismiss()
                             },
-                            .destructive(Text("Hapus")) {
+                            .destructive(Text(getTextKembali())) {
 								perjanjianController.setPihak1OpenCamToFalse(isOpenCam: false)
 								perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
                                 self.masterPresentationMode.wrappedValue.dismiss()
@@ -201,6 +209,13 @@ struct step2Pemberi: View {
 		})
         
 	}
+    func getTextKembali() -> String {
+        if perjanjianController.sender == "perjanjianBaru"{
+            return "Hapus"
+        } else {
+            return "Kembali"
+        }
+    }
 }
 
 //struct step2Pemberi_Previews: PreviewProvider {
