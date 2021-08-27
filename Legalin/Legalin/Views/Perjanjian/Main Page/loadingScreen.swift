@@ -16,7 +16,7 @@ struct loadingScreen: View {
     var body: some View {
         
         VStack{
-            NavigationView{
+//            NavigationView{
             NavigationLink(
                 destination:
                     PdfAction(masterPresentationMode8: _masterPresentationMode7, hideSwitch: true)
@@ -46,7 +46,8 @@ struct loadingScreen: View {
             }
                 }
             }.buttonStyle(PlainButtonStyle())
-            }.navigationBarBackButtonHidden(true)
+            .navigationBarBackButtonHidden(true)
+//            }
         }
     }
 }
