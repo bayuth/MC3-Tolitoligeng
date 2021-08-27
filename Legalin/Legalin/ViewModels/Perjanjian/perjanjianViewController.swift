@@ -101,6 +101,10 @@ class PerjanjianController: ObservableObject {
         resetValue()
     }
     
+    func setStatusSurat(status: String){
+        statusSurat = status
+    }
+    
     func removeRedIndicatorProfile(){
         nextButtonState = true
     }
