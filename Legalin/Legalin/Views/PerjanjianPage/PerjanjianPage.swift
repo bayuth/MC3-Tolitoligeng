@@ -142,17 +142,17 @@ struct ChoosenSegment: View {
 //            }
         case .draft:
             Text("coba")
-            List{
-                ForEach(coreDataVM.listPinjamanDraft, id:\.uuid){ item in
-                    
-                    NavigationLink(
-                        destination: DetailPerjanjian(actionState: $actionState),
-                        label: {
-                            DraftSegmentedView(item: item)
-                        })
-                        .foregroundColor(.black)
-                }.onDelete(perform: deleteDraft)
-            }
+//            List{
+//                ForEach(coreDataVM.listPinjamanDraft, id:\.uuid){ item in
+//                    
+//                    NavigationLink(
+//                        destination: DetailPerjanjian(actionState: $actionState),
+//                        label: {
+//                            DraftSegmentedView(item: item)
+//                        })
+//                        .foregroundColor(.black)
+//                }.onDelete(perform: deleteDraft)
+//            }
         }
     }
     
