@@ -85,6 +85,8 @@ struct AutoSizingTF: UIViewRepresentable {
 	func makeUIView(context: Context) -> UITextView {
 //		let textView = UITextField()
 		let textView = UITextView()
+		print("masuk text view")
+		print(self.text)
 		if self.text == ""{
 			textView.text = hint
 //			textView.textColor = UIColor(Color("textColor"))

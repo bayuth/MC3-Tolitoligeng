@@ -37,7 +37,7 @@ struct step2Pemberi: View {
 	var body: some View {
 		VStack(alignment: .leading){
 			
-			pageIndicator(progressNumber: 2, progressName: "Pihak 2 - Pemberi Peminjam", progressDetail: "Berikutnya: Detail Pinjaman").padding(.bottom, 15).padding(.top,25)
+			pageIndicator(progressNumber: 2, progressName: "Pihak 2 - Pemberi Pinjaman", progressDetail: "Berikutnya: Detail Pinjaman").padding(.bottom, 15).padding(.top,25)
 			
 			ScrollView(showsIndicators: false){
 				VStack(alignment: .leading) {

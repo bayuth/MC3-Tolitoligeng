@@ -130,6 +130,7 @@ struct ProfileView: View {
 										
 										Button(action: {
 											shown.toggle()
+											editIsDisabled.toggle()
 										}, label: {
 											ZStack{
 												RoundedRectangle(cornerRadius: 10)
@@ -171,22 +172,30 @@ struct ProfileView: View {
 												Image(systemName: "gearshape.fill")
 													.foregroundColor(Color("tabBarColor"))
 											})
+										
 										if(coreDataVM.pihak1.count != 0) {
-											Image(systemName: "square.and.pencil")
-												.foregroundColor(Color("tabBarColor"))
-												.disabled(editIsDisabled)
-												.onTapGesture {
-													editIsDisabled = true
-													if editIsDisabled == true {
-														Image(systemName: "square.and.pencil")
-															.foregroundColor(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)))
-													}
-													if showTanggalLahir {
-														showTanggalLahir.toggle()
-													}
-													texfieldDisable = false
-												}
+											Button("\(Image(systemName: "square.and.pencil"))", action: {
+												editIsDisabled = true
+												texfieldDisable = false
+											})
+											.foregroundColor(Color("tabBarColor"))
+											.disabled(editIsDisabled)
 											
+//											Image(systemName: "square.and.pencil")
+//												.foregroundColor(Color("tabBarColor"))
+//												.disabled(editIsDisabled)
+//												.onTapGesture {
+//													editIsDisabled = true
+//
+////													if editIsDisabled == true {
+////														Text("done")
+////
+////													}
+////													if showTanggalLahir {
+////														showTanggalLahir.toggle()
+////													}
+////													texfieldDisable = false
+//												}
 										}
 									}
 			)

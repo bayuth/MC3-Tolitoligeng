@@ -13,7 +13,6 @@ struct KebijakanPrivasiPage: View {
 		VStack {
 			PrivacyPolicyWebView(url: "https://legalin117210153.wordpress.com/")
 		}
-		.navigationBarHidden(true)
 		.navigationBarBackButtonHidden(true)
 		.navigationBarTitle(Text("Kebijakan Privasi"), displayMode: .inline)
 		.navigationBarItems(trailing: Button(action: {self.presentationMode.wrappedValue.dismiss()
