@@ -56,7 +56,7 @@ struct Pihak2: View {
                             .font(.footnote)
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text(perjanjianController.pihak2Alamat)
+                        Text("\(perjanjianController.pihak2Alamat), RT \(perjanjianController.pihak2RT) RW \(perjanjianController.pihak2RW), \(perjanjianController.pihak2Kelurahan), \(perjanjianController.pihak2Kecamatan), \(perjanjianController.pihak2Kota), \(perjanjianController.pihak2Provinsi)")
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
