@@ -18,8 +18,13 @@ struct ModalPengadilanNegeriDetail: View {
     
     var body: some View {
         
-        VStack{
-            Spacer()
+        VStack(alignment:.leading){
+            
+            Text("Provinsi")
+                .fontWeight(.semibold)
+                .padding(.top)
+                .padding(.horizontal)
+    
             ScrollView(showsIndicators: false){
                 
                 ForEach(0..<dataDetail.kota.count){item in
@@ -35,7 +40,7 @@ struct ModalPengadilanNegeriDetail: View {
                 }
             }
 			.background(Color("defaultLightAndDarkColor"))
-			.navigationBarTitle("Pengadilan Negeri", displayMode: .inline)
+            .navigationBarTitle(dataDetail.provinsi, displayMode: .inline)
             .accentColor(.red)
             .navigationBarBackButtonHidden(true)
         }.onAppear {

@@ -11,6 +11,8 @@ struct MainApplicationPage: View {
     @AppStorage("shouldShowOnBoarding") var shouldShowOnBoarding: Bool = true
     @AppStorage("selection") var selection = 3
     
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
+    
     init(){
         UITabBar.appearance().backgroundColor = UIColor(Color("tabBarColor"))
         UITabBar.appearance().barTintColor = UIColor(Color("tabBarColor"))
@@ -44,6 +46,10 @@ struct MainApplicationPage: View {
                         Image("profile")
                     }
                     .tag(3)
+                    .onAppear{
+                        perjanjianController.removeRedIndicatorProfile()
+                    }
+                    
             }
             
             .accentColor(Color("tabBarSelectedColor"))

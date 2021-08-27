@@ -101,6 +101,9 @@ class PerjanjianController: ObservableObject {
         resetValue()
     }
     
+    func removeRedIndicatorProfile(){
+        nextButtonState = true
+    }
     
     func resetValue(){
         
@@ -399,7 +402,7 @@ class PerjanjianController: ObservableObject {
             result = false
         }
 
-        if (pengadilanNegeri == "Pengadilan Negeri"){
+        if (pengadilanNegeri == "Pilih"){
             result = false
         }
 
