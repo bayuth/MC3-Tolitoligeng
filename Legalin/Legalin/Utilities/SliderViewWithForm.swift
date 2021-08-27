@@ -32,7 +32,6 @@ struct SliderViewWithForm: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title).font(.footnote).fontWeight(.light).padding(.horizontal)
-            
             VStack{
                 if type == 0 {
                     TFCurrencyField(urlString: $formattedText, onEndEditing: {
@@ -40,14 +39,10 @@ struct SliderViewWithForm: View {
                     }, placeHolderText: title)
                     .padding(.horizontal)
                 }else{
-                    TextField(title, text: $formattedText, onEditingChanged: { (isBegin) in
-                        if isBegin {
-                            formattedText = ""
-                        } else {
-                            textChanged(to: formattedText)
-                        }
-                    }
-                    ).keyboardType(.numberPad)
+                    DoneKeyboard(text: $formattedText, hint: title, keyType: UIKeyboardType.numberPad, onEndEditing: {
+                        textChanged(to: formattedText.digits)
+                    }, clearOnStartEdit: true)
+                    .keyboardType(.numberPad)
                     .padding(.horizontal)
                     .onTapGesture {}
                     .onLongPressGesture(
