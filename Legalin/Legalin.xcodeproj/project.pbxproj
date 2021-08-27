@@ -26,6 +26,8 @@
 		4AC4CAA626B25D7A00340A00 /* ViewModelExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAA526B25D7A00340A00 /* ViewModelExample.swift */; };
 		4AC4CAAA26B25D9100340A00 /* Fitur1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAA926B25D9100340A00 /* Fitur1.swift */; };
 		4AC4CAAE26B25DA000340A00 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAAD26B25DA000340A00 /* Model.swift */; };
+		4AD204C826D8EC3700BE9AC1 /* AnyFormatKitSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4AD204C726D8EC3700BE9AC1 /* AnyFormatKitSwiftUI */; };
+		4AD204CA26D8F3A400BE9AC1 /* TFCurrencyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD204C926D8F3A300BE9AC1 /* TFCurrencyField.swift */; };
 		4AD8840626BAEC7300C5A6F5 /* SpecificCornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8840526BAEC7200C5A6F5 /* SpecificCornerRadius.swift */; };
 		4AD8840A26BAEC7B00C5A6F5 /* PerjanjianViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8840926BAEC7B00C5A6F5 /* PerjanjianViewModel.swift */; };
 		4AD8841226BAEC8C00C5A6F5 /* AgreementCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8840D26BAEC8C00C5A6F5 /* AgreementCardView.swift */; };
@@ -146,6 +148,7 @@
 		4AC4CAA526B25D7A00340A00 /* ViewModelExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelExample.swift; sourceTree = "<group>"; };
 		4AC4CAA926B25D9100340A00 /* Fitur1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fitur1.swift; sourceTree = "<group>"; };
 		4AC4CAAD26B25DA000340A00 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		4AD204C926D8F3A300BE9AC1 /* TFCurrencyField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFCurrencyField.swift; sourceTree = "<group>"; };
 		4AD8840526BAEC7200C5A6F5 /* SpecificCornerRadius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificCornerRadius.swift; sourceTree = "<group>"; };
 		4AD8840926BAEC7B00C5A6F5 /* PerjanjianViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerjanjianViewModel.swift; sourceTree = "<group>"; };
 		4AD8840D26BAEC8C00C5A6F5 /* AgreementCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgreementCardView.swift; sourceTree = "<group>"; };
@@ -249,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E8B549C26BD320300787EDC /* DYPopoverView in Frameworks */,
+				4AD204C826D8EC3700BE9AC1 /* AnyFormatKitSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +394,7 @@
 				4A6718CD26C0BAFB00D22C3B /* FormViewWithInfo.swift */,
 				75D70D2626CD1013003628CA /* DoneKeyboard.swift */,
 				759A667B26CFFEE700A3F9BA /* PrivacyPolicyWebView.swift */,
+				4AD204C926D8F3A300BE9AC1 /* TFCurrencyField.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -595,6 +600,7 @@
 			name = Legalin;
 			packageProductDependencies = (
 				5E8B549B26BD320300787EDC /* DYPopoverView */,
+				4AD204C726D8EC3700BE9AC1 /* AnyFormatKitSwiftUI */,
 			);
 			productName = Legalin;
 			productReference = 4AC4CA8926B25D1300340A00 /* Legalin.app */;
@@ -625,6 +631,7 @@
 			mainGroup = 4AC4CA8026B25D1300340A00;
 			packageReferences = (
 				5E8B549A26BD320300787EDC /* XCRemoteSwiftPackageReference "DYPopoverView" */,
+				4AD204C626D8EC3700BE9AC1 /* XCRemoteSwiftPackageReference "AnyFormatKitSwiftUI" */,
 			);
 			productRefGroup = 4AC4CA8A26B25D1300340A00 /* Products */;
 			projectDirPath = "";
@@ -704,6 +711,7 @@
 				5C8F9CFB26BCF69400CE994B /* FormView.swift in Sources */,
 				5CC5904826D5F85C00ECA4DD /* CustomTextEditor.swift in Sources */,
 				5CC4E12726C3FD6600A7042A /* ButtonBorderedComingSoon.swift in Sources */,
+				4AD204CA26D8F3A400BE9AC1 /* TFCurrencyField.swift in Sources */,
 				5C8F9CF226BCF66D00CE994B /* functionTrimKtp.swift in Sources */,
 				5E3F136B26C5974800E3E0B6 /* profileController.swift in Sources */,
 				4A3AF69A26BB769300614382 /* ListKredit.swift in Sources */,
@@ -956,6 +964,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4AD204C626D8EC3700BE9AC1 /* XCRemoteSwiftPackageReference "AnyFormatKitSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/luximetr/AnyFormatKitSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
 		5E8B549A26BD320300787EDC /* XCRemoteSwiftPackageReference "DYPopoverView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/DominikButz/DYPopoverView.git";
@@ -967,6 +983,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4AD204C726D8EC3700BE9AC1 /* AnyFormatKitSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4AD204C626D8EC3700BE9AC1 /* XCRemoteSwiftPackageReference "AnyFormatKitSwiftUI" */;
+			productName = AnyFormatKitSwiftUI;
+		};
 		5E8B549B26BD320300787EDC /* DYPopoverView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5E8B549A26BD320300787EDC /* XCRemoteSwiftPackageReference "DYPopoverView" */;
