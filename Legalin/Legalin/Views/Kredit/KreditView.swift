@@ -10,51 +10,40 @@ import SwiftUI
 struct KreditView: View {
     var bayu = 0
     @ObservedObject var kreditData = ListKreditVM()
+    @ObservedObject var coreData :CoreDataViewModel = .shared
+    
     @Environment(\.presentationMode) var presentationMode
     @State private var isPresented = false
     
     var body: some View {
         NavigationView{
             VStack{
-                if kreditData.list.isEmpty {
+                if coreData.listKredit.isEmpty {
                     EmptyState()
                 }else {
-//                    ScrollView(showsIndicators: false){
                     List{
-                        ForEach(kreditData.list){ item in
-                            NavigationLink(
-                                destination: DetailKredit(dataUlasan: kreditData, index: getIndex(item: item), onDelete: {
-                                    kreditData.deleteDetailKredit(index: getIndex(item: item))
-                                }),
-                                label: {
-                                    KreditCardView(item: $kreditData.list[getIndex(item: item)], lists: $kreditData.list, action: {
+                        ForEach(coreData.listKredit, id:\.uuid){ item in
+                            ZStack{
+                                NavigationLink(
+                                    destination: DetailKredit(kredit: item, index: getIndex(item: item), onDelete: {
                                         kreditData.deleteKredit(index: getIndex(item: item))
-                                    })
-                                })
+                                    }),
+                                    label: {
+                                        EmptyView()
+                                    }
+                                )
+                                .opacity(0)
+                                KreditCardView(item:
+                                item
+                                )
+                            }
                                 .foregroundColor(.black)
                                 .simultaneousGesture(TapGesture().onEnded{
                                     kreditData.object = kreditData.list[getIndex(item: item)]
                                 })
-                        }.listStyle(PlainListStyle())
-                        .onAppear(perform: {
-                            kreditData.fillListDone()
-                        })
-                        
-                            //                            KreditCardView(item: $kreditData.list[getIndex(item: item)], lists: $kreditData.list, action: {
-                            //                                kreditData.deleteKredit(index: getIndex(item: item))
-                            //                            }).onTapGesture {
-                            //                                NavigationLink(
-                            //                                    destination: DetailKredit(dataUlasan: kreditData),
-                            //                                    label: {
-                            //                                        KreditCardView(item: $kreditData.list[getIndex(item: item)], lists: $kreditData.list, action: {
-                            //                                            kreditData.deleteKredit(index: getIndex(item: item))
-                            //                                        })
-                            //                                    })
-                            //                            }
-                        }
-                    }
-                    
-//                }
+                        }.onDelete(perform: deleteKredit)
+                    }.listStyle(PlainListStyle())
+                }
             }
             .navigationTitle("Kredit")
             .navigationBarItems(trailing:
@@ -70,20 +59,25 @@ struct KreditView: View {
                                                 .foregroundColor(Color("tabBarColor"))
                                         }
                                         .fullScreenCover(isPresented: $isPresented, content: ModalAddKredit.init)
-                                    }
-            )
-            
+                                    })
         }
         
     }
-    func getIndex(item: ItemListKredit)->Int{
-        return kreditData.list.firstIndex { (item1) -> Bool in
+    func getIndex(item: Kredit)->Int{
+        return kreditData.coreDataVM.listKredit.firstIndex { (item1) -> Bool in
             return item.id == item1.id
         } ?? 0
     }
     
     func refreshData(){
         kreditData.fillListDone()
+    }
+    
+    private func deleteKredit(at offsets: IndexSet){
+        
+        for offset in offsets{
+            coreData.deleteKredit(kredit: coreData.listKredit[offset])
+        }
     }
 }
 
