@@ -2,24 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "AnyFormatKit",
-        "repositoryURL": "https://github.com/luximetr/AnyFormatKit",
-        "state": {
-          "branch": null,
-          "revision": "27b35c984c1c81e74c8be5273f7b2dc5250cb5cc",
-          "version": "2.5.1"
-        }
-      },
-      {
-        "package": "AnyFormatKitSwiftUI",
-        "repositoryURL": "https://github.com/luximetr/AnyFormatKitSwiftUI.git",
-        "state": {
-          "branch": null,
-          "revision": "d9ec9442f8e06f2fe5b70e09ec1a540ad6edc207",
-          "version": "0.5.0"
-        }
-      },
-      {
         "package": "DYPopoverView",
         "repositoryURL": "https://github.com/DominikButz/DYPopoverView.git",
         "state": {
