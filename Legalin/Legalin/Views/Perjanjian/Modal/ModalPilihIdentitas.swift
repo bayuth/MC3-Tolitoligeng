@@ -17,15 +17,19 @@ struct ModalPilihIdentitas: View {
 	
 	var body: some View {
 		
-		VStack{
+		VStack(alignment: .leading){
 			Spacer()
 			ScrollView(showsIndicators: false){
 				if coreDataVM.listPihak2.count != 0 {
-					Text("Pihak 2 - Pilih Identitas")
-						.font(.system(size: 17))
-						.fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-						.padding(.vertical,20)
-						.frame(width: UIScreen.main.bounds.width, alignment: .leading)
+					VStack(alignment: .leading) {
+						Text("Pihak 2 - Pilih Identitas")
+							.font(.system(size: 17))
+							.fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+							.padding(.vertical,10)
+					}
+					.padding(.horizontal)
+					.frame(width: UIScreen.main.bounds.width, alignment: .leading)
+					
 					
 					ForEach(0..<coreDataVM.listPihak2.count){item in
 						IdentitasCheckList(namaPihak2: coreDataVM.listPihak2[item].ktp?.nama ?? "", nikPihak2: coreDataVM.listPihak2[item].ktp?.nik ?? "", selected: getSelectedStatus(listSelected: vc.listSelected, index: item), mainNav: false, index: item)
@@ -58,6 +62,7 @@ struct ModalPilihIdentitas: View {
 //			.accentColor(.red)
 			.navigationBarBackButtonHidden(true)
 		}
+		.padding(.horizontal)
 		.background(Color("defaultLightAndDarkColor"))
 		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
 		.onAppear {
