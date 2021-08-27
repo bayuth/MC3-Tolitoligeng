@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "KLINIK SEKARPURO.svg",
+      "filename" : "Credit Empty.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Credit Empty@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Credit Empty@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

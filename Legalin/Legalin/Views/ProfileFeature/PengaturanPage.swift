@@ -11,7 +11,7 @@ struct PengaturanPage: View {
 	
 	@Environment(\.presentationMode) var pengaturanMode: Binding<PresentationMode>
 	
-    var body: some View {
+	var body: some View {
 		NavigationView {
 			VStack(alignment: .leading) {
 				NavigationLink(
@@ -20,25 +20,25 @@ struct PengaturanPage: View {
 						ButtonKebijakanPrivasi().foregroundColor(.black)
 					})
 			}
-			.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+//			.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+			.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
 		}
 		.navigationBarTitleDisplayMode(.inline)
 		.navigationBarBackButtonHidden(true)
-		.navigationBarItems(leading:
+		.navigationBarTitle("Pengaturan")
+		.navigationBarItems(trailing:
 								Button(action: {
-												pengaturanMode.wrappedValue.dismiss()
+									pengaturanMode.wrappedValue.dismiss()
 								}, label: {
-									Image(systemName: "chevron.left")
-										.foregroundColor(.white)
-									Text("Profil")
+									Text("Tutup")
 										.foregroundColor(.white)
 								})
 		)
-    }
+	}
 }
 
 struct PengaturanPage_Previews: PreviewProvider {
-    static var previews: some View {
-        PengaturanPage()
-    }
+	static var previews: some View {
+		PengaturanPage()
+	}
 }

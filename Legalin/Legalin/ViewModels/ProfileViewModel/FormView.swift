@@ -25,6 +25,7 @@ struct FormView: View {
 				Text(title).font(.footnote).fontWeight(.regular).foregroundColor(Color("labelColor")).padding(.horizontal)
                 VStack{
                     TextField(title, text: $profileValue)
+						.disabled(isDisable)
                         .font(.body)
                         .foregroundColor(Color("labelColor"))
                         .padding(.horizontal)

@@ -20,7 +20,8 @@ struct MultiLineFormView: View {
 	
     var body: some View {
 		VStack(alignment: .leading) {
-			Text("Alamat").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1))).padding(.horizontal)
+			Text("Alamat").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+				.padding(.horizontal)
 			if isDisable {
                 VStack{
 				AutoSizingTF(hint: "Alamat Sesuai KTP", text: $alamat, containerHeight: $containerHeight, onEnd: {
@@ -36,6 +37,7 @@ struct MultiLineFormView: View {
                 }.background(Color("emptyAlertColor").opacity(getRedIndicator() ? 0.15 : 0.0))
 			} else {
                 VStack{
+					Text(alamat)
 				AutoSizingTF(hint: "Alamat Sesuai KTP", text: $alamat, containerHeight: $containerHeight, onEnd: {
 					UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
 				}, isDisable: isDisable)
@@ -83,32 +85,25 @@ struct AutoSizingTF: UIViewRepresentable {
 	func makeUIView(context: Context) -> UITextView {
 //		let textView = UITextField()
 		let textView = UITextView()
-		if self.text == "" && !isDisable{
+		if self.text == ""{
 			textView.text = hint
+//			textView.textColor = UIColor(Color("textColor"))
 			textView.font = .systemFont(ofSize: 17)
-			textView.textColor = UIColor(Color("labeColor"))
-			
+
 		} else {
 			textView.text = text
 			textView.font = .systemFont(ofSize: 17)
 //			textView.textColor = UIColor(Color(.black))
-			
+
 		}
+		textView.text = text
+		textView.font = .systemFont(ofSize: 17)
+//		textView.textColor = UIColor(Color(.black))
 		if isDisable {
 			textView.textColor = UIColor(Color("labelColor"))
 		} else {
 			textView.textColor = UIColor(Color("textColor"))
 		}
-//		display hint
-//		if textView.text == nil {
-//			textView.text = hint
-////			textView.textColor = .gray
-//			textView.font = .systemFont(ofSize: 18)
-//		} else {
-//			textView.text = text
-////			textView.textColor = .black
-//			textView.font = .systemFont(ofSize: 18)
-//		}
 		
 //		textView.text = text
 //		textView.font = .systemFont(ofSize: 18)
@@ -177,5 +172,6 @@ struct AutoSizingTF: UIViewRepresentable {
 			}
 		}
 	}
+	
 }
 
