@@ -138,10 +138,10 @@ struct PdfAction: View {
                         Text("Tanda Tangan")
                         Spacer()
                         if perjanjianController.statusSurat == "notSigned"{
-                            SignBtn()
+                            SignBtn(pinjaman: perjanjianController.detailPinjaman!)
                         }
                         else{
-                            SignBtn()
+                            SignBtn(pinjaman: perjanjianController.detailPinjaman!)
                                 .disabled(true)
                         }
                     }
