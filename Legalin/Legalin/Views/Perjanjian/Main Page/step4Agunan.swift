@@ -76,7 +76,7 @@ struct step4Agunan: View {
             Spacer()
 			
             
-            if (perjanjianController.sender == "perjanjianBaru"){
+//            if (perjanjianController.sender == "perjanjianBaru"){
                 NavigationLink(
                     destination: ConfirmationPage(masterPresentationMode5: _masterPresentationMode4)){
                     ButtonNext(text: "Buat Surat", isDataComplete: perjanjianController.nextButtonState)
@@ -88,27 +88,30 @@ struct step4Agunan: View {
                         showAlert = true
                     }
                     
+                    if perjanjianController.nextButtonState == true {
+                        perjanjianController.actionState = 0
+                    }
                 })
-            } else {
-                ButtonNext(text: "Buat Surat", isDataComplete: perjanjianController.nextButtonState)
-                    .simultaneousGesture(TapGesture().onEnded{
-                        
-                        if perjanjianController.nextButtonState == false{
-                            
-                            showAlert = true
-                            
-                        } else {
-                            perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat.notSigned)
-                            
-                            completeAlert = true
-                            showAlert = true
-                            
-                            print("jalan")
-                        }
-                        
-                    })
-            }
-            
+//            } else {
+//                ButtonNext(text: "Buat Surat", isDataComplete: perjanjianController.nextButtonState)
+//                    .simultaneousGesture(TapGesture().onEnded{
+//
+//                        if perjanjianController.nextButtonState == false{
+//
+//                            showAlert = true
+//
+//                        } else {
+//                            perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat.notSigned)
+//
+//                            completeAlert = true
+//                            showAlert = true
+//
+//                            print("jalan")
+//                        }
+//
+//                    })
+//            }
+
         }
         
         .alert(isPresented: $showAlert, content: {

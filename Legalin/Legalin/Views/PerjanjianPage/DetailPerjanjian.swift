@@ -16,8 +16,6 @@ struct DetailPerjanjian: View {
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     @Environment(\.presentationMode) var presentationMode
     
-    @Binding var actionState: Int?
-    
     @State private var isPresented = false
     
     
@@ -49,12 +47,11 @@ struct DetailPerjanjian: View {
 		.navigationBarBackButtonHidden(true)
         .navigationBarItems(leading:
 											Button(action: {
-                                    actionState = 0
-   									presentationMode.wrappedValue.dismiss()
+                                                perjanjianController.actionState = 0
    								}, label: {
    									Image(systemName: "chevron.left")
    										.foregroundColor(.white)
-   									Text("Perjanjian")
+   									Text("Kembali")
    										.foregroundColor(.white)
    								})
    							,trailing:
@@ -68,8 +65,6 @@ struct DetailPerjanjian: View {
                                         
                                     }.fullScreenCover(isPresented: $isPresented, content: step1Peminjam.init)
                                     Button(action: {
-                                        self.presentationMode.wrappedValue.dismiss()
-                                        
                                         self.deleteSuccess = true
                                         print("jalan")
                                     }){
@@ -80,8 +75,8 @@ struct DetailPerjanjian: View {
                                     }
                                     .onChange(of: deleteSuccess, perform: { value in
                                         print("Dismissed!")
-                                        actionState = 0
                                         perjanjianController.deletePinjaman(pinjaman: perjanjianController.detailPinjaman!)
+                                        perjanjianController.actionState = 0
                                     })
                                 }
         )

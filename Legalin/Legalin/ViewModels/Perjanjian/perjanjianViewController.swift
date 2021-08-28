@@ -97,8 +97,15 @@ class PerjanjianController: ObservableObject {
     @Published var sender: String = "perjanjianBaru"
     @Published var detailPinjaman: Pinjaman?
     
+    //DetailPageController
+    @Published var actionState: Int? = 0
+    
     init(){
         resetValue()
+    }
+    
+    func setActionState(num: Int){
+        actionState = num
     }
     
     func setStatusSurat(status: String){

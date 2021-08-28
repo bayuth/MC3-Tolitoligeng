@@ -20,7 +20,7 @@ struct ModalPengadilanNegeriDetail: View {
         
         VStack(alignment:.leading){
             
-            Text("Provinsi")
+            Text("Kota/Kabupaten")
                 .fontWeight(.semibold)
                 .padding(.top)
                 .padding(.horizontal)

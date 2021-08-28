@@ -13,7 +13,7 @@ struct ButtonTutup: View {
     var body: some View {
 		Button(action: {
 			self.fullScreenCover(isPresented: $showPerjanjianPage, content: {
-				PerjanjianPage()
+//				PerjanjianPage()
 			})
 		}, label: {
 			Text("Tutup")
