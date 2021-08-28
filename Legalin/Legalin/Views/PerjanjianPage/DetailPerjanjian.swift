@@ -19,12 +19,6 @@ struct DetailPerjanjian: View {
     @Binding var actionState: Int?
     
     @State private var isPresented = false
-//    @Binding var item: Agreements
-//    @Binding var lists: [Agreements]
-    
-    
-    
-    //    var subview = [1, 2, 3, 4, 5]
     
     
     var body: some View {
@@ -47,12 +41,8 @@ struct DetailPerjanjian: View {
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
             .onAppear{
                 setupAppearance()
-//                print(item.agreementTitle)
                 
             }
-//            .onDisappear{
-//                print(item.agreementTitle)
-//            }
             
         }
         .navigationBarTitle("Detail Perjanjian", displayMode: .inline)
@@ -78,14 +68,9 @@ struct DetailPerjanjian: View {
                                         
                                     }.fullScreenCover(isPresented: $isPresented, content: step1Peminjam.init)
                                     Button(action: {
-                                        //                                        print(item.agreementTitle)
                                         self.presentationMode.wrappedValue.dismiss()
                                         
-                                                                                self.deleteSuccess = true
-                                        
-                                        //                                        lists.removeAll{ (item) -> Bool in
-                                        //                                            return self.item.id == item.id
-                                        //                                        }
+                                        self.deleteSuccess = true
                                         print("jalan")
                                     }){
                                         Image(systemName: "trash")
@@ -97,12 +82,6 @@ struct DetailPerjanjian: View {
                                         print("Dismissed!")
                                         actionState = 0
                                         perjanjianController.deletePinjaman(pinjaman: perjanjianController.detailPinjaman!)
-//                                        if let idx = lists.firstIndex(where: { $0 === _item }){
-//                                            lists.remove(at: idx)
-//                                        }
-                                        //
-//                                        perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
-//                                        self.presentationMode.wrappedValue.dismiss()
                                     })
                                 }
         )
@@ -117,17 +96,6 @@ extension View{
         return UIScreen.main.bounds.width
     }
 }
-//extension UINavigationController{
-//    override open func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        let appearance = UINavigationBarAppearance()
-//        appearance.backgroundColor = #colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)
-//        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-//        
-//        navigationBar.standardAppearance = appearance
-//    }
-//}
 
 //struct DetailPerjanjian_Previews: PreviewProvider {
 //    static var previews: some View {

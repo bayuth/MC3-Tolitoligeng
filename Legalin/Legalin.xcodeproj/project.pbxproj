@@ -31,7 +31,6 @@
 		4AD8840A26BAEC7B00C5A6F5 /* PerjanjianViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8840926BAEC7B00C5A6F5 /* PerjanjianViewModel.swift */; };
 		4AD8841226BAEC8C00C5A6F5 /* AgreementCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8840D26BAEC8C00C5A6F5 /* AgreementCardView.swift */; };
 		4AD8841326BAEC8C00C5A6F5 /* DraftSegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8840E26BAEC8C00C5A6F5 /* DraftSegmentedView.swift */; };
-		4AD8841426BAEC8C00C5A6F5 /* PerjanjianPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8840F26BAEC8C00C5A6F5 /* PerjanjianPage.swift */; };
 		4AD8841526BAEC8C00C5A6F5 /* EmptyStatePerjanjian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8841026BAEC8C00C5A6F5 /* EmptyStatePerjanjian.swift */; };
 		4AD8841626BAEC8C00C5A6F5 /* HistorySegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8841126BAEC8C00C5A6F5 /* HistorySegmentedView.swift */; };
 		4AD8841A26BAEC9A00C5A6F5 /* PerjanjianModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8841926BAEC9A00C5A6F5 /* PerjanjianModel.swift */; };
@@ -152,7 +151,6 @@
 		4AD8840926BAEC7B00C5A6F5 /* PerjanjianViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerjanjianViewModel.swift; sourceTree = "<group>"; };
 		4AD8840D26BAEC8C00C5A6F5 /* AgreementCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgreementCardView.swift; sourceTree = "<group>"; };
 		4AD8840E26BAEC8C00C5A6F5 /* DraftSegmentedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraftSegmentedView.swift; sourceTree = "<group>"; };
-		4AD8840F26BAEC8C00C5A6F5 /* PerjanjianPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerjanjianPage.swift; sourceTree = "<group>"; };
 		4AD8841026BAEC8C00C5A6F5 /* EmptyStatePerjanjian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStatePerjanjian.swift; sourceTree = "<group>"; };
 		4AD8841126BAEC8C00C5A6F5 /* HistorySegmentedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorySegmentedView.swift; sourceTree = "<group>"; };
 		4AD8841926BAEC9A00C5A6F5 /* PerjanjianModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerjanjianModel.swift; sourceTree = "<group>"; };
@@ -426,7 +424,6 @@
 			children = (
 				4AD8840D26BAEC8C00C5A6F5 /* AgreementCardView.swift */,
 				4AD8840E26BAEC8C00C5A6F5 /* DraftSegmentedView.swift */,
-				4AD8840F26BAEC8C00C5A6F5 /* PerjanjianPage.swift */,
 				4AD8841026BAEC8C00C5A6F5 /* EmptyStatePerjanjian.swift */,
 				4AD8841126BAEC8C00C5A6F5 /* HistorySegmentedView.swift */,
 				75B627BB26BC1579008F2C2A /* DetailPerjanjian.swift */,
@@ -690,7 +687,6 @@
 				5E375CFB26BEB47200DF834D /* InvoiceComposer.swift in Sources */,
 				7558EA8F26BD691500E0B492 /* PageView.swift in Sources */,
 				7558EA6C26BD367600E0B492 /* PdfAction.swift in Sources */,
-				4AD8841426BAEC8C00C5A6F5 /* PerjanjianPage.swift in Sources */,
 				4A64032926B7892B00C78D44 /* KreditView.swift in Sources */,
 				759A667C26CFFEE700A3F9BA /* PrivacyPolicyWebView.swift in Sources */,
 				5C8F9CF526BCF66D00CE994B /* ScanData.swift in Sources */,

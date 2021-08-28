@@ -110,7 +110,6 @@ struct InfoPinjaman: View {
                     .stroke(Color("tabBarColor"))
             )
             .padding()
-//            Spacer()
         }
     }
 }

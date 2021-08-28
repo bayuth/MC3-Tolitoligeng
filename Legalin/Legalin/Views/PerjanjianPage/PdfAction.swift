@@ -55,8 +55,6 @@ struct PdfAction: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     @ObservedObject var coreDataVM: CoreDataViewModel = .shared
-//    var pinjaman : Pinjaman
-//    @State var alertIsPresented = false
     var hideSwitch: Bool = false
     
     
@@ -186,15 +184,12 @@ struct PdfAction: View {
        var filePdf = [Any]()
         filePdf.append(testPdf(html: item))
         
-//        let item = item
         let av = UIActivityViewController(activityItems: filePdf, applicationActivities: nil)
-//
         UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
     }
     
     func testPdf(html:String) -> URL{
         
-//        let html = "<b>Hello <i>World!</i></b>"
         let fmt = UIMarkupTextPrintFormatter(markupText: html)
 
         // 2. Assign print formatter to UIPrintPageRenderer
@@ -228,20 +223,6 @@ struct PdfAction: View {
     }
 }
 
-//extension UIPrintPageRenderer {
-//    func printToPDF() -> NSData {
-//        let pdfData = NSMutableData()
-//        UIGraphicsBeginPDFContextToData(pdfData, self.paperRect, nil)
-//        self.prepareForDrawingPages(NSMakeRange(0, self.numberOfPages()))
-//        let bounds = UIGraphicsGetPDFContextBounds()
-//        for i in 0..<self.numberOfPages() {
-//            UIGraphicsBeginPDFPage();
-//            self.drawPageAtIndex(i, inRect: bounds)
-//        }
-//        UIGraphicsEndPDFContext();
-//        return pdfData;
-//    }
-//}
 struct SignBtn: View{
     @State var alertIsPresented = false
     @State var isSigned = false
