@@ -115,7 +115,14 @@ struct InfoAgunan: View {
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity, maxHeight: 50)
                     })
-                    .simultaneousGesture(TapGesture().onEnded{perjanjianController.updatePinjamanCoreData(pinjaman: coreDataVM.createPinjaman(), status: StatusSurat.notSigned)
+                    .simultaneousGesture(TapGesture().onEnded{
+                        
+                        if (perjanjianController.sender == "perjanjianBaru"){
+                        perjanjianController.updatePinjamanCoreData(pinjaman: coreDataVM.createPinjaman(), status: StatusSurat.notSigned)
+                        } else {
+                            perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat.notSigned)
+                        }
+                        
 						perjanjianController.setPihak1OpenCamToFalse(isOpenCam: false)
 						perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
 					})

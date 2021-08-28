@@ -60,9 +60,6 @@ struct ChoosenSegmented: View {
     @ObservedObject var coreDataVM: CoreDataViewModel = .shared
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     
-    
-    @State var actionState: Int? = 0
-    
     var selectedSegment: Segment
     var body : some View{
         switch selectedSegment {
@@ -75,8 +72,8 @@ struct ChoosenSegmented: View {
                     ForEach(coreDataVM.listPinjamanOnGoing, id:\.uuid){item in
                         ZStack{
                             NavigationLink(
-                                destination: DetailPerjanjian(actionState: $actionState),
-                                tag:1, selection: $actionState,
+                                destination: DetailPerjanjian(),
+                                tag:1, selection: $perjanjianController.actionState,
                                 label: {
                                     AgreementCardView(item: item)
                                 }
@@ -85,7 +82,7 @@ struct ChoosenSegmented: View {
                             AgreementCardView(item: item)
                                 .simultaneousGesture(TapGesture().onEnded{
                                 perjanjianController.detailSync(pinjaman: item)
-                                actionState = 1
+                                    perjanjianController.actionState = 1
                                 })
                         }
                     }.onDelete(perform: deleteOnGoing)
@@ -103,8 +100,8 @@ struct ChoosenSegmented: View {
                     ForEach(coreDataVM.listPinjamanDone, id:\.uuid){item in
                         ZStack{
                             NavigationLink(
-                                destination: DetailPerjanjian(actionState: $actionState),
-                                tag:2, selection: $actionState,
+                                destination: DetailPerjanjian(),
+                                tag:2, selection: $perjanjianController.actionState,
                                 label: {
                                     AgreementCardView(item: item)
                                 }
@@ -113,7 +110,7 @@ struct ChoosenSegmented: View {
                             AgreementCardView(item: item)
                                 .simultaneousGesture(TapGesture().onEnded{
                                 perjanjianController.detailSync(pinjaman: item)
-                                actionState = 2
+                                    perjanjianController.actionState = 2
                                 })
                         }
                     }.onDelete(perform: deleteHistory)
@@ -131,8 +128,8 @@ struct ChoosenSegmented: View {
                     ForEach(coreDataVM.listPinjamanDraft, id:\.uuid){item in
                         ZStack{
                             NavigationLink(
-                                destination: DetailPerjanjian(actionState: $actionState),
-                                tag:3, selection: $actionState,
+                                destination: DetailPerjanjian(),
+                                tag:3, selection: $perjanjianController.actionState,
                                 label: {
                                     DraftSegmentedView(item: item)
                                 }
@@ -141,7 +138,7 @@ struct ChoosenSegmented: View {
                             DraftSegmentedView(item: item)
                                 .simultaneousGesture(TapGesture().onEnded{
                                 perjanjianController.detailSync(pinjaman: item)
-                                actionState = 3
+                                    perjanjianController.actionState = 3
                                 })
                         }
                         
