@@ -122,7 +122,7 @@ struct step2Pemberi: View {
 						}
 //						FormView(title: "Alamat", profileValue: $perjanjianController.pihak2Alamat, keyboardNum: false, isDisable: $isDisable)
 //						MultiLineFormView(alamat: $perjanjianController.pihak2Alamat, isDisable: $isDisable)
-						CustomTextEditor(text: $perjanjianController.pihak2Alamat)
+						CustomTextEditor(textData: $perjanjianController.pihak2Alamat)
 						HStack {
 							FormView(title: "RT", profileValue: $perjanjianController.pihak2RT, keyboardNum: true, isDisable: $isDisable)
 							FormView(title: "RW", profileValue: $perjanjianController.pihak2RW, keyboardNum: true, isDisable: $isDisable)
@@ -137,13 +137,15 @@ struct step2Pemberi: View {
 							FormView(title: "Nama Bank", profileValue: $perjanjianController.pihak2NamaBank, keyboardNum: false, isDisable: $isDisable)
 							FormView(title: "Nomor Rekening", profileValue: $perjanjianController.pihak2NomorRekening, keyboardNum: true, isDisable: $isDisable)
 							FormView(title: "Atas Nama Rekening", profileValue: $perjanjianController.pihak2AtasNamaRekening, keyboardNum: false, isDisable: $isDisable)
-							Text("Pastikan semua data yang anda masukan sudah benar dan sesuai dengan KTP dan dokumen anda")
+							Text("Pastikan semua data yang anda masukan sudah benar dan sesuai dengan KTP anda")
 								.font(.caption2)
 								.fontWeight(.regular)
 								.foregroundColor(Color("tabBarColor"))
 								.multilineTextAlignment(.leading)
 								.padding(.bottom,10)
-                                .padding(.horizontal)
+								.padding(.horizontal,20)
+//								.padding(.bottom,10)
+//                                .padding(.horizontal)
                             
                             NavigationLink(
                                 destination: step3Detail(masterPresentationMode3 : _masterPresentationMode ,step1Redirect: self.$step1Redirect, step2Redirect: self.$step2Redirect),isActive: $step2Redirect,
