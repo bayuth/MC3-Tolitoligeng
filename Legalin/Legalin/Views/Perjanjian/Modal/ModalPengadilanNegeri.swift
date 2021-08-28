@@ -18,6 +18,13 @@ struct ModalPengadilanNegeri: View {
     
     var body: some View {
         
+        VStack(alignment:.leading){
+            
+            Text("Provinsi")
+                .fontWeight(.semibold)
+                .padding(.top)
+                .padding(.horizontal)
+            
         ScrollView(showsIndicators: false){
             LazyVStack{
                 ForEach(provinsiData, id: \.provinsi) { item in
@@ -40,8 +47,8 @@ struct ModalPengadilanNegeri: View {
 		.background(Color("defaultLightAndDarkColor"))
         .navigationBarTitle("Pengadilan Negeri", displayMode: .inline)
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Text("Tutup")
+            ToolbarItem(placement: .navigationBarLeading) {
+                Text("Batalkan")
                     .foregroundColor(.white)
                     .onTapGesture {
                         isPresented = false
@@ -50,13 +57,14 @@ struct ModalPengadilanNegeri: View {
             
         }
     }
+    }
     
     
-    //
-    //struct ModalPengadilanNegeri_Previews: PreviewProvider {
-    //    static var previews: some View {
-    //        ModalPengadilanNegeri()
-    //    }
-    //}
+    
+    struct ModalPengadilanNegeri_Previews: PreviewProvider {
+        static var previews: some View {
+            ModalPengadilanNegeri(isPresented: .constant(true), pengadilanNegeri: .constant("pilih"))
+        }
+    }
     
 }

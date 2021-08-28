@@ -8,27 +8,12 @@
 import SwiftUI
 
 struct KreditCardView: View {
-    @Binding var item: ItemListKredit
-    @Binding var lists: [ItemListKredit]
-    var action: () -> Void
+    var item: Kredit
     
     var body: some View {
         ZStack{
-            HStack(spacing: 0){
-                Spacer()
-                Button(action: action){
-                    Image(systemName: "trash.fill")
-                        .font(.title2)
-                        .foregroundColor(.white)
-                }
-                .frame(minWidth: 75, maxHeight: .infinity)
-                .background(Color(.red))
-                .specCornerRadius(8, corners: [.topRight, .bottomRight])
-                
-            }
-            .padding(.trailing)
             VStack(alignment: .leading){
-                Text(item.kreditTitle)
+                Text(item.namaSimulasi ?? "")
 					.foregroundColor(Color("textColor"))
                     .font(.title2)
                     .fontWeight(.semibold)
@@ -88,10 +73,6 @@ struct KreditCardView: View {
                 RoundedRectangle(cornerRadius: 8)
                     .foregroundColor(Color("cardColor"))
             )
-            .padding(.horizontal)
-            .contentShape(Rectangle())
-            .offset(x: item.offset)
-            .gesture(DragGesture().onChanged(onChanged(value:)).onEnded(onEnd(value:)))
         }
     }
     
@@ -107,37 +88,6 @@ struct KreditCardView: View {
         return generateTotalPinjaman() / item.tenor
     }
     
-    func onChanged(value : DragGesture.Value){
-        if value.translation.width < 0 {
-            if item.isSwiped{
-                item.offset = value.translation.width - 75
-            }
-            else{
-                item.offset = value.translation.width
-            }
-        }
-        
-    }
     
-    func onEnd(value: DragGesture.Value) {
-        if value.translation.width < 0{
-            if -value.translation.width > UIScreen.main.bounds.width/2{
-                item.offset = -1000
-                //                deleteItem()
-            }
-            else if -item.offset > 50{
-                item.isSwiped = true
-                item.offset = -75
-            }
-            else{
-                item.isSwiped = false
-                item.offset = 0
-            }
-        }
-        else{
-            item.isSwiped = false
-            item.offset = 0
-        }
-    }
     
 }

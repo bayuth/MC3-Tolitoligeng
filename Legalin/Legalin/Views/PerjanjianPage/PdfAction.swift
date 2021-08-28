@@ -246,6 +246,7 @@ struct SignBtn: View{
     @State var alertIsPresented = false
     @State var isSigned = false
     @ObservedObject var coreDataVM: CoreDataViewModel = .shared
+    @State var pinjaman : Pinjaman
     @ObservedObject var perjanjianController: PerjanjianController = .shared
 //    @State var pinjaman : Pinjaman
     var body: some View{
@@ -269,7 +270,9 @@ struct SignBtn: View{
         .alert(isPresented: $alertIsPresented, content: {
             Alert(title: Text("Surat Perjanjian Sudah di Tanda Tangan"), message: Text("Surat sudah ditanda tangan kedua belah pihak diatas materai?"), primaryButton: .default(Text("Sudah"),
                                                                                                                                                                                 action: {
-                                                                                                                                                                                    perjanjianController.statusSurat = "onGoing"
+                                                                                                                                                                                    pinjaman.status = "onGoing"
+                                                                                                                                                                                    coreDataVM.updatePinjaman(pinjaman: pinjaman, status: StatusSurat.onGoing)
+                                                                                                                                                                                    perjanjianController.setStatusSurat(status: StatusSurat.onGoing.rawValue)
                                                                                                                                                                                 }), secondaryButton: .cancel(Text("Belum")))
         })
     }

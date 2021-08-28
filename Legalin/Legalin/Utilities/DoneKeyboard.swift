@@ -13,9 +13,11 @@ struct DoneKeyboard: UIViewRepresentable {
     @Binding var text: String
     var hint: String
     var keyType: UIKeyboardType
+    @State var onEndEditing:() -> ()
+    var clearOnStartEdit: Bool
     
     func makeCoordinator() -> Coordinator {
-        return DoneKeyboard.Coordinator(parent: self)
+        return DoneKeyboard.Coordinator(text: $text,onEndEditing: onEndEditing, clearTextFirst: clearOnStartEdit)
     }
     
     
@@ -44,17 +46,31 @@ struct DoneKeyboard: UIViewRepresentable {
     }
     
     class Coordinator: NSObject, UITextFieldDelegate{
-        var parent: DoneKeyboard
+        @Binding var text: String
+        @State var onEndEditing:() -> ()
+        var clearTextFirst = false
         
-        init(parent: DoneKeyboard){
-            self.parent = parent
+        init(text: Binding<String>, onEndEditing: @escaping () -> Void, clearTextFirst: Bool){
+            _text = text
+            self.onEndEditing = onEndEditing
+            self.clearTextFirst = clearTextFirst
         }
+        
         
         func textFieldDidChangeSelection(_ textField: UITextField) {
-            parent.text = textField.text ?? ""
+            DispatchQueue.main.async {
+                self.text = textField.text ?? ""
+            }
         }
+        
+        func textFieldDidBeginEditing(_ textField: UITextField) {
+            if clearTextFirst {
+                textField.text = ""
+            }
+        }
+        
         func textFieldDidEndEditing(_ textField: UITextField) {
-            parent.text = textField.text ?? ""
+            onEndEditing()
         }
     }
 

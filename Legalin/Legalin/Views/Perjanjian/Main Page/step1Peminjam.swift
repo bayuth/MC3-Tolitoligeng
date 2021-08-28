@@ -94,7 +94,7 @@ struct step1Peminjam: View {
                                             }.padding(.horizontal)
                                         
                                          .frame(maxWidth: .infinity, alignment: .leading)
-                                        Divider()
+                                        
                                         }
                                             .background(Color("emptyAlertColor").opacity(perjanjianController.endButtonPressed ? 0.15 : 0.0))
 									} else {
@@ -108,7 +108,7 @@ struct step1Peminjam: View {
 											}
 									}
 									
-									
+									Divider()
 								}
 								if showTanggalLahir {
 									DatePicker("", selection: $perjanjianController.pihak1TanggalLahir, displayedComponents: .date)

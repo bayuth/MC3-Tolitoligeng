@@ -9,13 +9,14 @@ import SwiftUI
 
 struct DetailKredit: View {
     @Environment(\.presentationMode) var presentationMode
-    var dataUlasan :ListKreditVM
+    var kredit = Kredit()
     var index: Int
+    var onDelete: () -> ()
     var body: some View {
         VStack {
             HStack{
                 VStack(alignment: .leading){
-                    Text(dataUlasan.object.kreditTitle)
+                    Text(kredit.namaSimulasi ?? "")
                         .font(.headline)
                         .fontWeight(.bold)
                         .padding(.bottom, 16)
@@ -25,7 +26,7 @@ struct DetailKredit: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text(dataUlasan.object.jumlahPinjaman.toRupiahString())
+                        Text(kredit.jumlahPinjaman.toRupiahString())
                     }
                     .padding(.bottom, 8)
                     
@@ -34,7 +35,7 @@ struct DetailKredit: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("\(dataUlasan.object.bunga) %".capitalized)
+                        Text("\(kredit.bunga) %".capitalized)
                     }
                     .padding(.bottom, 8)
                     
@@ -43,7 +44,7 @@ struct DetailKredit: View {
                             .font(.footnote)
                             .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                             .padding(.bottom, 1)
-                        Text("\(Int(dataUlasan.object.tenor)) Bulan".capitalized)
+                        Text("\(Int(kredit.tenor)) Bulan".capitalized)
                     }
                     .padding(.bottom, 8)
                     
@@ -93,16 +94,13 @@ struct DetailKredit: View {
         .navigationBarTitle("Ulasan Kredit", displayMode: .inline)
         .navigationBarItems(trailing:
                                 Button(action: {
+                                    onDelete()
                                     presentationMode.wrappedValue.dismiss()
                                 }, label: {
                                     Image(systemName: "trash")
                                         .foregroundColor(.white)
                                 })
         )
-        .onDisappear(perform: {
-            dataUlasan.deleteDetailKredit(index: index)
-//            dataUlasan.fillListDone() -> this will make crash
-        })
     }
     /*
      Total Bunga : (Bunga%/12 x Tenor)
@@ -111,15 +109,15 @@ struct DetailKredit: View {
      */
     
     func generateTotalBunga() -> Double {
-        return (dataUlasan.object.bunga / 100) / 12 * dataUlasan.object.tenor
+        return (kredit.bunga / 100) / 12 * kredit.tenor
     }
     
     func generateTotalPinjaman() -> Double {
-        return dataUlasan.object.jumlahPinjaman * (1 + generateTotalBunga())
+        return kredit.jumlahPinjaman * (1 + generateTotalBunga())
     }
     
     func generateCicilanPerbulan() -> Double {
-        return generateTotalPinjaman() / dataUlasan.object.tenor
+        return generateTotalPinjaman() / kredit.tenor
     }
     
     func setupAppearance() {

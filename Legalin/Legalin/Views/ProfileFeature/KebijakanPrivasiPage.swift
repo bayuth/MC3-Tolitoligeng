@@ -8,13 +8,24 @@
 import SwiftUI
 
 struct KebijakanPrivasiPage: View {
-    var body: some View {
-        Text("Hello, World!")
-    }
+	@Environment(\.presentationMode) var presentationMode
+	var body: some View {
+		VStack {
+			PrivacyPolicyWebView(url: "https://legalin117210153.wordpress.com/")
+		}
+		.navigationBarHidden(true)
+		.navigationBarBackButtonHidden(true)
+		.navigationBarTitle(Text("Kebijakan Privasi"), displayMode: .inline)
+		.navigationBarItems(trailing: Button(action: {self.presentationMode.wrappedValue.dismiss()
+		}, label: {
+			Text("Tutup")
+				.foregroundColor(.white)
+		}))
+	}
 }
 
 struct KebijakanPrivasiPage_Previews: PreviewProvider {
-    static var previews: some View {
-        KebijakanPrivasiPage()
-    }
+	static var previews: some View {
+		KebijakanPrivasiPage()
+	}
 }

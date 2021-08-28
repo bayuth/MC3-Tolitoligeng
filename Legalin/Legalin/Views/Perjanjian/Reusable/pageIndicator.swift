@@ -69,21 +69,27 @@ struct pageIndicator: View {
                                         })
                                     }
                                 }
-                                Text("\(progressDetail)")
-                                    .font(.subheadline)
-                                    .foregroundColor(Color("labelColor"))
-                            }.padding(.leading,8)
+								Text("\(progressDetail)")
+									.font(.subheadline)
+									.lineLimit(2)
+									.minimumScaleFactor(0.79)
+									.foregroundColor(Color("labelColor"))
+                                
+                            }
+							.padding(.leading,8)
                             .padding(.top,10)
                         }
                        })
                     .padding(.horizontal)
-                    .frame(width: UIScreen.main.bounds.width ,
-                            alignment: .leading)
+//                    .frame(width: UIScreen.main.bounds.width ,
+//                            alignment: .leading)
+					.frame(maxWidth: UIScreen.main.bounds.width, alignment: .leading)
                 
             }.popoverView(content: {PopOverContent(frame: $secondPopoverFrame, show: $popOverState, popOverText: "Barang berharga yang dititipkan oleh peminjam dana (debitur) ke pemberi pinjaman (kreditur) sebagai jaminan.")}, background: {Color("tabBarColor")}, isPresented: $popOverState, frame: $secondPopoverFrame, anchorFrame: nil, popoverType: .popover, position: .bottom, viewId: "infoPopOver", settings: DYPopoverViewSettings(arrowLength: 0,  cornerRadius: (10,10,10,10), offset: CGSize(width: 0, height: 0), animation: .default)
             )
         }
-		.frame(width: UIScreen.main.bounds.width, height: 50, alignment: .leading)
+//		.frame(width: UIScreen.main.bounds.width, height: 50, maxHeight: <#T##CGFloat?#>, alignment: .leading)
+		.frame(maxWidth: UIScreen.main.bounds.width, minHeight: 50, idealHeight: 50, maxHeight: 65)
     }
 }
 
