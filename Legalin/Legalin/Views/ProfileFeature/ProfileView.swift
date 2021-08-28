@@ -49,6 +49,8 @@ struct ProfileView: View {
 					if (coreDataVM.pihak1.count == 0) {
 						Spacer()
 						Image("Profile Empty")
+							.resizable()
+							.aspectRatio(contentMode: .fit)
 						Text("Belum Ada Profil")
 							.font(.headline).fontWeight(.bold).padding(.top, 10)
 						Text("Buat profil baru untuk \n mempermudah membuat perjanjian")

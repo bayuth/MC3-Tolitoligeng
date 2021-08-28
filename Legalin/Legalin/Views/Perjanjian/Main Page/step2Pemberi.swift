@@ -121,7 +121,8 @@ struct step2Pemberi: View {
 								.padding(.horizontal)
 						}
 //						FormView(title: "Alamat", profileValue: $perjanjianController.pihak2Alamat, keyboardNum: false, isDisable: $isDisable)
-						MultiLineFormView(alamat: $perjanjianController.pihak2Alamat, isDisable: $isDisable)
+//						MultiLineFormView(alamat: $perjanjianController.pihak2Alamat, isDisable: $isDisable)
+						CustomTextEditor(text: $perjanjianController.pihak2Alamat)
 						HStack {
 							FormView(title: "RT", profileValue: $perjanjianController.pihak2RT, keyboardNum: true, isDisable: $isDisable)
 							FormView(title: "RW", profileValue: $perjanjianController.pihak2RW, keyboardNum: true, isDisable: $isDisable)

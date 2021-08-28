@@ -48,13 +48,14 @@ struct FormView: View {
 					.accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
                     .font(.body)
                     .disabled(isDisable)
-                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: 20)
+					.frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 20)
                     .padding(.horizontal)
                      Divider()
                     
                 }.background(Color("emptyAlertColor").opacity(getRedIndicator() ? 0.15 : 0.0))
 				
 			}
+			.frame(maxWidth: UIScreen.main.bounds.width)
             .padding(.bottom)
 		}
     }

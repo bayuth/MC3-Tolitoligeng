@@ -117,7 +117,7 @@ struct step1Peminjam: View {
 								}
 								VStack {
 //									FormView(title: "Alamat", profileValue: $perjanjianController.pihak1Alamat, keyboardNum: false, isDisable: $isDisable)
-									MultiLineFormView(alamat: $perjanjianController.pihak1Alamat, isDisable: $isDisable, emptyAlamat: "Alamat")
+//									MultiLineFormView(alamat: $perjanjianController.pihak1Alamat, isDisable: $isDisable, emptyAlamat: "Alamat")
 								}
 								HStack {
 									FormView(title: "RT", profileValue: $perjanjianController.pihak1RT, keyboardNum: true, isDisable: $isDisable)
@@ -133,6 +133,7 @@ struct step1Peminjam: View {
 									Text("Pastikan semua data yang anda masukan sudah benar dan sesuai dengan KTP anda")
 										.font(.caption2)
 										.fontWeight(.regular)
+										.lineLimit(5)
 										.foregroundColor(Color("tabBarColor"))
 										.multilineTextAlignment(.leading)
 										.padding(.bottom,10)

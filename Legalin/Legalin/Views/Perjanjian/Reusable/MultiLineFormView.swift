@@ -20,36 +20,38 @@ struct MultiLineFormView: View {
 	
     var body: some View {
 		VStack(alignment: .leading) {
-			Text("Alamat").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
-				.padding(.horizontal)
-			if isDisable {
-                VStack{
-				AutoSizingTF(hint: "Alamat Sesuai KTP", text: $alamat, containerHeight: $containerHeight, onEnd: {
-					UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-				}, isDisable: isDisable)
-//					.foregroundColor(Color("labelColor"))
-					.disabled(true)
-					.padding(.horizontal)
-					.frame(height: containerHeight <= 120 ? containerHeight : 120)
-					.cornerRadius(10)
-                    
-                Divider()
-                }.background(Color("emptyAlertColor").opacity(getRedIndicator() ? 0.15 : 0.0))
-			} else {
-                VStack{
-					Text(alamat)
-				AutoSizingTF(hint: "Alamat Sesuai KTP", text: $alamat, containerHeight: $containerHeight, onEnd: {
-					UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-				}, isDisable: isDisable)
-//				.foregroundColor(Color("formViewColor"))
-				.accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
-					.padding(.horizontal)
-					.frame(height: containerHeight <= 120 ? containerHeight : 120)
-					.cornerRadius(10)
-                    
-                Divider()
-            }.background(Color("emptyAlertColor").opacity(getRedIndicator() ? 0.15 : 0.0))
-			}
+//			Text("Alamat").font(.footnote).fontWeight(.regular).foregroundColor(Color(#colorLiteral(red: 0.4391747117, green: 0.4392418861, blue: 0.4391601086, alpha: 1)))
+//				.padding(.horizontal)
+//			if isDisable {
+//                VStack{
+//				AutoSizingTF(hint: "Alamat Sesuai KTP", text: $alamat, containerHeight: $containerHeight, onEnd: {
+//					UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+//				}, isDisable: isDisable)
+////					.foregroundColor(Color("labelColor"))
+//					.disabled(true)
+//					.padding(.horizontal)
+//					.frame(height: containerHeight <= 120 ? containerHeight : 120)
+//					.cornerRadius(10)
+//
+//                Divider()
+//                }.background(Color("emptyAlertColor").opacity(getRedIndicator() ? 0.15 : 0.0))
+//			} else {
+//                VStack{
+//					Text(alamat)
+//				AutoSizingTF(hint: "Alamat Sesuai KTP", text: $alamat, containerHeight: $containerHeight, onEnd: {
+//					UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+//				}, isDisable: isDisable)
+////				.foregroundColor(Color("formViewColor"))
+//				.accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+//					.padding(.horizontal)
+//					.frame(height: containerHeight <= 120 ? containerHeight : 120)
+//					.cornerRadius(10)
+//
+//                Divider()
+//            }.background(Color("emptyAlertColor").opacity(getRedIndicator() ? 0.15 : 0.0))
+//			}
+			
+//			CustomTextEditor(text: alamat)
 			
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
@@ -83,32 +85,29 @@ struct AutoSizingTF: UIViewRepresentable {
 	}
 	
 	func makeUIView(context: Context) -> UITextView {
-//		let textView = UITextField()
+
 		let textView = UITextView()
 		print("masuk text view")
 		print(self.text)
-		if self.text == ""{
+		if self.text == nil{
 			textView.text = hint
-//			textView.textColor = UIColor(Color("textColor"))
 			textView.font = .systemFont(ofSize: 17)
 
-		} else {
+		} else if self.text != nil {
 			textView.text = text
 			textView.font = .systemFont(ofSize: 17)
-//			textView.textColor = UIColor(Color(.black))
 
 		}
-		textView.text = text
-		textView.font = .systemFont(ofSize: 17)
-//		textView.textColor = UIColor(Color(.black))
+//		textView.text = text
+//		textView.font = .systemFont(ofSize: 17)
+
 		if isDisable {
 			textView.textColor = UIColor(Color("labelColor"))
 		} else {
 			textView.textColor = UIColor(Color("textColor"))
 		}
 		
-//		textView.text = text
-//		textView.font = .systemFont(ofSize: 18)
+
 		textView.backgroundColor = .clear
 		
 		
