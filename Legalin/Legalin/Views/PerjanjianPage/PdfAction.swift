@@ -92,8 +92,6 @@ struct PdfAction: View {
                 .padding(.horizontal, 32)
             
             Button(action:{
-//                items.removeAll()
-//                items.append(pdf.renderInvoice())
                 shareAction(item: pdf.renderInvoice())
             }){
                 HStack{
