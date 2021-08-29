@@ -119,7 +119,8 @@ struct NewProfileView: View {
 									.accentColor(Color("tabBarColor"))
 							}
 							
-							FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $isDisable)
+//							FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $isDisable)
+							CustomTextEditor(textData: $profileController.pihak1Alamat, isDisableAddress: $isDisable)
 							HStack {
 								FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: $isDisable)
 								FormView(title: "RW", profileValue: $profileController.pihak1RW, keyboardNum: true, isDisable: $isDisable)
@@ -131,7 +132,13 @@ struct NewProfileView: View {
 								FormView(title: "Provinsi", profileValue: $profileController.pihak1Provinsi, keyboardNum: false, isDisable: $isDisable)
 								FormView(title: "Pekerjaan", profileValue: $profileController.pihak1Pekerjaan, keyboardNum: false, isDisable: $isDisable)
 								FormView(title: "Nomor Telepon", profileValue: $profileController.pihak1NomorHP, keyboardNum: true, isDisable: $isDisable)
-								Text("Pastikan semua data yang anda masukan sudah benar dan sesuai dengan KTP anda")
+								Text("Pastikan semua data yang anda masukan sudah benar")
+									.font(.caption2)
+									.fontWeight(.regular)
+									.foregroundColor(Color("tabBarColor"))
+									.multilineTextAlignment(.leading)
+									.padding(.horizontal,20)
+								Text("dan sesuai dengan KTP anda")
 									.font(.caption2)
 									.fontWeight(.regular)
 									.foregroundColor(Color("tabBarColor"))
