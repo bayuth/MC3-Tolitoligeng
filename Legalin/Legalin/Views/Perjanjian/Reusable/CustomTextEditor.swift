@@ -39,6 +39,7 @@ struct CustomTextEditor: View {
 						.padding(.vertical, 12)
 				}
 				TextEditor(text: $text)
+					.foregroundColor(Color("textColor"))
 					.accentColor(Color("tabBarColor"))
 					.font(.body)
 			}
