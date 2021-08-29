@@ -26,11 +26,11 @@
 		4AC4CAA626B25D7A00340A00 /* ViewModelExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAA526B25D7A00340A00 /* ViewModelExample.swift */; };
 		4AC4CAAA26B25D9100340A00 /* Fitur1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAA926B25D9100340A00 /* Fitur1.swift */; };
 		4AC4CAAE26B25DA000340A00 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC4CAAD26B25DA000340A00 /* Model.swift */; };
+		4AD204CA26D8F3A400BE9AC1 /* TFCurrencyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD204C926D8F3A300BE9AC1 /* TFCurrencyField.swift */; };
 		4AD8840626BAEC7300C5A6F5 /* SpecificCornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8840526BAEC7200C5A6F5 /* SpecificCornerRadius.swift */; };
 		4AD8840A26BAEC7B00C5A6F5 /* PerjanjianViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8840926BAEC7B00C5A6F5 /* PerjanjianViewModel.swift */; };
 		4AD8841226BAEC8C00C5A6F5 /* AgreementCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8840D26BAEC8C00C5A6F5 /* AgreementCardView.swift */; };
 		4AD8841326BAEC8C00C5A6F5 /* DraftSegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8840E26BAEC8C00C5A6F5 /* DraftSegmentedView.swift */; };
-		4AD8841426BAEC8C00C5A6F5 /* PerjanjianPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8840F26BAEC8C00C5A6F5 /* PerjanjianPage.swift */; };
 		4AD8841526BAEC8C00C5A6F5 /* EmptyStatePerjanjian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8841026BAEC8C00C5A6F5 /* EmptyStatePerjanjian.swift */; };
 		4AD8841626BAEC8C00C5A6F5 /* HistorySegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8841126BAEC8C00C5A6F5 /* HistorySegmentedView.swift */; };
 		4AD8841A26BAEC9A00C5A6F5 /* PerjanjianModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8841926BAEC9A00C5A6F5 /* PerjanjianModel.swift */; };
@@ -146,11 +146,11 @@
 		4AC4CAA526B25D7A00340A00 /* ViewModelExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelExample.swift; sourceTree = "<group>"; };
 		4AC4CAA926B25D9100340A00 /* Fitur1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fitur1.swift; sourceTree = "<group>"; };
 		4AC4CAAD26B25DA000340A00 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		4AD204C926D8F3A300BE9AC1 /* TFCurrencyField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFCurrencyField.swift; sourceTree = "<group>"; };
 		4AD8840526BAEC7200C5A6F5 /* SpecificCornerRadius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificCornerRadius.swift; sourceTree = "<group>"; };
 		4AD8840926BAEC7B00C5A6F5 /* PerjanjianViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerjanjianViewModel.swift; sourceTree = "<group>"; };
 		4AD8840D26BAEC8C00C5A6F5 /* AgreementCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgreementCardView.swift; sourceTree = "<group>"; };
 		4AD8840E26BAEC8C00C5A6F5 /* DraftSegmentedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraftSegmentedView.swift; sourceTree = "<group>"; };
-		4AD8840F26BAEC8C00C5A6F5 /* PerjanjianPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerjanjianPage.swift; sourceTree = "<group>"; };
 		4AD8841026BAEC8C00C5A6F5 /* EmptyStatePerjanjian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStatePerjanjian.swift; sourceTree = "<group>"; };
 		4AD8841126BAEC8C00C5A6F5 /* HistorySegmentedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorySegmentedView.swift; sourceTree = "<group>"; };
 		4AD8841926BAEC9A00C5A6F5 /* PerjanjianModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerjanjianModel.swift; sourceTree = "<group>"; };
@@ -390,6 +390,7 @@
 				4A6718CD26C0BAFB00D22C3B /* FormViewWithInfo.swift */,
 				75D70D2626CD1013003628CA /* DoneKeyboard.swift */,
 				759A667B26CFFEE700A3F9BA /* PrivacyPolicyWebView.swift */,
+				4AD204C926D8F3A300BE9AC1 /* TFCurrencyField.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -423,7 +424,6 @@
 			children = (
 				4AD8840D26BAEC8C00C5A6F5 /* AgreementCardView.swift */,
 				4AD8840E26BAEC8C00C5A6F5 /* DraftSegmentedView.swift */,
-				4AD8840F26BAEC8C00C5A6F5 /* PerjanjianPage.swift */,
 				4AD8841026BAEC8C00C5A6F5 /* EmptyStatePerjanjian.swift */,
 				4AD8841126BAEC8C00C5A6F5 /* HistorySegmentedView.swift */,
 				75B627BB26BC1579008F2C2A /* DetailPerjanjian.swift */,
@@ -687,7 +687,6 @@
 				5E375CFB26BEB47200DF834D /* InvoiceComposer.swift in Sources */,
 				7558EA8F26BD691500E0B492 /* PageView.swift in Sources */,
 				7558EA6C26BD367600E0B492 /* PdfAction.swift in Sources */,
-				4AD8841426BAEC8C00C5A6F5 /* PerjanjianPage.swift in Sources */,
 				4A64032926B7892B00C78D44 /* KreditView.swift in Sources */,
 				759A667C26CFFEE700A3F9BA /* PrivacyPolicyWebView.swift in Sources */,
 				5C8F9CF526BCF66D00CE994B /* ScanData.swift in Sources */,
@@ -704,6 +703,7 @@
 				5C8F9CFB26BCF69400CE994B /* FormView.swift in Sources */,
 				5CC5904826D5F85C00ECA4DD /* CustomTextEditor.swift in Sources */,
 				5CC4E12726C3FD6600A7042A /* ButtonBorderedComingSoon.swift in Sources */,
+				4AD204CA26D8F3A400BE9AC1 /* TFCurrencyField.swift in Sources */,
 				5C8F9CF226BCF66D00CE994B /* functionTrimKtp.swift in Sources */,
 				5E3F136B26C5974800E3E0B6 /* profileController.swift in Sources */,
 				4A3AF69A26BB769300614382 /* ListKredit.swift in Sources */,
@@ -893,7 +893,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Legalin/Preview Content\"";
-				DEVELOPMENT_TEAM = 52727RY679;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Legalin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -916,7 +916,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Legalin/Preview Content\"";
-				DEVELOPMENT_TEAM = 52727RY679;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Legalin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

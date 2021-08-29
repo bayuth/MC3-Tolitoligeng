@@ -10,6 +10,7 @@ import SwiftUI
 struct UlasanKredit: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var dataUlasan :ListKreditVM
+    @State var pushValue = true
     var body: some View {
         ScrollView(showsIndicators: false){
             VStack {

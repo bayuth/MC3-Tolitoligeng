@@ -15,83 +15,57 @@ struct DetailPerjanjian: View {
     @State var deleteSuccess: Bool = false
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     @Environment(\.presentationMode) var presentationMode
-    var detailPerjanjian: Pinjaman
-//    @Binding var item: Agreements
-//    @Binding var lists: [Agreements]
     
-    
-    
-    //    var subview = [1, 2, 3, 4, 5]
+    @State private var isPresented = false
     
     
     var body: some View {
         //        NavigationView{
         ScrollView(.init(), showsIndicators: false){
             TabView{
-                if detailPerjanjian != nil{
-                    if detailPerjanjian.status == "draft"{
+                    if perjanjianController.statusSurat == "draft"{
                         EmptyPDF()
                     }
                     else{
-                        PdfAction(pinjaman: detailPerjanjian, hideSwitch: false)
+                        PdfAction(hideSwitch: false)
                     }
                     
-                    Pihak1(pinjaman: detailPerjanjian)
-                        .onAppear{
-                            print(detailPerjanjian.status)
-                        }
-                    Pihak2(pinjaman: detailPerjanjian)
-                    InfoPinjaman(pinjaman: detailPerjanjian)
-                    InfoAgunan(hideButton: true, pinjaman: detailPerjanjian)
-                }
-                else{
-                    Text("Kosong")
-                }
-                
-                
+                    Pihak1()
+                    Pihak2()
+                    InfoPinjaman()
+                    InfoAgunan(hideButton: true)
                 
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
             .onAppear{
                 setupAppearance()
-//                print(item.agreementTitle)
                 
             }
-//            .onDisappear{
-//                print(item.agreementTitle)
-//            }
             
         }
         .navigationBarTitle("Detail Perjanjian", displayMode: .inline)
 		.navigationBarBackButtonHidden(true)
         .navigationBarItems(leading:
 											Button(action: {
-   									presentationMode.wrappedValue.dismiss()
+                                                perjanjianController.actionState = 0
    								}, label: {
    									Image(systemName: "chevron.left")
    										.foregroundColor(.white)
-   									Text("Perjanjian")
+   									Text("Kembali")
    										.foregroundColor(.white)
    								})
    							,trailing:
                                 HStack(spacing: 16){
                                     Button(action: {
-                                        
+                                        isPresented.toggle()
                                     }){
                                         Image(systemName: "square.and.pencil")
                                             .font(.title3)
                                             .foregroundColor(.white)
                                         
-                                    }
+                                    }.fullScreenCover(isPresented: $isPresented, content: step1Peminjam.init)
                                     Button(action: {
-                                        //                                        print(item.agreementTitle)
-                                        self.presentationMode.wrappedValue.dismiss()
-                                        
-                                                                                self.deleteSuccess = true
-                                        
-                                        //                                        lists.removeAll{ (item) -> Bool in
-                                        //                                            return self.item.id == item.id
-                                        //                                        }
+                                        self.deleteSuccess = true
                                         print("jalan")
                                     }){
                                         Image(systemName: "trash")
@@ -101,14 +75,8 @@ struct DetailPerjanjian: View {
                                     }
                                     .onChange(of: deleteSuccess, perform: { value in
                                         print("Dismissed!")
-                                        var perjanjianController: PerjanjianController = .shared
-                                        perjanjianController.deletePinjaman(pinjaman: detailPerjanjian)
-//                                        if let idx = lists.firstIndex(where: { $0 === _item }){
-//                                            lists.remove(at: idx)
-//                                        }
-                                        //
-//                                        perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
-//                                        self.presentationMode.wrappedValue.dismiss()
+                                        perjanjianController.deletePinjaman(pinjaman: perjanjianController.detailPinjaman!)
+                                        perjanjianController.actionState = 0
                                     })
                                 }
         )
@@ -123,17 +91,6 @@ extension View{
         return UIScreen.main.bounds.width
     }
 }
-//extension UINavigationController{
-//    override open func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        let appearance = UINavigationBarAppearance()
-//        appearance.backgroundColor = #colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)
-//        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-//        
-//        navigationBar.standardAppearance = appearance
-//    }
-//}
 
 //struct DetailPerjanjian_Previews: PreviewProvider {
 //    static var previews: some View {

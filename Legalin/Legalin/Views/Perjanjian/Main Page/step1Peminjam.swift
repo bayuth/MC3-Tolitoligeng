@@ -14,6 +14,7 @@ struct step1Peminjam: View {
 	
 	@ObservedObject var trimKtp = functionTrimKtp(pihak: 1)
 	@ObservedObject var perjanjianController: PerjanjianController = .shared
+    @ObservedObject var coreDataVM: CoreDataViewModel = .shared
 	
 	@State var showTanggalLahir = false
 	@State var tanggalLahir = Date()
@@ -169,10 +170,18 @@ struct step1Peminjam: View {
 						.default(Text("Simpan")) {
 							perjanjianController.setPihak1OpenCamToFalse(isOpenCam: false)
 							perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
-							perjanjianController.updatePinjamanCoreData(status: StatusSurat.draft)
+                            
+                            if (perjanjianController.sender == "perjanjianBaru"){
+                            perjanjianController.updatePinjamanCoreData(pinjaman: coreDataVM.createPinjaman(), status: StatusSurat.draft)
+                            }
+                            
+                            if (perjanjianController.sender == "detailPage"){
+                                perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat.draft)
+                            }
+                            
 							self.presentationMode.wrappedValue.dismiss()
 						},
-						.destructive(Text("Hapus")) {
+						.destructive(Text(getTextKembali())) {
 							perjanjianController.setPihak1OpenCamToFalse(isOpenCam: false)
 							perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
 							self.presentationMode.wrappedValue.dismiss()
@@ -182,6 +191,15 @@ struct step1Peminjam: View {
 				
 			})
 			}
+        
+    func getTextKembali() -> String {
+        if perjanjianController.sender == "perjanjianBaru"{
+            return "Hapus"
+        } else {
+            return "Kembali"
+        }
+    }
+        
 	}
 
 extension UINavigationController{

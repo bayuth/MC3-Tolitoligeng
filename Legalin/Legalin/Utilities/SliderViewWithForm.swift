@@ -32,22 +32,24 @@ struct SliderViewWithForm: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title).font(.footnote).fontWeight(.light).padding(.horizontal)
-            
             VStack{
-                
-                TextField(title, text: $formattedText, onEditingChanged: { (isBegin) in
-                    if isBegin {
-                        formattedText = ""
-                    } else {
-                        textChanged(to: formattedText)
-                    }
+                if type == 0 {
+                    TFCurrencyField(urlString: $formattedText, onEndEditing: {
+                        textChanged(to: formattedText.digits)
+                    }, placeHolderText: title)
+                    .padding(.horizontal)
+                }else{
+                    DoneKeyboard(text: $formattedText, hint: title, keyType: UIKeyboardType.numberPad, onEndEditing: {
+                        textChanged(to: formattedText.digits)
+                    }, clearOnStartEdit: true)
+                    .keyboardType(.numberPad)
+                    .padding(.horizontal)
+                    .onTapGesture {}
+                    .onLongPressGesture(
+                        pressing: { isPressed in if isPressed { self.endEditing() } },
+                        perform: {})
                 }
-                ).keyboardType(.numberPad)
-                .padding(.horizontal)
-                .onTapGesture {}
-                .onLongPressGesture(
-                    pressing: { isPressed in if isPressed { self.endEditing() } },
-                    perform: {})
+                
                 Divider()
                 Slider(
                     value: Binding(
@@ -131,9 +133,3 @@ struct SliderViewWithForm: View {
         }
     }
 }
-
-//struct SliderViewWithForm_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SliderViewWithForm()
-//    }
-//}

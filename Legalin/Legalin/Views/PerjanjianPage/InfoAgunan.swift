@@ -11,7 +11,7 @@ struct InfoAgunan: View {
     var hideButton : Bool
     @Environment(\.presentationMode) var masterPresentationMode6
     @ObservedObject var perjanjianController: PerjanjianController = .shared
-    @State var pinjaman : Pinjaman
+    @ObservedObject var coreDataVM: CoreDataViewModel = .shared
     
     var body: some View {
         VStack(alignment: .leading){
@@ -27,7 +27,7 @@ struct InfoAgunan: View {
                             .font(.footnote)
                             .foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(pinjaman.agunan?.nama ?? "")")
+                        Text(getAgunanValue(item: perjanjianController.namaBarang))
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -37,7 +37,7 @@ struct InfoAgunan: View {
                             .font(.footnote)
 							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text("\(String(describing: pinjaman.agunan?.warna ?? ""))".capitalized)
+                        Text(getAgunanValue(item: perjanjianController.warnaBarang).capitalized)
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -47,7 +47,7 @@ struct InfoAgunan: View {
                             .font(.footnote)
 							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text(Double(pinjaman.agunan?.harga ?? "")?.toRupiahString() ?? "")
+                        Text(getStringFromDouble(item: getDoubleAgunanValue(item: perjanjianController.hargaBarang)))
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -57,7 +57,7 @@ struct InfoAgunan: View {
                             .font(.footnote)
 							.foregroundColor(Color("labelColor"))
                             .padding(.bottom, 1)
-                        Text(pinjaman.agunan?.nomorSeri ?? "")
+                        Text(getAgunanValue(item: perjanjianController.nomorSeri))
 							.foregroundColor(Color("textColor"))
                     }
                     .padding(.bottom, 8)
@@ -115,7 +115,14 @@ struct InfoAgunan: View {
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity, maxHeight: 50)
                     })
-                    .simultaneousGesture(TapGesture().onEnded{perjanjianController.updatePinjamanCoreData(status: StatusSurat.notSigned)
+                    .simultaneousGesture(TapGesture().onEnded{
+                        
+                        if (perjanjianController.sender == "perjanjianBaru"){
+                        perjanjianController.updatePinjamanCoreData(pinjaman: coreDataVM.createPinjaman(), status: StatusSurat.notSigned)
+                        } else {
+                            perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat.notSigned)
+                        }
+                        
 						perjanjianController.setPihak1OpenCamToFalse(isOpenCam: false)
 						perjanjianController.setPihak2OpenCamToFalse(isOpenCam: false)
 					})
@@ -127,7 +134,29 @@ struct InfoAgunan: View {
             }
         }
         
-        
+    }
+    func getAgunanValue(item: String) -> String {
+        if item == "" {
+            return "-"
+        } else {
+            return item
+        }
+    }
+    
+    func getDoubleAgunanValue(item: String) -> Double {
+        if item == "" {
+            return 0
+        } else {
+            return Double(item) ?? 0
+        }
+    }
+    
+    func getStringFromDouble(item: Double) -> String{
+        if item == 0 {
+            return "-"
+        } else {
+            return item.toRupiahString()
+        }
     }
 }
 

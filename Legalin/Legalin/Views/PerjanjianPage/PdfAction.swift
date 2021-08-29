@@ -7,6 +7,8 @@
 
 import SwiftUI
 import UserNotifications
+import WebKit
+import UIKit
 
 class NotificationManager{
     static let instance = NotificationManager()
@@ -36,7 +38,7 @@ class NotificationManager{
         var dateComponent = DateComponents()
         dateComponent.hour = 22
         dateComponent.minute = 20
-//        dateComponent.day = Int(perjanjianController.tanggalJatuhTempo)
+        dateComponent.day = Int(perjanjianController.tanggalJatuhTempo)
         
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: true)
@@ -53,11 +55,12 @@ struct PdfAction: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     @ObservedObject var coreDataVM: CoreDataViewModel = .shared
-    @State var pinjaman : Pinjaman
-//    @State var alertIsPresented = false
     var hideSwitch: Bool = false
     
+    
     @State private var showShareSheet: Bool = false
+    @State var items : [Any] = []
+    @State var pdf = InvoiceComposer()
     var body: some View {
         
         VStack{
@@ -69,7 +72,7 @@ struct PdfAction: View {
                         Image("pdf")
                             .padding(.bottom, 24)
                         
-                        Text("Surat perjanjian hutang - Modal proyek katering - 25/07/2021")
+                        Text("\(perjanjianController.tujuanPeminjaman) - \(perjanjianController.tanggalTandaTangan)")
                             .font(.headline)
                             .foregroundColor(Color("textColor"))
                             .multilineTextAlignment(.center)
@@ -89,7 +92,7 @@ struct PdfAction: View {
                 .padding(.horizontal, 32)
             
             Button(action:{
-                shareAction()
+                shareAction(item: pdf.renderInvoice())
             }){
                 HStack{
                     Image(systemName: "square.and.arrow.up")
@@ -130,28 +133,28 @@ struct PdfAction: View {
                     HStack{
                         Text("Tanda Tangan")
                         Spacer()
-                        if pinjaman.status == "notSigned"{
-                            SignBtn(pinjaman: pinjaman)
+                        if perjanjianController.statusSurat == "notSigned"{
+                            SignBtn(pinjaman: perjanjianController.detailPinjaman!)
                         }
                         else{
-                            SignBtn(pinjaman: pinjaman)
+                            SignBtn(pinjaman: perjanjianController.detailPinjaman!)
                                 .disabled(true)
                         }
                     }
-                    if pinjaman.status == "onGoing"{
-                        Toggle(isOn: $pinjaman.reminder, label: {
+                    if perjanjianController.statusSurat == "onGoing"{
+                        Toggle(isOn: $perjanjianController.reminder, label: {
                             Text("Pengingat")
                         })
                         .toggleStyle(SwitchToggleStyle(tint: Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))))
-                        .onChange(of: pinjaman.reminder, perform: { value in
+                        .onChange(of: perjanjianController.reminder, perform: { value in
                             if value{
                                 NotificationManager.instance.notification()
-                                coreDataVM.updatePinjaman(pinjaman: pinjaman, reminder: value)
+                                coreDataVM.updatePinjaman(pinjaman: perjanjianController.detailPinjaman!, reminder: value)
                                 print(value)
                                 
                             }
                             else{
-                                coreDataVM.updatePinjaman(pinjaman: pinjaman, reminder: value)
+                                coreDataVM.updatePinjaman(pinjaman: perjanjianController.detailPinjaman!, reminder: value)
                                 print(value)
                             }
                             
@@ -173,13 +176,48 @@ struct PdfAction: View {
         .padding()
     }
     
-    private func shareAction(){
+    private func shareAction(item: String){
         showShareSheet.toggle()
         
-        let url = URL(string: "https://apple.com")
-        let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+       var filePdf = [Any]()
+        filePdf.append(testPdf(html: item))
         
+        let av = UIActivityViewController(activityItems: filePdf, applicationActivities: nil)
         UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
+    }
+    
+    func testPdf(html:String) -> URL{
+        
+        let fmt = UIMarkupTextPrintFormatter(markupText: html)
+
+        // 2. Assign print formatter to UIPrintPageRenderer
+        let render = UIPrintPageRenderer()
+        render.addPrintFormatter(fmt, startingAtPageAt: 0)
+
+        // 3. Assign paperRect and printableRect
+        let page = CGRect(x: 0, y: 0, width: 595.2, height: 841.8) // A4, 72 dpi
+        render.setValue(page, forKey: "paperRect")
+        render.setValue(page, forKey: "printableRect")
+
+        // 4. Create PDF context and draw
+        let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, .zero, nil)
+
+        for i in 0..<render.numberOfPages {
+            UIGraphicsBeginPDFPage();
+            render.drawPage(at: i, in: UIGraphicsGetPDFContextBounds())
+        }
+
+        UIGraphicsEndPDFContext();
+
+        // 5. Save PDF file
+        guard let outputURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("output").appendingPathExtension("pdf")
+            else { fatalError("Destination URL not created") }
+
+        pdfData.write(to: outputURL, atomically: true)
+        
+        print("open \(outputURL.path)") // command to open the generated file
+        return outputURL
     }
 }
 
@@ -188,11 +226,13 @@ struct SignBtn: View{
     @State var isSigned = false
     @ObservedObject var coreDataVM: CoreDataViewModel = .shared
     @State var pinjaman : Pinjaman
+    @ObservedObject var perjanjianController: PerjanjianController = .shared
+//    @State var pinjaman : Pinjaman
     var body: some View{
         Button(action: {
             self.alertIsPresented = true
         }, label: {
-            if pinjaman.status == "onGoing"{
+            if perjanjianController.statusSurat == "onGoing"{
                 HStack{
                     Text("Sudah")
                         .foregroundColor(Color("tabBarColor"))
@@ -210,10 +250,13 @@ struct SignBtn: View{
             Alert(title: Text("Surat Perjanjian Sudah di Tanda Tangan"), message: Text("Surat sudah ditanda tangan kedua belah pihak diatas materai?"), primaryButton: .default(Text("Sudah"),
                                                                                                                                                                                 action: {
                                                                                                                                                                                     pinjaman.status = "onGoing"
+                                                                                                                                                                                    coreDataVM.updatePinjaman(pinjaman: pinjaman, status: StatusSurat.onGoing)
+                                                                                                                                                                                    perjanjianController.setStatusSurat(status: StatusSurat.onGoing.rawValue)
                                                                                                                                                                                 }), secondaryButton: .cancel(Text("Belum")))
         })
     }
 }
+
 
 
 //struct PdfAction_Previews: PreviewProvider {

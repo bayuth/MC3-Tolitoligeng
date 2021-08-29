@@ -63,8 +63,8 @@ struct FormViewWithInfo: View {
                             }
                         }
                         
-                    }.padding(.horizontal)
-					.background(Color("defaultLightAndDarkColor"))
+                    }
+                    .padding(.horizontal)
                     .sheet(isPresented: $perjanjianController.modalPengadilanNegeri)
                     {
                         NavigationView{
