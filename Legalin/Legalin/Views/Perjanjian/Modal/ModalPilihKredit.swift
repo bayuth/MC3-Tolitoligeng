@@ -19,10 +19,14 @@ struct ModalPilihKredit: View {
         VStack{
             Spacer()
             ScrollView(showsIndicators: false){
-                Text("Kredit Pinjaman")
-                    .font(.system(size: 17))
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                VStack(alignment: .leading) {
+                    Text("Kredit Pinjaman")
+                        .font(.system(size: 17))
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .padding(.vertical,10)
+                }
+                .padding(.horizontal)
+                .frame(width: UIScreen.main.bounds.width, alignment: .leading)
                 ForEach(0..<vcKredit.list.count){item in
                     KreditChecklistCell(title: vcKredit.list[item].kreditTitle, rupiah: vcKredit.list[item].jumlahPinjaman, selected: getSelectedStatus(listSelected: vc.listSelected, index: item), mainNav: false, index: item)
                         .onTapGesture {
@@ -60,7 +64,7 @@ struct ModalPilihKredit: View {
                     }
             }
         }
-        
+        .padding(.horizontal)
     }
     
 }
