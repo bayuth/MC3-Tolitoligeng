@@ -33,12 +33,14 @@ struct CustomTextEditor: View {
 			Text("Alamat").font(.footnote).fontWeight(.regular).foregroundColor(Color("labelColor"))
 			ZStack(alignment: .topLeading) {
 				if text.isEmpty {
-					Text("Placeholder Text")
+					Text("Alamat Sesuai KTP")
 						.foregroundColor(Color(UIColor.placeholderText))
 						.padding(.horizontal, 8)
 						.padding(.vertical, 12)
 				}
 				TextEditor(text: $text)
+					.accentColor(Color("tabBarColor"))
+					.font(.body)
 			}
 //			VStack {
 				

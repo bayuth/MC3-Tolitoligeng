@@ -45,7 +45,7 @@ struct FormView: View {
                 DoneKeyboard(text: $profileValue, hint: title, keyType: keyboardNum ? UIKeyboardType.numberPad : UIKeyboardType.default)
 					.foregroundColor(Color("formViewColor"))
 					.lineLimit(3)
-					.accentColor(Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1)))
+					.accentColor(Color("tabBarColor"))
                     .font(.body)
                     .disabled(isDisable)
 					.frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 20)
