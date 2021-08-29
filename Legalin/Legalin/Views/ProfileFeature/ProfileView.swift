@@ -31,7 +31,7 @@ struct ProfileView: View {
 	@State var showTanggalLahir = false
 	@State var tanggalLahir = Date()
 	@State var editIsDisabled:Bool = false
-	@State var editIsDisabledColor = Color(#colorLiteral(red: 0.06274509804, green: 0.2784313725, blue: 0.4117647059, alpha: 1))
+	@State var editIsDisabledColor = Color("tabBarColor")
 	
 	let dateFormatter: DateFormatter = {
 		let df = DateFormatter()
@@ -80,12 +80,12 @@ struct ProfileView: View {
 												Text("Pilih Tanggal Lahir")
 													.font(.body)
 													.fontWeight(.regular)
-													.foregroundColor(Color("tabBarColor"))
+													.foregroundColor(Color("labelColor"))
 											} else {
 												Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
 													.font(.body)
 													.fontWeight(.regular)
-													.foregroundColor(Color("tabBarColor"))
+													.foregroundColor(Color("labelColor"))
 											}
 										} else {
 											if Calendar.current.isDateInToday(profileController.pihak1TanggalLahir) {
@@ -115,9 +115,8 @@ struct ProfileView: View {
 											.padding(.horizontal)
 											.accentColor(Color("tabBarColor"))
 									}
-									FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable)
-									
-//									MultiLineFormView(alamat: $profileController.pihak1Alamat, isDisable: $texfieldDisable)
+//									FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable)
+									CustomTextEditor(textData: $profileController.pihak1Alamat, isDisableAddress: $texfieldDisable)
 									HStack {
 										FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: $texfieldDisable)
 										FormView(title: "RW", profileValue: $profileController.pihak1RW, keyboardNum: true, isDisable: $texfieldDisable)
@@ -133,6 +132,7 @@ struct ProfileView: View {
 										Button(action: {
 											shown.toggle()
 											editIsDisabled.toggle()
+											editIsDisabledColor = Color("tabBarColor")
 										}, label: {
 											ZStack{
 												RoundedRectangle(cornerRadius: 10)
@@ -159,6 +159,7 @@ struct ProfileView: View {
 					}
 					
 				}
+				.frame(maxWidth: UIScreen.main.bounds.width)
 				if shown {
 					AlertSave(shown: $shown, textField: $texfieldDisable)
 						.edgesIgnoringSafeArea(.all)
@@ -176,28 +177,23 @@ struct ProfileView: View {
 											})
 										
 										if(coreDataVM.pihak1.count != 0) {
-											Button("\(Image(systemName: "square.and.pencil"))", action: {
-												editIsDisabled = true
-												texfieldDisable = false
-											})
-											.foregroundColor(Color("tabBarColor"))
-											.disabled(editIsDisabled)
-											
-//											Image(systemName: "square.and.pencil")
-//												.foregroundColor(Color("tabBarColor"))
-//												.disabled(editIsDisabled)
-//												.onTapGesture {
-//													editIsDisabled = true
-//
-////													if editIsDisabled == true {
-////														Text("done")
-////
-////													}
-////													if showTanggalLahir {
-////														showTanggalLahir.toggle()
-////													}
-////													texfieldDisable = false
-//												}
+//											Button("\(Image(systemName: "square.and.pencil"))", action: {
+//												editIsDisabled = true
+//												texfieldDisable = false
+//											})
+//											.foregroundColor(editIsDisabledColor)
+//											.disabled(editIsDisabled)
+//											.onTapGesture {
+//												editIsDisabledColor = Color(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
+//											}
+											Image(systemName: "square.and.pencil")
+												.foregroundColor(editIsDisabledColor)
+												.disabled(editIsDisabled)
+												.onTapGesture {
+													editIsDisabled = true
+													texfieldDisable = false
+													editIsDisabledColor = Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1))
+												}
 										}
 									}
 			)

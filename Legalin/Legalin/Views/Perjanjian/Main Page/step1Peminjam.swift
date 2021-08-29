@@ -119,7 +119,7 @@ struct step1Peminjam: View {
 								VStack {
 //									FormView(title: "Alamat", profileValue: $perjanjianController.pihak1Alamat, keyboardNum: false, isDisable: $isDisable)
 //									MultiLineFormView(alamat: $perjanjianController.pihak1Alamat, isDisable: $isDisable, emptyAlamat: "Alamat")
-									CustomTextEditor(textData: $perjanjianController.pihak1Alamat)
+									CustomTextEditor(textData: $perjanjianController.pihak1Alamat, isDisableAddress: $isDisable)
 								}
 								HStack {
 									FormView(title: "RT", profileValue: $perjanjianController.pihak1RT, keyboardNum: true, isDisable: $isDisable)
@@ -132,14 +132,20 @@ struct step1Peminjam: View {
 									FormView(title: "Provinsi", profileValue: $perjanjianController.pihak1Provinsi, keyboardNum: false, isDisable: $isDisable)
 									FormView(title: "Pekerjaan", profileValue: $perjanjianController.pihak1Pekerjaan, keyboardNum: false, isDisable: $isDisable)
 									FormView(title: "Nomor Telepon", profileValue: $perjanjianController.pihak1NomorHP, keyboardNum: true, isDisable: $isDisable)
-									Text("Pastikan semua data yang anda masukan sudah benar dan sesuai dengan KTP anda")
+									Text("Pastikan semua data yang anda masukan sudah benar")
 										.font(.caption2)
 										.fontWeight(.regular)
-										.lineLimit(5)
+										.foregroundColor(Color("tabBarColor"))
+										.lineLimit(3)
+										.multilineTextAlignment(.leading)
+										.padding(.horizontal,20)
+									Text("dan sesuai dengan KTP anda")
+										.font(.caption2)
+										.fontWeight(.regular)
 										.foregroundColor(Color("tabBarColor"))
 										.multilineTextAlignment(.leading)
 										.padding(.bottom,10)
-                                        .padding(.horizontal)
+										.padding(.horizontal,20)
 									
 									NavigationLink(
                                         destination: step2Pemberi(masterPresentationMode: _presentationMode, step1Redirect: self.$step1Redirect),isActive: $step1Redirect,
