@@ -137,16 +137,20 @@ struct step2Pemberi: View {
 							FormView(title: "Nama Bank", profileValue: $perjanjianController.pihak2NamaBank, keyboardNum: false, isDisable: $isDisable)
 							FormView(title: "Nomor Rekening", profileValue: $perjanjianController.pihak2NomorRekening, keyboardNum: true, isDisable: $isDisable)
 							FormView(title: "Atas Nama Rekening", profileValue: $perjanjianController.pihak2AtasNamaRekening, keyboardNum: false, isDisable: $isDisable)
-							Text("Pastikan semua data yang anda masukan sudah benar dan sesuai dengan KTP anda")
+							Text("Pastikan semua data yang anda masukan sudah benar")
 								.font(.caption2)
 								.fontWeight(.regular)
 								.foregroundColor(Color("tabBarColor"))
 								.multilineTextAlignment(.leading)
-								.padding(.bottom,10)
 								.padding(.horizontal,20)
-//								.padding(.bottom,10)
-//                                .padding(.horizontal)
-                            
+							Text("dan sesuai dengan KTP dan dokumen anda")
+								.font(.caption2)
+								.fontWeight(.regular)
+								.foregroundColor(Color("tabBarColor"))
+								.multilineTextAlignment(.leading)
+								.padding(.bottom, 10)
+								.padding(.horizontal,20)
+
                             NavigationLink(
                                 destination: step3Detail(masterPresentationMode3 : _masterPresentationMode ,step1Redirect: self.$step1Redirect, step2Redirect: self.$step2Redirect),isActive: $step2Redirect,
                                 label: {

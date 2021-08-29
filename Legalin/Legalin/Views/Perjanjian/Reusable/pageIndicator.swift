@@ -71,7 +71,7 @@ struct pageIndicator: View {
                                 }
 								Text("\(progressDetail)")
 									.font(.subheadline)
-									.lineLimit(2)
+									.lineLimit(3)
 									.minimumScaleFactor(0.79)
 									.foregroundColor(Color("labelColor"))
                                 
