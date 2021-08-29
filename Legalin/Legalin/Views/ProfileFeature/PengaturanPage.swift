@@ -12,17 +12,16 @@ struct PengaturanPage: View {
 	@Environment(\.presentationMode) var pengaturanMode: Binding<PresentationMode>
 	
 	var body: some View {
-		NavigationView {
-			VStack(alignment: .leading) {
+			VStack() {
 				NavigationLink(
 					destination: KebijakanPrivasiPage(),
 					label: {
 						ButtonKebijakanPrivasi().foregroundColor(.black)
 					})
+					.padding(.vertical)
+				Spacer()
 			}
 //			.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-			.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
-		}
 		.navigationBarTitleDisplayMode(.inline)
 		.navigationBarBackButtonHidden(true)
 		.navigationBarTitle("Pengaturan")

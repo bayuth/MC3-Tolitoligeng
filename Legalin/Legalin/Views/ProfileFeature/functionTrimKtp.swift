@@ -51,7 +51,7 @@ class functionTrimKtp: ObservableObject {
 				let alamatFromKtp = outputText.slice(from: "Alamat", to: "RT/RW")
 				print(alamatFromKtp)
 				
-				var rtRwFromKtp = outputText.slice(from: "RT/RW", to: "Kel")
+				var rtRwFromKtp = outputText.slice(from: "RT/RW", to: "Kel/Desa")
 				var rtBersih = ""
 				var rwBersih = ""
 				if rtRwFromKtp?.contains(": ") == true {
@@ -78,7 +78,7 @@ class functionTrimKtp: ObservableObject {
 						print(rwBersih)
 					}
 				}
-				if rtRwFromKtp?.contains(":") == true {
+				else if rtRwFromKtp?.contains(":") == true {
 					rtRwFromKtp = outputText.components(separatedBy: ":").joined(separator: "")
 					print(rtRwFromKtp)
 					if let rtIndex = rtRwFromKtp?.firstIndex(of: "/") {
@@ -102,7 +102,7 @@ class functionTrimKtp: ObservableObject {
 						print(rwBersih)
 					}
 				}
-				if rtRwFromKtp?.contains(" ") == true {
+				else if rtRwFromKtp?.contains(" ") == true {
 					rtRwFromKtp = outputText.components(separatedBy: " ").joined(separator: "")
 					print(rtRwFromKtp)
 					if let rtIndex = rtRwFromKtp?.firstIndex(of: "/") {
@@ -127,7 +127,7 @@ class functionTrimKtp: ObservableObject {
 					}
 				}
 				else {
-					rtRwFromKtp = outputText.slice(from: "RT/RW", to: "Kel")
+					rtRwFromKtp = outputText.slice(from: "RT/RW", to: "Kel/Desa")
 					print(rtRwFromKtp)
 					if let rtIndex = rtRwFromKtp?.firstIndex(of: "/") {
 						let rt = rtRwFromKtp!.prefix(upTo: rtIndex)

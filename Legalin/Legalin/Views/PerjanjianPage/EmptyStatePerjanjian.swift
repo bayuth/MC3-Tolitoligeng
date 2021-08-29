@@ -12,13 +12,15 @@ struct EmptyStatePerjanjian: View {
         
         VStack(alignment: .center){
             Image("Agreement Empty")
+				.resizable()
+				.aspectRatio(contentMode: .fit)
             Text("Tidak Ada Perjanjian")
                 .font(.headline)
                 .fontWeight(.semibold)
                 .padding(.top, 48)
                 .padding(.bottom, 8)
             
-            Text("Tambah Perjanjian baru untuk membuat surat perjanjian hutan")
+            Text("Tambah Perjanjian baru untuk membuat surat perjanjian hutang")
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 57)
                 
