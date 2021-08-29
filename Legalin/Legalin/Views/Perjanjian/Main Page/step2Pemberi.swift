@@ -141,6 +141,7 @@ struct step2Pemberi: View {
 								.font(.caption2)
 								.fontWeight(.regular)
 								.foregroundColor(Color("tabBarColor"))
+								.lineLimit(3)
 								.multilineTextAlignment(.leading)
 								.padding(.horizontal,20)
 							Text("dan sesuai dengan KTP dan dokumen anda")

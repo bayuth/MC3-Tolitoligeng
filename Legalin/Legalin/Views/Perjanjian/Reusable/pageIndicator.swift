@@ -89,7 +89,7 @@ struct pageIndicator: View {
             )
         }
 //		.frame(width: UIScreen.main.bounds.width, height: 50, maxHeight: <#T##CGFloat?#>, alignment: .leading)
-		.frame(maxWidth: UIScreen.main.bounds.width, minHeight: 50, idealHeight: 50, maxHeight: 65)
+		.frame(maxWidth: UIScreen.main.bounds.width, minHeight: 50, idealHeight: 50, maxHeight: 50)
     }
 }
 
