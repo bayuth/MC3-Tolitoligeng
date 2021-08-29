@@ -119,7 +119,7 @@ struct step1Peminjam: View {
 								VStack {
 //									FormView(title: "Alamat", profileValue: $perjanjianController.pihak1Alamat, keyboardNum: false, isDisable: $isDisable)
 //									MultiLineFormView(alamat: $perjanjianController.pihak1Alamat, isDisable: $isDisable, emptyAlamat: "Alamat")
-									CustomTextEditor(textData: $perjanjianController.pihak1Alamat)
+									CustomTextEditor(textData: $perjanjianController.pihak1Alamat, isDisableAddress: $isDisable)
 								}
 								HStack {
 									FormView(title: "RT", profileValue: $perjanjianController.pihak1RT, keyboardNum: true, isDisable: $isDisable)

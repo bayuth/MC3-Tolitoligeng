@@ -80,12 +80,12 @@ struct ProfileView: View {
 												Text("Pilih Tanggal Lahir")
 													.font(.body)
 													.fontWeight(.regular)
-													.foregroundColor(Color("tabBarColor"))
+													.foregroundColor(Color("labelColor"))
 											} else {
 												Text(profileController.pihak1TanggalLahir, formatter: dateFormatter)
 													.font(.body)
 													.fontWeight(.regular)
-													.foregroundColor(Color("tabBarColor"))
+													.foregroundColor(Color("labelColor"))
 											}
 										} else {
 											if Calendar.current.isDateInToday(profileController.pihak1TanggalLahir) {
@@ -115,9 +115,8 @@ struct ProfileView: View {
 											.padding(.horizontal)
 											.accentColor(Color("tabBarColor"))
 									}
-									FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable)
-									
-//									MultiLineFormView(alamat: $profileController.pihak1Alamat, isDisable: $texfieldDisable)
+//									FormView(title: "Alamat", profileValue: $profileController.pihak1Alamat, keyboardNum: false, isDisable: $texfieldDisable)
+									CustomTextEditor(textData: $profileController.pihak1Alamat, isDisableAddress: $texfieldDisable)
 									HStack {
 										FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: $texfieldDisable)
 										FormView(title: "RW", profileValue: $profileController.pihak1RW, keyboardNum: true, isDisable: $texfieldDisable)
@@ -159,6 +158,7 @@ struct ProfileView: View {
 					}
 					
 				}
+				.frame(maxWidth: UIScreen.main.bounds.width)
 				if shown {
 					AlertSave(shown: $shown, textField: $texfieldDisable)
 						.edgesIgnoringSafeArea(.all)

@@ -21,28 +21,64 @@ struct textEditorPlaceholder: View {
 struct CustomTextEditor: View {
 	
 	@Binding var text:String
+	@Binding var isDisable:Bool
 	@State var placeHolder = "Alamat"
 	
-	init(textData:Binding<String>) {
+	init(textData:Binding<String>, isDisableAddress:Binding<Bool>) {
 			 UITextView.appearance().backgroundColor = .clear
 		_text = textData
+		_isDisable = isDisableAddress
 		 }
 	
 	var body: some View {
-		VStack(alignment: .leading) {
-			Text("Alamat").font(.footnote).fontWeight(.regular).foregroundColor(Color("labelColor"))
-			ZStack(alignment: .topLeading) {
-				if text.isEmpty {
-					Text("Alamat Sesuai KTP")
-						.foregroundColor(Color(UIColor.placeholderText))
-						.padding(.horizontal, 8)
-						.padding(.vertical, 12)
+		if isDisable {
+			VStack(alignment: .leading) {
+				Text("Alamat").font(.footnote).fontWeight(.regular).foregroundColor(Color("labelColor"))
+				ZStack(alignment: .topLeading) {
+					if text.isEmpty {
+						Text("Alamat Sesuai KTP")
+							.foregroundColor(Color("labelColor"))
+							.padding(.horizontal, 8)
+							.padding(.vertical, 12)
+					}
+					TextEditor(text: $text)
+						.disabled(isDisable)
+						.foregroundColor(Color("labelColor"))
+						.accentColor(Color("tabBarColor"))
+						.font(.body)
 				}
-				TextEditor(text: $text)
-					.foregroundColor(Color("textColor"))
-					.accentColor(Color("tabBarColor"))
-					.font(.body)
+				.foregroundColor(.blue)
+	//			.frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 50)
+				Divider()
 			}
+			.frame(maxWidth: UIScreen.main.bounds.width, minHeight: 100)
+			.padding(.bottom)
+			.padding(.horizontal)
+		} else {
+			VStack(alignment: .leading) {
+				Text("Alamat").font(.footnote).fontWeight(.regular).foregroundColor(Color("labelColor"))
+				ZStack(alignment: .topLeading) {
+					if text.isEmpty {
+						Text("Alamat Sesuai KTP")
+							.foregroundColor(Color("labelColor"))
+							.padding(.horizontal, 8)
+							.padding(.vertical, 12)
+					}
+					TextEditor(text: $text)
+						.disabled(isDisable)
+						.foregroundColor(Color("textColor"))
+						.accentColor(Color("tabBarColor"))
+						.font(.body)
+				}
+				.foregroundColor(.blue)
+	//			.frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 50)
+				Divider()
+			}
+			.frame(maxWidth: UIScreen.main.bounds.width, minHeight: 100)
+			.padding(.bottom)
+			.padding(.horizontal)
+		}
+		
 //			VStack {
 				
 //				TextEditor(text: $text)
@@ -92,13 +128,6 @@ struct CustomTextEditor: View {
 //						}
 //					})
 //			}
-			.foregroundColor(.blue)
-//			.frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 50)
-			Divider()
-		}
-		.frame(maxWidth: UIScreen.main.bounds.width)
-		.padding(.bottom)
-		.padding(.horizontal)
 	}
 }
 
