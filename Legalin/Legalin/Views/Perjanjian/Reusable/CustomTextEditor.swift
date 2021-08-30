@@ -23,6 +23,7 @@ struct CustomTextEditor: View {
 	@Binding var text:String
 	@Binding var isDisable:Bool
 	@State var placeHolder = "Alamat"
+	@ObservedObject var perjanjianController: PerjanjianController = .shared
 	
 	init(textData:Binding<String>, isDisableAddress:Binding<Bool>) {
 			 UITextView.appearance().backgroundColor = .clear
@@ -61,6 +62,7 @@ struct CustomTextEditor: View {
 					if text.isEmpty {
 						Text("Alamat Sesuai KTP")
 							.foregroundColor(Color("labelColor"))
+							.fontWeight(.regular)
 							.padding(.horizontal, 8)
 							.padding(.vertical, 12)
 					}
@@ -69,66 +71,26 @@ struct CustomTextEditor: View {
 						.foregroundColor(Color("textColor"))
 						.accentColor(Color("tabBarColor"))
 						.font(.body)
+						.background(Color("emptyAlertColor").opacity(getRedIndicator() ? 0.15 : 0.0))
 				}
 				.foregroundColor(.blue)
 	//			.frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 50)
 				Divider()
 			}
-			.frame(maxWidth: UIScreen.main.bounds.width, minHeight: 100)
+			.frame(maxWidth: UIScreen.main.bounds.width, minHeight: 100, maxHeight: 120)
 			.padding(.bottom)
 			.padding(.horizontal)
 		}
-		
-//			VStack {
-				
-//				TextEditor(text: $text)
-//					.background(Color(.blue))
-//					.padding(.horizontal, -5)
-//					.font(.body)
-//					.foregroundColor(text == placeHolder ? Color("labelColor") : .primary)
-//					.onAppear(perform: {
-//						if text == "" {
-//							text = placeHolder
-//						}
-//						else {
-//							text = text
-//						}
-//						NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notif in
-//							if text == "" {
-//								text = placeHolder
-//							}
-//							else if text == placeHolder {
-//								text = ""
-//							}
-//
-//						}
-//						NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { notif in
-//							if text == "" {
-//								text = placeHolder
-//							}
-//						}
-//
-//					})
-					
-//					.onTapGesture {
-//						if text == placeHolder {
-//							text = ""
-//						}
-////						else if text == "" {
-////							text = placeHolder
-////						}
-////						else {
-////							text = text
-////						}
-//					}
-					
-//					.onChange(of: text, perform: { value in
-//						if text == "" {
-//							text = placeHolder
-//						}
-//					})
-//			}
 	}
+	
+	func getRedIndicator() -> Bool{
+		if ((text == "") && (perjanjianController.endButtonPressed == true)){
+			return true
+		} else {
+			return false
+		}
+	}
+	
 }
 
 //struct CustomTextEditor_Previews: PreviewProvider {
