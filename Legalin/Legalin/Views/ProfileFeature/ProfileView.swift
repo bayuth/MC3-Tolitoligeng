@@ -148,16 +148,9 @@ struct ProfileView: View {
 										.padding(.bottom)
 									}
 								}
-	//							.padding(.horizontal)
-								
-	//							if debugPopUp {
-	//								AlertSave(shown: $shown, textField: $texfieldDisable)
-	//									.edgesIgnoringSafeArea(.all)
-	//							}
 							}
 							Spacer()
 						}
-	//					.background(shown ? Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.5)) : Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)))
 						
 					}
 					
