@@ -49,21 +49,24 @@ struct ProfileView: View {
 					if (coreDataVM.pihak1.count == 0) {
 						Spacer()
 						Image("Profile Empty")
-							.resizable()
-							.aspectRatio(contentMode: .fit)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: 280, maxHeight: 280)
 						Text("Belum Ada Profil")
 							.font(.headline).fontWeight(.bold).padding(.top, 10)
 						Text("Buat profil baru untuk \n mempermudah membuat perjanjian")
 							.font(.body).padding(.top,-15)
 							
 							.multilineTextAlignment(.center).padding()
+                        Spacer()
 						
 						NavigationLink(
 							destination: NewProfileView(),
 							label: {
 								ButtonNext(text: "Buat Profil", isDataComplete: true)
 							})
-						Spacer()
+                        Spacer()
+						
 					}
 					
 					else {

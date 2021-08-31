@@ -11,6 +11,9 @@ struct EmptyPDF: View {
     var body: some View {
         VStack{
             Image("Letter Empty")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(maxWidth: 280, maxHeight: 280)
             Text("Surat Belum Terbuat")
                 .font(.headline)
                 .foregroundColor(Color("textColor"))
