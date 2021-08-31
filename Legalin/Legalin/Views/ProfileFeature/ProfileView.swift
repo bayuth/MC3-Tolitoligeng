@@ -49,21 +49,24 @@ struct ProfileView: View {
 					if (coreDataVM.pihak1.count == 0) {
 						Spacer()
 						Image("Profile Empty")
-							.resizable()
-							.aspectRatio(contentMode: .fit)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: 280, maxHeight: 280)
 						Text("Belum Ada Profil")
 							.font(.headline).fontWeight(.bold).padding(.top, 10)
 						Text("Buat profil baru untuk \n mempermudah membuat perjanjian")
 							.font(.body).padding(.top,-15)
 							
 							.multilineTextAlignment(.center).padding()
+                        Spacer()
 						
 						NavigationLink(
 							destination: NewProfileView(),
 							label: {
 								ButtonNext(text: "Buat Profil", isDataComplete: true)
 							})
-						Spacer()
+                        Spacer()
+						
 					}
 					
 					else {
@@ -145,16 +148,9 @@ struct ProfileView: View {
 										.padding(.bottom)
 									}
 								}
-	//							.padding(.horizontal)
-								
-	//							if debugPopUp {
-	//								AlertSave(shown: $shown, textField: $texfieldDisable)
-	//									.edgesIgnoringSafeArea(.all)
-	//							}
 							}
 							Spacer()
 						}
-	//					.background(shown ? Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.5)) : Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)))
 						
 					}
 					

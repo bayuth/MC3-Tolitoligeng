@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct KreditView: View {
-    var bayu = 0
     @ObservedObject var kreditData = ListKreditVM()
     @ObservedObject var coreData :CoreDataViewModel = .shared
     

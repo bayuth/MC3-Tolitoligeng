@@ -48,6 +48,7 @@ struct DetailPerjanjian: View {
         .navigationBarItems(leading:
 											Button(action: {
                                                 perjanjianController.actionState = 0
+                                                presentationMode.wrappedValue.dismiss()
    								}, label: {
    									Image(systemName: "chevron.left")
    										.foregroundColor(.white)
