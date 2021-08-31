@@ -12,6 +12,7 @@ struct inputTextViewCell: View {
     @State var title: String
     @Binding var textViewValue: String
     @State var keyboardNum: Bool
+    var type: Int
     @ObservedObject var perjanjianController: PerjanjianController = .shared
     
     var emptyStateString: String
@@ -40,8 +41,16 @@ struct inputTextViewCell: View {
         VStack(alignment: .leading) {
             
             Text(title).font(.footnote).fontWeight(.regular).foregroundColor(Color("labelColor")).padding(.horizontal)
-            //                TextField(title, text: $profileValue).font(.body).foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))).padding(.horizontal)
+         
             VStack{
+                
+                if (type == 0) {
+                    TFCurrencyField(urlString: $textViewValue, onEndEditing: {
+                        Double(textViewValue.digits)?.toRupiahString()
+                    }, placeHolderText: title)
+                    .padding(.horizontal)
+                }
+                
                 DoneKeyboard(text: $textViewValue, hint: emptyStateString, keyType: keyboardNum ? UIKeyboardType.numberPad : UIKeyboardType.default, onEndEditing: {perjanjianController.setNextButtonState()},clearOnStartEdit: false)
                     .foregroundColor(Color("formViewColor"))
                     .lineLimit(3)
