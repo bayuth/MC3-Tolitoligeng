@@ -133,7 +133,7 @@ class InvoiceComposer: NSObject {
             HTMLContent = HTMLContent.replacingOccurrences(of: "#NAMA_BARANG#", with: perjanjianController.namaBarang)
             HTMLContent = HTMLContent.replacingOccurrences(of: "#NOMOR_SERI#", with: perjanjianController.nomorSeri)
             HTMLContent = HTMLContent.replacingOccurrences(of: "#WARNA_BARANG#", with: perjanjianController.warnaBarang)
-            HTMLContent = HTMLContent.replacingOccurrences(of: "#AGUNAN_ANGKA#", with: "\(String(describing: Double(perjanjianController.hargaBarang)?.toRupiahString()))")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#AGUNAN_ANGKA#", with: "\(String(describing: getHargaAgunan().toRupiahString()))")
             HTMLContent = HTMLContent.replacingOccurrences(of: "#AGUNAN_HURUF#", with: perjanjianController.convertNumToWord(bil: Double(perjanjianController.hargaBarang) ?? 0))
             
             //Kantor Pengadilan
@@ -147,6 +147,14 @@ class InvoiceComposer: NSObject {
         }
         
         return nil
+    }
+    
+    func getHargaAgunan() -> Double {
+        if perjanjianController.hargaBarang == "" {
+            return 0
+        } else {
+            return Double(perjanjianController.hargaBarang) ?? 0
+        }
     }
     
     func generateTotalBunga() -> Double {
