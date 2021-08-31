@@ -14,6 +14,7 @@ struct ModalAddKredit: View {
     @ObservedObject private var kreditData = ListKreditVM()
     @ObservedObject private var perjanjianController: PerjanjianController = .shared
     @State private var isDisable:Bool = false
+    @State private var isDisableNext:Bool = false
     
     var body: some View {
         NavigationView {
@@ -26,12 +27,9 @@ struct ModalAddKredit: View {
                     SliderViewWithForm(sliderValue: $kreditData.object.tenor, text1: "Tenor Maksimal Maksimal", text2: "24 Bulan", title: "Tenor", type: 2).padding(.horizontal, 16)
                 }
                 if kreditData.hasZeroData(){
-                    NavigationLink(
-                        destination: UlasanKredit(presentationMode: _masterPresentationModalAdd, dataUlasan: kreditData),
-                        label: {
-                            Text("Simulasikan").font(.body).fontWeight(.bold).foregroundColor(.white).multilineTextAlignment(.center).padding(.vertical,15).padding(.horizontal,120).background(Color.gray).cornerRadius(10)
-                        }
-                    ).padding(.top,10).padding(.bottom, 16)
+                    VStack{
+                    Text("Simulasikan").font(.body).fontWeight(.bold).foregroundColor(.white).multilineTextAlignment(.center).padding(.vertical,15).padding(.horizontal,120).background(Color.gray).cornerRadius(10)
+                    }.padding(.top,10).padding(.bottom, 16)
                 }else{
                     NavigationLink(
                         destination: UlasanKredit(presentationMode: _masterPresentationModalAdd, dataUlasan: kreditData),

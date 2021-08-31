@@ -35,7 +35,7 @@ struct UlasanKredit: View {
                                 .font(.footnote)
                                 .foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)))
                                 .padding(.bottom, 1)
-                            Text("\(dataUlasan.object.bunga) %".capitalized)
+                            Text("\(String(format: "%.2f", dataUlasan.object.bunga)) %".capitalized)
                         }
                         .padding(.bottom, 8)
                         
