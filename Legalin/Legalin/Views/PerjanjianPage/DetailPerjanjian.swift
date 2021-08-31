@@ -76,6 +76,7 @@ struct DetailPerjanjian: View {
                                     .onChange(of: deleteSuccess, perform: { value in
                                         print("Dismissed!")
                                         perjanjianController.deletePinjaman(pinjaman: perjanjianController.detailPinjaman!)
+                                        presentationMode.wrappedValue.dismiss()
                                         perjanjianController.actionState = 0
                                     })
                                 }
