@@ -36,6 +36,11 @@ struct step1Peminjam: View {
 				VStack(alignment: .leading){
 					
 					pageIndicator(progressNumber: 1, progressName: "Pihak 1 - Peminjam", progressDetail: "Berikutnya: Pihak 2 - Pemberi Pinjaman").padding(.bottom, 15).padding(.top,25)
+                        .onAppear{
+                            if perjanjianController.sender == "detailPage"{
+                                perjanjianController.actionState = 0
+                            }
+                        }
 					
 					ScrollView(showsIndicators: false){
 						VStack(alignment: .leading) {
@@ -185,7 +190,7 @@ struct step1Peminjam: View {
                             }
                             
                             if (perjanjianController.sender == "detailPage"){
-                                perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat.draft)
+                                perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat(rawValue: perjanjianController.statusSurat) ?? StatusSurat.draft)
                             }
                             
 							self.presentationMode.wrappedValue.dismiss()

@@ -171,7 +171,7 @@ struct step4Agunan: View {
                         }
                         
                         if (perjanjianController.sender == "detailPage"){
-                            perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat.draft)
+                            perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat(rawValue: perjanjianController.statusSurat) ?? StatusSurat.draft)
                         }
                         
                         self.masterPresentationMode4.wrappedValue.dismiss()

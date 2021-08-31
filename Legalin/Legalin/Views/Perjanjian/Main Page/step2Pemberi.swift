@@ -199,7 +199,7 @@ struct step2Pemberi: View {
                                 }
                                 
                                 if (perjanjianController.sender == "detailPage"){
-                                    perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat.draft)
+                                    perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat(rawValue: perjanjianController.statusSurat) ?? StatusSurat.draft)
                                 }
                                 
                                 self.masterPresentationMode.wrappedValue.dismiss()

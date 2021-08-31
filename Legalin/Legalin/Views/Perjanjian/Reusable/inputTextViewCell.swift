@@ -49,7 +49,8 @@ struct inputTextViewCell: View {
                         Double(textViewValue.digits)?.toRupiahString()
                     }, placeHolderText: title)
                     .padding(.horizontal)
-                }
+                    Divider()
+                } else {
                 
                 DoneKeyboard(text: $textViewValue, hint: emptyStateString, keyType: keyboardNum ? UIKeyboardType.numberPad : UIKeyboardType.default, onEndEditing: {perjanjianController.setNextButtonState()},clearOnStartEdit: false)
                     .foregroundColor(Color("formViewColor"))
@@ -60,6 +61,7 @@ struct inputTextViewCell: View {
                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: 20)
                     .padding(.horizontal)
                 Divider()
+                }
                 
             }.background(Color("emptyAlertColor").opacity(getRedIndicator() ? 0.15 : 0.0))
             

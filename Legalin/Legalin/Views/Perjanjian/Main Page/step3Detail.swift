@@ -97,17 +97,20 @@ struct step3Detail: View {
 								.accentColor(Color("tabBarColor"))
                                 .datePickerStyle(GraphicalDatePickerStyle())
                         }
-                    }
+                    }.zIndex(0.9)
+                    
+                    VStack(alignment: .leading){
                     ButtonBordered(icon: "percent", titleButton: "Lihat Simulasi Kredit", action: {
                         perjanjianController.modalSimulasiKredit.toggle()
                     }).padding([.top, .leading])
+                    .zIndex(1.0)
                     NavigationLink(
                         destination: step4Agunan(masterPresentationMode4 : _masterPresentationMode3 ,step1Redirect: $step1Redirect ,step2Redirect: $step2Redirect, step3Redirect: $step3Redirect),isActive: $step3Redirect,
                         label: {
                             ButtonNext(text: "Lanjutkan", isDataComplete: true).padding(.bottom, 16).padding(.top, 16)
                         }
                     ).simultaneousGesture(TapGesture().onEnded{perjanjianController.setNextButtonState()})
-                    
+                    }
                 }
                 .navigationBarTitle("Perjanjian Baru", displayMode: .inline)
                 .navigationBarBackButtonHidden(true)
@@ -139,7 +142,7 @@ struct step3Detail: View {
                             }
                             
                             if (perjanjianController.sender == "detailPage"){
-                                perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat.draft)
+                                perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat(rawValue: perjanjianController.statusSurat) ?? StatusSurat.draft)
                             }
                             
                             self.masterPresentationMode3.wrappedValue.dismiss()
