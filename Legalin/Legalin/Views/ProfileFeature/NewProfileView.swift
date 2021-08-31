@@ -123,8 +123,10 @@ struct NewProfileView: View {
 							CustomTextEditor(textData: $profileController.pihak1Alamat, isDisableAddress: $isDisable)
 							HStack {
 								FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: $isDisable)
+									.frame(maxWidth: UIScreen.main.bounds.width / 2)
 								FormView(title: "RW", profileValue: $profileController.pihak1RW, keyboardNum: true, isDisable: $isDisable)
-							}
+									.frame(maxWidth: UIScreen.main.bounds.width / 2)
+							}.frame(maxWidth: UIScreen.main.bounds.width)
 							FormView(title: "Kelurahan/Desa", profileValue: $profileController.pihak1Kelurahan, keyboardNum: false, isDisable: $isDisable)
 							FormView(title: "Kecamatan", profileValue: $profileController.pihak1Kecamatan, keyboardNum: false, isDisable: $isDisable)
 							FormView(title: "Kabupaten/Kota", profileValue: $profileController.pihak1Kota, keyboardNum: false, isDisable: $isDisable)
@@ -156,12 +158,15 @@ struct NewProfileView: View {
 					}
 					
 				}
+				.frame(maxWidth: UIScreen.main.bounds.width)
 				if shown {
 					AlertSave(shown: $shown, textField: $textfieldDisable)
 				}
 			}
 //			.background(shown ? Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.5)) : Color(#colorLiteral(red: 0.9607843137, green: 0.968627451, blue: 0.9725490196, alpha: 0)))
 		}
+		.clipped()
+		.frame(maxWidth: UIScreen.main.bounds.width)
 		.navigationBarTitleDisplayMode(.inline)
 		.navigationBarBackButtonHidden(true)
 		.navigationBarItems(leading:

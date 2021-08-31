@@ -160,6 +160,7 @@ struct step2Pemberi: View {
 						}
 					}
 				}.padding(.top,10)
+				.frame(maxWidth: UIScreen.main.bounds.width)
 			}
 			
 			
