@@ -13,6 +13,7 @@ struct KreditView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @State private var isPresented = false
+    @State var actionState: Int? = 0
     
     var body: some View {
         NavigationView{
@@ -22,24 +23,23 @@ struct KreditView: View {
                 }else {
                     List{
                         ForEach(coreData.listKredit, id:\.uuid){ item in
+                            
                             ZStack{
                                 NavigationLink(
-                                    destination: DetailKredit(kredit: item, index: getIndex(item: item), onDelete: {
-                                        kreditData.deleteKredit(index: getIndex(item: item))
-                                    }),
+                                    destination: DetailKredit(kredit: item, onDelete: {
+                                        kreditData.fillListDone()
+                                    }, actionState: $actionState),
+                                    tag: 4, selection: $actionState,
                                     label: {
-                                        EmptyView()
+                                        KreditCardView(item: item)
                                     }
                                 )
                                 .opacity(0)
-                                KreditCardView(item:
-                                item
-                                )
+                                KreditCardView(item:item)
+                                    .simultaneousGesture(TapGesture().onEnded{
+                                        actionState = 4
+                                    })
                             }
-                                .foregroundColor(.black)
-                                .simultaneousGesture(TapGesture().onEnded{
-                                    kreditData.object = kreditData.list[getIndex(item: item)]
-                                })
                         }.onDelete(perform: deleteKredit)
                     }.listStyle(PlainListStyle())
                 }
