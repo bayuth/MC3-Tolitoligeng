@@ -11,7 +11,20 @@ import SwiftUI
 struct LegalinApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            TestCoreDataView()
+//            ModalPengadilanNegeri()
+//            ModalMetodePembayaran()
+//            ModalPengadilanNegeri()
+//            ContentView()
+//            inputToModal(title: "Test", textViewValue: "Test")
+//            step4Agunan()
+//			ProfileView()
+//            step3Detail()
+//            GeneratePDF()
+//			step1Peminjam()
+//            TesNavigation()
+			MainApplicationPage()
+//			CustomTextEditor(text: "")
         }
     }
 }
