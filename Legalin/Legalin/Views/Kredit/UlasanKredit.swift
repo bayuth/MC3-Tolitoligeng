@@ -88,6 +88,7 @@ struct UlasanKredit: View {
                 }
                 .padding(.bottom, 8)
                 .padding(.horizontal)
+                /*
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
                     
@@ -103,6 +104,7 @@ struct UlasanKredit: View {
                         )
                 }
                 .padding(.horizontal)
+ */
             }
             
             

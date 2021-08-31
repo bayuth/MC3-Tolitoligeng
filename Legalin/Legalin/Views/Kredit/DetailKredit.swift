@@ -76,6 +76,7 @@ struct DetailKredit: View {
             )
             .padding()
             Spacer()
+            /*
             Button(action: {
                 presentationMode.wrappedValue.dismiss()
                 actionState = 0
@@ -90,6 +91,7 @@ struct DetailKredit: View {
             }
             .padding(.bottom)
             .padding(.horizontal)
+            */
         }
         .onAppear(perform: {
             setupAppearance()
