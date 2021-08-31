@@ -40,6 +40,9 @@ struct MainApplicationPage: View {
                         
                     }
                     .tag(2)
+                    .onAppear{
+                        perjanjianController.removeRedIndicatorProfile()
+                    }
                 ProfileView()
                     .tabItem {
                         Text("Profile")
