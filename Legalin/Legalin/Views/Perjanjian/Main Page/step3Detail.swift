@@ -20,9 +20,9 @@ struct step3Detail: View {
     @State private var showPickerJatuhTempo = false
     @State private var showPickerTandaTangan = false
     
-    @State private var title = "Metode Bayaran"
-    @State private var title1 = "Pilih Tanggal"
-    @State private var title2 = "Pengadilan Negeri"
+    @State private var metodeBayaran = "Metode Bayaran"
+    @State private var pilihTanggal = "Pilih Tanggal"
+    @State private var pengadilanNegeri = "Pengadilan Negeri"
     @State private var title3 = "Pilih Tanggal"
     @State private var modalPkTitle = "Pilih Kredit"
     

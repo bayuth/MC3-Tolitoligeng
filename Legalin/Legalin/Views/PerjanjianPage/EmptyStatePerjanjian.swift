@@ -14,6 +14,7 @@ struct EmptyStatePerjanjian: View {
             Image("Agreement Empty")
 				.resizable()
 				.aspectRatio(contentMode: .fit)
+                .frame(maxWidth: 280, maxHeight: 280)
             Text("Tidak Ada Perjanjian")
                 .font(.headline)
                 .fontWeight(.semibold)
@@ -25,6 +26,7 @@ struct EmptyStatePerjanjian: View {
                 .padding(.horizontal, 57)
                 
         }
+        
         
     }
 }
