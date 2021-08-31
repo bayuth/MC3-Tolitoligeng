@@ -48,12 +48,13 @@ struct FormView: View {
                         .accentColor(Color("tabBarColor"))
                         .font(.body)
                         .disabled(isDisable)
-                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: 20)
+						.fixedSize(horizontal: false, vertical: true)
+						.frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 20)
+						.clipped()
                         .padding(.horizontal)
                     Divider()
                     
                 }.background(Color("emptyAlertColor").opacity(getRedIndicator() ? 0.15 : 0.0))
-                
             }
             .padding(.bottom)
         }

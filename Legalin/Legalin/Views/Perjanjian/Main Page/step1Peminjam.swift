@@ -123,8 +123,10 @@ struct step1Peminjam: View {
 								}
 								HStack {
 									FormView(title: "RT", profileValue: $perjanjianController.pihak1RT, keyboardNum: true, isDisable: $isDisable)
+										.frame(maxWidth: UIScreen.main.bounds.width/2)
 									FormView(title: "RW", profileValue: $perjanjianController.pihak1RW, keyboardNum: true, isDisable: $isDisable)
-								}
+										.frame(maxWidth: UIScreen.main.bounds.width/2)
+								}.frame(maxWidth: UIScreen.main.bounds.width)
 								FormView(title: "Kelurahan/Desa", profileValue: $perjanjianController.pihak1Kelurahan, keyboardNum: false, isDisable: $isDisable)
 								FormView(title: "Kecamatan", profileValue: $perjanjianController.pihak1Kecamatan, keyboardNum: false, isDisable: $isDisable)
 								FormView(title: "Kabupaten/Kota", profileValue: $perjanjianController.pihak1Kota, keyboardNum: false, isDisable: $isDisable)
@@ -155,6 +157,7 @@ struct step1Peminjam: View {
 								}
 							}
 						}.padding(.top,10)
+						.frame(maxWidth: UIScreen.main.bounds.width)
 					}
 					
 				   

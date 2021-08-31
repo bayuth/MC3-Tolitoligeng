@@ -77,7 +77,6 @@ struct ProfileView: View {
 									FormView(title: "Nama", profileValue: $profileController.pihak1Nama, keyboardNum: false, isDisable: $texfieldDisable)
 									VStack(alignment: .leading){
 										Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color("labelColor"))
-//										DatePickerView(profileDate: $profileController.pihak1TanggalLahir, isDisable: $texfieldDisable)
 										if texfieldDisable {
 											if Calendar.current.isDateInToday(profileController.pihak1TanggalLahir) {
 												Text("Pilih Tanggal Lahir")
@@ -122,8 +121,12 @@ struct ProfileView: View {
 									CustomTextEditor(textData: $profileController.pihak1Alamat, isDisableAddress: $texfieldDisable)
 									HStack {
 										FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: $texfieldDisable)
+											.lineLimit(2)
+											.frame(maxWidth: UIScreen.main.bounds.width/2)
 										FormView(title: "RW", profileValue: $profileController.pihak1RW, keyboardNum: true, isDisable: $texfieldDisable)
-									}
+											.lineLimit(2)
+											.frame(maxWidth: UIScreen.main.bounds.width/2)
+									}.frame(maxWidth: UIScreen.main.bounds.width)
 									FormView(title: "Kelurahan/Desa", profileValue: $profileController.pihak1Kelurahan, keyboardNum: false, isDisable: $texfieldDisable)
 									FormView(title: "Kecamatan", profileValue: $profileController.pihak1Kecamatan, keyboardNum: false, isDisable: $texfieldDisable)
 									FormView(title: "Kabupaten/Kota", profileValue: $profileController.pihak1Kota, keyboardNum: false, isDisable: $texfieldDisable)
@@ -148,6 +151,13 @@ struct ProfileView: View {
 										.padding(.bottom)
 									}
 								}
+								.frame(maxWidth: UIScreen.main.bounds.width)
+	//							.padding(.horizontal)
+								
+	//							if debugPopUp {
+	//								AlertSave(shown: $shown, textField: $texfieldDisable)
+	//									.edgesIgnoringSafeArea(.all)
+	//							}
 							}
 							Spacer()
 						}
@@ -155,7 +165,6 @@ struct ProfileView: View {
 					}
 					
 				}
-				.frame(maxWidth: UIScreen.main.bounds.width)
 				if shown {
 					AlertSave(shown: $shown, textField: $texfieldDisable)
 						.edgesIgnoringSafeArea(.all)
