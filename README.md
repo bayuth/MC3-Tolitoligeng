@@ -3,6 +3,9 @@
 ![Legalin Design Development](https://user-images.githubusercontent.com/41385867/139195913-38492803-8279-40c1-b41c-3027aba66ac9.jpg)
 ![Legalin Tech Features](https://user-images.githubusercontent.com/41385867/139196313-c2ebe578-ed98-4e0a-8672-9fc06b9cfc5c.jpg)
 
+# PROJECT'S ERD
+<img width="656" alt="Screen Shot 2021-09-03 at 09 42 02" src="https://user-images.githubusercontent.com/41385867/139202420-27f38659-5497-49ef-8862-a5582b9c5b33.png">
+
 # APP DEMO
 ### Press thumbnail to watch demo in youtube
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/KPnNIGeB9kQ/0.jpg)](https://www.youtube.com/watch?v=KPnNIGeB9kQ)
