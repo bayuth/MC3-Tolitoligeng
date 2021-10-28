@@ -12,13 +12,14 @@ struct MainApplicationPage: View {
     @AppStorage("selection") var selection = 3
     
     @ObservedObject var perjanjianController: PerjanjianController = .shared
+	@Environment(\.colorScheme) var colorScheme
     
     init(){
-        UITabBar.appearance().backgroundColor = UIColor(Color("tabBarColor"))
-        UITabBar.appearance().barTintColor = UIColor(Color("tabBarColor"))
-		UITabBar.appearance().selectedItem?.badgeColor = UIColor(Color("labelColor"))
+//		UITabBar.appearance().backgroundColor = UIColor(Color(.red))
+		UITabBar.appearance().barTintColor = UIColor(Color("tabBarColor"))
+//		UITabBar.appearance().selectedItem?.badgeColor = .red
 		UITabBar.appearance().unselectedItemTintColor = UIColor(Color("tabBarUnselected"))
-        UITabBar.appearance().isTranslucent = true
+//        UITabBar.appearance().isTranslucent = true
     }
 
     var body: some View {
@@ -39,6 +40,9 @@ struct MainApplicationPage: View {
                         
                     }
                     .tag(2)
+                    .onAppear{
+                        perjanjianController.removeRedIndicatorProfile()
+                    }
                 ProfileView()
                     .tabItem {
                         Text("Profile")
@@ -51,18 +55,17 @@ struct MainApplicationPage: View {
                     }
                     
             }
-            
             .accentColor(Color("tabBarSelectedColor"))
             DisclaimerPopUp(shouldShowOnBoarding: $shouldShowOnBoarding, selection: $selection)
         }
-        
     }
 }
 
 
 struct MainApplicationPage_Previews: PreviewProvider {
     static var previews: some View {
-        MainApplicationPage()
+		MainApplicationPage()
+			.preferredColorScheme(.dark)
             
     }
 }

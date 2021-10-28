@@ -10,8 +10,10 @@ import SwiftUI
 struct DetailKredit: View {
     @Environment(\.presentationMode) var presentationMode
     var kredit = Kredit()
-    var index: Int
     var onDelete: () -> ()
+    @Binding var actionState: Int?
+    @ObservedObject var coreData :CoreDataViewModel = .shared
+    
     var body: some View {
         VStack {
             HStack{
@@ -74,8 +76,10 @@ struct DetailKredit: View {
             )
             .padding()
             Spacer()
+            /*
             Button(action: {
                 presentationMode.wrappedValue.dismiss()
+                actionState = 0
             }) {
                 Text("Buat Perjanjian")
                     .frame(minWidth: 0, maxWidth: .infinity)
@@ -87,6 +91,7 @@ struct DetailKredit: View {
             }
             .padding(.bottom)
             .padding(.horizontal)
+            */
         }
         .onAppear(perform: {
             setupAppearance()
@@ -95,6 +100,8 @@ struct DetailKredit: View {
         .navigationBarItems(trailing:
                                 Button(action: {
                                     onDelete()
+                                    coreData.deleteKredit(kredit: kredit)
+                                    actionState = 0
                                     presentationMode.wrappedValue.dismiss()
                                 }, label: {
                                     Image(systemName: "trash")

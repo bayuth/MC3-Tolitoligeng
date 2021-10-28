@@ -12,13 +12,15 @@ struct EmptyState: View {
         VStack{
             Image("EmptyKredit")
                 .resizable()
-                .frame(width: 280, height: 280, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(width: 280, height: 280)
                 .padding(.bottom, 24)
             
             Text("Tidak Ada Kredit")
 				.foregroundColor(Color("textColor"))
                 .font(.headline)
             Text("Tambah kredit baru untuk memulai simulasi kredit")
+                .padding(.horizontal, 52)
+                .padding(.vertical, 8)
 				.foregroundColor(Color("textColor"))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 16)

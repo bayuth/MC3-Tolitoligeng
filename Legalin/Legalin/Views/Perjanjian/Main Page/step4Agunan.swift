@@ -59,16 +59,16 @@ struct step4Agunan: View {
                     
                     if(perjanjianController.tipeBarangAgunan != "Detail"){
                         
-                        inputTextViewCell(title: "Nama Barang",textViewValue: $perjanjianController.namaBarang, keyboardNum: false, emptyStateString: "Isi dengan rinci dan detail")
+                        inputTextViewCell(title: "Nama Barang",textViewValue: $perjanjianController.namaBarang, keyboardNum: false, type: 1, emptyStateString: "Isi dengan rinci dan detail")
                         
-                        inputTextViewCell(title: "Warna Barang",textViewValue: $perjanjianController.warnaBarang, keyboardNum: false, emptyStateString: "Warna barang")
+                        inputTextViewCell(title: "Warna Barang",textViewValue: $perjanjianController.warnaBarang, keyboardNum: false, type: 1, emptyStateString: "Warna barang")
                         
-                        inputTextViewCell(title: "Harga Barang",textViewValue: $perjanjianController.hargaBarang, keyboardNum: true, emptyStateString: "Harga barang terkini (co: Rp 2.500.000")
+                        inputTextViewCell(title: "Harga Barang",textViewValue: $perjanjianController.hargaBarang, keyboardNum: true, type: 0, emptyStateString: "Harga barang terkini (co: Rp 2.500.000")
                         
                         if(perjanjianController.tipeBarangAgunan != "Elektronik"){
-                            inputTextViewCell(title: "Nomor Seri Opsional",textViewValue: $perjanjianController.nomorSeri, keyboardNum: false, emptyStateString: "Opsional jika ada nomor seri")
+                            inputTextViewCell(title: "Nomor Seri Opsional",textViewValue: $perjanjianController.nomorSeri, keyboardNum: false, type: 1, emptyStateString: "Opsional jika ada nomor seri")
                         } else{
-                            inputTextViewCell(title: "Nomor Seri",textViewValue: $perjanjianController.nomorSeri, keyboardNum: false, emptyStateString: "Nomor seri barang elektronik")
+                            inputTextViewCell(title: "Nomor Seri",textViewValue: $perjanjianController.nomorSeri, keyboardNum: false, type: 1, emptyStateString: "Nomor seri barang elektronik")
                         }
                     }
                 }
@@ -171,7 +171,7 @@ struct step4Agunan: View {
                         }
                         
                         if (perjanjianController.sender == "detailPage"){
-                            perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat.draft)
+                            perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat(rawValue: perjanjianController.statusSurat) ?? StatusSurat.draft)
                         }
                         
                         self.masterPresentationMode4.wrappedValue.dismiss()

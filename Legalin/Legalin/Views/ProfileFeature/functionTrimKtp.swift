@@ -30,7 +30,12 @@ class functionTrimKtp: ObservableObject {
 				
 				print(outputText)
 				
-				let nikFromKtp = outputText.slice(from: "NIK", to: "Nama")
+				var nikFromKtp = outputText.slice(from: "NIK", to: "Nama")
+				if nikFromKtp?.count ?? 0 <= 16 {
+					nikFromKtp = outputText.slice(from: "NIK", to: "Nama")
+				} else {
+					nikFromKtp = ""
+				}
 				print(nikFromKtp)
 				var namaFromKtp = outputText.slice(from: "Nama", to:"Tempat")
 				if namaFromKtp?.contains(": ") == true{
@@ -54,103 +59,109 @@ class functionTrimKtp: ObservableObject {
 				var rtRwFromKtp = outputText.slice(from: "RT/RW", to: "Kel/Desa")
 				var rtBersih = ""
 				var rwBersih = ""
-				if rtRwFromKtp?.contains(": ") == true {
-					rtRwFromKtp = outputText.components(separatedBy: ": ").joined(separator: "")
-					print(rtRwFromKtp)
-					if let rtIndex = rtRwFromKtp?.firstIndex(of: "/") {
-						let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
-						rtBersih = String(rt)
-						print(rtBersih)
+				if rtRwFromKtp?.count ?? 0 <= 8 {
+					if rtRwFromKtp?.contains(": ") == true {
+						rtRwFromKtp = outputText.components(separatedBy: ": ").joined(separator: "")
+						print(rtRwFromKtp)
+						if let rtIndex = rtRwFromKtp?.firstIndex(of: "/") {
+							let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
+							rtBersih = String(rt)
+							print(rtBersih)
+						}
+						if let rwIndex = rtRwFromKtp?.range(of: "/") {
+							let rw = rtRwFromKtp?[rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+							rwBersih = rw ?? ""
+							print(rwBersih)
+						}
+						if let rtIndex = rtRwFromKtp?.firstIndex(of: "\n") {
+							let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
+							rtBersih = String(rt)
+							print(rtBersih)
+						}
+						if let rwIndex = rtRwFromKtp?.range(of: "\n") {
+							let rw = rtRwFromKtp?[rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+							rwBersih = rw ?? ""
+							print(rwBersih)
+						}
 					}
-					if let rwIndex = rtRwFromKtp?.range(of: "/") {
-						let rw = rtRwFromKtp?[rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
-						rwBersih = rw ?? ""
-						print(rwBersih)
+					else if rtRwFromKtp?.contains(":") == true {
+						rtRwFromKtp = outputText.components(separatedBy: ":").joined(separator: "")
+						print(rtRwFromKtp)
+						if let rtIndex = rtRwFromKtp?.firstIndex(of: "/") {
+							let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
+							rtBersih = String(rt)
+							print(rtBersih)
+						}
+						if let rwIndex = rtRwFromKtp?.range(of: "/") {
+							let rw = rtRwFromKtp![rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+							rwBersih = rw
+							print(rwBersih)
+						}
+						if let rtIndex = rtRwFromKtp?.firstIndex(of: "\n") {
+							let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
+							rtBersih = String(rt)
+							print(rtBersih)
+						}
+						if let rwIndex = rtRwFromKtp?.range(of: "\n") {
+							let rw = rtRwFromKtp?[rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+							rwBersih = rw ?? ""
+							print(rwBersih)
+						}
 					}
-					if let rtIndex = rtRwFromKtp?.firstIndex(of: "\n") {
-						let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
-						rtBersih = String(rt)
-						print(rtBersih)
+					else if rtRwFromKtp?.contains(" ") == true {
+						rtRwFromKtp = outputText.components(separatedBy: " ").joined(separator: "")
+						print(rtRwFromKtp)
+						if let rtIndex = rtRwFromKtp?.firstIndex(of: "/") {
+							let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
+							rtBersih = String(rt)
+							print(rtBersih)
+						}
+						if let rwIndex = rtRwFromKtp!.range(of: "/") {
+							let rw = rtRwFromKtp![rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+							rwBersih = rw
+							print(rwBersih)
+						}
+						if let rtIndex = rtRwFromKtp?.firstIndex(of: "\n") {
+							let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
+							rtBersih = String(rt)
+							print(rtBersih)
+						}
+						if let rwIndex = rtRwFromKtp?.range(of: "\n") {
+							let rw = rtRwFromKtp?[rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+							rwBersih = rw ?? ""
+							print(rwBersih)
+						}
 					}
-					if let rwIndex = rtRwFromKtp?.range(of: "\n") {
-						let rw = rtRwFromKtp?[rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
-						rwBersih = rw ?? ""
-						print(rwBersih)
+					else {
+						rtRwFromKtp = outputText.slice(from: "RT/RW", to: "Kel/Desa")
+						print(rtRwFromKtp)
+						if let rtIndex = rtRwFromKtp?.firstIndex(of: "/") {
+							let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
+							rtBersih = String(rt)
+							print(rtBersih)
+						}
+						if let rwIndex = rtRwFromKtp?.range(of: "/") {
+							let rw = rtRwFromKtp![rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+							rwBersih = rw
+							print(rwBersih)
+						}
+						if let rtIndex = rtRwFromKtp?.firstIndex(of: "\n") {
+							let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
+							rtBersih = String(rt)
+							print(rtBersih)
+						}
+						if let rwIndex = rtRwFromKtp?.range(of: "\n") {
+							let rw = rtRwFromKtp?[rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
+							rwBersih = rw ?? ""
+							print(rwBersih)
+						}
+						
 					}
+				} else {
+					rtBersih = ""
+					rwBersih = ""
 				}
-				else if rtRwFromKtp?.contains(":") == true {
-					rtRwFromKtp = outputText.components(separatedBy: ":").joined(separator: "")
-					print(rtRwFromKtp)
-					if let rtIndex = rtRwFromKtp?.firstIndex(of: "/") {
-						let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
-						rtBersih = String(rt)
-						print(rtBersih)
-					}
-					if let rwIndex = rtRwFromKtp?.range(of: "/") {
-						let rw = rtRwFromKtp![rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
-						rwBersih = rw
-						print(rwBersih)
-					}
-					if let rtIndex = rtRwFromKtp?.firstIndex(of: "\n") {
-						let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
-						rtBersih = String(rt)
-						print(rtBersih)
-					}
-					if let rwIndex = rtRwFromKtp?.range(of: "\n") {
-						let rw = rtRwFromKtp?[rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
-						rwBersih = rw ?? ""
-						print(rwBersih)
-					}
-				}
-				else if rtRwFromKtp?.contains(" ") == true {
-					rtRwFromKtp = outputText.components(separatedBy: " ").joined(separator: "")
-					print(rtRwFromKtp)
-					if let rtIndex = rtRwFromKtp?.firstIndex(of: "/") {
-						let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
-						rtBersih = String(rt)
-						print(rtBersih)
-					}
-					if let rwIndex = rtRwFromKtp!.range(of: "/") {
-						let rw = rtRwFromKtp![rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
-						rwBersih = rw
-						print(rwBersih)
-					}
-					if let rtIndex = rtRwFromKtp?.firstIndex(of: "\n") {
-						let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
-						rtBersih = String(rt)
-						print(rtBersih)
-					}
-					if let rwIndex = rtRwFromKtp?.range(of: "\n") {
-						let rw = rtRwFromKtp?[rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
-						rwBersih = rw ?? ""
-						print(rwBersih)
-					}
-				}
-				else {
-					rtRwFromKtp = outputText.slice(from: "RT/RW", to: "Kel/Desa")
-					print(rtRwFromKtp)
-					if let rtIndex = rtRwFromKtp?.firstIndex(of: "/") {
-						let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
-						rtBersih = String(rt)
-						print(rtBersih)
-					}
-					if let rwIndex = rtRwFromKtp?.range(of: "/") {
-						let rw = rtRwFromKtp![rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
-						rwBersih = rw
-						print(rwBersih)
-					}
-					if let rtIndex = rtRwFromKtp?.firstIndex(of: "\n") {
-						let rt = rtRwFromKtp!.prefix(upTo: rtIndex)
-						rtBersih = String(rt)
-						print(rtBersih)
-					}
-					if let rwIndex = rtRwFromKtp?.range(of: "\n") {
-						let rw = rtRwFromKtp?[rwIndex.upperBound...].trimmingCharacters(in: .whitespaces)
-						rwBersih = rw ?? ""
-						print(rwBersih)
-					}
-					
-				}
+				
 				let kelurahanFromKtp = outputText.slice(from: "Kel/Desa", to: "Kecamatan")
 				print(kelurahanFromKtp)
 				let kecamatanFromKtp = outputText.slice(from: "Kecamatan", to: "Agama")

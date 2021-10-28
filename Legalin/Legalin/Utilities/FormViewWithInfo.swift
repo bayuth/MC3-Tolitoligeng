@@ -31,7 +31,7 @@ struct FormViewWithInfo: View {
             }
             VStack(alignment: .leading) {
                 HStack{
-                    Text(title).font(.footnote).fontWeight(.light).padding(.bottom, 14)
+                    Text(title).font(.footnote).fontWeight(.light).padding(.bottom, 0)
                     if(showButtonInfo){
                         Button(action: {
                             
@@ -41,6 +41,7 @@ struct FormViewWithInfo: View {
                         }, label: {
                             Image(systemName: "info.circle")
                                 .foregroundColor(Color("tabBarColor"))
+                                .padding(.bottom, 5)
                         })
                     }
                 }.padding(.horizontal)

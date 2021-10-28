@@ -125,8 +125,10 @@ struct step2Pemberi: View {
 						CustomTextEditor(textData: $perjanjianController.pihak2Alamat, isDisableAddress: $isDisable)
 						HStack {
 							FormView(title: "RT", profileValue: $perjanjianController.pihak2RT, keyboardNum: true, isDisable: $isDisable)
+								.frame(maxWidth: UIScreen.main.bounds.width/2)
 							FormView(title: "RW", profileValue: $perjanjianController.pihak2RW, keyboardNum: true, isDisable: $isDisable)
-						}
+								.frame(maxWidth: UIScreen.main.bounds.width/2)
+						}.frame(maxWidth: UIScreen.main.bounds.width)
 						FormView(title: "Kelurahan/Desa", profileValue: $perjanjianController.pihak2Kelurahan, keyboardNum: false, isDisable: $isDisable)
 						FormView(title: "Kecamatan", profileValue: $perjanjianController.pihak2Kecamatan, keyboardNum: false, isDisable: $isDisable)
 						FormView(title: "Kabupaten/Kota", profileValue: $perjanjianController.pihak2Kota, keyboardNum: false, isDisable: $isDisable)
@@ -160,6 +162,7 @@ struct step2Pemberi: View {
 						}
 					}
 				}.padding(.top,10)
+				.frame(maxWidth: UIScreen.main.bounds.width)
 			}
 			
 			
@@ -196,7 +199,7 @@ struct step2Pemberi: View {
                                 }
                                 
                                 if (perjanjianController.sender == "detailPage"){
-                                    perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat.draft)
+                                    perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat(rawValue: perjanjianController.statusSurat) ?? StatusSurat.draft)
                                 }
                                 
                                 self.masterPresentationMode.wrappedValue.dismiss()

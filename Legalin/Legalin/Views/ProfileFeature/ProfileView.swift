@@ -49,21 +49,24 @@ struct ProfileView: View {
 					if (coreDataVM.pihak1.count == 0) {
 						Spacer()
 						Image("Profile Empty")
-							.resizable()
-							.aspectRatio(contentMode: .fit)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: 280, maxHeight: 280)
 						Text("Belum Ada Profil")
 							.font(.headline).fontWeight(.bold).padding(.top, 10)
 						Text("Buat profil baru untuk \n mempermudah membuat perjanjian")
 							.font(.body).padding(.top,-15)
 							
 							.multilineTextAlignment(.center).padding()
+                        Spacer()
 						
 						NavigationLink(
 							destination: NewProfileView(),
 							label: {
 								ButtonNext(text: "Buat Profil", isDataComplete: true)
 							})
-						Spacer()
+                        Spacer()
+						
 					}
 					
 					else {
@@ -74,7 +77,6 @@ struct ProfileView: View {
 									FormView(title: "Nama", profileValue: $profileController.pihak1Nama, keyboardNum: false, isDisable: $texfieldDisable)
 									VStack(alignment: .leading){
 										Text("Tanggal Lahir").font(.footnote).fontWeight(.regular).foregroundColor(Color("labelColor"))
-//										DatePickerView(profileDate: $profileController.pihak1TanggalLahir, isDisable: $texfieldDisable)
 										if texfieldDisable {
 											if Calendar.current.isDateInToday(profileController.pihak1TanggalLahir) {
 												Text("Pilih Tanggal Lahir")
@@ -119,8 +121,12 @@ struct ProfileView: View {
 									CustomTextEditor(textData: $profileController.pihak1Alamat, isDisableAddress: $texfieldDisable)
 									HStack {
 										FormView(title: "RT", profileValue: $profileController.pihak1RT, keyboardNum: true, isDisable: $texfieldDisable)
+											.lineLimit(2)
+											.frame(maxWidth: UIScreen.main.bounds.width/2)
 										FormView(title: "RW", profileValue: $profileController.pihak1RW, keyboardNum: true, isDisable: $texfieldDisable)
-									}
+											.lineLimit(2)
+											.frame(maxWidth: UIScreen.main.bounds.width/2)
+									}.frame(maxWidth: UIScreen.main.bounds.width)
 									FormView(title: "Kelurahan/Desa", profileValue: $profileController.pihak1Kelurahan, keyboardNum: false, isDisable: $texfieldDisable)
 									FormView(title: "Kecamatan", profileValue: $profileController.pihak1Kecamatan, keyboardNum: false, isDisable: $texfieldDisable)
 									FormView(title: "Kabupaten/Kota", profileValue: $profileController.pihak1Kota, keyboardNum: false, isDisable: $texfieldDisable)
@@ -145,6 +151,7 @@ struct ProfileView: View {
 										.padding(.bottom)
 									}
 								}
+								.frame(maxWidth: UIScreen.main.bounds.width)
 	//							.padding(.horizontal)
 								
 	//							if debugPopUp {
@@ -154,12 +161,10 @@ struct ProfileView: View {
 							}
 							Spacer()
 						}
-	//					.background(shown ? Color(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.5)) : Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)))
 						
 					}
 					
 				}
-				.frame(maxWidth: UIScreen.main.bounds.width)
 				if shown {
 					AlertSave(shown: $shown, textField: $texfieldDisable)
 						.edgesIgnoringSafeArea(.all)

@@ -36,6 +36,11 @@ struct step1Peminjam: View {
 				VStack(alignment: .leading){
 					
 					pageIndicator(progressNumber: 1, progressName: "Pihak 1 - Peminjam", progressDetail: "Berikutnya: Pihak 2 - Pemberi Pinjaman").padding(.bottom, 15).padding(.top,25)
+                        .onAppear{
+                            if perjanjianController.sender == "detailPage"{
+                                perjanjianController.actionState = 0
+                            }
+                        }
 					
 					ScrollView(showsIndicators: false){
 						VStack(alignment: .leading) {
@@ -123,8 +128,10 @@ struct step1Peminjam: View {
 								}
 								HStack {
 									FormView(title: "RT", profileValue: $perjanjianController.pihak1RT, keyboardNum: true, isDisable: $isDisable)
+										.frame(maxWidth: UIScreen.main.bounds.width/2)
 									FormView(title: "RW", profileValue: $perjanjianController.pihak1RW, keyboardNum: true, isDisable: $isDisable)
-								}
+										.frame(maxWidth: UIScreen.main.bounds.width/2)
+								}.frame(maxWidth: UIScreen.main.bounds.width)
 								FormView(title: "Kelurahan/Desa", profileValue: $perjanjianController.pihak1Kelurahan, keyboardNum: false, isDisable: $isDisable)
 								FormView(title: "Kecamatan", profileValue: $perjanjianController.pihak1Kecamatan, keyboardNum: false, isDisable: $isDisable)
 								FormView(title: "Kabupaten/Kota", profileValue: $perjanjianController.pihak1Kota, keyboardNum: false, isDisable: $isDisable)
@@ -155,6 +162,7 @@ struct step1Peminjam: View {
 								}
 							}
 						}.padding(.top,10)
+						.frame(maxWidth: UIScreen.main.bounds.width)
 					}
 					
 				   
@@ -182,7 +190,7 @@ struct step1Peminjam: View {
                             }
                             
                             if (perjanjianController.sender == "detailPage"){
-                                perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat.draft)
+                                perjanjianController.updatePinjamanCoreData(pinjaman: perjanjianController.detailPinjaman!, status: StatusSurat(rawValue: perjanjianController.statusSurat) ?? StatusSurat.draft)
                             }
                             
 							self.presentationMode.wrappedValue.dismiss()
